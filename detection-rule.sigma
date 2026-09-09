@@ -1,0 +1,38 @@
+title: vCenter rsyslog Path Traversal to Cron Drop (CVE-2026-59310)
+id: 8f2c1a90-3b7d-4e2a-9c4f-1d6b5e0a7c31
+status: experimental
+description: >
+  Detects exploitation of the rsyslog path-traversal-to-RCE issue in vCenter
+  (lab scenario CVE-2026-59310). Covers both the crafted-hostname traversal
+  indicator and the resulting cron-file write / rsyslog-spawned shell.
+references:
+  - GraySentinel DSOU Day 1 lab scenario (CVE number is lab scaffolding; verify against vendor advisory before production use)
+author: Eswar Mahalingam
+date: 2026/09/09
+logsource:
+  product: linux
+detection:
+  traversal_indicator:
+    service: syslog
+    message|contains:
+      - '../'
+      - '..%2f'
+  cron_write:
+    service: auditd
+    syscall: 257            # openat
+    path|startswith: '/etc/cron.d/'
+  rsyslog_child_shell:
+    service: auditd
+    ParentProcessName|endswith: 'rsyslogd'
+    ProcessName|endswith:
+      - '/sh'
+      - '/bash'
+  condition: traversal_indicator or cron_write or rsyslog_child_shell
+level: critical
+falsepositives:
+  - Legitimate configuration management writing to /etc/cron.d/
+  - Rsyslog templates that legitimately contain '../' in message bodies
+tags:
+  - attack.initial_access
+  - attack.persistence
+  - attack.t1053.003
