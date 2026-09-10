@@ -1,38 +1,89 @@
-title: vCenter rsyslog Path Traversal to Cron Drop (CVE-2026-59310)
-id: 8f2c1a90-3b7d-4e2a-9c4f-1d6b5e0a7c31
+title: GraySentinel DSOU Day2 - macOS Miner Attack Chain Detection
+id: gs-dsou-day2-macos-miner-2026
 status: experimental
 description: >
-  Detects exploitation of the rsyslog path-traversal-to-RCE issue in vCenter
-  (lab scenario CVE-2026-59310). Covers both the crafted-hostname traversal
-  indicator and the resulting cron-file write / rsyslog-spawned shell.
+  Detects indicators across the macOS Miner Attack Chain —
+  phishing macro delivery, CVE-2026-65400 Screen Sharing pre-auth RCE,
+  AdaptixC2 C2 beacon, XMRig process masquerade as sysmond,
+  LaunchDaemon KeepAlive persistence, and SSH root key backdoor.
+author: Eswar Mahalingam | GS-STU-DSOU-2026-039A
+date: 2026-09-10
 references:
-  - GraySentinel DSOU Day 1 lab scenario (CVE number is lab scaffolding; verify against vendor advisory before production use)
-author: Eswar Mahalingam
-date: 2026/09/09
-logsource:
-  product: linux
-detection:
-  traversal_indicator:
-    service: syslog
-    message|contains:
-      - '../'
-      - '..%2f'
-  cron_write:
-    service: auditd
-    syscall: 257            # openat
-    path|startswith: '/etc/cron.d/'
-  rsyslog_child_shell:
-    service: auditd
-    ParentProcessName|endswith: 'rsyslogd'
-    ProcessName|endswith:
-      - '/sh'
-      - '/bash'
-  condition: traversal_indicator or cron_write or rsyslog_child_shell
-level: critical
-falsepositives:
-  - Legitimate configuration management writing to /etc/cron.d/
-  - Rsyslog templates that legitimately contain '../' in message bodies
+  - https://github.com/GraySentinel/DSOU
+  - https://nvd.nist.gov/vuln/detail/CVE-2026-65400
 tags:
-  - attack.initial_access
-  - attack.persistence
-  - attack.t1053.003
+  - attack.initial_access      # T1566 Phishing
+  - attack.execution           # T1203 Exploit Public-Facing App
+  - attack.persistence         # T1543 Create/Modify System Process (LaunchDaemon)
+  - attack.persistence         # T1098 Account Manipulation (SSH key)
+  - attack.command_and_control # T1071 Application Layer Protocol
+  - attack.impact              # T1496 Resource Hijacking (Monero mining)
+logsource:
+  product: macos
+  category: process_creation
+
+detection:
+  # Tripwire 1 - VBA macro / oletools (initial access)
+  macro_cradle:
+    CommandLine|contains:
+      - 'olevba'
+      - 'URLDownloadToFile'
+      - 'suspicious_document.doc'
+      - 'oleid'
+
+  # Tripwire 2 - CVE-2026-65400 Screen Sharing exploit PoC
+  screen_sharing_exploit:
+    CommandLine|contains:
+      - 'poc_screensharing.py'
+      - '5900'
+    Image|contains: 'python'
+
+  # Tripwire 3 - XMRig masquerading as sysmond
+  xmrig_masquerade:
+    Image|endswith: '/sysmond'
+    CommandLine|contains:
+      - 'xmrig'
+      - '--coin'
+      - 'monero'
+  xmrig_copy:
+    CommandLine|contains:
+      - '/private/var/root/.config/sysmond'
+      - 'xmrig-6.26.0'
+
+  # Tripwire 4 - LaunchDaemon plist creation (miner KeepAlive persistence)
+  launch_daemon_miner:
+    EventID: 11
+    TargetFilename|startswith: '/Library/LaunchDaemons/'
+    TargetFilename|contains:
+      - 'miner'
+      - 'com.xmr'
+
+  # Tripwire 5 - SSH root backdoor via authorized_keys manipulation
+  ssh_backdoor:
+    CommandLine|contains:
+      - 'authorized_keys'
+      - 'ssh-keygen'
+    User: root
+
+  # Tripwire 6 - AdaptixC2 agent execution
+  adaptixc2_agent:
+    CommandLine|contains:
+      - 'agent.macos'
+      - '--server'
+      - '--port 443'
+
+  condition: >
+    macro_cradle
+    or screen_sharing_exploit
+    or xmrig_masquerade or xmrig_copy
+    or launch_daemon_miner
+    or ssh_backdoor
+    or adaptixc2_agent
+
+falsepositives:
+  - Legitimate oletools usage by security analysts (tune by analyst username)
+  - Authorised SSH key management (correlate against ITSM change ticket)
+  - Genuine Apple sysmond process (verify binary SHA-256 vs Apple baseline)
+  - Legitimate Python scripts on port 5900 for authorised Screen Sharing admin
+
+level: critical

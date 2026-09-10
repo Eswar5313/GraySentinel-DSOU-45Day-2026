@@ -1,57 +1,94 @@
-# GraySentinel DSOU — Day 1: The Zero-Day Discovery
+# GraySentinel-DSOU-Day2-MacOSMiner-2026
 
-> Blue Team detection-engineering exercise. I researched a vCenter rsyslog
-> path-traversal-to-RCE scenario (lab: CVE-2026-59310), wrote a Sigma detection
-> rule, validated it with a safe attack simulation, and reported to the CISO.
-
-**Operator:** Eswar Mahalingam — Blue Team Operator & Trainee (Officer Candidate)
-**Program:** GraySentinel DSOU · **Credential ID:** GS-STU-DSOU-2026-039A
-**Completed:** 09 Sep 2026 · **Verify:** valid 09 Sep 2026 – 08 Mar 2027
+**GraySentinel Cyber Defence Lab — DSOU Programme**  
+**Day 2: macOS Miner Attack Chain**  
+**Analyst:** Eswar Mahalingam | `GS-STU-DSOU-2026-039A`  
+**Date:** 10 September 2026
 
 ---
 
-## What I did
-Completed the six-phase "Zero-Day Discovery" mission and earned the Day 1
-certificate. The mission's real objective is the **detection rule** — the two
-artifacts below are the defensive deliverables I produced.
+## Mission Summary
 
-## Repository contents
+Blue Team analysis of a complete macOS cryptomining attack chain:
+
 ```
-GraySentinel-DSOU-Day1-ZeroDay-2026/
+Phishing (VBA Macro)
+  → CVE-2026-65400 (Pre-auth RCE, CVSS 9.8)
+    → AdaptixC2 C2 Framework
+      → XMRig Miner (masquerades as sysmond)
+        → LaunchDaemon KeepAlive Persistence
+          → SSH Root Backdoor
+            → OSINT Attribution
+              → Detection & Remediation
+```
+
+**170 risks identified. 6 phases completed. System fully remediated.**
+
+---
+
+## Repository Structure
+
+```
+GraySentinel-DSOU-Day2-MacOSMiner-2026/
+│
 ├── detection/
-│   └── detection-rule.sigma      # three-tripwire Sigma rule (the deliverable)
+│   ├── detection-rule.sigma        # 6-tripwire Sigma detection rule (ATT&CK mapped)
+│   └── detection-rule-wazuh.xml    # Wazuh SIEM rules (IDs 100200–100206)
+│
 ├── report/
-│   └── report.md                 # CISO-facing incident detection report
-│   └── (PDF report if generated)
+│   ├── report.md                   # Full phase-by-phase incident report
+│   └── GraySentinel_DSOU_Day2_Report.pdf   # Navy/gold 2-page PDF report
+│
 ├── mission-log/
-│   └── day1-phases.md            # what ran in each of the 6 phases
-├── certificate/
-│   └── GraySentinel_ZeroDay_GS-STU-DSOU-2026-039A.png
-└── README.md
+│   └── mission-log.md              # Mission timeline and observations
+│
+└── README.md                       # This file
 ```
 
-## The detection rule (summary)
-A layered Sigma rule that fires on **any** of three signals, so it catches the
-attack before *and* after it succeeds:
+---
 
-- **Traversal attempt** — `../` / `..%2f` in a syslog hostname/message
-- **Persistence outcome** — auditd `openat` write into `/etc/cron.d/`
-- **RCE moment** — `rsyslogd` spawning a shell
+## Key CVE
 
-Tuned against config-management and template false positives. MITRE ATT&CK
-T1053.003 (Cron). Full rule in [`detection/detection-rule.sigma`](detection/detection-rule.sigma).
-
-## Skills demonstrated
-Threat research · Sigma detection engineering · MITRE ATT&CK mapping ·
-detection validation with Atomic Red Team · security reporting for leadership.
-
-## Honesty & scope
-- This was a **training sandbox** exercise against lab target `192.168.1.50`.
-- The CVE identifier is **lab scaffolding** — I have not verified it as a real
-  advisory, and the rule should be validated against real telemetry and the
-  actual vendor bulletin before any production use.
-- This repo intentionally publishes **defensive artifacts only** — the Sigma
-  rule and the report. No exploit code, payload, or offensive module is included.
+| CVE | CVSS | Description |
+|---|---|---|
+| CVE-2026-65400 | 9.8 Critical | macOS Screen Sharing pre-auth RCE via SRP frame-length validation bypass |
 
 ---
-*Part of my 2026 cyber-security training portfolio.*
+
+## MITRE ATT&CK Coverage
+
+| Technique | ID | Phase |
+|---|---|---|
+| Phishing | T1566 | 1 |
+| Exploit Public-Facing Application | T1203 | 2 |
+| Application Layer Protocol | T1071 | 3 |
+| Account Manipulation | T1098 | 3 |
+| Launch Daemon | T1543.004 | 4 |
+| Resource Hijacking | T1496 | 4 |
+| Gather Victim Network Information | T1591 | 5 |
+
+---
+
+## Tools Used
+
+| Tool | Purpose |
+|---|---|
+| oletools (olevba, oleid) | Phishing document / VBA macro analysis |
+| poc_screensharing.py | CVE-2026-65400 Screen Sharing exploit PoC |
+| AdaptixC2 | Post-exploitation C2 framework (Go-based) |
+| XMRig 6.26.0 | Monero cryptocurrency miner |
+| Tookie-OSINT | Social media OSINT attribution |
+| dig | DNS MX infrastructure mapping |
+| Wazuh | SIEM detection rule deployment |
+
+---
+
+## Disclaimer
+
+> All work performed inside the **GraySentinel GrayOS sandbox** (forensic@macos, Kali Terminal).  
+> No real systems were targeted. All artifacts are **defensive and educational**.  
+> Exploit code is not reproduced — only detection and remediation artifacts are included.
+
+---
+
+*GraySentinel Cyber Defence Lab · DSOU Programme · Blue Team Operator & Trainee*

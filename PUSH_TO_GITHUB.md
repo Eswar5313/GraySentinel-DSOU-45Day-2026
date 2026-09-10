@@ -1,41 +1,40 @@
-# How to push this repo to GitHub
+# How to Push to GitHub
 
-This session can't create repos on your account, so here's the one-time setup.
-Everything below runs from inside this folder.
+## Step 1 — Create the repo on GitHub
+1. Go to https://github.com/new
+2. Repository name: `GraySentinel-DSOU-Day2-MacOSMiner-2026`
+3. Description: `GraySentinel DSOU Day 2 — macOS Miner Attack Chain | Blue Team Lab | Eswar Mahalingam`
+4. Set to **Public**
+5. Do NOT initialise with README (we already have one)
+6. Click **Create repository**
 
-## 1. Create an empty repo on GitHub
-Go to https://github.com/new → name it **GraySentinel-DSOU-Day1-ZeroDay-2026**
-→ Public → do NOT add a README/licence (this repo already has one) → Create.
+## Step 2 — Extract the zip and push
 
-## 2. Push (git history is already initialised in this zip)
 ```bash
-git remote add origin https://github.com/<your-username>/GraySentinel-DSOU-Day1-ZeroDay-2026.git
+# Extract the zip you downloaded
+unzip GraySentinel-DSOU-Day2-MacOSMiner-2026.zip
+cd GraySentinel-DSOU-Day2-MacOSMiner-2026
+
+# Initialise git and push
+git init
+git add .
+git commit -m "feat: GraySentinel DSOU Day 2 — macOS Miner Attack Chain complete
+
+- 6 phases completed (oletools, CVE-2026-65400, AdaptixC2, XMRig, Tookie-OSINT, Remediation)
+- 170 risks identified and mapped
+- 6-tripwire Sigma detection rule (ATT&CK T1566/T1203/T1071/T1098/T1543/T1496)
+- Wazuh SIEM rules (IDs 100200-100206)
+- 2-page navy/gold PDF incident report
+- All artifacts defensive only — GS-STU-DSOU-2026-039A"
+
 git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/GraySentinel-DSOU-Day2-MacOSMiner-2026.git
 git push -u origin main
 ```
-If git isn't initialised (you extracted without .git), run first:
-```bash
-git init && git add . && git commit -m "GraySentinel DSOU Day 1 — Zero-Day Discovery: detection rule + report"
-```
 
-## 3. Add it to LinkedIn / CV
-- LinkedIn → Licenses & certifications → GraySentinel DSOU · Day 1 Zero-Day Discovery
-  · Credential ID **GS-STU-DSOU-2026-039A** · Issued Sep 2026 · Expires Mar 2027
-  · link the repo under "Credential URL" or as Featured.
-- Keep it under **Certifications & Training** (it's a trainee/Officer-Candidate lab,
-  not a full-time role) — Zidio Data Scientist stays your headline.
+## Step 3 — Share on LinkedIn
 
-## Repo layout
-```
-detection/detection-rule.sigma   the deliverable Sigma rule
-report/report.md                 CISO report (source)
-report/GraySentinel_ZeroDay_Report_Eswar.pdf   styled navy/gold report
-mission-log/day1-phases.md       what ran in each phase
-certificate/...039A.png          your Day 1 certificate
-README.md
-```
-
-## Note on scope
-Defensive artifacts only — Sigma rule + report. No exploit code is included, by
-design. The CVE identifier is lab scaffolding; verify against the real advisory
-before any production use.
+Post the GitHub repo link on LinkedIn with:
+- Tag: GraySentinel, Blue Team, Cybersecurity, SOC, DSOU
+- Operator ID: GS-STU-DSOU-2026-039A
+- Mention: CVE-2026-65400, XMRig, AdaptixC2, macOS forensics
