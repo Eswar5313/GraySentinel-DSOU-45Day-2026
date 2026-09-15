@@ -1,40 +1,29 @@
-# How to Push to GitHub
+# Push this addition to the existing repo
 
-## Step 1 — Create the repo on GitHub
-1. Go to https://github.com/new
-2. Repository name: `GraySentinel-DSOU-Day2-MacOSMiner-2026`
-3. Description: `GraySentinel DSOU Day 2 — macOS Miner Attack Chain | Blue Team Lab | Eswar Mahalingam`
-4. Set to **Public**
-5. Do NOT initialise with README (we already have one)
-6. Click **Create repository**
+The folder `graysentinel-day1/` is an **addition** to `Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026` (which already holds the Day 1 Zero-Day lab). No existing files are touched.
 
-## Step 2 — Extract the zip and push
+## Option A — GitHub web upload (≤100 files; this folder is ~35 files)
+1. Open https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026 → **Add file → Upload files**.
+2. Drag the whole `graysentinel-day1` folder in (keep the folder, do not drag its contents loose).
+3. Commit message: `Add Day 1 individual projects: auth log investigator + SOC incident summary generator` → **Commit changes**.
 
+## Option B — git
 ```bash
-# Extract the zip you downloaded
-unzip GraySentinel-DSOU-Day2-MacOSMiner-2026.zip
-cd GraySentinel-DSOU-Day2-MacOSMiner-2026
-
-# Initialise git and push
-git init
-git add .
-git commit -m "feat: GraySentinel DSOU Day 2 — macOS Miner Attack Chain complete
-
-- 6 phases completed (oletools, CVE-2026-65400, AdaptixC2, XMRig, Tookie-OSINT, Remediation)
-- 170 risks identified and mapped
-- 6-tripwire Sigma detection rule (ATT&CK T1566/T1203/T1071/T1098/T1543/T1496)
-- Wazuh SIEM rules (IDs 100200-100206)
-- 2-page navy/gold PDF incident report
-- All artifacts defensive only — GS-STU-DSOU-2026-039A"
-
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/GraySentinel-DSOU-Day2-MacOSMiner-2026.git
-git push -u origin main
+git clone https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026.git && cd GraySentinel-DSOU-Day1-ZeroDay-2026
+unzip ~/Downloads/graysentinel-day1.zip -d .        # creates ./graysentinel-day1
+git add graysentinel-day1 && git commit -m "Add Day 1 individual projects (P01 auth investigator, P02 incident summary)" && git push
 ```
 
-## Step 3 — Share on LinkedIn
+## Enable the live checker (GitHub Pages)
+Settings → Pages → Source: *Deploy from a branch* → Branch `main`, folder `/ (root)` → Save.
+Live URL after ~1 min: https://Eswar5313.github.io/GraySentinel-DSOU-Day1-ZeroDay-2026/graysentinel-day1/docs/
+(If the repo already publishes from `/docs`, move `graysentinel-day1/docs/index.html` to `docs/day1-projects/index.html` and use that URL.)
 
-Post the GitHub repo link on LinkedIn with:
-- Tag: GraySentinel, Blue Team, Cybersecurity, SOC, DSOU
-- Operator ID: GS-STU-DSOU-2026-039A
-- Mention: CVE-2026-65400, XMRig, AdaptixC2, macOS forensics
+## Send in the group
+```
+Name: Eswar Mahalingam
+Project 01: https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/README.md
+Project 02: https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/README.md
+Evidence: Repository contains code + report + evidence
+Status: Submitted for Review
+```

