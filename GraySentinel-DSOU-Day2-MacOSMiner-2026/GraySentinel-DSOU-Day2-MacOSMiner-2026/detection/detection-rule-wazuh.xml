@@ -1,0 +1,80 @@
+<!-- GraySentinel DSOU Day 2 — macOS Miner Attack Chain — Wazuh Detection Rules -->
+<!-- Author: Eswar Mahalingam | GS-STU-DSOU-2026-039A | 10 Sep 2026 -->
+<group name="graySentinel,dsou_day2,macos_miner">
+
+  <!-- Rule 1: oletools / VBA macro analysis execution -->
+  <rule id="100200" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="command">olevba|oleid|suspicious_document</field>
+    <description>GS-Day2: Phishing document analysis detected (oletools). Possible macro-based initial access.</description>
+    <mitre>
+      <id>T1566</id>
+      <id>T1059</id>
+    </mitre>
+  </rule>
+
+  <!-- Rule 2: CVE-2026-65400 Screen Sharing exploit PoC -->
+  <rule id="100201" level="15">
+    <decoded_as>json</decoded_as>
+    <field name="command">poc_screensharing\.py</field>
+    <description>GS-Day2: CRITICAL — CVE-2026-65400 Screen Sharing exploit PoC executed. Pre-auth RCE attempt.</description>
+    <mitre>
+      <id>T1203</id>
+    </mitre>
+  </rule>
+
+  <!-- Rule 3: XMRig masquerading as sysmond -->
+  <rule id="100202" level="15">
+    <decoded_as>json</decoded_as>
+    <field name="process_name">sysmond</field>
+    <field name="command">xmrig|monero|--coin</field>
+    <description>GS-Day2: CRITICAL — XMRig miner masquerading as sysmond. Cryptocurrency mining via process name evasion.</description>
+    <mitre>
+      <id>T1496</id>
+    </mitre>
+  </rule>
+
+  <!-- Rule 4: LaunchDaemon miner plist creation -->
+  <rule id="100203" level="13">
+    <decoded_as>json</decoded_as>
+    <field name="file_path">/Library/LaunchDaemons/</field>
+    <field name="file_name">miner|com\.xmr</field>
+    <description>GS-Day2: New LaunchDaemon plist created matching miner pattern. KeepAlive persistence mechanism.</description>
+    <mitre>
+      <id>T1543.004</id>
+    </mitre>
+  </rule>
+
+  <!-- Rule 5: Root SSH backdoor via authorized_keys -->
+  <rule id="100204" level="15">
+    <decoded_as>json</decoded_as>
+    <field name="user">root</field>
+    <field name="command">authorized_keys|ssh-keygen</field>
+    <description>GS-Day2: CRITICAL — Root SSH authorized_keys modified. Persistent root backdoor implanted.</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+  </rule>
+
+  <!-- Rule 6: AdaptixC2 agent execution -->
+  <rule id="100205" level="15">
+    <decoded_as>json</decoded_as>
+    <field name="command">agent\.macos|AdaptixC2|--server.*--port 443</field>
+    <description>GS-Day2: CRITICAL — AdaptixC2 Go-based C2 agent launched. Full system compromise via post-exploitation framework.</description>
+    <mitre>
+      <id>T1071</id>
+    </mitre>
+  </rule>
+
+  <!-- Rule 7: Sustained high CPU (XMRig indicator) -->
+  <rule id="100206" level="10">
+    <decoded_as>json</decoded_as>
+    <field name="cpu_usage">9[0-9]\.[0-9]+|100\.0</field>
+    <field name="process_name">sysmond</field>
+    <description>GS-Day2: sysmond consuming over 90% CPU — possible XMRig miner masquerade. Investigate immediately.</description>
+    <mitre>
+      <id>T1496</id>
+    </mitre>
+  </rule>
+
+</group>

@@ -1,0 +1,89 @@
+title: GraySentinel DSOU Day2 - macOS Miner Attack Chain Detection
+id: gs-dsou-day2-macos-miner-2026
+status: experimental
+description: >
+  Detects indicators across the macOS Miner Attack Chain —
+  phishing macro delivery, CVE-2026-65400 Screen Sharing pre-auth RCE,
+  AdaptixC2 C2 beacon, XMRig process masquerade as sysmond,
+  LaunchDaemon KeepAlive persistence, and SSH root key backdoor.
+author: Eswar Mahalingam | GS-STU-DSOU-2026-039A
+date: 2026-09-10
+references:
+  - https://github.com/GraySentinel/DSOU
+  - https://nvd.nist.gov/vuln/detail/CVE-2026-65400
+tags:
+  - attack.initial_access      # T1566 Phishing
+  - attack.execution           # T1203 Exploit Public-Facing App
+  - attack.persistence         # T1543 Create/Modify System Process (LaunchDaemon)
+  - attack.persistence         # T1098 Account Manipulation (SSH key)
+  - attack.command_and_control # T1071 Application Layer Protocol
+  - attack.impact              # T1496 Resource Hijacking (Monero mining)
+logsource:
+  product: macos
+  category: process_creation
+
+detection:
+  # Tripwire 1 - VBA macro / oletools (initial access)
+  macro_cradle:
+    CommandLine|contains:
+      - 'olevba'
+      - 'URLDownloadToFile'
+      - 'suspicious_document.doc'
+      - 'oleid'
+
+  # Tripwire 2 - CVE-2026-65400 Screen Sharing exploit PoC
+  screen_sharing_exploit:
+    CommandLine|contains:
+      - 'poc_screensharing.py'
+      - '5900'
+    Image|contains: 'python'
+
+  # Tripwire 3 - XMRig masquerading as sysmond
+  xmrig_masquerade:
+    Image|endswith: '/sysmond'
+    CommandLine|contains:
+      - 'xmrig'
+      - '--coin'
+      - 'monero'
+  xmrig_copy:
+    CommandLine|contains:
+      - '/private/var/root/.config/sysmond'
+      - 'xmrig-6.26.0'
+
+  # Tripwire 4 - LaunchDaemon plist creation (miner KeepAlive persistence)
+  launch_daemon_miner:
+    EventID: 11
+    TargetFilename|startswith: '/Library/LaunchDaemons/'
+    TargetFilename|contains:
+      - 'miner'
+      - 'com.xmr'
+
+  # Tripwire 5 - SSH root backdoor via authorized_keys manipulation
+  ssh_backdoor:
+    CommandLine|contains:
+      - 'authorized_keys'
+      - 'ssh-keygen'
+    User: root
+
+  # Tripwire 6 - AdaptixC2 agent execution
+  adaptixc2_agent:
+    CommandLine|contains:
+      - 'agent.macos'
+      - '--server'
+      - '--port 443'
+
+  condition: >
+    macro_cradle
+    or screen_sharing_exploit
+    or xmrig_masquerade or xmrig_copy
+    or launch_daemon_miner
+    or ssh_backdoor
+    or adaptixc2_agent
+
+falsepositives:
+  - Legitimate oletools usage by security analysts (tune by analyst username)
+  - Authorised SSH key management (correlate against ITSM change ticket)
+  - Genuine Apple sysmond process (verify binary SHA-256 vs Apple baseline)
+  - Legitimate Python scripts on port 5900 for authorised Screen Sharing admin
+
+level: critical
