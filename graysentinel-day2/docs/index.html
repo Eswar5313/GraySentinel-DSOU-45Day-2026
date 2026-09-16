@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GraySentinel Day 2 — vCenter Compromise</title>
+<style>
+:root{--navy:#0B1E3F;--navy2:#16305c;--gold:#E8B04B;--ink:#F4F1E8;--mut:#9fb3d1;--line:#24406e;--ok:#33c481;--crit:#ff5c5c}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Arial;background:var(--navy);color:var(--ink)}
+.wrap{max-width:960px;margin:0 auto;padding:26px}
+h1{color:var(--gold);margin:0 0 2px;font-size:25px}.sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:13px}
+.kpi b{color:var(--gold);font-size:20px;display:block}
+.card{background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:13px 16px;margin:9px 0}
+.card h3{margin:0 0 5px;color:var(--gold);font-size:15px}
+.chip{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;margin-right:6px}
+.pass{background:var(--ok);color:#06210f}.crit{background:var(--crit);color:#2a0000}
+a{color:var(--gold)}code{background:#0b1226;padding:1px 6px;border-radius:4px;color:var(--ink);font-size:12px}
+.foot{color:var(--mut);font-size:12px;margin-top:18px;border-top:1px solid var(--line);padding-top:11px}
+</style>
+<div class="wrap">
+<h1>🟢 GraySentinel DSOU — Day 2 · SOC War Room</h1>
+<div class="sub">VMware vCenter Compromise · CVE-2026-59310 (CVSS 9.8) · Eswar Mahalingam · GS-STU-DSOU-2026-039A · Case GS-DAY2-2026</div>
+<div class="grid">
+<div class="kpi"><b>NOT YET</b>Can we close?</div>
+<div class="kpi"><b>H1 + H2</b>Hunting hypotheses</div>
+<div class="kpi"><b>4 rules</b>Wazuh detection (L14)</div>
+<div class="kpi"><b>10</b>Ransomware domains</div>
+</div>
+<div class="card"><h3>01 · Investigation Plan <span class="chip pass">10 evidence sources</span></h3>
+Asset triage across version, auth, admin actions, config, VM ops, network, new accounts — scoped to the pre-patch window. → <a href="../01_investigation_plan.md">open</a></div>
+<div class="card"><h3>02 · Hunting Hypotheses <span class="chip crit">assume-breach</span></h3>
+H1 "accessed before remediation" · H2 "infra influence / credential harvest" — each with evidence, data source, indicators, false positives, conclusion. → <a href="../02_hunting_hypotheses.md">open</a></div>
+<div class="card"><h3>03 · Detection Engineering <span class="chip pass">Sigma + Wazuh</span></h3>
+<code>VCENTER-PRIV-VMOPS-ANOMALOUS-SOURCE</code> — privileged VM/infra op from off-allow-list source. → <a href="../03_detection_concept.md">concept</a> · <a href="../detections/vcenter_priv_vmops_anomalous_source.yml">sigma</a> · <a href="../detections/vcenter_wazuh_rules.xml">wazuh</a></div>
+<div class="card"><h3>04 · Ransomware Readiness <span class="chip pass">T1490 focus</span></h3>
+Identity → privileged accounts → virtual infra → mgmt plane → network → backups → creds → lateral → persistence → evidence. → <a href="../04_ransomware_readiness_checklist.md">open</a></div>
+<div class="card"><h3>★ Senior SOC answer</h3>
+Why vCenter is crown-jewel: identity + infrastructure + availability + lateral movement + recovery. → <a href="../senior_soc_answer.md">open</a></div>
+<div class="foot">GraySentinel lab exercise · CVE per brief, truth-source = CISA KEV · real vSphere log paths + ATT&CK IDs · no fabricated exploit internals.</div>
+</div></html>

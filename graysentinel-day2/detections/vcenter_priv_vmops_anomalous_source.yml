@@ -1,0 +1,52 @@
+title: vCenter Privileged VM/Infra Action From Anomalous Source
+id: gs-day2-2026-vcenter-privvmops
+status: experimental
+description: >
+  Detects privileged virtual-infrastructure operations (account creation,
+  permission/role change, identity-source addition, VM clone/export, Tier-0
+  snapshot, vpxuser credential change) originating from a source outside the
+  admin allow-list, from a freshly-created account, or without a change ticket.
+  Built for GraySentinel DSOU Day 2 (CVE-2026-59310 vCenter compromise).
+author: Eswar Mahalingam (GS-STU-DSOU-2026-039A)
+date: 2026/09/16
+references:
+  - https://attack.mitre.org/techniques/T1098/
+  - https://attack.mitre.org/techniques/T1136/
+  - https://attack.mitre.org/techniques/T1213/
+  - https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+logsource:
+  product: vcenter
+  service: vpxd-audit
+detection:
+  privileged_ops:
+    operation|contains:
+      - 'CreateUser'
+      - 'AddPermission'
+      - 'RoleModify'
+      - 'AddIdentitySource'
+      - 'CloneVM'
+      - 'ExportVm'
+      - 'DatastoreDownload'
+      - 'CreateSnapshot'
+      - 'vpxuser'
+  anomalous_context:
+    src_in_admin_allowlist: false
+  condition: privileged_ops and anomalous_context
+fields:
+  - timestamp
+  - user
+  - source_ip
+  - operation
+  - target
+  - result
+falsepositives:
+  - Break-glass admin from a new jump host (verify against change ticket)
+  - Scheduled backup / DR clone or snapshot (verify against backup schedule)
+  - Approved onboarding of a new administrator
+level: high
+tags:
+  - attack.persistence
+  - attack.privilege_escalation
+  - attack.t1098
+  - attack.t1136
+  - attack.t1213

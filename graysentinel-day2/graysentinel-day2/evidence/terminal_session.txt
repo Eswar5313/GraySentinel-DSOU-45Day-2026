@@ -1,0 +1,12 @@
+$ python3 src/macro_analyzer.py data/invoice_Q3.docm.extracted.bas --json findings.json --md findings.md
+[MALICIOUS] 16 findings (CRIT 3/HIGH 7) -> data/invoice_Q3.docm.extracted.bas
+exit_code=2  (2 = CRITICAL gate tripped, as designed)
+
+$ python3 src/killchain_reconstructor.py --edr data/edr_telemetry.csv --macro findings.json --md incident.md --html incident.html --json incident.json
+[P1] mac-victim-07 · 12 events · 2 C2 IPs · verdict MALICIOUS
+exit_code=0
+
+$ python3 -m unittest discover -s tests
+Ran 21 tests in 0.047s
+
+OK

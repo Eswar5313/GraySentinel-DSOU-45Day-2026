@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GraySentinel Day 2 — Kill-Chain Checker</title>
+<style>
+:root{--navy:#0B1E3F;--navy2:#16305c;--gold:#E8B04B;--ink:#F4F1E8;--mut:#9fb3d1;--line:#24406e;--ok:#33c481;--crit:#ff5c5c}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Arial;background:var(--navy);color:var(--ink)}
+.wrap{max-width:940px;margin:0 auto;padding:26px}
+h1{color:var(--gold);margin:0 0 2px;font-size:26px}.sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.kpi b{color:var(--gold);font-size:22px;display:block}
+.card{background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+.card h3{margin:0 0 6px;color:var(--gold);font-size:16px}
+.chip{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;margin-right:6px}
+.pass{background:var(--ok);color:#06210f}.crit{background:var(--crit);color:#2a0000}
+a{color:var(--gold)}code{background:#0b1226;padding:1px 6px;border-radius:4px;color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+td,th{border:1px solid var(--line);padding:6px 8px;text-align:left}th{background:#0b1226;color:var(--gold)}
+.foot{color:var(--mut);font-size:12px;margin-top:20px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+<div class="wrap">
+<h1>🛡️ GraySentinel DSOU — Day 2</h1>
+<div class="sub">macOS Cryptominer Kill-Chain (defensive) · Eswar Mahalingam · GS-STU-DSOU-2026-039A · Case GS-DAY2-2026</div>
+<div class="grid">
+<div class="kpi"><b>P1</b>Incident priority</div>
+<div class="kpi"><b>16</b>Macro findings (3 CRIT)</div>
+<div class="kpi"><b>21/21</b>Unit tests</div>
+<div class="kpi"><b>2</b>C2 IPs recovered</div>
+</div>
+<div class="card"><h3>Tool A — Macro Static Analyzer <span class="chip crit">MALICIOUS</span><span class="chip pass">10 ATT&CK rules</span></h3>
+Static VBA triage, line-number evidence, exit code 2 on CRITICAL. →
+<a href="../evidence/findings.md">findings.md</a> · <a href="../evidence/findings.json">findings.json</a></div>
+<div class="card"><h3>Tool B — Kill-Chain Reconstructor <span class="chip pass">P1 brief</span><span class="chip pass">IOC + ATT&CK</span></h3>
+Correlates findings + EDR → timeline, IOCs, containment checklist. →
+<a href="../evidence/incident_brief.html">incident_brief.html</a> · <a href="../evidence/incident_brief.md">.md</a> · <a href="../evidence/incident_brief.json">.json</a></div>
+<div class="card"><h3>ATT&CK coverage</h3>
+<table><tr><th>Tactic</th><th>Technique</th></tr>
+<tr><td>Initial Access</td><td>T1566.001 spearphishing attachment</td></tr>
+<tr><td>Execution</td><td>T1204.002 · T1059.002 · T1059.004</td></tr>
+<tr><td>C2</td><td>T1105 download · T1071.001 beacon</td></tr>
+<tr><td>Persistence</td><td>T1543.001 LaunchDaemon</td></tr>
+<tr><td>Impact</td><td>T1496 resource hijack</td></tr></table></div>
+<div class="card"><h3>Reproduce</h3>
+<code>python3 src/macro_analyzer.py data/invoice_Q3.docm.extracted.bas --json findings.json</code><br>
+<code>python3 src/killchain_reconstructor.py --edr data/edr_telemetry.csv --macro findings.json --md brief.md</code><br>
+Full runbook → <a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/graysentinel-day2/STEP_BY_STEP.md">STEP_BY_STEP.md</a></div>
+<div class="foot">All inputs synthetic and declared · inert fixture (RFC-5737 / example.com) · detection-only tooling · no live payload.</div>
+</div></html>

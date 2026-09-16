@@ -1,0 +1,36 @@
+<!--
+  GraySentinel DSOU Day 2 - Wazuh local rules for vCenter privileged-op abuse
+  Author: Eswar Mahalingam (GS-STU-DSOU-2026-039A) | Case GS-DAY2-2026
+  Assumes a decoder tagging vCenter vpxd-audit events as program_name "vpxd".
+  IDs 100810-100813 are in the local custom range. Tune allow-list list path.
+-->
+<group name="vcenter,vsphere,gs_day2,">
+
+  <rule id="100810" level="6">
+    <program_name>vpxd</program_name>
+    <match>operation=</match>
+    <description>vCenter: privileged/audited operation observed</description>
+  </rule>
+
+  <rule id="100811" level="12">
+    <if_sid>100810</if_sid>
+    <regex>operation=(CreateUser|AddPermission|RoleModify|AddIdentitySource)</regex>
+    <description>vCenter: identity/permission change (account, role, or identity source)</description>
+    <mitre><id>T1136</id><id>T1098</id></mitre>
+  </rule>
+
+  <rule id="100812" level="12">
+    <if_sid>100810</if_sid>
+    <regex>operation=(CloneVM|ExportVm|DatastoreDownload|CreateSnapshot)</regex>
+    <description>vCenter: VM data operation (clone/export/download/snapshot) - possible exfil/staging</description>
+    <mitre><id>T1213</id><id>T1005</id></mitre>
+  </rule>
+
+  <rule id="100813" level="14">
+    <if_sid>100811,100812</if_sid>
+    <list field="source_ip" lookup="not_address_match_key">etc/lists/vcenter-admin-allowlist</list>
+    <description>vCenter CRITICAL: privileged action from source NOT on admin allow-list</description>
+    <mitre><id>T1078</id><id>T1190</id></mitre>
+  </rule>
+
+</group>

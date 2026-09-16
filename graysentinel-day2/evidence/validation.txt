@@ -1,0 +1,5 @@
+$ python3 -c 'validate detections/'
+[OK] Wazuh XML well-formed: 4 rules
+[OK] Sigma YAML keys present
+[OK] Sigma level: high
+[OK] all four mission docs present: True
