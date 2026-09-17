@@ -1,0 +1,7 @@
+Timestamp | User | App | IP | Was it legit? | Why
+2026-09-17T04:41:09Z | rahul.k@example.com | Microsoft Office | 198.51.100.77 | No | location Amsterdam, NH, NL outside home countries; app 'Microsoft Office' is not a device-code-native client; ISP/ASN looks like VPN/hosting (M247 Europe (hosting)); no Conditional Access policy applied
+2026-09-17T05:02:17Z | anita.s@example.com | Microsoft Graph Command Line Tools | 192.0.2.201 | No | token NOT issued (failed) — attempt only; location Lagos, LA, NG outside home countries; app 'Microsoft Graph Command Line Tools' is not a device-code-native client; ISP/ASN looks like VPN/hosting (DigitalOcean cloud); no Conditional Access policy applied
+2026-09-17T03:12:44Z | priya.n@example.com | Azure CLI | 203.0.113.14 | Yes | home location Ghaziabad, UP, IN (thin baseline in export — widen date range); 'Azure CLI' normally uses device code
+2026-09-16T12:22:01Z | ops.kiosk@example.com | Microsoft Teams Rooms | 203.0.113.5 | Yes | home location Gurugram, HR, IN (thin baseline in export — widen date range); 'Microsoft Teams Rooms' normally uses device code
+
+4 device-code sign-ins, 2 flagged. Next for 'No': revoke sessions + reset, check mailbox rules/OAuth consents, block device code flow via Conditional Access.

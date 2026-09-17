@@ -1,0 +1,30 @@
+// GraySentinel DSOU · Drill 02 · Impossible travel with MFA-satisfied-by-token check
+// Pairs each successful sign-in with the user's previous one and computes implied speed.
+let maxSpeedKmh = 900;              // fastest commercial flight
+let vpnHints = dynamic(["vpn","proxy","hosting","datacenter","m247","digitalocean","ovh","hetzner","vultr","tor"]);
+let corpVpn  = dynamic(["zscaler","netskope"]);
+union isfuzzy=true SigninLogs, AADNonInteractiveUserSignInLogs
+| where TimeGenerated > ago(7d) and ResultType == 0
+| extend lat = todouble(LocationDetails.geoCoordinates.latitude),
+         lon = todouble(LocationDetails.geoCoordinates.longitude),
+         Loc = strcat(tostring(LocationDetails.city), ", ", tostring(LocationDetails.countryOrRegion)),
+         ASN = tostring(AutonomousSystemNumber),
+         MFA = tostring(AuthenticationDetails[0].authenticationStepResultDetail)
+| where isnotempty(lat)
+| order by UserPrincipalName asc, TimeGenerated asc
+| serialize
+| extend PrevTime = prev(TimeGenerated), PrevLoc = prev(Loc), PrevLat = prev(lat), PrevLon = prev(lon),
+         PrevUser = prev(UserPrincipalName), PrevIP = prev(IPAddress)
+| where PrevUser == UserPrincipalName and IPAddress != PrevIP
+| extend DistanceKm = geo_distance_2points(PrevLon, PrevLat, lon, lat) / 1000.0,
+         Hours = datetime_diff('second', TimeGenerated, PrevTime) / 3600.0
+| extend SpeedKmh = iif(Hours > 0, DistanceKm / Hours, 99999.0)
+| where SpeedKmh > maxSpeedKmh and DistanceKm > 500
+| extend VpnLike = tolower(ASN) has_any (vpnHints),
+         CorpVpn = tolower(ASN) has_any (corpVpn),
+         TokenReplay = MFA has_any ("previously satisfied", "claim in the token", "satisfied by claim")
+| project TimeGenerated, UserPrincipalName, Travel = strcat(PrevLoc, " → ", Loc), DeltaMin = round(Hours*60,0),
+          SpeedKmh = round(SpeedKmh,0), ASN, VpnLike, CorpVpn, MFA, TokenReplay, RiskLevelDuringSignIn,
+          Compliant = tostring(DeviceDetail.isCompliant)
+| order by TokenReplay desc, SpeedKmh desc
+// Verdict: TokenReplay==true and CorpVpn==false → stolen session (revoke). CorpVpn==true → confirm VPN with user.

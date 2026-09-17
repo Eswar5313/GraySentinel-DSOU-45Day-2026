@@ -1,0 +1,7 @@
+Date (UTC),User,Application,Status,IP address,Location,Latitude,Longitude,Autonomous system number,Multifactor authentication result,Risk detail
+2026-09-17T03:30:00Z,vikram.r@example.com,Microsoft 365,Success,203.0.113.40,"Mumbai, MH, IN",19.08,72.88,Reliance Jio,MFA requirement satisfied by claim in the token,
+2026-09-17T04:10:00Z,vikram.r@example.com,Microsoft 365,Success,198.51.100.12,"São Paulo, SP, BR",-23.55,-46.63,M247 Europe (hosting),MFA requirement satisfied by claim in the token,Impossible travel
+2026-09-17T06:00:00Z,neha.j@example.com,Outlook,Success,203.0.113.9,"Ghaziabad, UP, IN",28.67,77.42,Bharti Airtel,MFA completed (Microsoft Authenticator),
+2026-09-17T06:25:00Z,neha.j@example.com,Outlook,Success,192.0.2.55,"Frankfurt, HE, DE",50.11,8.68,Zscaler Inc.,MFA completed (Microsoft Authenticator),Unfamiliar sign-in properties
+2026-09-17T07:00:00Z,arjun.m@example.com,SharePoint,Success,203.0.113.70,"Bengaluru, KA, IN",12.97,77.59,ACT Fibernet,MFA completed (SMS),
+2026-09-17T07:20:00Z,arjun.m@example.com,SharePoint,Success,198.51.100.201,"Lagos, LA, NG",6.52,3.38,Airtel Nigeria,Previously satisfied,Impossible travel

@@ -1,0 +1,28 @@
+// GraySentinel DSOU · Drill 01 · Device code flow from unknown location/app
+// Tables: SigninLogs + AADNonInteractiveUserSignInLogs (Sentinel / Log Analytics)
+// Baseline = last 30 d of the same user; flag today's device-code sign-ins that break it.
+let lookback = 30d;
+let window   = 1d;
+let signins = union isfuzzy=true SigninLogs, AADNonInteractiveUserSignInLogs
+    | where TimeGenerated > ago(lookback)
+    | extend Country = tostring(LocationDetails.countryOrRegion),
+             City    = tostring(LocationDetails.city);
+let baseline = signins
+    | where TimeGenerated < ago(window)
+    | summarize KnownCountries = make_set(Country), KnownApps = make_set(AppDisplayName),
+                KnownIPs = make_set(IPAddress) by UserPrincipalName;
+signins
+| where TimeGenerated > ago(window)
+| where AuthenticationProtocol =~ "deviceCode"
+     or tostring(AuthenticationDetails) has "Device code flow"
+| where ResultType == 0            // successful token issuance only
+| join kind=leftouter baseline on UserPrincipalName
+| extend NewCountry = Country !in (KnownCountries),
+         NewApp     = AppDisplayName !in (KnownApps),
+         NewIP      = IPAddress !in (KnownIPs),
+         CAApplied  = ConditionalAccessStatus =~ "success"
+| extend RiskScore = toint(NewCountry)*3 + toint(NewApp)*2 + toint(NewIP)*1 + toint(not(CAApplied))*2
+| project TimeGenerated, UserPrincipalName, AppDisplayName, ClientAppUsed, IPAddress, City, Country,
+          NewCountry, NewApp, NewIP, ConditionalAccessStatus, RiskScore
+| order by RiskScore desc, TimeGenerated desc
+// Verdict guide: RiskScore >= 3 → investigate (Revoke-MgUserSignInSession); 0-2 → likely legit CLI/kiosk use.

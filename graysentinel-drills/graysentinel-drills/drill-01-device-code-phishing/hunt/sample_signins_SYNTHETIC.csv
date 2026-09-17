@@ -1,0 +1,6 @@
+Date (UTC),User,Application,Authentication Protocol,Status,IP address,Location,Autonomous system number,Conditional Access
+2026-09-17T03:12:44Z,priya.n@example.com,Azure CLI,Device code,Success,203.0.113.14,"Ghaziabad, UP, IN",Bharti Airtel,Success
+2026-09-17T04:41:09Z,rahul.k@example.com,Microsoft Office,Device code,Success,198.51.100.77,"Amsterdam, NH, NL",M247 Europe (hosting),Not applied
+2026-09-16T10:05:30Z,rahul.k@example.com,Microsoft Teams,Browser,Success,203.0.113.88,"Noida, UP, IN",Reliance Jio,Success
+2026-09-16T12:22:01Z,ops.kiosk@example.com,Microsoft Teams Rooms,Device code,Success,203.0.113.5,"Gurugram, HR, IN",Tata Communications,Success
+2026-09-17T05:02:17Z,anita.s@example.com,Microsoft Graph Command Line Tools,Device code,Failure,192.0.2.201,"Lagos, LA, NG",DigitalOcean cloud,Not applied

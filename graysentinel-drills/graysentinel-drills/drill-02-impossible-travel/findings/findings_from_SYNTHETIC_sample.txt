@@ -1,0 +1,6 @@
+Timestamp | User | Location 1 → Location 2 | Time Delta | MFA Status | Was it legit? | Why
+2026-09-17 04:10Z | vikram.r@example.com | Mumbai, MH, IN → São Paulo, SP, BR | 40 min | MFA requirement satisfied by claim in the token | No | 13774 km in 40 min = 20661 km/h (> 900 km/h flight ceiling); 2nd ASN looks like consumer VPN/proxy/hosting (M247 Europe (hosting)); MFA NOT re-challenged — satisfied by existing token → session replay; Identity Protection: Impossible travel
+2026-09-17 07:20Z | arjun.m@example.com | Bengaluru, KA, IN → Lagos, LA, NG | 20 min | Previously satisfied | No | 8140 km in 20 min = 24420 km/h (> 900 km/h flight ceiling); 2nd ASN is a plain ISP (Airtel Nigeria) — residential proxy possible; MFA NOT re-challenged — satisfied by existing token → session replay; Identity Protection: Impossible travel
+2026-09-17 06:25Z | neha.j@example.com | Ghaziabad, UP, IN → Frankfurt, HE, DE | 25 min | MFA completed (Microsoft Authenticator) | Yes | 6127 km in 25 min = 14704 km/h (> 900 km/h flight ceiling); 2nd ASN is corporate VPN/SASE (Zscaler Inc.); fresh MFA on 2nd sign-in (MFA completed (Microsoft Authenticator)); Identity Protection: Unfamiliar sign-in properties
+
+3 pairs, 2 flagged. For 'No': revoke sessions, reset password, check newly registered MFA methods, enable token protection + 1 h sign-in frequency.

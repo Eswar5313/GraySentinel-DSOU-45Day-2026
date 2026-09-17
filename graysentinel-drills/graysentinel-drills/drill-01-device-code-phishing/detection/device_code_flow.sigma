@@ -1,0 +1,29 @@
+title: Entra ID Device Code Flow Sign-in From Unfamiliar Location or Application
+id: 4b1c7f22-9d3e-4c5a-8e21-0d50a2026dc1
+status: experimental
+description: Successful device-code-flow token issuance (T1528) in risky context. Device code phishing bypasses MFA because the victim completes MFA on the attacker's behalf on a genuine Microsoft page.
+author: Eswar Mahalingam (GraySentinel DSOU, candidate 13)
+date: 2026-09-17
+references:
+  - https://learn.microsoft.com/entra/identity-platform/v2-oauth2-device-code
+  - https://attack.mitre.org/techniques/T1528/
+tags:
+  - attack.credential_access
+  - attack.t1528
+  - attack.t1078.004
+logsource:
+  product: azure
+  service: signinlogs
+detection:
+  device_code:
+    AuthenticationProtocol: 'deviceCode'
+  success:
+    ResultType: 0
+  risky_context:
+    - RiskLevelDuringSignIn: ['medium', 'high']
+    - ConditionalAccessStatus: 'notApplied'
+    - AppDisplayName: ['Microsoft Office', 'Microsoft Graph Command Line Tools', 'Microsoft Authentication Broker']
+  condition: device_code and success and risky_context
+falsepositives:
+  - Azure CLI / PowerShell / Teams Rooms / Intune enrolment from known admin workstations (allow-list AppId)
+level: high

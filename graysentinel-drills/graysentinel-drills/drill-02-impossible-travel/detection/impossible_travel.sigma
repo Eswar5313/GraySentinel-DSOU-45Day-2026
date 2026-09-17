@@ -1,0 +1,32 @@
+title: Entra ID Impossible Travel With MFA Satisfied By Existing Token
+id: 7e0a9c41-5b2d-4f6e-9a13-0d50a2026it2
+status: experimental
+description: Identity Protection impossible-travel or unfamiliar-sign-in-properties detection where the second sign-in did not perform a fresh MFA challenge (MFA satisfied by claim in token) — first visible symptom of session/refresh-token theft (T1550.001).
+author: Eswar Mahalingam (GraySentinel DSOU, candidate 13)
+date: 2026-09-17
+references:
+  - https://learn.microsoft.com/entra/id-protection/concept-identity-protection-risks
+  - https://attack.mitre.org/techniques/T1550/001/
+tags:
+  - attack.defense_evasion
+  - attack.t1550.001
+  - attack.t1078.004
+logsource:
+  product: azure
+  service: signinlogs
+detection:
+  risk:
+    RiskEventTypes|contains:
+      - 'impossibleTravel'
+      - 'unfamiliarFeatures'
+  success:
+    ResultType: 0
+  no_fresh_mfa:
+    AuthenticationDetails|contains:
+      - 'previously satisfied'
+      - 'claim in the token'
+  condition: risk and success and no_fresh_mfa
+falsepositives:
+  - Corporate VPN / SASE egress in another region (allow-list company egress IPs)
+  - Mobile carrier NAT geolocating to a distant city
+level: high
