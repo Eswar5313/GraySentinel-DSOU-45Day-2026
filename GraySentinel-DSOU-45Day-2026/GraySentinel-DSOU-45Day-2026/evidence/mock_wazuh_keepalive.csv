@@ -1,0 +1,6 @@
+agent_name,role,agent_version,last_keepalive,status
+DC-01-PRD,domain_controller,4.9.0,2026-09-22T08:55:00+05:30,active
+DC-02-PRD,domain_controller,4.9.0,2026-09-20T02:14:00+05:30,active
+FS-01-PRD,file_server,4.9.0,2026-09-22T08:54:12+05:30,active
+APP-03-PRD,app_server,4.9.0,2026-09-22T08:52:47+05:30,active
+DC-03-DR,domain_controller,4.9.0,2026-09-22T08:50:31+05:30,active

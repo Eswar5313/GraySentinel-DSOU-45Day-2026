@@ -1,0 +1,30 @@
+====================================================================
+ GraySentinel DSOU | Day 2 - Silent Domain Controller Detector
+====================================================================
+
+[RULE A] Log-source silence (threshold 15m, now 2026-09-22T09:00:00+05:30)
+  [CRITICAL] DC-02-PRD (domain_controller) SILENT for 54.8h (last 2026-09-20T02:14:00+05:30)
+
+[RULE B] Tamper & credential-access events
+  [!] 2026-09-20T02:11:40+05:30 DC-02-PRD EID 4624 [CREDENTIAL ACCESS] Anonymous logon w/ SeDebugPrivilege (T1078)
+  [!] 2026-09-20T02:12:55+05:30 DC-02-PRD EID 4688 [EXECUTION] Suspicious/renamed process (mimikatz) (T1036.005)
+  [!] 2026-09-20T02:13:58+05:30 DC-02-PRD EID 1102 [DEFENSE EVASION] Security audit log cleared (T1070.001)
+  [!] 2026-09-20T02:16:10+05:30 DC-02-PRD EID 4720 [PERSISTENCE] New user account created (T1136.002)
+  [!] 2026-09-20T02:16:22+05:30 DC-02-PRD EID 4728 [PRIVILEGE ESCALATION] User added to Domain Admins (T1098)
+  [!] 2026-09-20T02:17:03+05:30 DC-02-PRD EID 4698 [PERSISTENCE] Scheduled task created (T1053.005)
+  [!] 2026-09-20T02:18:44+05:30 DC-02-PRD EID 4662 [CREDENTIAL ACCESS] DCSync (DS-Replication-Get-Changes) (T1003.006)
+  [!] 2026-09-22T08:30:00+05:30 DC-01-PRD EID 4624 [CREDENTIAL ACCESS] Anonymous logon w/ SeDebugPrivilege (T1078)
+
+[CORRELATION]
+  [CRITICAL] DC-02-PRD: log-source silence + tamper events (1102, 4624, 4662, 4688, 4698, 4720, 4728)
+            => Deliberate SIEM blinding to cover credential theft.
+
+  VERDICT: NOT a bug. Active Tier-0 intrusion.
+  FIRST ACTION: isolate + forensically image the DC (memory+disk)
+               BEFORE restarting the Wazuh agent. Cleared logs = host
+               untrusted; other DCs + memory become source of truth.
+  THEN: audit DA membership, check KRBTGT (consider double-reset),
+        hunt persistence (svc-backup2, UpdateSync task, DCSync ACL).
+
+MITRE ATT&CK: T1562.001, T1070.001, T1003/.006, T1558.001, T1098
+Done.

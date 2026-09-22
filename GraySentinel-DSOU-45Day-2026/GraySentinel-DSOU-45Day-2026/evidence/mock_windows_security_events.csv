@@ -1,0 +1,10 @@
+EventID,Timestamp,Computer,SubjectUser,LogonType,Privileges,Details
+4624,2026-09-20T02:11:40+05:30,DC-02-PRD,ANONYMOUS LOGON,3,SeDebugPrivilege;SeTcbPrivilege,Anonymous logon with debug privilege
+4672,2026-09-20T02:11:41+05:30,DC-02-PRD,ANONYMOUS LOGON,-,SeDebugPrivilege,Special privileges assigned to new logon
+4688,2026-09-20T02:12:55+05:30,DC-02-PRD,SYSTEM,-,-,New process svchost.exe (hash matches mimikatz) from C:\Windows\Temp
+1102,2026-09-20T02:13:58+05:30,DC-02-PRD,Administrator,-,-,The audit log was cleared
+4720,2026-09-20T02:16:10+05:30,DC-02-PRD,Administrator,-,-,A user account svc-backup2 was created
+4728,2026-09-20T02:16:22+05:30,DC-02-PRD,Administrator,-,-,svc-backup2 added to Domain Admins
+4698,2026-09-20T02:17:03+05:30,DC-02-PRD,SYSTEM,-,-,Scheduled task \Microsoft\Windows\UpdateSync created
+4662,2026-09-20T02:18:44+05:30,DC-02-PRD,svc-backup2,-,-,DS-Replication-Get-Changes-All operation (DCSync)
+4624,2026-09-22T08:30:00+05:30,DC-01-PRD,jdoe,2,-,Normal interactive logon

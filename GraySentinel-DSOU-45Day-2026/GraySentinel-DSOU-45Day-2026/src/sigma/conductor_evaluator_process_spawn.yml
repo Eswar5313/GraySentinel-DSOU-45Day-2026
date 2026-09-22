@@ -1,0 +1,47 @@
+title: Orkes Conductor Evaluator Spawns OS Process (Workflow-Engine RCE)
+id: 8f3c1a10-45d2-4e77-9b2a-day1graysentinel
+status: experimental
+description: >
+  Detects the Orkes Conductor JVM spawning a shell or network binary, the
+  behavioural chokepoint of CVE-2026-58138 (pre-auth GraalVM evaluator RCE
+  via INLINE/LAMBDA/DO_WHILE/SWITCH task types). Payloads are polymorphic;
+  the parent->child process relationship is not.
+references:
+  - https://thehackernews.com/2026/09/critical-pre-auth-rce-in-orkes.html
+  - https://attack.mitre.org/techniques/T1190/
+author: Eswar Mahalingam (GraySentinel DSOU)
+date: 2026/09/22
+logsource:
+  category: process_creation
+detection:
+  parent:
+    ParentImage|endswith: '/java'
+    ParentCommandLine|contains: 'conductor'
+  child:
+    Image|endswith:
+      - '/sh'
+      - '/bash'
+      - '/curl'
+      - '/wget'
+      - '/python'
+      - '/python3'
+      - '/nc'
+  metadata_theft:
+    CommandLine|contains: '169.254.169.254'
+  condition: parent and (child or metadata_theft)
+fields:
+  - ParentImage
+  - Image
+  - CommandLine
+  - User
+falsepositives:
+  - Workflows that legitimately shell out (inventory and allow-list by name/host)
+  - Container init scripts at pod start
+level: critical
+tags:
+  - attack.initial_access
+  - attack.t1190
+  - attack.execution
+  - attack.t1059
+  - attack.credential_access
+  - attack.t1552.005

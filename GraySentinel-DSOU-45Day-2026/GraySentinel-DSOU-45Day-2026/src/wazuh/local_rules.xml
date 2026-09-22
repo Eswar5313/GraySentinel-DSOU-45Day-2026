@@ -1,0 +1,53 @@
+<!--
+  GraySentinel DSOU - Wazuh custom rules
+  Author: Eswar Mahalingam | 2026-09-22
+  Drop into /var/ossec/etc/rules/local_rules.xml and restart wazuh-manager.
+  Covers Day 2 (log tampering / credential access on Domain Controllers).
+  Log-source silence itself is handled by Wazuh's agent 'disconnected' event
+  (rule 502) - escalate that to CRITICAL for DC hostnames (see last rule).
+-->
+<group name="graysentinel,windows,dc,dfir,">
+
+  <rule id="100810" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^1102$</field>
+    <description>GraySentinel: Security audit log cleared on Windows host (T1070.001)</description>
+    <mitre><id>T1070.001</id></mitre>
+  </rule>
+
+  <rule id="100811" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4624$</field>
+    <field name="win.eventdata.logonType">^3$</field>
+    <field name="win.eventdata.targetUserName">ANONYMOUS LOGON</field>
+    <field name="win.eventdata.privilegeList">SeDebugPrivilege</field>
+    <description>GraySentinel: Anonymous logon with SeDebugPrivilege (credential-access precursor)</description>
+    <mitre><id>T1078</id></mitre>
+  </rule>
+
+  <rule id="100812" level="13">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4662$</field>
+    <field name="win.eventdata.properties">1131f6ad|1131f6aa</field>
+    <description>GraySentinel: DCSync - DS-Replication-Get-Changes on Domain Controller (T1003.006)</description>
+    <mitre><id>T1003.006</id></mitre>
+  </rule>
+
+  <rule id="100813" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4728$</field>
+    <field name="win.eventdata.targetUserName">Domain Admins</field>
+    <description>GraySentinel: Account added to Domain Admins (privilege escalation / persistence)</description>
+    <mitre><id>T1098</id></mitre>
+  </rule>
+
+  <!-- Escalate a disconnected AGENT on a Domain Controller to CRITICAL:
+       silence on Tier-0 must page. Adjust the hostname regex to your DCs. -->
+  <rule id="100814" level="14">
+    <if_sid>502</if_sid>
+    <match>DC-\d+-PRD</match>
+    <description>GraySentinel: Tier-0 log source SILENT - Domain Controller agent disconnected (T1562.001)</description>
+    <mitre><id>T1562.001</id></mitre>
+  </rule>
+
+</group>
