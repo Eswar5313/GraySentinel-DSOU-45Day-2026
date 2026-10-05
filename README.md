@@ -5,7 +5,7 @@
 
 <a href="https://github.com/Eswar5313"><img src="https://img.shields.io/badge/⬅-CAREER_CONTROL_TOWER-000000?style=for-the-badge&labelColor=FFFFFF" alt="CAREER CONTROL TOWER"/></a> <a href="https://eswar5313.github.io/Eswar-Master-Project-Portfolio-2026/"><img src="https://img.shields.io/badge/✦-MASTER_PORTFOLIO-000000?style=for-the-badge&labelColor=C9CDD6" alt="MASTER PORTFOLIO"/></a> <a href="https://eswar5313.github.io/Eswar-Portfolio-Lens-Index-2026/"><img src="https://img.shields.io/badge/✦-LENS_INDEX-000000?style=for-the-badge&labelColor=FFFFFF" alt="LENS INDEX"/></a> <a href="https://eswar5313.github.io/GraySentinel-DSOU-45Day-2026/"><img src="https://img.shields.io/badge/✦-LIVE_DASHBOARD-000000?style=for-the-badge&labelColor=FFFFFF" alt="LIVE DASHBOARD"/></a>
 
-<img src="https://img.shields.io/badge/LABS-2_CERTIFIED-FFFFFF?style=for-the-badge&labelColor=000000" alt="LABS: 2 CERTIFIED"/> <img src="https://img.shields.io/badge/SOC_TOOLS-4-C9CDD6?style=for-the-badge&labelColor=000000" alt="SOC TOOLS: 4"/> <img src="https://img.shields.io/badge/AUTOMATED_TESTS-46-FFFFFF?style=for-the-badge&labelColor=000000" alt="AUTOMATED TESTS: 46"/> <img src="https://img.shields.io/badge/DETECTION_RULES-10%2B-C9CDD6?style=for-the-badge&labelColor=000000" alt="DETECTION RULES: 10+"/> <img src="https://img.shields.io/badge/EXPLOIT_CODE-0-FFFFFF?style=for-the-badge&labelColor=000000" alt="EXPLOIT CODE: 0"/>
+<img src="https://img.shields.io/badge/LABS-2_CERTIFIED-FFFFFF?style=for-the-badge&labelColor=000000" alt="LABS: 2 CERTIFIED"/> <img src="https://img.shields.io/badge/SOC_TOOLS-5-C9CDD6?style=for-the-badge&labelColor=000000" alt="SOC TOOLS: 5"/> <img src="https://img.shields.io/badge/AUTOMATED_TESTS-64-FFFFFF?style=for-the-badge&labelColor=000000" alt="AUTOMATED TESTS: 64"/> <img src="https://img.shields.io/badge/DETECTION_RULES-10%2B-C9CDD6?style=for-the-badge&labelColor=000000" alt="DETECTION RULES: 10+"/> <img src="https://img.shields.io/badge/EXPLOIT_CODE-0-FFFFFF?style=for-the-badge&labelColor=000000" alt="EXPLOIT CODE: 0"/>
 
 **GraySentinel Cyber Defence Lab · Blue Team Operator & Trainee · Jul 2026 – Present** — detection engineering · threat hunting · SOC automation
 
@@ -30,6 +30,7 @@
 | 06 | **vCenter compromise investigation** — investigation plan, falsifiable hunting hypotheses, Sigma + Wazuh detections, ransomware-readiness checklist | War-room case | ✅ Complete | [pack](graysentinel-day2/) |
 | 07 | **Entra ID sign-in hunts** — device-code phishing + impossible travel (KQL + Sigma + analyzers) | Blue-team drills | ✅ Complete | [drills](graysentinel-drills/graysentinel-drills/) |
 | 08 | **SOC war-room sprint** — Orkes Conductor RCE hunt + "silent domain controller" SIEM-blindspot detector | Sprint report | ✅ Complete | [pack](GraySentinel-DSOU-45Day-2026/GraySentinel-DSOU-45Day-2026/) · [report PDF](GraySentinel-DSOU-45Day-2026/GraySentinel-DSOU-45Day-2026/docs/GraySentinel_DSOU_SOC_Report.pdf) |
+| 09 | **SOC war room — "The Silent RDP Login"** — RDP spray → valid-account Type 10 → hidden PowerShell → AD discovery → SMB to HR file server (H1 compromised · H2 rejected · H3 confirmed) | War-room case · 05 Oct 2026 | ✅ Complete · **18/18 tests** | [pack](rdp-silent-login/) · [submission](rdp-silent-login/SUBMISSION.md) · [report PDF](rdp-silent-login/GraySentinel_DSOU_RDP_SilentLogin_Report.pdf) · [Sigma](rdp-silent-login/rdp_powershell_chain.sigma.yml) · [Wazuh](rdp-silent-login/wazuh_local_rules_rdp.xml) |
 
 **Pipeline (projects 03 → 04):** `auth.log → auth_investigator.py → findings.json → incident_summary.py → P1 incident ticket (MD / HTML / JSON)`
 
@@ -48,7 +49,7 @@ Step-by-step runbook: [STEP_BY_STEP.md](STEP_BY_STEP.md) · Screenshots: `01_*.p
 <img src="https://raw.githubusercontent.com/Eswar5313/Eswar5313/main/assets/divider.svg" width="100%" alt="" />
 ## 🎯 ATT&CK coverage (selected)
 
-T1053.003 (cron) · T1110 (brute force / spraying) · T1078 (valid accounts) · T1566.001 (phishing attachment) · T1204.002 · T1059 · T1105 · T1496 (resource hijacking) · T1543.001 (LaunchDaemon) · T1071.001 · T1528 · T1550.001 · T1070.001 (log clearing)
+T1053.003 (cron) · T1110 (brute force / spraying) · T1078 (valid accounts) · T1566.001 (phishing attachment) · T1204.002 · T1059 · T1105 · T1496 (resource hijacking) · T1543.001 (LaunchDaemon) · T1071.001 · T1528 · T1550.001 · T1070.001 (log clearing) · T1021.001 (RDP) · T1059.001 (PowerShell) · T1133 (external remote services) · T1039 (network share data)
 
 <img src="https://raw.githubusercontent.com/Eswar5313/Eswar5313/main/assets/divider.svg" width="100%" alt="" />
 ## 🛡️ Scope & integrity

@@ -10,13 +10,13 @@
 .body{flex:1;min-width:0}.tag{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em}h3{margin:2px 0 10px;font-size:17px}.lbl{font-size:11px;text-transform:uppercase;color:var(--mut);letter-spacing:.08em;margin-top:8px}
 pre{background:#0a0f1c;border:1px solid var(--line);border-radius:6px;padding:10px 12px;overflow:auto;font:13px/1.45 ui-monospace,Menlo,Consolas,monospace;margin:4px 0}pre.cmd{color:#fde68a}pre.out{color:#cbd5e1;max-height:420px}.exp{margin:4px 0;color:var(--ok)}
 details summary{cursor:pointer;color:var(--mut);font-size:13px;margin-top:6px}.chk{display:block;margin-top:10px;font-size:13px;color:var(--mut)}.chk input{accent-color:var(--ok);margin-right:6px}
-.pane{display:none}.pane.on{display:block}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}.card b{display:block;color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.card a{color:#93c5fd;text-decoration:none;display:block;margin-top:4px;font-size:14px}
+.pane{display:none}.pane.on{display:block}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}.card b{display:block;color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.card code{color:#fde68a}.card a{color:#93c5fd;text-decoration:none;display:block;margin-top:4px;font-size:14px}
 .md{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;white-space:pre-wrap;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;color:#cbd5e1;overflow:auto;max-height:70vh}img{max-width:100%;border:1px solid var(--line);border-radius:8px;margin:8px 0}
 footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 20px}</style></head><body>
 <header><div class="wrap"><h1><small>GraySentinel Cyber Defence Lab · Day 1 · Candidate 13 · Blue Team</small>Eswar Mahalingam — Project 01 &amp; 02 · Live step-by-step checker</h1>
 <p>Reproduce and verify both projects in 9 steps (plus setup). Each step shows the exact command, the expected result, and the <em>real captured terminal output</em> from <code>evidence/terminal_output.txt</code>. Tick each step as you verify it — progress is saved in your browser.</p></div></header>
-<div class="bar"><div class="wrap"><strong id="pct">0 / 9 verified</strong><div class="prog"><i id="fill"></i></div><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">Repo README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">P01 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">P02 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">Runbook .md</a><a class="btn" id="reset" href="#">Reset ticks</a></div></div>
-<main class="wrap"><nav class="tabs"><a href="#steps" class="on" data-p="steps">Step-by-step</a><a href="#p01" data-p="p01">P01 findings report</a><a href="#p02" data-p="p02">P02 incident ticket</a><a href="#shots" data-p="shots">Screenshots</a><a href="#files" data-p="files">All files</a></nav>
+<div class="bar"><div class="wrap"><strong id="pct">0 / 9 verified</strong><div class="prog"><i id="fill"></i></div><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">Repo README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">P01 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">P02 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">Runbook .md</a><a class="btn" href="#rdp" onclick="show('rdp')">RDP war room (05 Oct)</a><a class="btn" id="reset" href="#">Reset ticks</a></div></div>
+<main class="wrap"><nav class="tabs"><a href="#steps" class="on" data-p="steps">Step-by-step</a><a href="#p01" data-p="p01">P01 findings report</a><a href="#p02" data-p="p02">P02 incident ticket</a><a href="#shots" data-p="shots">Screenshots</a><a href="#files" data-p="files">All files</a><a href="#rdp" data-p="rdp">🔥 RDP war room · 05 Oct</a></nav>
 <div class="pane on" id="pane-steps"><section class="step" style="border-color:var(--gold)"><div class="num">0</div><div class="body"><div class="tag">SETUP</div><h3>Clone — nothing to install (Python 3.8+ stdlib only)</h3><pre class="cmd">git clone https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026.git
 cd GraySentinel-DSOU-45Day-2026/graysentinel-day1</pre><p class="exp">All data is synthetic and sanitised (RFC-5737 ranges). Safe to run anywhere.</p></div></section><section class="step" id="s1"><div class="num">1</div><div class="body"><div class="tag">P01</div><h3>Generate the synthetic lab log</h3>
 <div class="lbl">Command</div><pre class="cmd">cd project-01 &amp;&amp; python3 data/make_lab_data.py</pre><div class="lbl">Expected result</div><p class="exp">wrote auth.log with 135 lines</p>
@@ -418,10 +418,108 @@ Priority **P1** → notify **SOC Lead + IR Manager + system owner; page on-call*
 <div class="pane" id="pane-shots"><h2>Screenshots (rendered from the captured runs)</h2>
 <h3>Project 01</h3><img src="../project-01/screenshots/01_generate_lab_data_and_run.png" alt="P01 run"><img src="../project-01/screenshots/02_unit_tests_13_pass.png" alt="P01 tests"><img src="../project-01/screenshots/03_edge_cases_thresholds_and_garbage_input.png" alt="P01 edge cases">
 <h3>Project 02</h3><img src="../project-02/screenshots/01_generate_incident_summary.png" alt="P02 run"><img src="../project-02/screenshots/02_unit_tests_12_pass.png" alt="P02 tests"><img src="../project-02/screenshots/03_markdown_summary_head.png" alt="P02 md"><img src="../project-02/screenshots/04_html_incident_ticket.png" alt="P02 html ticket"></div>
+<div class="pane" id="pane-rdp"><h2>🔥 SOC War Room · 05 Oct 2026 — The Silent RDP Login (HR-WS-017)</h2>
+<p class="exp">Verdict: H1 COMPROMISED · H2 REJECTED · H3 CONFIRMED → P1 contain · 18/18 tests pass · all data synthetic (RFC-5737)</p>
+<div class="grid">
+<div class="card"><b>Triage</b>ananya.rao from 203.0.113.45 (DESKTOP-9KX2TQ) · 23 failed → Type 10 success 03:23:02 IST · no MFA · 0 RDP in 30-day baseline · exposed via NAT-LEGACY-HR-3389</div>
+<div class="card"><b>Why compromised</b>Same IP had the correct password in Entra on 3 Oct (2 MFA pushes denied) · user not on VPN · non-RDP HR user · user denies connecting</div>
+<div class="card"><b>What the attacker did</b>Hidden <code>-Enc</code> PowerShell → whoami / nltest / Domain Admins → LDAP DC-01 → Type 3 + SMB on FS-HR-01 → 3 payroll files → POST to first-seen 198.51.100.23:443</div>
+<div class="card"><b>Detection</b>Suspicious RDP-to-PowerShell Chain — unusual Type 10 + evasive PowerShell same host/user ≤15 min → HIGH, escalators → CRITICAL. Silent on 5 legit helpdesk sessions.</div>
+<div class="card"><b>Containment</b>Isolate (keep RAM) · kill session + delete NAT rule · disable, revoke, reset · block IPs · preserve logs/tree/net · hunt user/IP/blob · image · inform HR Head + DPO</div>
+<div class="card"><b>Senior answer</b>Correlated chain &gt; single login: identity + behaviour + process + network context raise confidence and remove admin/remote-work false positives.</div>
+</div>
+<h3>Run it</h3><pre class="cmd">cd rdp-silent-login
+python3 make_rdp_lab_data.py
+python3 rdp_chain_hunter.py rdp_events_SYNTHETIC.csv auth_context_SYNTHETIC.json --json hunt_results.json
+python3 -m unittest test_rdp_chain_hunter -v</pre>
+<details open><summary>Captured hunter output</summary><pre class="out">==============================================================================
+GraySentinel DSOU · RDP chain hunt · 6 RDP session(s) reviewed
+==============================================================================
+
+[CRITICAL] ananya.rao → HR-WS-017 from 203.0.113.45 (DESKTOP-9KX2TQ) at 2026-10-04T21:53:02Z  detection_fired=True
+  -- Mission 01 triage --
+   failed_attempts      23
+   normally_uses_rdp    False
+   rdp_baseline_30d     0
+   mfa_on_rdp           False
+   privileges           [&#x27;SeDebugPrivilege&#x27;, &#x27;SeBackupPrivilege&#x27;, &#x27;SeTakeOwnershipPrivilege&#x27;, &#x27;SeImpersonatePrivilege&#x27;]
+   first_process        rdpclip.exe
+   powershell_cmdline   powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSAC0AMAAxAFwASABSACQAJwA...
+   pwd_last_set         2026-06-11T05:02:00Z
+   idp_hits_same_ip     2
+   same_ip_other_hosts  {&#x27;HR-WS-021&#x27;: {&#x27;fail&#x27;: 6, &#x27;success&#x27;: 0}, &#x27;FIN-WS-004&#x27;: {&#x27;fail&#x27;: 4, &#x27;success&#x27;: 0}}
+   exposure            NAT-LEGACY-HR-3389 203.0.113.200:3389 → 10.20.40.17:3389 (temporary vendor access, never removed)
+  -- Mission 02 hypotheses --
+   H1 COMPROMISED   23 failed RDP attempts from same source before success | external source 203.0.113.45 (DESKTOP-9KX2TQ) | no Type-10 logon by this user in 30-day baseline | account not authorised for RDP | same IP already had the correct password in IdP (2 MFA-denied sign-ins) | user had no VPN session at login time
+   H2 REJECTED      none of the admin indicators present
+   H3 CONFIRMED     obfuscated/hidden PowerShell: -enc, -noni, -nop, -w hidden | 3 discovery commands | internal connections: 10.20.0.10:389, 10.20.30.15:445 | onward auth: FS-HR-01 (Type 3) | 3 sensitive file accesses | external egress: 198.51.100.23:443
+  -- Mission 03 timeline --
+   2026-10-04 21:47:10Z  4625     failed RDP administrator from 203.0.113.45
+   2026-10-04 21:52:18Z  4625     …23 failures total (last)
+   2026-10-04 21:53:02Z  4624/10  RDP success ananya.rao from 203.0.113.45 (DESKTOP-9KX2TQ)
+   2026-10-04 21:53:02Z  4672     privileges: SeDebugPrivilege;SeBackupPrivilege;SeTakeOwnershipPrivilege;SeImpersonatePrivilege
+   2026-10-04 21:53:11Z  4688     svchost.exe → rdpclip.exe: rdpclip
+   2026-10-04 21:54:31Z  4688     explorer.exe → cmd.exe: cmd.exe
+   2026-10-04 21:54:40Z  4688     cmd.exe → powershell.exe: powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSA
+   2026-10-04 21:54:40Z  1        cmd.exe → powershell.exe: powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSA
+   2026-10-04 21:54:41Z  4104     script block: whoami /all; nltest /dclist:corp.example.com; net group &quot;Domain Admins…
+   2026-10-04 21:54:45Z  1        powershell.exe → whoami.exe: whoami /all
+   2026-10-04 21:54:49Z  1        powershell.exe → nltest.exe: nltest /dclist:corp.example.com
+   2026-10-04 21:54:53Z  1        powershell.exe → net.exe: net group &quot;Domain Admins&quot; /domain
+   2026-10-04 21:55:11Z  Sysmon3  powershell.exe → 10.20.0.10:389 DC-01 LDAP
+   2026-10-04 21:55:36Z  Sysmon3  powershell.exe → 10.20.30.15:445 FS-HR-01 SMB
+   2026-10-04 21:55:41Z  4624/3   ananya.rao onward logon on FS-HR-01 from 10.20.40.17
+   2026-10-04 21:55:43Z  5140     FS-HR-01: Share=\\*\HR$
+   2026-10-04 21:55:45Z  5145     FS-HR-01: HR$\Payroll\Payroll_Q3_2026.xlsx;Access=ReadData
+   2026-10-04 21:55:46Z  5145     FS-HR-01: HR$\Payroll\Salary_Revision_FY27.xlsx;Access=ReadData
+   2026-10-04 21:55:47Z  5145     FS-HR-01: HR$\Payroll\Bank_Mandates_HR.xlsx;Access=ReadData
+   2026-10-04 21:56:01Z  Sysmon3  powershell.exe → 198.51.100.23:443 cdn-sync.example.net (first seen)
+  -- Mission 05 lateral movement --
+   SMB→ [&#x27;10.20.30.15&#x27;]  DC→ [&#x27;10.20.0.10&#x27;]  onward logons→ [&#x27;FS-HR-01&#x27;]
+   sensitive files: 3  same IP elsewhere: {&#x27;HR-WS-021&#x27;: {&#x27;fail&#x27;: 6, &#x27;success&#x27;: 0}, &#x27;FIN-WS-004&#x27;: {&#x27;fail&#x27;: 4, &#x27;success&#x27;: 0}}
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-05T06:00:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-11T06:17:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised; behaviour matches baseline
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-17T06:09:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised; behaviour matches baseline
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-23T06:01:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised; behaviour matches baseline
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-29T06:18:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised; behaviour matches baseline
+</pre></details>
+<details><summary>Captured test run (18/18)</summary><pre class="out">test_14_rfc5737_treated_as_external (test_rdp_chain_hunter.TestDetectionAndLateral.test_14_rfc5737_treated_as_external) ... ok
+test_15_timeline_is_ordered (test_rdp_chain_hunter.TestDetectionAndLateral.test_15_timeline_is_ordered) ... ok
+test_16_powershell_outside_window_does_not_fire (test_rdp_chain_hunter.TestDetectionAndLateral.test_16_powershell_outside_window_does_not_fire) ... ok
+test_08_h1_compromised (test_rdp_chain_hunter.TestHypotheses.test_08_h1_compromised) ... ok
+test_09_h2_rejected_for_attack (test_rdp_chain_hunter.TestHypotheses.test_09_h2_rejected_for_attack) ... ok
+test_10_h3_confirmed (test_rdp_chain_hunter.TestHypotheses.test_10_h3_confirmed) ... ok
+test_11_helpdesk_is_legitimate_admin (test_rdp_chain_hunter.TestHypotheses.test_11_helpdesk_is_legitimate_admin) ... ok
+test_17_garbage_rows_skipped (test_rdp_chain_hunter.TestRobustness.test_17_garbage_rows_skipped) ... ok
+test_18_cli_exit_codes (test_rdp_chain_hunter.TestRobustness.test_18_cli_exit_codes) ... error: [Errno 2] No such file or directory: &#x27;/tmp/tmpapa2plh5/missing.csv&#x27;
+ok
+test_01_attack_session_found (test_rdp_chain_hunter.TestTriage.test_01_attack_session_found) ... ok
+test_02_failed_attempts_counted (test_rdp_chain_hunter.TestTriage.test_02_failed_attempts_counted) ... ok
+test_03_success_timestamp_and_type (test_rdp_chain_hunter.TestTriage.test_03_success_timestamp_and_type) ... ok
+test_04_baseline_says_user_never_rdps (test_rdp_chain_hunter.TestTriage.test_04_baseline_says_user_never_rdps) ... ok
+test_05_privileges_and_powershell (test_rdp_chain_hunter.TestTriage.test_05_privileges_and_powershell) ... ok
+test_06_same_ip_other_endpoints (test_rdp_chain_hunter.TestTriage.test_06_same_ip_other_endpoints) ... ok
+test_07_internet_exposure_found (test_rdp_chain_hunter.TestTriage.test_07_internet_exposure_found) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.018s
+
+OK</pre></details>
+<h3>Files</h3><div class="grid"><div class="card"><b>RDP war room pack</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/rdp-silent-login">rdp-silent-login/ (folder)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/SUBMISSION.md">SUBMISSION.md (all 7 missions)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/GraySentinel_DSOU_RDP_SilentLogin_Report.pdf">Report PDF (5 pages)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_chain_hunter.py">rdp_chain_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/test_rdp_chain_hunter.py">test_rdp_chain_hunter.py (18 tests)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_powershell_chain.sigma.yml">Sigma correlation rule</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/wazuh_local_rules_rdp.xml">Wazuh rules 100810–100816</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_events_SYNTHETIC.csv">rdp_events_SYNTHETIC.csv</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/auth_context_SYNTHETIC.json">auth_context_SYNTHETIC.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/hunt_output.txt">hunt_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/MENTOR_MESSAGE.md">MENTOR_MESSAGE.md</a></div></div></div>
 <div class="pane" id="pane-files"><h2>All files</h2><div class="grid">
 <div class="card"><b>Project 01</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">report.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/auth_investigator.py">src/auth_investigator.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/make_lab_data.py">data/make_lab_data.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/auth.log">data/auth.log</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/test_auth_investigator.py">tests/test_auth_investigator.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/terminal_output.txt">evidence/terminal_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.json">evidence/findings.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">evidence/findings.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">screenshots/</a></div>
 <div class="card"><b>Project 02</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">report.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.py">src/incident_summary.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.json">data/findings.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/alerts_sample.csv">data/alerts_sample.csv</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/test_incident_summary.py">tests/test_incident_summary.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/terminal_output.txt">evidence/terminal_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.md">evidence/incident_summary.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.html">evidence/incident_summary.html</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.json">evidence/incident_summary.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">screenshots/</a></div>
-<div class="card"><b>Root</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">STEP_BY_STEP.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/PUSH_TO_GITHUB.md">PUSH_TO_GITHUB.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/render_screens.py">docs/render_screens.py</a></div></div></div>
+<div class="card"><b>RDP war room · 05 Oct</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/rdp-silent-login">rdp-silent-login/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/GraySentinel_DSOU_RDP_SilentLogin_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_chain_hunter.py">rdp_chain_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_powershell_chain.sigma.yml">Sigma rule</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/wazuh_local_rules_rdp.xml">Wazuh rules</a></div><div class="card"><b>Root</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">STEP_BY_STEP.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/PUSH_TO_GITHUB.md">PUSH_TO_GITHUB.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/render_screens.py">docs/render_screens.py</a></div></div></div>
 </main><footer>Eswar Mahalingam · Blue Team Operator &amp; Trainee · GS-STU-DSOU-2026-039A · Assigned → Built → Tested → Documented → Published → Proven</footer>
 <script>const N=9,boxes=[...document.querySelectorAll('.chk input')];function load(){let s={};try{s=JSON.parse(localStorage.getItem('gs_day1')||'{}')}catch(e){}boxes.forEach(b=>{b.checked=!!s[b.dataset.k];b.closest('.step').classList.toggle('done',b.checked)});upd()}
 function upd(){const n=boxes.filter(b=>b.checked).length;document.getElementById('pct').textContent=n+' / '+N+' verified'+(n===N?' — all proven ✅':'');document.getElementById('fill').style.width=(100*n/N)+'%'}
