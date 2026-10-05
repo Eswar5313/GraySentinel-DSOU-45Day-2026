@@ -1,0 +1,24 @@
+test_12_detection_fires_critical (test_rdp_chain_hunter.TestDetectionAndLateral.test_12_detection_fires_critical) ... ok
+test_13_lateral_smb_dc_and_files (test_rdp_chain_hunter.TestDetectionAndLateral.test_13_lateral_smb_dc_and_files) ... ok
+test_14_rfc5737_treated_as_external (test_rdp_chain_hunter.TestDetectionAndLateral.test_14_rfc5737_treated_as_external) ... ok
+test_15_timeline_is_ordered (test_rdp_chain_hunter.TestDetectionAndLateral.test_15_timeline_is_ordered) ... ok
+test_16_powershell_outside_window_does_not_fire (test_rdp_chain_hunter.TestDetectionAndLateral.test_16_powershell_outside_window_does_not_fire) ... ok
+test_08_h1_compromised (test_rdp_chain_hunter.TestHypotheses.test_08_h1_compromised) ... ok
+test_09_h2_rejected_for_attack (test_rdp_chain_hunter.TestHypotheses.test_09_h2_rejected_for_attack) ... ok
+test_10_h3_confirmed (test_rdp_chain_hunter.TestHypotheses.test_10_h3_confirmed) ... ok
+test_11_helpdesk_is_legitimate_admin (test_rdp_chain_hunter.TestHypotheses.test_11_helpdesk_is_legitimate_admin) ... ok
+test_17_garbage_rows_skipped (test_rdp_chain_hunter.TestRobustness.test_17_garbage_rows_skipped) ... ok
+test_18_cli_exit_codes (test_rdp_chain_hunter.TestRobustness.test_18_cli_exit_codes) ... error: [Errno 2] No such file or directory: '/tmp/tmpapa2plh5/missing.csv'
+ok
+test_01_attack_session_found (test_rdp_chain_hunter.TestTriage.test_01_attack_session_found) ... ok
+test_02_failed_attempts_counted (test_rdp_chain_hunter.TestTriage.test_02_failed_attempts_counted) ... ok
+test_03_success_timestamp_and_type (test_rdp_chain_hunter.TestTriage.test_03_success_timestamp_and_type) ... ok
+test_04_baseline_says_user_never_rdps (test_rdp_chain_hunter.TestTriage.test_04_baseline_says_user_never_rdps) ... ok
+test_05_privileges_and_powershell (test_rdp_chain_hunter.TestTriage.test_05_privileges_and_powershell) ... ok
+test_06_same_ip_other_endpoints (test_rdp_chain_hunter.TestTriage.test_06_same_ip_other_endpoints) ... ok
+test_07_internet_exposure_found (test_rdp_chain_hunter.TestTriage.test_07_internet_exposure_found) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.018s
+
+OK

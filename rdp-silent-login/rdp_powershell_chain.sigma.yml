@@ -1,0 +1,76 @@
+title: Suspicious RDP-to-PowerShell Chain
+id: 7d3f9c1e-5a2b-4e8d-9b61-2f0c4a7e5d13
+status: experimental
+description: |
+  Correlates a successful RDP logon (4624 Type 10) from an unusual source with PowerShell
+  execution inside the same session within 15 minutes. Built for GraySentinel DSOU war-room
+  "The Silent RDP Login" (HR-WS-017). A single successful RDP logon is NOT alerted on its own.
+author: Eswar Mahalingam (GraySentinel DSOU, Blue Team)
+date: 2026/10/05
+references:
+  - https://attack.mitre.org/techniques/T1021/001/
+  - https://attack.mitre.org/techniques/T1078/
+  - https://attack.mitre.org/techniques/T1059/001/
+tags:
+  - attack.lateral_movement
+  - attack.t1021.001
+  - attack.initial_access
+  - attack.t1078
+  - attack.execution
+  - attack.t1059.001
+---
+# Rule 1 — RDP logon from outside approved admin sources
+title: RDP Logon From Non-Approved Source
+id: 1b6e0a44-3c55-4f0a-8d2a-0f6c2b9e7a01
+name: rdp_logon_unusual_source
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4624
+    LogonType: 10
+  approved_admin_sources:
+    IpAddress|cidr:
+      - '10.20.5.0/24'        # IT jump hosts (JUMP-IT-01)
+  condition: selection and not approved_admin_sources
+level: medium
+---
+# Rule 2 — PowerShell spawned interactively / with evasion flags
+title: PowerShell With Hidden Or Encoded Command
+id: 4c2d8e7f-1a90-4b3c-9e55-6d7a1f2c3b02
+name: ps_hidden_encoded
+logsource:
+  product: windows
+  category: process_creation      # Sysmon 1 / Security 4688
+detection:
+  selection_img:
+    Image|endswith: '\powershell.exe'
+  selection_flags:
+    CommandLine|contains:
+      - ' -enc'
+      - ' -EncodedCommand'
+      - ' -w hidden'
+      - ' -WindowStyle Hidden'
+      - ' -nop'
+  condition: selection_img and selection_flags
+level: medium
+---
+# Correlation — both rules, same host + same user, within 15 minutes
+title: Suspicious RDP-to-PowerShell Chain
+id: 9e1a6b2c-7d4f-4a83-b0c5-3e8f2d1a6c03
+correlation:
+  type: temporal_ordered
+  rules:
+    - rdp_logon_unusual_source
+    - ps_hidden_encoded
+  group-by:
+    - Computer
+    - TargetUserName
+  timespan: 15m
+falsepositives:
+  - IT administrators working outside the approved jump-host range
+  - Approved remote-support tooling that launches PowerShell
+  - Remote employees on unmanaged egress (validate VPN session first)
+  - Scheduled maintenance (check change ticket)
+level: high

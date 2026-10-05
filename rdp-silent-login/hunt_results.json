@@ -1,0 +1,526 @@
+[
+  {
+    "triage": {
+      "user": "it.helpdesk",
+      "source_ip": "10.20.5.25",
+      "source_host": "JUMP-IT-01",
+      "dest_host": "HR-WS-009",
+      "failed_attempts": 0,
+      "success_ts": "2026-09-05T06:00:00Z",
+      "logon_type": 10,
+      "mfa_on_rdp": false,
+      "idp_mfa": "unknown",
+      "normally_uses_rdp": false,
+      "rdp_baseline_30d": 0,
+      "first_process": null,
+      "powershell_cmdline": null,
+      "privileges": [],
+      "pwd_last_set": null,
+      "idp_hits_same_ip": 0,
+      "same_ip_other_hosts": {},
+      "internet_exposure": []
+    },
+    "hypotheses": {
+      "H1": {
+        "verdict": "INCONCLUSIVE",
+        "evidence": [
+          "no Type-10 logon by this user in 30-day baseline",
+          "user had no VPN session at login time"
+        ]
+      },
+      "H2": {
+        "verdict": "SUPPORTED",
+        "evidence": [
+          "approved admin source",
+          "change ticket CHG-4471",
+          "user is RDP-authorised"
+        ]
+      },
+      "H3": {
+        "verdict": "NOT OBSERVED",
+        "evidence": []
+      }
+    },
+    "detection": {
+      "name": "Suspicious RDP-to-PowerShell Chain",
+      "fired": false,
+      "severity": "INFO",
+      "chain_stages": 1
+    },
+    "lateral": {
+      "smb": [],
+      "dc_contact": [],
+      "onward_logons": [],
+      "sensitive_files": [],
+      "same_ip_other_hosts": {}
+    },
+    "timeline": [
+      [
+        "2026-09-05 06:00:00Z",
+        "4624/10",
+        "RDP success it.helpdesk from 10.20.5.25 (JUMP-IT-01)"
+      ]
+    ]
+  },
+  {
+    "triage": {
+      "user": "it.helpdesk",
+      "source_ip": "10.20.5.25",
+      "source_host": "JUMP-IT-01",
+      "dest_host": "HR-WS-009",
+      "failed_attempts": 0,
+      "success_ts": "2026-09-11T06:17:00Z",
+      "logon_type": 10,
+      "mfa_on_rdp": false,
+      "idp_mfa": "unknown",
+      "normally_uses_rdp": true,
+      "rdp_baseline_30d": 1,
+      "first_process": null,
+      "powershell_cmdline": null,
+      "privileges": [],
+      "pwd_last_set": null,
+      "idp_hits_same_ip": 0,
+      "same_ip_other_hosts": {},
+      "internet_exposure": []
+    },
+    "hypotheses": {
+      "H1": {
+        "verdict": "INCONCLUSIVE",
+        "evidence": [
+          "user had no VPN session at login time"
+        ]
+      },
+      "H2": {
+        "verdict": "SUPPORTED",
+        "evidence": [
+          "approved admin source",
+          "change ticket CHG-4471",
+          "user is RDP-authorised",
+          "behaviour matches baseline"
+        ]
+      },
+      "H3": {
+        "verdict": "NOT OBSERVED",
+        "evidence": []
+      }
+    },
+    "detection": {
+      "name": "Suspicious RDP-to-PowerShell Chain",
+      "fired": false,
+      "severity": "INFO",
+      "chain_stages": 1
+    },
+    "lateral": {
+      "smb": [],
+      "dc_contact": [],
+      "onward_logons": [],
+      "sensitive_files": [],
+      "same_ip_other_hosts": {}
+    },
+    "timeline": [
+      [
+        "2026-09-11 06:17:00Z",
+        "4624/10",
+        "RDP success it.helpdesk from 10.20.5.25 (JUMP-IT-01)"
+      ]
+    ]
+  },
+  {
+    "triage": {
+      "user": "it.helpdesk",
+      "source_ip": "10.20.5.25",
+      "source_host": "JUMP-IT-01",
+      "dest_host": "HR-WS-009",
+      "failed_attempts": 0,
+      "success_ts": "2026-09-17T06:09:00Z",
+      "logon_type": 10,
+      "mfa_on_rdp": false,
+      "idp_mfa": "unknown",
+      "normally_uses_rdp": true,
+      "rdp_baseline_30d": 2,
+      "first_process": null,
+      "powershell_cmdline": null,
+      "privileges": [],
+      "pwd_last_set": null,
+      "idp_hits_same_ip": 0,
+      "same_ip_other_hosts": {},
+      "internet_exposure": []
+    },
+    "hypotheses": {
+      "H1": {
+        "verdict": "INCONCLUSIVE",
+        "evidence": [
+          "user had no VPN session at login time"
+        ]
+      },
+      "H2": {
+        "verdict": "SUPPORTED",
+        "evidence": [
+          "approved admin source",
+          "change ticket CHG-4471",
+          "user is RDP-authorised",
+          "behaviour matches baseline"
+        ]
+      },
+      "H3": {
+        "verdict": "NOT OBSERVED",
+        "evidence": []
+      }
+    },
+    "detection": {
+      "name": "Suspicious RDP-to-PowerShell Chain",
+      "fired": false,
+      "severity": "INFO",
+      "chain_stages": 1
+    },
+    "lateral": {
+      "smb": [],
+      "dc_contact": [],
+      "onward_logons": [],
+      "sensitive_files": [],
+      "same_ip_other_hosts": {}
+    },
+    "timeline": [
+      [
+        "2026-09-17 06:09:00Z",
+        "4624/10",
+        "RDP success it.helpdesk from 10.20.5.25 (JUMP-IT-01)"
+      ]
+    ]
+  },
+  {
+    "triage": {
+      "user": "it.helpdesk",
+      "source_ip": "10.20.5.25",
+      "source_host": "JUMP-IT-01",
+      "dest_host": "HR-WS-009",
+      "failed_attempts": 0,
+      "success_ts": "2026-09-23T06:01:00Z",
+      "logon_type": 10,
+      "mfa_on_rdp": false,
+      "idp_mfa": "unknown",
+      "normally_uses_rdp": true,
+      "rdp_baseline_30d": 3,
+      "first_process": null,
+      "powershell_cmdline": null,
+      "privileges": [],
+      "pwd_last_set": null,
+      "idp_hits_same_ip": 0,
+      "same_ip_other_hosts": {},
+      "internet_exposure": []
+    },
+    "hypotheses": {
+      "H1": {
+        "verdict": "INCONCLUSIVE",
+        "evidence": [
+          "user had no VPN session at login time"
+        ]
+      },
+      "H2": {
+        "verdict": "SUPPORTED",
+        "evidence": [
+          "approved admin source",
+          "change ticket CHG-4471",
+          "user is RDP-authorised",
+          "behaviour matches baseline"
+        ]
+      },
+      "H3": {
+        "verdict": "NOT OBSERVED",
+        "evidence": []
+      }
+    },
+    "detection": {
+      "name": "Suspicious RDP-to-PowerShell Chain",
+      "fired": false,
+      "severity": "INFO",
+      "chain_stages": 1
+    },
+    "lateral": {
+      "smb": [],
+      "dc_contact": [],
+      "onward_logons": [],
+      "sensitive_files": [],
+      "same_ip_other_hosts": {}
+    },
+    "timeline": [
+      [
+        "2026-09-23 06:01:00Z",
+        "4624/10",
+        "RDP success it.helpdesk from 10.20.5.25 (JUMP-IT-01)"
+      ]
+    ]
+  },
+  {
+    "triage": {
+      "user": "it.helpdesk",
+      "source_ip": "10.20.5.25",
+      "source_host": "JUMP-IT-01",
+      "dest_host": "HR-WS-009",
+      "failed_attempts": 0,
+      "success_ts": "2026-09-29T06:18:00Z",
+      "logon_type": 10,
+      "mfa_on_rdp": false,
+      "idp_mfa": "unknown",
+      "normally_uses_rdp": true,
+      "rdp_baseline_30d": 4,
+      "first_process": null,
+      "powershell_cmdline": null,
+      "privileges": [],
+      "pwd_last_set": null,
+      "idp_hits_same_ip": 0,
+      "same_ip_other_hosts": {},
+      "internet_exposure": []
+    },
+    "hypotheses": {
+      "H1": {
+        "verdict": "INCONCLUSIVE",
+        "evidence": [
+          "user had no VPN session at login time"
+        ]
+      },
+      "H2": {
+        "verdict": "SUPPORTED",
+        "evidence": [
+          "approved admin source",
+          "change ticket CHG-4471",
+          "user is RDP-authorised",
+          "behaviour matches baseline"
+        ]
+      },
+      "H3": {
+        "verdict": "NOT OBSERVED",
+        "evidence": []
+      }
+    },
+    "detection": {
+      "name": "Suspicious RDP-to-PowerShell Chain",
+      "fired": false,
+      "severity": "INFO",
+      "chain_stages": 1
+    },
+    "lateral": {
+      "smb": [],
+      "dc_contact": [],
+      "onward_logons": [],
+      "sensitive_files": [],
+      "same_ip_other_hosts": {}
+    },
+    "timeline": [
+      [
+        "2026-09-29 06:18:00Z",
+        "4624/10",
+        "RDP success it.helpdesk from 10.20.5.25 (JUMP-IT-01)"
+      ]
+    ]
+  },
+  {
+    "triage": {
+      "user": "ananya.rao",
+      "source_ip": "203.0.113.45",
+      "source_host": "DESKTOP-9KX2TQ",
+      "dest_host": "HR-WS-017",
+      "failed_attempts": 23,
+      "success_ts": "2026-10-04T21:53:02Z",
+      "logon_type": 10,
+      "mfa_on_rdp": false,
+      "idp_mfa": "Entra push (cloud apps only)",
+      "normally_uses_rdp": false,
+      "rdp_baseline_30d": 0,
+      "first_process": "rdpclip.exe",
+      "powershell_cmdline": "powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSAC0AMAAxAFwASABSACQAJwA...",
+      "privileges": [
+        "SeDebugPrivilege",
+        "SeBackupPrivilege",
+        "SeTakeOwnershipPrivilege",
+        "SeImpersonatePrivilege"
+      ],
+      "pwd_last_set": "2026-06-11T05:02:00Z",
+      "idp_hits_same_ip": 2,
+      "same_ip_other_hosts": {
+        "HR-WS-021": {
+          "fail": 6,
+          "success": 0
+        },
+        "FIN-WS-004": {
+          "fail": 4,
+          "success": 0
+        }
+      },
+      "internet_exposure": [
+        {
+          "rule": "NAT-LEGACY-HR-3389",
+          "public": "203.0.113.200:3389",
+          "to": "10.20.40.17:3389",
+          "created": "2025-11-02",
+          "owner": "unknown",
+          "note": "temporary vendor access, never removed"
+        }
+      ]
+    },
+    "hypotheses": {
+      "H1": {
+        "verdict": "COMPROMISED",
+        "evidence": [
+          "23 failed RDP attempts from same source before success",
+          "external source 203.0.113.45 (DESKTOP-9KX2TQ)",
+          "no Type-10 logon by this user in 30-day baseline",
+          "account not authorised for RDP",
+          "same IP already had the correct password in IdP (2 MFA-denied sign-ins)",
+          "user had no VPN session at login time"
+        ]
+      },
+      "H2": {
+        "verdict": "REJECTED",
+        "evidence": [
+          "none of the admin indicators present"
+        ]
+      },
+      "H3": {
+        "verdict": "CONFIRMED",
+        "evidence": [
+          "obfuscated/hidden PowerShell: -enc, -noni, -nop, -w hidden",
+          "3 discovery commands",
+          "internal connections: 10.20.0.10:389, 10.20.30.15:445",
+          "onward auth: FS-HR-01 (Type 3)",
+          "3 sensitive file accesses",
+          "external egress: 198.51.100.23:443"
+        ]
+      }
+    },
+    "detection": {
+      "name": "Suspicious RDP-to-PowerShell Chain",
+      "fired": true,
+      "severity": "CRITICAL",
+      "chain_stages": 8
+    },
+    "lateral": {
+      "smb": [
+        "10.20.30.15"
+      ],
+      "dc_contact": [
+        "10.20.0.10"
+      ],
+      "onward_logons": [
+        "FS-HR-01"
+      ],
+      "sensitive_files": [
+        "HR$\\Payroll\\Payroll_Q3_2026.xlsx;Access=ReadData",
+        "HR$\\Payroll\\Salary_Revision_FY27.xlsx;Access=ReadData",
+        "HR$\\Payroll\\Bank_Mandates_HR.xlsx;Access=ReadData"
+      ],
+      "same_ip_other_hosts": {
+        "HR-WS-021": {
+          "fail": 6,
+          "success": 0
+        },
+        "FIN-WS-004": {
+          "fail": 4,
+          "success": 0
+        }
+      }
+    },
+    "timeline": [
+      [
+        "2026-10-04 21:47:10Z",
+        "4625",
+        "failed RDP administrator from 203.0.113.45"
+      ],
+      [
+        "2026-10-04 21:52:18Z",
+        "4625",
+        "\u202623 failures total (last)"
+      ],
+      [
+        "2026-10-04 21:53:02Z",
+        "4624/10",
+        "RDP success ananya.rao from 203.0.113.45 (DESKTOP-9KX2TQ)"
+      ],
+      [
+        "2026-10-04 21:53:02Z",
+        "4672",
+        "privileges: SeDebugPrivilege;SeBackupPrivilege;SeTakeOwnershipPrivilege;SeImpersonatePrivilege"
+      ],
+      [
+        "2026-10-04 21:53:11Z",
+        "4688",
+        "svchost.exe \u2192 rdpclip.exe: rdpclip"
+      ],
+      [
+        "2026-10-04 21:54:31Z",
+        "4688",
+        "explorer.exe \u2192 cmd.exe: cmd.exe"
+      ],
+      [
+        "2026-10-04 21:54:40Z",
+        "4688",
+        "cmd.exe \u2192 powershell.exe: powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSA"
+      ],
+      [
+        "2026-10-04 21:54:40Z",
+        "1",
+        "cmd.exe \u2192 powershell.exe: powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSA"
+      ],
+      [
+        "2026-10-04 21:54:41Z",
+        "4104",
+        "script block: whoami /all; nltest /dclist:corp.example.com; net group \"Domain Admins\u2026"
+      ],
+      [
+        "2026-10-04 21:54:45Z",
+        "1",
+        "powershell.exe \u2192 whoami.exe: whoami /all"
+      ],
+      [
+        "2026-10-04 21:54:49Z",
+        "1",
+        "powershell.exe \u2192 nltest.exe: nltest /dclist:corp.example.com"
+      ],
+      [
+        "2026-10-04 21:54:53Z",
+        "1",
+        "powershell.exe \u2192 net.exe: net group \"Domain Admins\" /domain"
+      ],
+      [
+        "2026-10-04 21:55:11Z",
+        "Sysmon3",
+        "powershell.exe \u2192 10.20.0.10:389 DC-01 LDAP"
+      ],
+      [
+        "2026-10-04 21:55:36Z",
+        "Sysmon3",
+        "powershell.exe \u2192 10.20.30.15:445 FS-HR-01 SMB"
+      ],
+      [
+        "2026-10-04 21:55:41Z",
+        "4624/3",
+        "ananya.rao onward logon on FS-HR-01 from 10.20.40.17"
+      ],
+      [
+        "2026-10-04 21:55:43Z",
+        "5140",
+        "FS-HR-01: Share=\\\\*\\HR$"
+      ],
+      [
+        "2026-10-04 21:55:45Z",
+        "5145",
+        "FS-HR-01: HR$\\Payroll\\Payroll_Q3_2026.xlsx;Access=ReadData"
+      ],
+      [
+        "2026-10-04 21:55:46Z",
+        "5145",
+        "FS-HR-01: HR$\\Payroll\\Salary_Revision_FY27.xlsx;Access=ReadData"
+      ],
+      [
+        "2026-10-04 21:55:47Z",
+        "5145",
+        "FS-HR-01: HR$\\Payroll\\Bank_Mandates_HR.xlsx;Access=ReadData"
+      ],
+      [
+        "2026-10-04 21:56:01Z",
+        "Sysmon3",
+        "powershell.exe \u2192 198.51.100.23:443 cdn-sync.example.net (first seen)"
+      ]
+    ]
+  }
+]

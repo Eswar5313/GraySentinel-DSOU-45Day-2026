@@ -1,0 +1,71 @@
+{
+  "_note": "SYNTHETIC context for the RDP war-room lab (RFC-5737 / example.com).",
+  "users": {
+    "ananya.rao": {
+      "dept": "HR",
+      "title": "HR Business Partner",
+      "home_host": "HR-WS-017",
+      "rdp_allowed": false,
+      "local_admin_on": [
+        "HR-WS-017"
+      ],
+      "pwd_last_set": "2026-06-11T05:02:00Z",
+      "mfa": "Entra push (cloud apps only)"
+    },
+    "it.helpdesk": {
+      "dept": "IT",
+      "rdp_allowed": true,
+      "approved_sources": [
+        "10.20.5.25"
+      ]
+    }
+  },
+  "idp_signins": [
+    {
+      "ts": "2026-10-03T19:11:42Z",
+      "user": "ananya.rao",
+      "ip": "203.0.113.45",
+      "app": "Office 365",
+      "result": "password OK \u00b7 MFA denied by user",
+      "asn": "AS64500 hosting (lab)"
+    },
+    {
+      "ts": "2026-10-03T19:14:05Z",
+      "user": "ananya.rao",
+      "ip": "203.0.113.45",
+      "app": "Office 365",
+      "result": "password OK \u00b7 MFA denied by user",
+      "asn": "AS64500 hosting (lab)"
+    }
+  ],
+  "vpn_sessions": [
+    {
+      "user": "ananya.rao",
+      "start": "2026-10-05T03:41:00Z",
+      "end": null,
+      "client_ip": "198.51.100.140",
+      "isp": "home broadband (lab)"
+    }
+  ],
+  "firewall": [
+    {
+      "rule": "NAT-LEGACY-HR-3389",
+      "public": "203.0.113.200:3389",
+      "to": "10.20.40.17:3389",
+      "created": "2025-11-02",
+      "owner": "unknown",
+      "note": "temporary vendor access, never removed"
+    }
+  ],
+  "change_tickets": [
+    {
+      "id": "CHG-4471",
+      "host": "HR-WS-009",
+      "user": "it.helpdesk",
+      "window": "recurring weekly patch"
+    }
+  ],
+  "edr": {
+    "defender_detections": 0
+  }
+}

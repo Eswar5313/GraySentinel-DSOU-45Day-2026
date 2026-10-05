@@ -1,0 +1,60 @@
+==============================================================================
+GraySentinel DSOU · RDP chain hunt · 6 RDP session(s) reviewed
+==============================================================================
+
+[CRITICAL] ananya.rao → HR-WS-017 from 203.0.113.45 (DESKTOP-9KX2TQ) at 2026-10-04T21:53:02Z  detection_fired=True
+  -- Mission 01 triage --
+   failed_attempts      23
+   normally_uses_rdp    False
+   rdp_baseline_30d     0
+   mfa_on_rdp           False
+   privileges           ['SeDebugPrivilege', 'SeBackupPrivilege', 'SeTakeOwnershipPrivilege', 'SeImpersonatePrivilege']
+   first_process        rdpclip.exe
+   powershell_cmdline   powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSAC0AMAAxAFwASABSACQAJwA...
+   pwd_last_set         2026-06-11T05:02:00Z
+   idp_hits_same_ip     2
+   same_ip_other_hosts  {'HR-WS-021': {'fail': 6, 'success': 0}, 'FIN-WS-004': {'fail': 4, 'success': 0}}
+   exposure            NAT-LEGACY-HR-3389 203.0.113.200:3389 → 10.20.40.17:3389 (temporary vendor access, never removed)
+  -- Mission 02 hypotheses --
+   H1 COMPROMISED   23 failed RDP attempts from same source before success | external source 203.0.113.45 (DESKTOP-9KX2TQ) | no Type-10 logon by this user in 30-day baseline | account not authorised for RDP | same IP already had the correct password in IdP (2 MFA-denied sign-ins) | user had no VPN session at login time
+   H2 REJECTED      none of the admin indicators present
+   H3 CONFIRMED     obfuscated/hidden PowerShell: -enc, -noni, -nop, -w hidden | 3 discovery commands | internal connections: 10.20.0.10:389, 10.20.30.15:445 | onward auth: FS-HR-01 (Type 3) | 3 sensitive file accesses | external egress: 198.51.100.23:443
+  -- Mission 03 timeline --
+   2026-10-04 21:47:10Z  4625     failed RDP administrator from 203.0.113.45
+   2026-10-04 21:52:18Z  4625     …23 failures total (last)
+   2026-10-04 21:53:02Z  4624/10  RDP success ananya.rao from 203.0.113.45 (DESKTOP-9KX2TQ)
+   2026-10-04 21:53:02Z  4672     privileges: SeDebugPrivilege;SeBackupPrivilege;SeTakeOwnershipPrivilege;SeImpersonatePrivilege
+   2026-10-04 21:53:11Z  4688     svchost.exe → rdpclip.exe: rdpclip
+   2026-10-04 21:54:31Z  4688     explorer.exe → cmd.exe: cmd.exe
+   2026-10-04 21:54:40Z  4688     cmd.exe → powershell.exe: powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSA
+   2026-10-04 21:54:40Z  1        cmd.exe → powershell.exe: powershell.exe -NoP -NonI -W Hidden -Enc JABzAD0AJwBcAFwARgBTAC0ASABSA
+   2026-10-04 21:54:41Z  4104     script block: whoami /all; nltest /dclist:corp.example.com; net group "Domain Admins…
+   2026-10-04 21:54:45Z  1        powershell.exe → whoami.exe: whoami /all
+   2026-10-04 21:54:49Z  1        powershell.exe → nltest.exe: nltest /dclist:corp.example.com
+   2026-10-04 21:54:53Z  1        powershell.exe → net.exe: net group "Domain Admins" /domain
+   2026-10-04 21:55:11Z  Sysmon3  powershell.exe → 10.20.0.10:389 DC-01 LDAP
+   2026-10-04 21:55:36Z  Sysmon3  powershell.exe → 10.20.30.15:445 FS-HR-01 SMB
+   2026-10-04 21:55:41Z  4624/3   ananya.rao onward logon on FS-HR-01 from 10.20.40.17
+   2026-10-04 21:55:43Z  5140     FS-HR-01: Share=\\*\HR$
+   2026-10-04 21:55:45Z  5145     FS-HR-01: HR$\Payroll\Payroll_Q3_2026.xlsx;Access=ReadData
+   2026-10-04 21:55:46Z  5145     FS-HR-01: HR$\Payroll\Salary_Revision_FY27.xlsx;Access=ReadData
+   2026-10-04 21:55:47Z  5145     FS-HR-01: HR$\Payroll\Bank_Mandates_HR.xlsx;Access=ReadData
+   2026-10-04 21:56:01Z  Sysmon3  powershell.exe → 198.51.100.23:443 cdn-sync.example.net (first seen)
+  -- Mission 05 lateral movement --
+   SMB→ ['10.20.30.15']  DC→ ['10.20.0.10']  onward logons→ ['FS-HR-01']
+   sensitive files: 3  same IP elsewhere: {'HR-WS-021': {'fail': 6, 'success': 0}, 'FIN-WS-004': {'fail': 4, 'success': 0}}
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-05T06:00:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-11T06:17:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised; behaviour matches baseline
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-17T06:09:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised; behaviour matches baseline
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-23T06:01:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised; behaviour matches baseline
+
+[INFO    ] it.helpdesk → HR-WS-009 from 10.20.5.25 (JUMP-IT-01) at 2026-09-29T06:18:00Z  detection_fired=False
+  H2 legitimate admin access: approved admin source; change ticket CHG-4471; user is RDP-authorised; behaviour matches baseline
