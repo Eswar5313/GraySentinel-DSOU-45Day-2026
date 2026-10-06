@@ -1,0 +1,24 @@
+test_11_detection_critical (test_ghost_admin_hunter.TestDetectionPersistenceLateral.test_11_detection_critical) ... ok
+test_12_dcsync_detected (test_ghost_admin_hunter.TestDetectionPersistenceLateral.test_12_dcsync_detected) ... ok
+test_13_new_service_persistence (test_ghost_admin_hunter.TestDetectionPersistenceLateral.test_13_new_service_persistence) ... ok
+test_14_onward_logons (test_ghost_admin_hunter.TestDetectionPersistenceLateral.test_14_onward_logons) ... ok
+test_15_legit_admin_not_flagged (test_ghost_admin_hunter.TestDetectionPersistenceLateral.test_15_legit_admin_not_flagged) ... ok
+test_16_timeline_ordered_and_has_escalation (test_ghost_admin_hunter.TestDetectionPersistenceLateral.test_16_timeline_ordered_and_has_escalation) ... ok
+test_08_h1_compromised (test_ghost_admin_hunter.TestHypotheses.test_08_h1_compromised) ... ok
+test_09_h2_privilege_escalation_confirmed (test_ghost_admin_hunter.TestHypotheses.test_09_h2_privilege_escalation_confirmed) ... ok
+test_10_h3_lateral_confirmed (test_ghost_admin_hunter.TestHypotheses.test_10_h3_lateral_confirmed) ... ok
+test_01_one_case_the_attacker (test_ghost_admin_hunter.TestIdentity.test_01_one_case_the_attacker) ... ok
+test_02_target_is_dc (test_ghost_admin_hunter.TestIdentity.test_02_target_is_dc) ... ok
+test_03_logon_type_and_ntlm (test_ghost_admin_hunter.TestIdentity.test_03_logon_type_and_ntlm) ... ok
+test_04_user_not_normally_privileged (test_ghost_admin_hunter.TestIdentity.test_04_user_not_normally_privileged) ... ok
+test_05_failed_attempts_counted (test_ghost_admin_hunter.TestIdentity.test_05_failed_attempts_counted) ... ok
+test_06_priv_group_adds (test_ghost_admin_hunter.TestIdentity.test_06_priv_group_adds) ... ok
+test_07_no_change_ticket (test_ghost_admin_hunter.TestIdentity.test_07_no_change_ticket) ... ok
+test_17_garbage_rows_skipped (test_ghost_admin_hunter.TestRobustness.test_17_garbage_rows_skipped) ... ok
+test_18_cli_exit_codes (test_ghost_admin_hunter.TestRobustness.test_18_cli_exit_codes) ... error: [Errno 2] No such file or directory: '/tmp/tmpggam3gyl/nope.csv'
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.012s
+
+OK

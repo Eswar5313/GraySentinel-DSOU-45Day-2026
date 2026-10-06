@@ -1,0 +1,64 @@
+{
+  "_note": "SYNTHETIC context for Ghost Admin lab (RFC-5737 / corp.example.com).",
+  "assets": {
+    "DC-02": {
+      "role": "Domain Controller (Tier-0)",
+      "ip": "10.20.0.12",
+      "interactive_logons_expected": false
+    },
+    "DC-01": {
+      "role": "Domain Controller (Tier-0)",
+      "ip": "10.20.0.11"
+    },
+    "PAW-ADMIN-01": {
+      "role": "Privileged Access Workstation",
+      "ip": "10.20.9.10"
+    },
+    "WKS-FIN-204": {
+      "role": "Finance user workstation (Tier-2)",
+      "ip": "10.20.44.204"
+    }
+  },
+  "users": {
+    "s.menon": {
+      "dept": "Help Desk",
+      "tier": 2,
+      "normally_admin": false,
+      "normal_hosts": [
+        "WKS-FIN-204"
+      ],
+      "pwd_last_set": "2026-07-02T06:10:00Z",
+      "mfa": "none (on-prem account)"
+    },
+    "da.patel": {
+      "dept": "IT",
+      "tier": 0,
+      "normally_admin": true,
+      "approved_sources": [
+        "10.20.9.10"
+      ]
+    }
+  },
+  "privileged_groups": [
+    "Domain Admins",
+    "Enterprise Admins",
+    "Administrators",
+    "Backup Operators"
+  ],
+  "service_accounts": [
+    {
+      "name": "svc_backup",
+      "spn": "backup/FS-CORP-01",
+      "tier": 1
+    }
+  ],
+  "change_tickets": [
+    {
+      "id": "CHG-5582",
+      "host": "DC-02",
+      "user": "da.patel",
+      "window": "weekly patch"
+    }
+  ],
+  "siem_note": "AD/DC audit logs retained 7 days; no alert rule for 4728/4732 on Tier-0 before this case."
+}

@@ -1,0 +1,65 @@
+ts,host,channel,event_id,user,logon_type,logon_id,src_ip,src_host,status,process,parent,cmdline,group,member,target,detail
+2026-09-07T04:11:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11001,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-08T04:22:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11002,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-09T04:33:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11003,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-09T05:33:00Z,DC-02,Security,4624,da.patel,10,0x22003,10.20.9.10,PAW-ADMIN-01,,,,,,,,CHG-5582 scheduled patch
+2026-09-10T04:04:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11004,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-11T04:15:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11005,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-14T04:08:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11008,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-15T04:19:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11009,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-16T04:30:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11010,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-16T05:30:00Z,DC-02,Security,4624,da.patel,10,0x22010,10.20.9.10,PAW-ADMIN-01,,,,,,,,CHG-5582 scheduled patch
+2026-09-17T04:01:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11011,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-18T04:12:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11012,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-21T04:05:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11015,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-22T04:16:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11016,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-23T04:27:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11017,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-23T05:27:00Z,DC-02,Security,4624,da.patel,10,0x22017,10.20.9.10,PAW-ADMIN-01,,,,,,,,CHG-5582 scheduled patch
+2026-09-24T04:38:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11018,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-25T04:09:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11019,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-28T04:02:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11022,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-29T04:13:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11023,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-30T04:24:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11024,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-09-30T05:24:00Z,DC-02,Security,4624,da.patel,10,0x22024,10.20.9.10,PAW-ADMIN-01,,,,,,,,CHG-5582 scheduled patch
+2026-10-01T04:35:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11025,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-10-02T04:06:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11026,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-10-05T04:39:00Z,WKS-FIN-204,Security,4624,s.menon,2,0x11029,127.0.0.1,WKS-FIN-204,,,,,,,,
+2026-10-05T21:10:00Z,DC-02,Security,4625,svc_backup,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:10:18Z,DC-02,Security,4625,svc_sql,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:10:36Z,DC-02,Security,4625,helpdesk.adm,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:10:54Z,DC-02,Security,4625,s.menon,3,,10.20.44.204,WKS-FIN-204,0xC000006A,,,,,,,
+2026-10-05T21:11:12Z,DC-02,Security,4625,svc_backup,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:11:30Z,DC-02,Security,4625,svc_sql,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:11:48Z,DC-02,Security,4625,helpdesk.adm,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:12:06Z,DC-02,Security,4625,s.menon,3,,10.20.44.204,WKS-FIN-204,0xC000006A,,,,,,,
+2026-10-05T21:12:24Z,DC-02,Security,4625,svc_backup,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:12:42Z,DC-02,Security,4625,svc_sql,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:13:00Z,DC-02,Security,4625,helpdesk.adm,3,,10.20.44.204,WKS-FIN-204,0xC0000064,,,,,,,
+2026-10-05T21:13:18Z,DC-02,Security,4625,s.menon,3,,10.20.44.204,WKS-FIN-204,0xC000006A,,,,,,,
+2026-10-05T21:15:00Z,DC-02,Security,4624,s.menon,3,0x7F31A9,10.20.44.204,WKS-FIN-204,,,,,,,,AuthPkg=NTLM;no Kerberos PAC
+2026-10-05T21:15:03Z,DC-02,Security,4672,s.menon,,0x7F31A9,,,,,,,,,,SeDebugPrivilege;SeEnableDelegationPrivilege;SeBackupPrivilege
+2026-10-05T21:15:40Z,DC-02,Security,4728,s.menon,,,,,,,,,Domain Admins,s.menon,corp.example.com\Domain Admins,AddMemberToSecurityEnabledGlobalGroup
+2026-10-05T21:15:41Z,DC-02,Security,4732,s.menon,,,,,,,,,Administrators,s.menon,BUILTIN\Administrators,
+2026-10-05T21:16:35Z,DC-02,Security,4688,s.menon,,0x7F31A9,,,,powershell.exe,wsmprovhost.exe,powershell.exe -NoP -Enc <b64>,,,,
+2026-10-05T21:16:35Z,DC-02,Sysmon,1,s.menon,,0x7F31A9,,,,powershell.exe,wsmprovhost.exe,powershell.exe -NoP -Enc <b64>,,,,
+2026-10-05T21:16:37Z,DC-02,PowerShell,4104,s.menon,,,,,,,,Get-ADUser -Filter * -Properties memberOf; Get-ADGroupMember 'Domain Admins'; Get-ADReplAccount -All -Server DC-02 (DCSync-style replication read),,,,ScriptBlock decoded
+2026-10-05T21:16:39Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:40Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:41Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:42Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:43Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:44Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:45Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:46Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:47Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:48Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:49Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:50Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:51Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:user;Access=Read Property (LDAP enumeration)
+2026-10-05T21:16:52Z,DC-02,Security,4662,s.menon,,,,,,,,,,,,Object:domainDNS;Access=Control Access;Property=DS-Replication-Get-Changes-All
+2026-10-05T21:17:05Z,DC-02,System,7045,s.menon,,,,,,svchost,,,,,,Service=WinSysMon2;ImagePath=%TEMP%\wsm2.exe;Start=auto
+2026-10-05T21:17:35Z,DC-01,Security,4624,s.menon,3,0x801A,10.20.0.12,DC-02,,,,,,,,AuthPkg=Kerberos
+2026-10-05T21:17:40Z,FS-CORP-01,Security,4624,s.menon,3,0x802B,10.20.0.12,DC-02,,,,,,,,
+2026-10-05T21:17:42Z,FS-CORP-01,Security,5140,s.menon,,,10.20.0.12,,,,,,,,,Share=\\*\SYSVOL
+2026-10-05T21:17:47Z,DC-02,Security,4768,s.menon,,,10.20.44.204,,,,,,,,,TGT requested; ticket encryption RC4 (downgrade)
+2026-10-05T21:31:35Z,DC-02,Defender,1001,,,,,,,,,,,,,Scan complete; 0 threats

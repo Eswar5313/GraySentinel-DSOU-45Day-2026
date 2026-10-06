@@ -1,0 +1,78 @@
+<!--
+  GraySentinel DSOU · "Ghost Admin" · Wazuh custom rules (local_rules.xml)
+  Author: Eswar Mahalingam · 2026-10-06 · detection only
+  Chain: failed logons on DC -> unusual success -> privileged-group add -> PowerShell / DCSync -> lateral
+  IDs 100820-100827 (adjust to a free range). Requires Windows Security + PowerShell channels.
+-->
+<group name="windows,active_directory,graysentinel,">
+
+  <rule id="100820" level="5">
+    <if_sid>60122</if_sid>
+    <field name="win.system.eventID">^4625$</field>
+    <field name="win.system.computer" type="pcre2">(?i)DC-\d+</field>
+    <description>Failed logon on domain controller $(win.system.computer) for $(win.eventdata.targetUserName)</description>
+    <mitre><id>T1110</id></mitre>
+  </rule>
+
+  <rule id="100821" level="10" frequency="8" timeframe="600">
+    <if_matched_sid>100820</if_matched_sid>
+    <same_field>win.eventdata.ipAddress</same_field>
+    <description>8+ failed logons on a DC from $(win.eventdata.ipAddress)</description>
+    <mitre><id>T1110</id></mitre>
+  </rule>
+
+  <!-- Successful logon to a DC from outside the PAW range (10.20.9.x) -->
+  <rule id="100822" level="9">
+    <if_sid>60106</if_sid>
+    <field name="win.system.computer" type="pcre2">(?i)DC-\d+</field>
+    <field name="win.eventdata.logonType" type="pcre2">^(3|10)$</field>
+    <field name="win.eventdata.ipAddress" negate="yes" type="pcre2">^10\.20\.9\.</field>
+    <description>DC logon by $(win.eventdata.targetUserName) from non-PAW host $(win.eventdata.ipAddress)</description>
+    <mitre><id>T1078</id><id>T1021</id></mitre>
+  </rule>
+
+  <!-- Member added to a privileged group -->
+  <rule id="100823" level="12">
+    <if_sid>60140</if_sid>
+    <field name="win.system.eventID" type="pcre2">^(4728|4732|4756)$</field>
+    <field name="win.eventdata.targetUserName" type="pcre2">(?i)(Domain Admins|Enterprise Admins|Administrators|Backup Operators|Schema Admins)</field>
+    <description>Privileged group change: $(win.eventdata.memberName) added to $(win.eventdata.targetUserName)</description>
+    <mitre><id>T1098</id></mitre>
+  </rule>
+
+  <!-- CHAIN: unusual DC logon then privileged-group add within 15 min -->
+  <rule id="100824" level="14" timeframe="900">
+    <if_sid>100823</if_sid>
+    <if_matched_sid>100822</if_matched_sid>
+    <description>CRITICAL: Privileged Identity Anomaly on $(win.system.computer) — unusual DC logon + privileged group add</description>
+    <mitre><id>T1078</id><id>T1098</id></mitre>
+  </rule>
+
+  <!-- DCSync-style replication read -->
+  <rule id="100825" level="13">
+    <if_sid>60100</if_sid>
+    <field name="win.system.eventID">^4662$</field>
+    <field name="win.eventdata.properties" type="pcre2">(?i)(DS-Replication-Get-Changes-All|1131f6ad|89e95b76)</field>
+    <description>Directory replication rights used (DCSync) by $(win.eventdata.subjectUserName)</description>
+    <mitre><id>T1003.006</id></mitre>
+  </rule>
+
+  <!-- New service installed on a DC -->
+  <rule id="100826" level="12">
+    <if_sid>60009</if_sid>
+    <field name="win.system.eventID">^7045$</field>
+    <field name="win.system.computer" type="pcre2">(?i)DC-\d+</field>
+    <description>New service installed on domain controller $(win.system.computer)</description>
+    <mitre><id>T1543.003</id></mitre>
+  </rule>
+
+  <!-- Encoded/hidden PowerShell on a DC -->
+  <rule id="100827" level="11">
+    <if_sid>61603</if_sid>
+    <field name="win.system.computer" type="pcre2">(?i)DC-\d+</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(\s-enc|\s-encodedcommand|\s-w(indowstyle)?\s+hidden|\s-nop)</field>
+    <description>Encoded/hidden PowerShell on domain controller $(win.system.computer)</description>
+    <mitre><id>T1059.001</id></mitre>
+  </rule>
+
+</group>

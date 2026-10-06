@@ -1,0 +1,151 @@
+[
+  {
+    "identity": {
+      "user": "s.menon",
+      "normally_privileged": false,
+      "tier": 2,
+      "source_ip": "10.20.44.204",
+      "source_host": "WKS-FIN-204",
+      "dc": "DC-02",
+      "logon_type": 3,
+      "auth_pkg": "NTLM",
+      "failed_attempts": 12,
+      "tier0_baseline_30d": 0,
+      "pwd_last_set": "2026-07-02T06:10:00Z",
+      "mfa": "none (on-prem account)",
+      "privileged_group_adds": [
+        "Administrators",
+        "Domain Admins"
+      ],
+      "change_ticket": null
+    },
+    "hypotheses": {
+      "H1": {
+        "verdict": "COMPROMISED",
+        "evidence": [
+          "12 failed logons from same source before success",
+          "source 10.20.44.204 (WKS-FIN-204) not an approved admin host",
+          "no Tier-0 logon by this user in 30-day baseline",
+          "NTLM to a DC (no Kerberos PAC) \u2014 credential-relay/theft pattern",
+          "account is not normally privileged"
+        ]
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "evidence": [
+          "added to Administrators, Domain Admins",
+          "special privileges: SeBackupPrivilege, SeDebugPrivilege, SeEnableDelegationPrivilege",
+          "admin activity right after the privilege change"
+        ]
+      },
+      "H3": {
+        "verdict": "CONFIRMED",
+        "evidence": [
+          "onward logons: DC-01, FS-CORP-01",
+          "1 remote share/file access events",
+          "directory replication read (DCSync-style)",
+          "Kerberos TGT with RC4 downgrade"
+        ]
+      }
+    },
+    "detection": {
+      "name": "Privileged Identity Anomaly",
+      "fired": true,
+      "severity": "CRITICAL"
+    },
+    "persistence": {
+      "new_services": [
+        "Service=WinSysMon2;ImagePath=%TEMP%\\wsm2.exe;Start=auto"
+      ],
+      "dcsync": true,
+      "priv_group_adds": [
+        "s.menon\u2192Domain Admins",
+        "s.menon\u2192Administrators"
+      ]
+    },
+    "lateral": {
+      "onward_logons": [
+        "DC-01",
+        "FS-CORP-01"
+      ],
+      "share_access": [
+        "Share=\\\\*\\SYSVOL"
+      ],
+      "kerberos": [
+        "TGT requested; ticket encryption RC4 (downgrade)"
+      ]
+    },
+    "timeline": [
+      [
+        "2026-10-05 21:10:00Z",
+        "4625",
+        "first of 12 failed logons from 10.20.44.204"
+      ],
+      [
+        "2026-10-05 21:15:00Z",
+        "4624/3",
+        "logon s.menon on DC-02 from 10.20.44.204 (AuthPkg=NTLM;no Kerberos PAC)"
+      ],
+      [
+        "2026-10-05 21:15:03Z",
+        "4672",
+        "privileges: SeDebugPrivilege;SeEnableDelegationPrivilege;SeBackupPrivilege"
+      ],
+      [
+        "2026-10-05 21:15:40Z",
+        "4728",
+        "s.menon added to Domain Admins"
+      ],
+      [
+        "2026-10-05 21:15:41Z",
+        "4732",
+        "s.menon added to Administrators"
+      ],
+      [
+        "2026-10-05 21:16:35Z",
+        "4688",
+        "wsmprovhost.exe \u2192 powershell: powershell.exe -NoP -Enc <b64>"
+      ],
+      [
+        "2026-10-05 21:16:35Z",
+        "1",
+        "wsmprovhost.exe \u2192 powershell: powershell.exe -NoP -Enc <b64>"
+      ],
+      [
+        "2026-10-05 21:16:37Z",
+        "4104",
+        "script block: Get-ADUser -Filter * -Properties memberOf; Get-ADGroupMember 'Domain A"
+      ],
+      [
+        "2026-10-05 21:16:39Z",
+        "4662",
+        "14 directory-access events incl. replication read"
+      ],
+      [
+        "2026-10-05 21:17:05Z",
+        "7045",
+        "new service: Service=WinSysMon2;ImagePath=%TEMP%\\wsm2.exe;Start=auto"
+      ],
+      [
+        "2026-10-05 21:17:35Z",
+        "4624/3",
+        "onward logon s.menon on DC-01 from 10.20.0.12"
+      ],
+      [
+        "2026-10-05 21:17:40Z",
+        "4624/3",
+        "onward logon s.menon on FS-CORP-01 from 10.20.0.12"
+      ],
+      [
+        "2026-10-05 21:17:42Z",
+        "5140",
+        "FS-CORP-01: Share=\\\\*\\SYSVOL"
+      ],
+      [
+        "2026-10-05 21:17:47Z",
+        "4768",
+        "TGT requested; ticket encryption RC4 (downgrade)"
+      ]
+    ]
+  }
+]

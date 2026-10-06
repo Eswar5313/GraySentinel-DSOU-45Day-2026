@@ -1,0 +1,63 @@
+title: Privileged Identity Anomaly (Ghost Admin)
+id: 2a7f1c9d-4b63-4e21-9a05-8c3d7e2f1b40
+status: experimental
+description: |
+  Detects a privileged-identity attack path on a Tier-0 asset: an unusual logon to a domain
+  controller correlated with a privileged-group change and/or administrative activity within
+  15 minutes. GraySentinel DSOU war-room "Ghost Admin". A single failed/successful logon is
+  NOT alerted alone — the value is the correlation.
+author: Eswar Mahalingam (GraySentinel DSOU, Blue Team)
+date: 2026/10/06
+references:
+  - https://attack.mitre.org/techniques/T1078/
+  - https://attack.mitre.org/techniques/T1098/
+  - https://attack.mitre.org/techniques/T1021/
+tags: [attack.persistence, attack.t1098, attack.privilege_escalation, attack.t1078, attack.lateral_movement]
+---
+# Rule A — logon to a DC from a host outside the privileged-access-workstation range
+title: DC Logon From Non-PAW Source
+name: dc_logon_unusual_source
+logsource: {product: windows, service: security}
+detection:
+  selection: {EventID: 4624, Computer|contains: 'DC-'}
+  logontypes: {LogonType: [3, 10]}
+  paw_sources:
+    IpAddress|cidr: '10.20.9.0/24'      # PAW range
+  condition: selection and logontypes and not paw_sources
+level: medium
+---
+# Rule B — member added to a privileged group
+title: Privileged Group Membership Added
+name: priv_group_add
+logsource: {product: windows, service: security}
+detection:
+  selection:
+    EventID: [4728, 4732, 4756]
+    TargetUserName|contains: ['Domain Admins', 'Enterprise Admins', 'Administrators', 'Backup Operators', 'Schema Admins']
+  condition: selection
+level: high
+---
+# Rule C — directory replication read (DCSync) by a non-DC principal
+title: Directory Replication Rights Used (DCSync)
+name: dcsync_read
+logsource: {product: windows, service: security}
+detection:
+  selection:
+    EventID: 4662
+    Properties|contains: ['DS-Replication-Get-Changes-All', '1131f6ad', '89e95b76']
+  condition: selection
+level: high
+---
+# Correlation — unusual DC logon followed by privileged-group add or DCSync, same account, 15 min
+title: Privileged Identity Anomaly
+correlation:
+  type: temporal
+  rules: [dc_logon_unusual_source, priv_group_add, dcsync_read]
+  group-by: [TargetUserName]
+  timespan: 15m
+  condition: {gte: 2}
+falsepositives:
+  - Approved domain-admin maintenance from a PAW with a change ticket
+  - Scheduled server migration / emergency break-glass (check ticket + window)
+  - Help-desk role changes performed through the IAM tool (not raw 4728)
+level: critical

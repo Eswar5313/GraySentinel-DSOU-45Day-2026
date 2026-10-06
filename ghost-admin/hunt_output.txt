@@ -1,0 +1,38 @@
+==============================================================================
+GraySentinel DSOU · Ghost Admin hunt · 1 identity case(s)
+==============================================================================
+
+[CRITICAL] s.menon on DC-02 from 10.20.44.204 (WKS-FIN-204)  detection_fired=True
+  -- Mission 01 identity --
+   normally_privileged    False
+   tier                   2
+   logon_type             3
+   auth_pkg               NTLM
+   failed_attempts        12
+   tier0_baseline_30d     0
+   privileged_group_adds  ['Administrators', 'Domain Admins']
+   mfa                    none (on-prem account)
+   change_ticket          None
+  -- Mission 02 hypotheses --
+   H1 COMPROMISED  12 failed logons from same source before success | source 10.20.44.204 (WKS-FIN-204) not an approved admin host | no Tier-0 logon by this user in 30-day baseline | NTLM to a DC (no Kerberos PAC) — credential-relay/theft pattern | account is not normally privileged
+   H2 CONFIRMED    added to Administrators, Domain Admins | special privileges: SeBackupPrivilege, SeDebugPrivilege, SeEnableDelegationPrivilege | admin activity right after the privilege change
+   H3 CONFIRMED    onward logons: DC-01, FS-CORP-01 | 1 remote share/file access events | directory replication read (DCSync-style) | Kerberos TGT with RC4 downgrade
+  -- Mission 04 persistence --
+   priv-group adds: ['s.menon→Domain Admins', 's.menon→Administrators']  DCSync: True  new services: ['Service=WinSysMon2;ImagePath=%TEMP%\\wsm2.exe;Start=auto']
+  -- lateral movement --
+   onward: ['DC-01', 'FS-CORP-01']  shares: 1  kerberos: ['TGT requested; ticket encryption RC4 (downgrade)']
+  -- Mission (timeline) --
+   2026-10-05 21:10:00Z  4625      first of 12 failed logons from 10.20.44.204
+   2026-10-05 21:15:00Z  4624/3    logon s.menon on DC-02 from 10.20.44.204 (AuthPkg=NTLM;no Kerberos PAC)
+   2026-10-05 21:15:03Z  4672      privileges: SeDebugPrivilege;SeEnableDelegationPrivilege;SeBackupPrivilege
+   2026-10-05 21:15:40Z  4728      s.menon added to Domain Admins
+   2026-10-05 21:15:41Z  4732      s.menon added to Administrators
+   2026-10-05 21:16:35Z  4688      wsmprovhost.exe → powershell: powershell.exe -NoP -Enc <b64>
+   2026-10-05 21:16:35Z  1         wsmprovhost.exe → powershell: powershell.exe -NoP -Enc <b64>
+   2026-10-05 21:16:37Z  4104      script block: Get-ADUser -Filter * -Properties memberOf; Get-ADGroupMember 'Domain A
+   2026-10-05 21:16:39Z  4662      14 directory-access events incl. replication read
+   2026-10-05 21:17:05Z  7045      new service: Service=WinSysMon2;ImagePath=%TEMP%\wsm2.exe;Start=auto
+   2026-10-05 21:17:35Z  4624/3    onward logon s.menon on DC-01 from 10.20.0.12
+   2026-10-05 21:17:40Z  4624/3    onward logon s.menon on FS-CORP-01 from 10.20.0.12
+   2026-10-05 21:17:42Z  5140      FS-CORP-01: Share=\\*\SYSVOL
+   2026-10-05 21:17:47Z  4768      TGT requested; ticket encryption RC4 (downgrade)
