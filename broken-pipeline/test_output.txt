@@ -1,0 +1,25 @@
+test_13_baseline_only_is_clean (test_pipeline_chain_analyzer.TestBaselineAndRobustness.test_13_baseline_only_is_clean) ... ok
+test_14_in_window_logic (test_pipeline_chain_analyzer.TestBaselineAndRobustness.test_14_in_window_logic) ... ok
+test_15_malformed_rows_skipped (test_pipeline_chain_analyzer.TestBaselineAndRobustness.test_15_malformed_rows_skipped) ... ok
+test_16_cli_exit_codes (test_pipeline_chain_analyzer.TestBaselineAndRobustness.test_16_cli_exit_codes) ... /home/claude/GraySentinel-DSOU-45Day-2026/broken-pipeline/pipeline_chain_analyzer.py:115: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/GraySentinel-DSOU-45Day-2026/broken-pipeline/pipeline_context_SYNTHETIC.json' mode='r' encoding='utf-8'>
+  ctx = json.load(open(a.context)) if a.context else {}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+error: [Errno 2] No such file or directory: '/tmp/tmp0tj0csmo/nope.csv'
+ok
+test_01_full_chain_observed (test_pipeline_chain_analyzer.TestChain.test_01_full_chain_observed) ... ok
+test_02_all_five_stages (test_pipeline_chain_analyzer.TestChain.test_02_all_five_stages) ... ok
+test_03_stale_identity (test_pipeline_chain_analyzer.TestChain.test_03_stale_identity) ... ok
+test_04_offhours_run (test_pipeline_chain_analyzer.TestChain.test_04_offhours_run) ... ok
+test_05_unexpected_digest (test_pipeline_chain_analyzer.TestChain.test_05_unexpected_digest) ... ok
+test_06_unsigned_image (test_pipeline_chain_analyzer.TestChain.test_06_unsigned_image) ... ok
+test_07_deploy_non_trusted_digest (test_pipeline_chain_analyzer.TestChain.test_07_deploy_non_trusted_digest) ... ok
+test_08_excessive_rbac (test_pipeline_chain_analyzer.TestChain.test_08_excessive_rbac) ... ok
+test_09_kube_system_workload (test_pipeline_chain_analyzer.TestChain.test_09_kube_system_workload) ... ok
+test_10_cloud_access (test_pipeline_chain_analyzer.TestChain.test_10_cloud_access) ... ok
+test_11_image_delete_is_review (test_pipeline_chain_analyzer.TestChain.test_11_image_delete_is_review) ... ok
+test_12_dfir_sources (test_pipeline_chain_analyzer.TestChain.test_12_dfir_sources) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.013s
+
+OK

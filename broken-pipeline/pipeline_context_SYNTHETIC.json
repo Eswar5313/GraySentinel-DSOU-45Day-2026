@@ -1,0 +1,32 @@
+{
+  "_note": "SYNTHETIC context for Broken Pipeline lab (*.corp.internal, RFC-5737/1918). LAB ONLY.",
+  "release_window_utc": {
+    "start_hour": 4,
+    "end_hour": 16,
+    "weekdays_only": true
+  },
+  "trusted": {
+    "image": "registry.corp.internal/payments/api",
+    "digest": "sha256:aaaa1111trusted",
+    "runner_ip": "10.30.6.21",
+    "signing": "cosign required",
+    "provenance": "SLSA attestation required"
+  },
+  "identities": {
+    "ex.developer": {
+      "status": "terminated 2026-09-20",
+      "still_in_automation": true
+    },
+    "dev.anita": {
+      "status": "active",
+      "team": "payments"
+    }
+  },
+  "rbac": {
+    "payments:deployer": {
+      "intended": "patch deployments in 'payments' ns",
+      "actual": "cluster-admin via ClusterRoleBinding (EXCESSIVE)"
+    }
+  },
+  "retention": "Kubernetes audit logs retained 7 days"
+}

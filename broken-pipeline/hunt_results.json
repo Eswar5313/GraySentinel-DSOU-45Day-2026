@@ -1,0 +1,126 @@
+{
+  "findings": [
+    {
+      "stage": "developer identity",
+      "kind": "stale/terminated identity active",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:20:00Z",
+      "actor": "ex.developer",
+      "source": "gitlab",
+      "why": "ex.developer (terminated 2026-09-20) still runs pipelines"
+    },
+    {
+      "stage": "developer identity",
+      "kind": "stale/terminated identity active",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:22:00Z",
+      "actor": "ex.developer",
+      "source": "gitlab",
+      "why": "ex.developer (terminated 2026-09-20) still runs pipelines"
+    },
+    {
+      "stage": "CI/CD abuse",
+      "kind": "off-hours pipeline run",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:22:00Z",
+      "actor": "ex.developer",
+      "source": "gitlab",
+      "why": "run outside release window"
+    },
+    {
+      "stage": "malicious image / registry",
+      "kind": "unexpected image digest",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:26:00Z",
+      "actor": "ci-runner",
+      "source": "registry",
+      "why": "digest sha256:beef9999untrusted != trusted sha256:aaaa1111trusted"
+    },
+    {
+      "stage": "malicious image / registry",
+      "kind": "unsigned / no provenance",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:26:00Z",
+      "actor": "ci-runner",
+      "source": "registry",
+      "why": "tag :latest reused; NO cosign signature; NO provenance attestation"
+    },
+    {
+      "stage": "kubernetes",
+      "kind": "deploy of non-trusted digest",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:30:00Z",
+      "actor": "ci-deployer",
+      "source": "k8s",
+      "why": "deployment pulled a digest that differs from the signed baseline"
+    },
+    {
+      "stage": "kubernetes",
+      "kind": "excessive RBAC used",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:32:00Z",
+      "actor": "system:serviceaccount:payments:deployer",
+      "source": "k8s",
+      "why": "payments:deployer: create secrets \u2014 SA has cluster-admin via rolebinding (excessive RBAC)"
+    },
+    {
+      "stage": "kubernetes",
+      "kind": "excessive RBAC used",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:33:00Z",
+      "actor": "system:serviceaccount:payments:deployer",
+      "source": "k8s",
+      "why": "payments:deployer: list secrets/* \u2014 enumerated secrets cluster-wide"
+    },
+    {
+      "stage": "kubernetes",
+      "kind": "workload created in kube-system",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:34:00Z",
+      "actor": "system:serviceaccount:payments:deployer",
+      "source": "k8s",
+      "why": "pod requests hostPath mount + SA token (persistence vector)"
+    },
+    {
+      "stage": "cloud access",
+      "kind": "workload identity reached cloud",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:38:00Z",
+      "actor": "irsa:payments-deployer",
+      "source": "cloud",
+      "why": "sts.AssumeRole role/payments-deploy from 203.0.113.90 \u2014 workload identity used from pod to reach cloud; first-seen external egress"
+    },
+    {
+      "stage": "cloud access",
+      "kind": "workload identity reached cloud",
+      "verdict": "IoC",
+      "ts": "2026-10-05T21:40:00Z",
+      "actor": "irsa:payments-deployer",
+      "source": "cloud",
+      "why": "secretsmanager.GetSecretValue prod/payments/db from 203.0.113.90 \u2014 cloud secret read"
+    },
+    {
+      "stage": "defense evasion",
+      "kind": "image deleted (audit trail remains)",
+      "verdict": "REVIEW",
+      "ts": "2026-10-05T21:50:00Z",
+      "actor": "ex.developer",
+      "source": "registry",
+      "why": "image removed, but digest persists in k8s + audit logs"
+    }
+  ],
+  "kill_chain_stages": [
+    "developer identity",
+    "CI/CD abuse",
+    "malicious image / registry",
+    "kubernetes",
+    "cloud access"
+  ],
+  "full_chain_observed": true,
+  "dfir_sources": [
+    "cloud",
+    "gitlab",
+    "k8s",
+    "registry"
+  ]
+}

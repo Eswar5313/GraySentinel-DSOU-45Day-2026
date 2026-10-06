@@ -1,0 +1,95 @@
+# GraySentinel SSOU "Broken Pipeline" — BLUE-TEAM detection hypotheses (detection only).
+# Author: Eswar Mahalingam · 2026-10-06 · LAB ONLY · no exploit content.
+# Covers the chain: stale identity -> off-hours CI -> unsigned/new-digest image -> deploy ->
+# excessive SA RBAC -> workload-identity cloud access. Expressed as Sigma-style rules for
+# Kubernetes audit + registry + GitLab + cloud logs, plus Falco runtime rules.
+
+# ─────────────── Sigma-style (Kubernetes audit / registry / cloud) ───────────────
+---
+title: Deployment Pulls Image Digest Outside Signed Baseline
+id: a1b2c3d4-1001-4a01-9f00-broken-pipeline01
+logsource: {product: kubernetes, service: audit}
+detection:
+  selection:
+    objectRef.resource: ['deployments', 'pods']
+    verb: ['create', 'update', 'patch']
+  trusted_digests:
+    requestObject.spec.template.spec.containers.image|contains: '@sha256:aaaa1111trusted'
+  condition: selection and not trusted_digests
+level: high
+falsepositives: [legitimate new release — correlate with a signed push + in-window pipeline]
+---
+title: Image Pushed Without Signature or Provenance
+id: a1b2c3d4-1002-4a02-9f00-broken-pipeline02
+logsource: {product: registry, service: audit}
+detection:
+  selection: {action: 'image.push'}
+  unsigned: {detail|contains: ['NO cosign', 'NO provenance', 'unsigned']}
+  condition: selection and unsigned
+level: high
+---
+title: Off-Hours Pipeline Run By Stale Identity
+id: a1b2c3d4-1003-4a03-9f00-broken-pipeline03
+logsource: {product: gitlab, service: audit}
+detection:
+  selection: {action: ['pipeline.run', 'auth.success']}
+  stale: {actor|startswith: 'ex.'}
+  condition: selection and stale
+level: high
+---
+title: Over-Privileged Service Account Enumerates/Creates Secrets
+id: a1b2c3d4-1004-4a04-9f00-broken-pipeline04
+logsource: {product: kubernetes, service: audit}
+detection:
+  selection:
+    user.username|startswith: 'system:serviceaccount:'
+    objectRef.resource: 'secrets'
+    verb: ['list', 'get', 'create']
+  cluster_wide: {objectRef.namespace: ''}      # empty namespace on secrets list = cluster-wide
+  condition: selection and cluster_wide
+level: critical
+---
+title: Workload Pod Created In kube-system With hostPath
+id: a1b2c3d4-1005-4a05-9f00-broken-pipeline05
+logsource: {product: kubernetes, service: audit}
+detection:
+  selection:
+    objectRef.resource: 'pods'
+    objectRef.namespace: 'kube-system'
+    verb: 'create'
+  hostpath: {requestObject.spec.volumes.hostPath.path|exists: true}
+  condition: selection and hostpath
+level: critical
+---
+title: Workload Identity Reaches Cloud From Pod (first-seen egress)
+id: a1b2c3d4-1006-4a06-9f00-broken-pipeline06
+logsource: {product: cloud, service: audit}
+detection:
+  selection: {eventName: ['AssumeRole', 'GetSecretValue'], actor|startswith: 'irsa:'}
+  condition: selection
+level: high
+---
+# Correlation — the whole chain for one image/namespace within 30 min
+title: CI/CD Supply-Chain Compromise Chain
+correlation:
+  type: temporal
+  rules: [a1b2c3d4-1002-4a02-9f00-broken-pipeline02, a1b2c3d4-1001-4a01-9f00-broken-pipeline01,
+          a1b2c3d4-1004-4a04-9f00-broken-pipeline04]
+  timespan: 30m
+  condition: {gte: 2}
+level: critical
+
+# ─────────────── Falco (runtime) ───────────────
+# - rule: Unexpected outbound connection from payments pod
+#   condition: outbound and container and k8s.ns.name=payments and not fd.sip in (allowed_egress)
+#   output: "Pod egress to unexpected host (image=%container.image.repository digest=%container.image.digest)"
+#   priority: WARNING
+# - rule: Shell spawned in production container
+#   condition: spawned_process and container and proc.name in (bash, sh, nsenter) and k8s.ns.name=payments
+#   output: "Interactive shell in prod container (pod=%k8s.pod.name image=%container.image.repository)"
+#   priority: CRITICAL
+# - rule: Service account token read inside container
+#   condition: open_read and fd.name startswith /var/run/secrets/kubernetes.io/serviceaccount
+#     and not proc.name in (expected_sdk_procs)
+#   output: "SA token accessed by unexpected process (%proc.cmdline)"
+#   priority: WARNING

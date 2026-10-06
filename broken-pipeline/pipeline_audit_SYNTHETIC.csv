@@ -1,0 +1,75 @@
+ts,source,action,actor,sourceIP,object,image,digest,namespace,serviceaccount,verb,result,detail
+2026-09-07T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-07T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-07T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-08T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-08T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-08T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-09T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-09T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-09T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-10T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-10T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-10T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-11T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-11T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-11T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-14T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-14T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-14T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-15T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-15T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-15T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-16T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-16T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-16T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-17T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-17T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-17T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-18T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-18T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-18T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-21T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-21T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-21T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-22T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-22T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-22T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-23T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-23T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-23T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-24T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-24T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-24T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-25T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-25T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-25T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-28T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-28T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-28T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-29T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-29T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-29T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-09-30T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-09-30T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-09-30T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-10-01T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-10-01T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-10-01T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-10-02T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-10-02T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-10-02T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-10-05T05:00:00Z,gitlab,pipeline.run,dev.anita,10.30.6.21,payments/api,,,,,,success,MR approved; release window
+2026-10-05T05:08:00Z,registry,image.push,ci-runner,10.30.6.21,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,,,,success,signed by cosign; provenance attested
+2026-10-05T05:12:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:aaaa1111trusted,payments,deployer,patch,allowed,in-window deploy
+2026-10-05T21:20:00Z,gitlab,auth.success,ex.developer,10.30.44.90,,,,,,,success,terminated developer account still active in automation (Mission: stale identity)
+2026-10-05T21:22:00Z,gitlab,pipeline.run,ex.developer,10.30.44.90,payments/api,,,,,,success,off-hours run outside release window
+2026-10-05T21:26:00Z,registry,image.push,ci-runner,10.30.44.90,,registry.corp.internal/payments/api,sha256:beef9999untrusted,,,,success,tag :latest reused; NO cosign signature; NO provenance attestation
+2026-10-05T21:30:00Z,k8s,deployment.update,ci-deployer,,,registry.corp.internal/payments/api,sha256:beef9999untrusted,payments,deployer,patch,allowed,off-hours deploy; digest changed from trusted baseline
+2026-10-05T21:32:00Z,k8s,serviceaccount.token.use,system:serviceaccount:payments:deployer,,secrets,,,payments,deployer,create,allowed,SA has cluster-admin via rolebinding (excessive RBAC)
+2026-10-05T21:33:00Z,k8s,rbac.read,system:serviceaccount:payments:deployer,,secrets/*,,,payments,deployer,list,allowed,enumerated secrets cluster-wide
+2026-10-05T21:34:00Z,k8s,pod.create,system:serviceaccount:payments:deployer,,pod/host-mount,,,kube-system,deployer,create,allowed,pod requests hostPath mount + SA token (persistence vector)
+2026-10-05T21:38:00Z,cloud,sts.AssumeRole,irsa:payments-deployer,203.0.113.90,role/payments-deploy,,,,,,success,workload identity used from pod to reach cloud; first-seen external egress
+2026-10-05T21:40:00Z,cloud,secretsmanager.GetSecretValue,irsa:payments-deployer,203.0.113.90,prod/payments/db,,,,,,success,cloud secret read
+2026-10-05T21:50:00Z,registry,image.delete,ex.developer,10.30.44.90,,registry.corp.internal/payments/api,sha256:beef9999untrusted,,,,success,attacker deletes image; digest stays in k8s + audit
+2026-10-05T21:51:00Z,edr,scan,,,,,,,,,clean,container AV: 0 detections (trusted pipeline)

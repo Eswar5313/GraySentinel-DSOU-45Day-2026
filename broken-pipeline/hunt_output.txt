@@ -1,0 +1,20 @@
+==============================================================================
+GraySentinel SSOU · Broken Pipeline — CI/CD → K8s supply-chain (blue-team view)
+==============================================================================
+Full chain observed: True
+Kill-chain stages: developer identity -> CI/CD abuse -> malicious image / registry -> kubernetes -> cloud access
+DFIR sources with evidence: cloud, gitlab, k8s, registry
+
+FINDINGS:
+  [IoC   ] developer identity         2026-10-05T21:20:00Z  stale/terminated identity active   — ex.developer (terminated 2026-09-20) still runs pipelines
+  [IoC   ] developer identity         2026-10-05T21:22:00Z  stale/terminated identity active   — ex.developer (terminated 2026-09-20) still runs pipelines
+  [IoC   ] CI/CD abuse                2026-10-05T21:22:00Z  off-hours pipeline run             — run outside release window
+  [IoC   ] malicious image / registry 2026-10-05T21:26:00Z  unexpected image digest            — digest sha256:beef9999untrusted != trusted sha256:aaaa1111trusted
+  [IoC   ] malicious image / registry 2026-10-05T21:26:00Z  unsigned / no provenance           — tag :latest reused; NO cosign signature; NO provenance attestation
+  [IoC   ] kubernetes                 2026-10-05T21:30:00Z  deploy of non-trusted digest       — deployment pulled a digest that differs from the signed baseline
+  [IoC   ] kubernetes                 2026-10-05T21:32:00Z  excessive RBAC used                — payments:deployer: create secrets — SA has cluster-admin via rolebinding (excessive RBAC)
+  [IoC   ] kubernetes                 2026-10-05T21:33:00Z  excessive RBAC used                — payments:deployer: list secrets/* — enumerated secrets cluster-wide
+  [IoC   ] kubernetes                 2026-10-05T21:34:00Z  workload created in kube-system    — pod requests hostPath mount + SA token (persistence vector)
+  [IoC   ] cloud access               2026-10-05T21:38:00Z  workload identity reached cloud    — sts.AssumeRole role/payments-deploy from 203.0.113.90 — workload identity used from pod to reach cloud; first-seen external egress
+  [IoC   ] cloud access               2026-10-05T21:40:00Z  workload identity reached cloud    — secretsmanager.GetSecretValue prod/payments/db from 203.0.113.90 — cloud secret read
+  [REVIEW] defense evasion            2026-10-05T21:50:00Z  image deleted (audit trail remains) — image removed, but digest persists in k8s + audit logs
