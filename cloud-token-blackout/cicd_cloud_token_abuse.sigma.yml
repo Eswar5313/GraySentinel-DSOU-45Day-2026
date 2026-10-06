@@ -1,0 +1,72 @@
+title: CI/CD Cloud Token Abuse (Cloud Token Blackout)
+id: 5f2c8b1a-9d47-4e36-8a21-1c7e4b0d93a2
+status: experimental
+description: |
+  Detection hypotheses for stolen CI/CD cloud credentials used outside the pipeline.
+  GraySentinel RIU intel war-room "Cloud Token Blackout". Built against AWS CloudTrail
+  fields; the same logic maps to Azure sign-in/activity logs. No single event alerts alone —
+  the value is an unusual-source cloud auth correlated with IAM change / secret / public-ACL.
+author: Eswar Mahalingam (GraySentinel RIU, CTI)
+date: 2026/10/06
+references:
+  - https://attack.mitre.org/techniques/T1078/004/
+  - https://attack.mitre.org/techniques/T1552/
+  - https://attack.mitre.org/techniques/T1098/001/
+tags: [attack.initial_access, attack.t1078.004, attack.credential_access, attack.t1552, attack.persistence, attack.t1098.001]
+---
+# H1 — long-lived IAM user key used from a new/non-CI network
+title: Long-Lived Key Used Outside CI Ranges
+name: longkey_unusual_source
+logsource: {product: aws, service: cloudtrail}
+detection:
+  selection: {userIdentity.type: 'IAMUser'}
+  ci_ranges: {sourceIPAddress|cidr: ['140.82.112.0/20', '10.0.0.0/8']}
+  ci_agents: {userAgent|contains: ['actions', 'aws-cli/deploy']}
+  condition: selection and not ci_ranges and not ci_agents
+level: medium
+---
+# H2 — IAM privilege escalation
+title: IAM Privilege Escalation Actions
+name: iam_privesc
+logsource: {product: aws, service: cloudtrail}
+detection:
+  selection:
+    eventSource: 'iam.amazonaws.com'
+    eventName: [CreateAccessKey, AttachUserPolicy, PutUserPolicy, AttachRolePolicy, CreatePolicyVersion, CreateUser, CreateLoginProfile]
+  condition: selection
+level: high
+---
+# H3 — secret / parameter retrieval from unusual source
+title: Secret Retrieval From Unusual Source
+name: secret_access
+logsource: {product: aws, service: cloudtrail}
+detection:
+  selection:
+    eventName: [GetSecretValue, GetParameters, Decrypt]
+  ci_ranges: {sourceIPAddress|cidr: ['140.82.112.0/20', '10.0.0.0/8']}
+  condition: selection and not ci_ranges
+level: high
+---
+# H4 — storage made public (exfil channel)
+title: Object Storage Made Public
+name: bucket_public
+logsource: {product: aws, service: cloudtrail}
+detection:
+  selection:
+    eventName: [PutBucketPolicy, PutBucketAcl, PutObjectAcl, DeletePublicAccessBlock]
+  condition: selection
+level: high
+---
+# Correlation — one principal, 10 min: unusual-source auth + (privesc OR secret OR public-ACL)
+title: CI/CD Cloud Token Abuse
+correlation:
+  type: temporal
+  rules: [longkey_unusual_source, iam_privesc, secret_access, bucket_public]
+  group-by: [userIdentity.arn]
+  timespan: 10m
+  condition: {gte: 2}
+falsepositives:
+  - Break-glass admin from a new IP (verify change ticket + MFA)
+  - Blue/green deploy that legitimately rotates keys and bucket policy (check it ran from CI)
+  - New office / VPN egress IP not yet in the CI allow-list
+level: critical

