@@ -1,0 +1,38 @@
+// GraySentinel RIU "Consent Trap" — reference hunts (Microsoft Sentinel / Defender XDR style).
+// Author: Eswar Mahalingam · 2026-10-08 · read-only queries. Table/column names vary by connector and
+// licence — treat these as a starting shape and validate each column in your own workspace first.
+
+// 1) Who consented to what in the last 30 days — first-seen application IDs float to the top
+AuditLogs
+| where TimeGenerated > ago(30d) and OperationName == "Consent to application"
+| extend AppName = tostring(TargetResources[0].displayName),
+         AppId   = tostring(TargetResources[0].id),
+         User    = tostring(InitiatedBy.user.userPrincipalName),
+         Props   = tostring(TargetResources[0].modifiedProperties)
+| extend IsAdminConsent = Props has "IsAdminConsent\\\":\\\"True",
+         RiskyScopes    = Props has_any ("Mail.", "Files.", "Sites.", "offline_access")
+| summarize FirstSeen = min(TimeGenerated), Users = make_set(User), UserCount = dcount(User),
+            AnyAdminConsent = max(toint(IsAdminConsent)), AnyRisky = max(toint(RiskyScopes)) by AppName, AppId
+| where FirstSeen > ago(7d) and AnyRisky == 1 and AnyAdminConsent == 0
+| order by UserCount desc, FirstSeen desc
+
+// 2) Hypothesis: consent, then the same application touching mail/files within 60 minutes
+let consents = AuditLogs
+    | where OperationName == "Consent to application"
+    | project ConsentTime = TimeGenerated, User = tolower(tostring(InitiatedBy.user.userPrincipalName)),
+              AppName = tostring(TargetResources[0].displayName);
+OfficeActivity
+| where Operation in ("MailItemsAccessed", "FileAccessed", "FileDownloaded")
+| extend User = tolower(UserId)
+| join kind=inner consents on User
+| where TimeGenerated between (ConsentTime .. ConsentTime + 60m)
+| summarize Events = count(), IPs = make_set(ClientIP), Ops = make_set(Operation),
+            FirstActivity = min(TimeGenerated) by User, AppName, ConsentTime
+| extend MinutesAfterConsent = datetime_diff("minute", FirstActivity, ConsentTime)
+
+// 3) Scope: every user and every sign-in of the suspect application ID
+let suspectAppId = "5d0c0000-0000-4000-8000-00000000c7a9";   // synthetic lab value
+union isfuzzy=true AADServicePrincipalSignInLogs, AADNonInteractiveUserSignInLogs
+| where AppId == suspectAppId
+| summarize SignIns = count(), IPs = make_set(IPAddress), Countries = make_set(Location),
+            First = min(TimeGenerated), Last = max(TimeGenerated) by UserPrincipalName, AppDisplayName

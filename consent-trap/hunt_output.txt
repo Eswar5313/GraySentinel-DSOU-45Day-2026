@@ -1,0 +1,60 @@
+==============================================================================
+GraySentinel RIU · Consent Trap — OAuth consent abuse hunt
+==============================================================================
+Assessment: IDENTITY-BASED INTRUSION VIA OAUTH CONSENT (campaign: multiple users)
+Confidence: HIGH · Attribution: none — no evidence ties this to a named actor
+Affected users: finance.user, hr.user
+
+CLOUD APPLICATION COMPROMISE HUNT TABLE (activity after each app's first consent; times IST)
+  01 Jun 11:30:00  NORMAL         it.admin      Example Expense Cloud         Consent to application     — approved application
+  07 Oct 11:30:00  NORMAL         it.admin      TeamBoard Planner             Consent to application     — approved application
+  08 Oct 08:15:00  NORMAL         sales.user    Example PDF Reader            Consent to application     — verified publisher, low-risk scope only (User.Read)
+  08 Oct 08:42:11  SUSPICIOUS     finance.user  Secure Document Verification  Consent to application     — not on the approved-application list; first-seen application in the tenant; publisher not verified; high-risk data scopes: Files.Read.All, Mail.ReadBasic
+  08 Oct 08:49:32  SUSPICIOUS     finance.user  Secure Document Verification  API request ×12            — 7 min after consent; source 203.0.113.45 in DE — user baseline IN
+  08 Oct 09:03:18  HIGH PRIORITY  finance.user  Secure Document Verification  MailItemsAccessed ×340     — 21 min after consent; source 203.0.113.45 in DE — user baseline IN; 340 mail items via app token (non-interactive)
+  08 Oct 09:07:42  HIGH PRIORITY  finance.user  Secure Document Verification  FileAccessed ×15           — 26 min after consent; source 203.0.113.45 in DE — user baseline IN; 15 files on 'Finance-Treasury' — site outside the user's 30-day baseline
+  08 Oct 09:07:58  HIGH PRIORITY  finance.user  Secure Document Verification  FileDownloaded ×8          — 26 min after consent; source 203.0.113.45 in DE — user baseline IN; 8 files on 'Board-Packs' — site outside the user's 30-day baseline
+  08 Oct 09:21:11  HIGH PRIORITY  hr.user       Secure Document Verification  Consent to application     — second user consenting to the same app (after finance.user); not on the approved-application list; first-seen application in the tenant; publisher not verified; high-risk data scopes: Files.Read.All, Mail.ReadBasic
+  08 Oct 09:31:52  HIGH PRIORITY  finance.user  Secure Document Verification  API request ×55            — 50 min after consent; source 203.0.113.45 in DE — user baseline IN; same app active for 2 users
+  08 Oct 09:31:52  HIGH PRIORITY  hr.user       Secure Document Verification  API request ×31            — 11 min after consent; source 203.0.113.45 in DE — user baseline IN; same app active for 2 users
+  (+ 23 NORMAL activity rows of approved applications not listed)
+
+APPLICATION RISK PROFILE
+  Example Expense Cloud [0e0e0000-0000-4000-8000-00000000e1e1] publisher=Example Expense Inc verified=True risk_attributes=0 users=['it.admin']
+  TeamBoard Planner [7b7b0000-0000-4000-8000-00000000b0a2] publisher=TeamBoard Software GmbH verified=True risk_attributes=0 users=['it.admin']
+  Example PDF Reader [9d9d0000-0000-4000-8000-00000000d0f3] publisher=Example PDF Corp verified=True risk_attributes=2 users=['sales.user']
+     - not on the approved-application list
+     - first-seen application in the tenant
+  Secure Document Verification [5d0c0000-0000-4000-8000-00000000c7a9] publisher=SecureDocs Verification Ltd verified=False risk_attributes=7 users=['finance.user', 'hr.user']
+     - not on the approved-application list
+     - first-seen application in the tenant
+     - publisher not verified
+     - high-risk data scopes: Files.Read.All, Mail.ReadBasic
+     - offline_access = access survives the session (refresh token)
+     - granted by end-user consent, not admin review
+     - generic trust-bait name (secure, verification, document)
+
+DETECTION HYPOTHESIS — new OAuth consent followed by unusual cloud activity
+  fired=True  finance.user → Secure Document Verification  consent 2026-10-08T03:12:11Z  first API +7.3 min  first data +21.1 min  countries=['DE']  api=67 mail=340 files=23 new_sites=['Board-Packs', 'Finance-Treasury']
+  fired=True  hr.user → Secure Document Verification  consent 2026-10-08T03:51:11Z  first API +10.7 min  first data +None min  countries=['DE']  api=31 mail=0 files=0 new_sites=[]
+
+INDICATORS
+  application_name       Secure Document Verification
+  application_id         5d0c0000-0000-4000-8000-00000000c7a9
+  publisher              SecureDocs Verification Ltd
+  redirect_uri_domains   ['secure-docverify.example.net']
+  domains                ['secure-docverify.example.net']
+  related_domains_osint  ['hr-docverify.example.org', 'secure-docsign.example.net']
+  source_ips             ['203.0.113.45']
+  countries              ['DE']
+  permissions            ['Files.Read.All', 'Mail.ReadBasic', 'User.Read', 'offline_access']
+  consenting_users       ['finance.user', 'hr.user']
+
+DELIVERY (lure clicks carrying the same client_id)
+  2026-10-08T03:11:30Z  finance.user  https://secure-docverify.example.net/share/Q3-audit-confirmation
+  2026-10-08T03:49:40Z  hr.user       https://secure-docverify.example.net/share/policy-acknowledgement
+
+REVOKE FIRST
+  - delegated grant + refresh tokens: finance.user → Secure Document Verification
+  - delegated grant + refresh tokens: hr.user → Secure Document Verification
+  - disable service principal 5d0c0000-0000-4000-8000-00000000c7a9 tenant-wide

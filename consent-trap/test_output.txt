@@ -1,0 +1,25 @@
+test_15_single_user_is_medium (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_15_single_user_is_medium) ... ok
+test_16_consent_without_activity_is_low_and_not_fired (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_16_consent_without_activity_is_low_and_not_fired) ... ok
+test_17_admin_approved_app_never_fires_even_if_listed_scopes_grow (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_17_admin_approved_app_never_fires_even_if_listed_scopes_grow) ... ok
+test_18_baseline_only_is_clean (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_18_baseline_only_is_clean) ... ok
+test_19_malformed_rows_skipped (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_19_malformed_rows_skipped) ... ok
+test_20_cli_exit_codes (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_20_cli_exit_codes) ... ok
+test_01_first_consent_is_suspicious_not_high (test_oauth_consent_hunter.TestHuntTable.test_01_first_consent_is_suspicious_not_high) ... ok
+test_02_first_api_call_is_suspicious (test_oauth_consent_hunter.TestHuntTable.test_02_first_api_call_is_suspicious) ... ok
+test_03_mailbox_from_germany_is_high (test_oauth_consent_hunter.TestHuntTable.test_03_mailbox_from_germany_is_high) ... ok
+test_04_out_of_baseline_file_access_is_high (test_oauth_consent_hunter.TestHuntTable.test_04_out_of_baseline_file_access_is_high) ... ok
+test_05_second_user_consent_is_high (test_oauth_consent_hunter.TestHuntTable.test_05_second_user_consent_is_high) ... ok
+test_06_multi_user_api_is_high (test_oauth_consent_hunter.TestHuntTable.test_06_multi_user_api_is_high) ... ok
+test_07_approved_and_low_risk_apps_are_normal (test_oauth_consent_hunter.TestHuntTable.test_07_approved_and_low_risk_apps_are_normal) ... ok
+test_08_risk_profile_flags (test_oauth_consent_hunter.TestProfileAndDetection.test_08_risk_profile_flags) ... ok
+test_09_detection_fires_for_both_users (test_oauth_consent_hunter.TestProfileAndDetection.test_09_detection_fires_for_both_users) ... ok
+test_10_time_deltas (test_oauth_consent_hunter.TestProfileAndDetection.test_10_time_deltas) ... ok
+test_11_exposure_counts (test_oauth_consent_hunter.TestProfileAndDetection.test_11_exposure_counts) ... ok
+test_12_iocs (test_oauth_consent_hunter.TestProfileAndDetection.test_12_iocs) ... ok
+test_13_delivery_clicks_linked_by_client_id (test_oauth_consent_hunter.TestProfileAndDetection.test_13_delivery_clicks_linked_by_client_id) ... ok
+test_14_assessment_high_but_no_attribution (test_oauth_consent_hunter.TestProfileAndDetection.test_14_assessment_high_but_no_attribution) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.033s
+
+OK

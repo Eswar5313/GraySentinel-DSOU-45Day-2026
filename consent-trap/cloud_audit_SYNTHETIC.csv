@@ -1,0 +1,125 @@
+ts,source,action,user,app_name,app_id,publisher,publisher_verified,scopes,consent_type,src_ip,country,object,count,result,detail
+2026-06-01T06:00:00Z,entra_audit,Consent to application,it.admin,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,Example Expense Inc,true,User.Read Files.ReadWrite,AllPrincipals,198.51.100.10,IN,,,success,admin consent; procurement ticket PRC-1182
+2026-09-08T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-08T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-08T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-08T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-08T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-09T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-09T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-09T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-09T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-09T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-10T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-10T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-10T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-10T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-10T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-11T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-11T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-11T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-11T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-11T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-14T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-14T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-14T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-14T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-14T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-15T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-15T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-15T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-15T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-15T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-16T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-16T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-16T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-16T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-16T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-17T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-17T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-17T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-17T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-17T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-18T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-18T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-18T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-18T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-18T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-21T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-21T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-21T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-21T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-21T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-22T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-22T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-22T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-22T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-22T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-23T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-23T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-23T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-23T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-23T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-24T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-24T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-24T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-24T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-24T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-25T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-25T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-25T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-25T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-25T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-28T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-28T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-28T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-28T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-28T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-29T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-29T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-29T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-29T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-29T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-09-30T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-30T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-09-30T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-09-30T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-09-30T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-10-01T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-01T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-01T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-10-01T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-10-01T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-10-02T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-02T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-02T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-10-02T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-10-02T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-10-05T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-05T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-05T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-10-05T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-10-05T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-10-06T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-06T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-06T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-10-06T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-10-06T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-10-07T04:00:00Z,exchange_audit,MailItemsAccessed,finance.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-07T04:00:00Z,exchange_audit,MailItemsAccessed,hr.user,Outlook,,,,,,198.51.100.10,IN,,40,success,interactive client
+2026-10-07T04:30:00Z,sharepoint_audit,FileAccessed,finance.user,Browser,,,,,,198.51.100.10,IN,Finance-Ops,8,success,
+2026-10-07T04:30:00Z,sharepoint_audit,FileAccessed,hr.user,Browser,,,,,,198.51.100.10,IN,HR-Policies,5,success,
+2026-10-07T06:00:00Z,graph_activity,API request,finance.user,Example Expense Cloud,0e0e0000-0000-4000-8000-00000000e1e1,,,,,198.51.100.20,IN,/me/drive/root:/Expenses,6,success,approved integration
+2026-10-07T06:00:00Z,entra_audit,Consent to application,it.admin,TeamBoard Planner,7b7b0000-0000-4000-8000-00000000b0a2,TeamBoard Software GmbH,true,User.Read Tasks.ReadWrite,AllPrincipals,198.51.100.10,IN,,,success,admin consent; new company-approved SaaS; ticket PRC-1240
+2026-10-07T06:15:00Z,graph_activity,API request,hr.user,TeamBoard Planner,7b7b0000-0000-4000-8000-00000000b0a2,,,,,198.51.100.30,IN,/me/planner/tasks,4,success,
+2026-10-08T02:45:00Z,entra_audit,Consent to application,sales.user,Example PDF Reader,9d9d0000-0000-4000-8000-00000000d0f3,Example PDF Corp,true,User.Read,Principal,198.51.100.10,IN,,,success,user consent; sign-in only scope
+2026-10-08T03:11:30Z,proxy,URL click,finance.user,,,,,,,198.51.100.10,IN,https://secure-docverify.example.net/share/Q3-audit-confirmation,,redirect,document-sharing lure; 302 to the genuine identity-provider /authorize endpoint with client_id=5d0c0000-0000-4000-8000-00000000c7a9
+2026-10-08T03:12:11Z,entra_audit,Consent to application,finance.user,Secure Document Verification,5d0c0000-0000-4000-8000-00000000c7a9,SecureDocs Verification Ltd,false,User.Read Mail.ReadBasic Files.Read.All offline_access,Principal,198.51.100.10,IN,,,success,user consent; first-seen app in tenant; reply URL https://secure-docverify.example.net/callback; MFA satisfied by existing session
+2026-10-08T03:19:32Z,graph_activity,API request,finance.user,Secure Document Verification,5d0c0000-0000-4000-8000-00000000c7a9,,,,,203.0.113.45,DE,"/me, /me/mailFolders",12,success,delegated token redeemed from app infrastructure; no interactive sign-in
+2026-10-08T03:33:18Z,exchange_audit,MailItemsAccessed,finance.user,Secure Document Verification,5d0c0000-0000-4000-8000-00000000c7a9,,,,,203.0.113.45,DE,,340,success,bulk sync-style access via app token
+2026-10-08T03:37:42Z,sharepoint_audit,FileAccessed,finance.user,Secure Document Verification,5d0c0000-0000-4000-8000-00000000c7a9,,,,,203.0.113.45,DE,Finance-Treasury,15,success,site not opened by this user in 30-day baseline
+2026-10-08T03:37:58Z,sharepoint_audit,FileDownloaded,finance.user,Secure Document Verification,5d0c0000-0000-4000-8000-00000000c7a9,,,,,203.0.113.45,DE,Board-Packs,8,success,site not opened by this user in 30-day baseline
+2026-10-08T03:49:40Z,proxy,URL click,hr.user,,,,,,,198.51.100.10,IN,https://secure-docverify.example.net/share/policy-acknowledgement,,redirect,same lure domain; client_id=5d0c0000-0000-4000-8000-00000000c7a9
+2026-10-08T03:51:11Z,entra_audit,Consent to application,hr.user,Secure Document Verification,5d0c0000-0000-4000-8000-00000000c7a9,SecureDocs Verification Ltd,false,User.Read Mail.ReadBasic Files.Read.All offline_access,Principal,198.51.100.10,IN,,,success,"user consent; second user, same application"
+2026-10-08T04:01:52Z,graph_activity,API request,finance.user,Secure Document Verification,5d0c0000-0000-4000-8000-00000000c7a9,,,,,203.0.113.45,DE,"/me/messages, /me/drive/root/children",55,success,"same app, same infrastructure, multiple users"
+2026-10-08T04:01:52Z,graph_activity,API request,hr.user,Secure Document Verification,5d0c0000-0000-4000-8000-00000000c7a9,,,,,203.0.113.45,DE,"/me/messages, /me/drive/root/children",31,success,"same app, same infrastructure, multiple users"

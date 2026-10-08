@@ -1,0 +1,77 @@
+# GraySentinel RIU "Consent Trap" — detection hypotheses for OAuth consent abuse (detection only).
+# Author: Eswar Mahalingam · 2026-10-08 · built against the synthetic lab export in this folder.
+# Field names follow the lab CSV / common Entra ID audit mappings — validate them against your
+# SIEM's schema before use (Sentinel AuditLogs nests these under TargetResources/ModifiedProperties).
+---
+title: End-User Consent To Application With High-Risk Delegated Scopes
+id: c7a90001-5d0c-4e11-9a01-c0a5e27712a1
+status: experimental
+description: A non-admin user grants an application mail/file scopes together with offline_access.
+references:
+  - https://attack.mitre.org/techniques/T1528/
+  - https://attack.mitre.org/techniques/T1566/002/
+author: Eswar Mahalingam (GraySentinel RIU)
+date: 2026/10/08
+tags: [attack.credential_access, attack.t1528, attack.initial_access, attack.t1566.002]
+logsource: {product: azure, service: auditlogs}
+detection:
+  selection:
+    action: 'Consent to application'
+    consent_type: 'Principal'                 # user consent, not AllPrincipals (admin)
+  data_scope:
+    scopes|contains: ['Mail.', 'Files.', 'Sites.', 'MailboxSettings.']
+  persistence_scope:
+    scopes|contains: 'offline_access'
+  condition: selection and data_scope and persistence_scope
+fields: [user, app_name, app_id, publisher, publisher_verified, scopes, src_ip]
+falsepositives:
+  - Newly approved SaaS rollout (HR/Finance tools) — check the procurement/change ticket
+  - Marketplace productivity add-ins, security tools, automation platforms on the approved list
+level: medium
+---
+title: Consent To Application From Unverified Publisher
+id: c7a90002-5d0c-4e11-9a01-c0a5e27712a2
+name: consent_unverified_publisher
+logsource: {product: azure, service: auditlogs}
+detection:
+  selection: {action: 'Consent to application', publisher_verified: 'false'}
+  condition: selection
+level: medium
+---
+title: Same Application Consented By Multiple Users In One Hour
+id: c7a90003-5d0c-4e11-9a01-c0a5e27712a3
+correlation:
+  type: value_count
+  rules: [consent_unverified_publisher]
+  group-by: [app_id]
+  timespan: 1h
+  condition: {field: user, gte: 2}
+level: high
+---
+title: Application Token Used From Country Outside The User Baseline
+id: c7a90004-5d0c-4e11-9a01-c0a5e27712a4
+name: app_activity_foreign
+logsource: {product: m365, service: audit}        # Graph activity / MailItemsAccessed / FileAccessed
+detection:
+  selection:
+    action: ['API request', 'MailItemsAccessed', 'FileAccessed', 'FileDownloaded']
+  first_party:
+    app_name: ['Outlook', 'Browser', 'Teams', 'OneDrive']
+  home_country:
+    country: 'IN'                                # replace with a per-user baseline lookup
+  condition: selection and not first_party and not home_country
+level: medium
+---
+# Correlation = the detection hypothesis in the brief:
+# "new OAuth application consent followed by unusual cloud activity" — same user + app within 60 min
+title: OAuth Consent Followed By Unusual Cloud Activity
+id: c7a90005-5d0c-4e11-9a01-c0a5e27712a5
+correlation:
+  type: temporal_ordered
+  rules: [consent_unverified_publisher, app_activity_foreign]
+  group-by: [user, app_id]
+  timespan: 60m
+  condition: {gte: 2}
+falsepositives:
+  - Approved third-party integration hosted abroad — allow-list by application ID, never by display name
+level: high

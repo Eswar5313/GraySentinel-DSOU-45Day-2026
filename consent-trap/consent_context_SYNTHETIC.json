@@ -1,0 +1,87 @@
+{
+  "_note": "SYNTHETIC context for the Consent Trap lab. Tenant corp.example, RFC-5737 IPs. LAB ONLY.",
+  "tenant": {
+    "name": "corp.example",
+    "employees": 4500,
+    "user_consent_policy": "users may consent to any app (default)"
+  },
+  "approved_apps": {
+    "0e0e0000-0000-4000-8000-00000000e1e1": "Example Expense Cloud",
+    "7b7b0000-0000-4000-8000-00000000b0a2": "TeamBoard Planner"
+  },
+  "high_risk_scopes": [
+    "Mail.Read",
+    "Mail.ReadBasic",
+    "Mail.ReadWrite",
+    "Mail.Send",
+    "Files.Read.All",
+    "Files.ReadWrite.All",
+    "Sites.Read.All",
+    "offline_access",
+    "MailboxSettings.ReadWrite",
+    "Directory.Read.All",
+    "User.ReadBasic.All"
+  ],
+  "trust_bait_words": [
+    "secure",
+    "verification",
+    "verify",
+    "document",
+    "docs",
+    "protect",
+    "official",
+    "update"
+  ],
+  "users": {
+    "finance.user": {
+      "dept": "Finance",
+      "countries": [
+        "IN"
+      ],
+      "sites": [
+        "Finance-Ops"
+      ]
+    },
+    "hr.user": {
+      "dept": "HR",
+      "countries": [
+        "IN"
+      ],
+      "sites": [
+        "HR-Policies"
+      ]
+    },
+    "sales.user": {
+      "dept": "Sales",
+      "countries": [
+        "IN"
+      ],
+      "sites": []
+    },
+    "it.admin": {
+      "dept": "IT",
+      "countries": [
+        "IN"
+      ],
+      "sites": [],
+      "admin": true
+    }
+  },
+  "osint_SIMULATED": {
+    "_note": "Simulated lookup results for the lab. No real WHOIS/CT/VT/urlscan query was made.",
+    "secure-docverify.example.net": {
+      "registered": "2026-10-02",
+      "registrar_privacy": true,
+      "first_certificate": "2026-10-03",
+      "hosting_ip": "203.0.113.45",
+      "hosting_country": "DE",
+      "vendor_detections": "0 / 90 (new domain)",
+      "page_title": "Secure Document Verification \u2014 Sign in to view",
+      "co_hosted": [
+        "secure-docsign.example.net",
+        "hr-docverify.example.org"
+      ],
+      "claimed_vendor_site": "none \u2014 no company website, no privacy policy, no support contact"
+    }
+  }
+}

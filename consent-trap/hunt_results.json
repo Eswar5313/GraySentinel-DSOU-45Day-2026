@@ -1,0 +1,553 @@
+{
+  "assessment": "IDENTITY-BASED INTRUSION VIA OAUTH CONSENT (campaign: multiple users)",
+  "confidence": "HIGH",
+  "attribution": "none \u2014 no evidence ties this to a named actor",
+  "hunt_table": [
+    {
+      "ts": "2026-06-01T06:00:00Z",
+      "ist": "01 Jun 11:30:00",
+      "user": "it.admin",
+      "application": "Example Expense Cloud",
+      "event": "Consent to application",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-08T06:00:00Z",
+      "ist": "08 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-09T06:00:00Z",
+      "ist": "09 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-10T06:00:00Z",
+      "ist": "10 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-11T06:00:00Z",
+      "ist": "11 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-14T06:00:00Z",
+      "ist": "14 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-15T06:00:00Z",
+      "ist": "15 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-16T06:00:00Z",
+      "ist": "16 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-17T06:00:00Z",
+      "ist": "17 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-18T06:00:00Z",
+      "ist": "18 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-21T06:00:00Z",
+      "ist": "21 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-22T06:00:00Z",
+      "ist": "22 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-23T06:00:00Z",
+      "ist": "23 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-24T06:00:00Z",
+      "ist": "24 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-25T06:00:00Z",
+      "ist": "25 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-28T06:00:00Z",
+      "ist": "28 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-29T06:00:00Z",
+      "ist": "29 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-09-30T06:00:00Z",
+      "ist": "30 Sep 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-10-01T06:00:00Z",
+      "ist": "01 Oct 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-10-02T06:00:00Z",
+      "ist": "02 Oct 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-10-05T06:00:00Z",
+      "ist": "05 Oct 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-10-06T06:00:00Z",
+      "ist": "06 Oct 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-10-07T06:00:00Z",
+      "ist": "07 Oct 11:30:00",
+      "user": "finance.user",
+      "application": "Example Expense Cloud",
+      "event": "API request \u00d76",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-10-07T06:00:00Z",
+      "ist": "07 Oct 11:30:00",
+      "user": "it.admin",
+      "application": "TeamBoard Planner",
+      "event": "Consent to application",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-10-07T06:15:00Z",
+      "ist": "07 Oct 11:45:00",
+      "user": "hr.user",
+      "application": "TeamBoard Planner",
+      "event": "API request \u00d74",
+      "risk": "NORMAL",
+      "why": "approved application"
+    },
+    {
+      "ts": "2026-10-08T02:45:00Z",
+      "ist": "08 Oct 08:15:00",
+      "user": "sales.user",
+      "application": "Example PDF Reader",
+      "event": "Consent to application",
+      "risk": "NORMAL",
+      "why": "verified publisher, low-risk scope only (User.Read)"
+    },
+    {
+      "ts": "2026-10-08T03:12:11Z",
+      "ist": "08 Oct 08:42:11",
+      "user": "finance.user",
+      "application": "Secure Document Verification",
+      "event": "Consent to application",
+      "risk": "SUSPICIOUS",
+      "why": "not on the approved-application list; first-seen application in the tenant; publisher not verified; high-risk data scopes: Files.Read.All, Mail.ReadBasic"
+    },
+    {
+      "ts": "2026-10-08T03:19:32Z",
+      "ist": "08 Oct 08:49:32",
+      "user": "finance.user",
+      "application": "Secure Document Verification",
+      "event": "API request \u00d712",
+      "risk": "SUSPICIOUS",
+      "why": "7 min after consent; source 203.0.113.45 in DE \u2014 user baseline IN"
+    },
+    {
+      "ts": "2026-10-08T03:33:18Z",
+      "ist": "08 Oct 09:03:18",
+      "user": "finance.user",
+      "application": "Secure Document Verification",
+      "event": "MailItemsAccessed \u00d7340",
+      "risk": "HIGH PRIORITY",
+      "why": "21 min after consent; source 203.0.113.45 in DE \u2014 user baseline IN; 340 mail items via app token (non-interactive)"
+    },
+    {
+      "ts": "2026-10-08T03:37:42Z",
+      "ist": "08 Oct 09:07:42",
+      "user": "finance.user",
+      "application": "Secure Document Verification",
+      "event": "FileAccessed \u00d715",
+      "risk": "HIGH PRIORITY",
+      "why": "26 min after consent; source 203.0.113.45 in DE \u2014 user baseline IN; 15 files on 'Finance-Treasury' \u2014 site outside the user's 30-day baseline"
+    },
+    {
+      "ts": "2026-10-08T03:37:58Z",
+      "ist": "08 Oct 09:07:58",
+      "user": "finance.user",
+      "application": "Secure Document Verification",
+      "event": "FileDownloaded \u00d78",
+      "risk": "HIGH PRIORITY",
+      "why": "26 min after consent; source 203.0.113.45 in DE \u2014 user baseline IN; 8 files on 'Board-Packs' \u2014 site outside the user's 30-day baseline"
+    },
+    {
+      "ts": "2026-10-08T03:51:11Z",
+      "ist": "08 Oct 09:21:11",
+      "user": "hr.user",
+      "application": "Secure Document Verification",
+      "event": "Consent to application",
+      "risk": "HIGH PRIORITY",
+      "why": "second user consenting to the same app (after finance.user); not on the approved-application list; first-seen application in the tenant; publisher not verified; high-risk data scopes: Files.Read.All, Mail.ReadBasic"
+    },
+    {
+      "ts": "2026-10-08T04:01:52Z",
+      "ist": "08 Oct 09:31:52",
+      "user": "finance.user",
+      "application": "Secure Document Verification",
+      "event": "API request \u00d755",
+      "risk": "HIGH PRIORITY",
+      "why": "50 min after consent; source 203.0.113.45 in DE \u2014 user baseline IN; same app active for 2 users"
+    },
+    {
+      "ts": "2026-10-08T04:01:52Z",
+      "ist": "08 Oct 09:31:52",
+      "user": "hr.user",
+      "application": "Secure Document Verification",
+      "event": "API request \u00d731",
+      "risk": "HIGH PRIORITY",
+      "why": "11 min after consent; source 203.0.113.45 in DE \u2014 user baseline IN; same app active for 2 users"
+    }
+  ],
+  "applications": {
+    "0e0e0000-0000-4000-8000-00000000e1e1": {
+      "app_id": "0e0e0000-0000-4000-8000-00000000e1e1",
+      "name": "Example Expense Cloud",
+      "publisher": "Example Expense Inc",
+      "publisher_verified": true,
+      "first_consent": "2026-06-01T06:00:00Z",
+      "scopes": [
+        "Files.ReadWrite",
+        "User.Read"
+      ],
+      "consents": [
+        {
+          "ts": "2026-06-01T06:00:00Z",
+          "user": "it.admin",
+          "type": "AllPrincipals",
+          "by_admin": true
+        }
+      ],
+      "reply_domains": [],
+      "flags": [],
+      "risk_attributes": 0,
+      "approved": true,
+      "users": [
+        "it.admin"
+      ]
+    },
+    "7b7b0000-0000-4000-8000-00000000b0a2": {
+      "app_id": "7b7b0000-0000-4000-8000-00000000b0a2",
+      "name": "TeamBoard Planner",
+      "publisher": "TeamBoard Software GmbH",
+      "publisher_verified": true,
+      "first_consent": "2026-10-07T06:00:00Z",
+      "scopes": [
+        "Tasks.ReadWrite",
+        "User.Read"
+      ],
+      "consents": [
+        {
+          "ts": "2026-10-07T06:00:00Z",
+          "user": "it.admin",
+          "type": "AllPrincipals",
+          "by_admin": true
+        }
+      ],
+      "reply_domains": [],
+      "flags": [],
+      "risk_attributes": 0,
+      "approved": true,
+      "users": [
+        "it.admin"
+      ]
+    },
+    "9d9d0000-0000-4000-8000-00000000d0f3": {
+      "app_id": "9d9d0000-0000-4000-8000-00000000d0f3",
+      "name": "Example PDF Reader",
+      "publisher": "Example PDF Corp",
+      "publisher_verified": true,
+      "first_consent": "2026-10-08T02:45:00Z",
+      "scopes": [
+        "User.Read"
+      ],
+      "consents": [
+        {
+          "ts": "2026-10-08T02:45:00Z",
+          "user": "sales.user",
+          "type": "Principal",
+          "by_admin": false
+        }
+      ],
+      "reply_domains": [],
+      "flags": [
+        "not on the approved-application list",
+        "first-seen application in the tenant"
+      ],
+      "risk_attributes": 2,
+      "approved": false,
+      "users": [
+        "sales.user"
+      ]
+    },
+    "5d0c0000-0000-4000-8000-00000000c7a9": {
+      "app_id": "5d0c0000-0000-4000-8000-00000000c7a9",
+      "name": "Secure Document Verification",
+      "publisher": "SecureDocs Verification Ltd",
+      "publisher_verified": false,
+      "first_consent": "2026-10-08T03:12:11Z",
+      "scopes": [
+        "Files.Read.All",
+        "Mail.ReadBasic",
+        "User.Read",
+        "offline_access"
+      ],
+      "consents": [
+        {
+          "ts": "2026-10-08T03:12:11Z",
+          "user": "finance.user",
+          "type": "Principal",
+          "by_admin": false
+        },
+        {
+          "ts": "2026-10-08T03:51:11Z",
+          "user": "hr.user",
+          "type": "Principal",
+          "by_admin": false
+        }
+      ],
+      "reply_domains": [
+        "secure-docverify.example.net"
+      ],
+      "flags": [
+        "not on the approved-application list",
+        "first-seen application in the tenant",
+        "publisher not verified",
+        "high-risk data scopes: Files.Read.All, Mail.ReadBasic",
+        "offline_access = access survives the session (refresh token)",
+        "granted by end-user consent, not admin review",
+        "generic trust-bait name (secure, verification, document)"
+      ],
+      "risk_attributes": 7,
+      "approved": false,
+      "users": [
+        "finance.user",
+        "hr.user"
+      ]
+    }
+  },
+  "detections": [
+    {
+      "user": "finance.user",
+      "app_id": "5d0c0000-0000-4000-8000-00000000c7a9",
+      "app_name": "Secure Document Verification",
+      "publisher": "SecureDocs Verification Ltd",
+      "permissions": [
+        "Files.Read.All",
+        "Mail.ReadBasic",
+        "User.Read",
+        "offline_access"
+      ],
+      "consent_ts": "2026-10-08T03:12:11Z",
+      "source_ips": [
+        "203.0.113.45"
+      ],
+      "countries": [
+        "DE"
+      ],
+      "api_requests": 67,
+      "mail_items": 340,
+      "files": 23,
+      "new_sites": [
+        "Board-Packs",
+        "Finance-Treasury"
+      ],
+      "consent_to_first_api_min": 7.3,
+      "consent_to_first_data_min": 21.1,
+      "fired": true
+    },
+    {
+      "user": "hr.user",
+      "app_id": "5d0c0000-0000-4000-8000-00000000c7a9",
+      "app_name": "Secure Document Verification",
+      "publisher": "SecureDocs Verification Ltd",
+      "permissions": [
+        "Files.Read.All",
+        "Mail.ReadBasic",
+        "User.Read",
+        "offline_access"
+      ],
+      "consent_ts": "2026-10-08T03:51:11Z",
+      "source_ips": [
+        "203.0.113.45"
+      ],
+      "countries": [
+        "DE"
+      ],
+      "api_requests": 31,
+      "mail_items": 0,
+      "files": 0,
+      "new_sites": [],
+      "consent_to_first_api_min": 10.7,
+      "consent_to_first_data_min": null,
+      "fired": true
+    }
+  ],
+  "iocs": [
+    {
+      "application_name": "Secure Document Verification",
+      "application_id": "5d0c0000-0000-4000-8000-00000000c7a9",
+      "publisher": "SecureDocs Verification Ltd",
+      "publisher_verified": false,
+      "redirect_uri_domains": [
+        "secure-docverify.example.net"
+      ],
+      "domains": [
+        "secure-docverify.example.net"
+      ],
+      "related_domains_osint": [
+        "hr-docverify.example.org",
+        "secure-docsign.example.net"
+      ],
+      "source_ips": [
+        "203.0.113.45"
+      ],
+      "countries": [
+        "DE"
+      ],
+      "permissions": [
+        "Files.Read.All",
+        "Mail.ReadBasic",
+        "User.Read",
+        "offline_access"
+      ],
+      "consenting_users": [
+        "finance.user",
+        "hr.user"
+      ],
+      "first_consent": "2026-10-08T03:12:11Z"
+    }
+  ],
+  "delivery": [
+    {
+      "ts": "2026-10-08T03:11:30Z",
+      "user": "finance.user",
+      "url": "https://secure-docverify.example.net/share/Q3-audit-confirmation"
+    },
+    {
+      "ts": "2026-10-08T03:49:40Z",
+      "user": "hr.user",
+      "url": "https://secure-docverify.example.net/share/policy-acknowledgement"
+    }
+  ],
+  "affected_users": [
+    "finance.user",
+    "hr.user"
+  ],
+  "revoke_first": [
+    "delegated grant + refresh tokens: finance.user \u2192 Secure Document Verification",
+    "delegated grant + refresh tokens: hr.user \u2192 Secure Document Verification",
+    "disable service principal 5d0c0000-0000-4000-8000-00000000c7a9 tenant-wide"
+  ]
+}
