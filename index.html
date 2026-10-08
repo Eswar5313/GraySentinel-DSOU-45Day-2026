@@ -5,7 +5,7 @@
 .bar{position:sticky;top:0;background:#0b1220ee;backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:10px 20px;z-index:5}.bar .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .prog{flex:1;height:10px;background:#1e293b;border-radius:6px;overflow:hidden;min-width:160px}.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--ok));transition:width .3s}
 .btn{background:#1e293b;border:1px solid var(--line);color:var(--txt);padding:6px 12px;border-radius:6px;text-decoration:none;font-size:13px}.btn:hover{border-color:var(--gold)}
-.tabs{display:flex;gap:8px;margin:18px 0}.tabs a{padding:6px 14px;border-radius:20px;border:1px solid var(--line);color:var(--mut);text-decoration:none;font-size:13px}.tabs a.on{color:#0b1220;background:var(--gold);border-color:var(--gold);font-weight:700}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.tabs a{padding:6px 14px;border-radius:20px;border:1px solid var(--line);color:var(--mut);text-decoration:none;font-size:13px}.tabs a.on{color:#0b1220;background:var(--gold);border-color:var(--gold);font-weight:700}
 .step{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}.step.done{border-color:var(--ok)}.num{flex:0 0 42px;height:42px;border-radius:50%;background:var(--gold);color:#0b1220;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px}.step.done .num{background:var(--ok)}
 .body{flex:1;min-width:0}.tag{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em}h3{margin:2px 0 10px;font-size:17px}.lbl{font-size:11px;text-transform:uppercase;color:var(--mut);letter-spacing:.08em;margin-top:8px}
 pre{background:#0a0f1c;border:1px solid var(--line);border-radius:6px;padding:10px 12px;overflow:auto;font:13px/1.45 ui-monospace,Menlo,Consolas,monospace;margin:4px 0}pre.cmd{color:#fde68a}pre.out{color:#cbd5e1;max-height:420px}.exp{margin:4px 0;color:var(--ok)}
@@ -15,8 +15,8 @@ details summary{cursor:pointer;color:var(--mut);font-size:13px;margin-top:6px}.c
 footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 20px}</style></head><body>
 <header><div class="wrap"><h1><small>GraySentinel Cyber Defence Lab · Day 1 · Candidate 13 · Blue Team</small>Eswar Mahalingam — Project 01 &amp; 02 · Live step-by-step checker</h1>
 <p>Reproduce and verify both projects in 9 steps (plus setup). Each step shows the exact command, the expected result, and the <em>real captured terminal output</em> from <code>evidence/terminal_output.txt</code>. Tick each step as you verify it — progress is saved in your browser.</p></div></header>
-<div class="bar"><div class="wrap"><strong id="pct">0 / 9 verified</strong><div class="prog"><i id="fill"></i></div><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">Repo README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">P01 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">P02 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">Runbook .md</a><a class="btn" href="#rdp" onclick="show('rdp')">RDP war room (05 Oct)</a><a class="btn" href="#ghostadmin" onclick="show('ghostadmin')">Ghost Admin (06 Oct)</a><a class="btn" href="#cloudtoken" onclick="show('cloudtoken')">Cloud Token (06 Oct)</a><a class="btn" href="#brokenpipeline" onclick="show('brokenpipeline')">Broken Pipeline (06 Oct)</a><a class="btn" id="reset" href="#">Reset ticks</a></div></div>
-<main class="wrap"><nav class="tabs"><a href="#steps" class="on" data-p="steps">Step-by-step</a><a href="#p01" data-p="p01">P01 findings report</a><a href="#p02" data-p="p02">P02 incident ticket</a><a href="#shots" data-p="shots">Screenshots</a><a href="#files" data-p="files">All files</a><a href="#rdp" data-p="rdp">🔥 RDP war room · 05 Oct</a><a href="#ghostadmin" data-p="ghostadmin">🟢 Ghost Admin · 06 Oct</a><a href="#cloudtoken" data-p="cloudtoken">🟡 Cloud Token · 06 Oct</a><a href="#brokenpipeline" data-p="brokenpipeline">🔴 Broken Pipeline · 06 Oct</a></nav>
+<div class="bar"><div class="wrap"><strong id="pct">0 / 9 verified</strong><div class="prog"><i id="fill"></i></div><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">Repo README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">P01 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">P02 README</a><a class="btn" href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">Runbook .md</a><a class="btn" href="#rdp" onclick="show('rdp')">RDP war room (05 Oct)</a><a class="btn" href="#ghostadmin" onclick="show('ghostadmin')">Ghost Admin (06 Oct)</a><a class="btn" href="#cloudtoken" onclick="show('cloudtoken')">Cloud Token (06 Oct)</a><a class="btn" href="#brokenpipeline" onclick="show('brokenpipeline')">Broken Pipeline (06 Oct)</a><a class="btn" href="#silentcred" onclick="show('silentcred')">Silent Cred Theft (08 Oct)</a><a class="btn" href="#consenttrap" onclick="show('consenttrap')">Consent Trap (08 Oct)</a><a class="btn" href="#ghostsession" onclick="show('ghostsession')">Ghost Session (08 Oct)</a><a class="btn" id="reset" href="#">Reset ticks</a></div></div>
+<main class="wrap"><nav class="tabs"><a href="#steps" class="on" data-p="steps">Step-by-step</a><a href="#p01" data-p="p01">P01 findings report</a><a href="#p02" data-p="p02">P02 incident ticket</a><a href="#shots" data-p="shots">Screenshots</a><a href="#files" data-p="files">All files</a><a href="#rdp" data-p="rdp">🔥 RDP war room · 05 Oct</a><a href="#ghostadmin" data-p="ghostadmin">🟢 Ghost Admin · 06 Oct</a><a href="#cloudtoken" data-p="cloudtoken">🟡 Cloud Token · 06 Oct</a><a href="#brokenpipeline" data-p="brokenpipeline">🔴 Broken Pipeline · 06 Oct</a><a href="#silentcred" data-p="silentcred">🟢 Silent Cred Theft · 08 Oct</a><a href="#consenttrap" data-p="consenttrap">🟡 Consent Trap · 08 Oct</a><a href="#ghostsession" data-p="ghostsession">🔴 Ghost Session · 08 Oct</a></nav>
 <div class="pane on" id="pane-steps"><section class="step" style="border-color:var(--gold)"><div class="num">0</div><div class="body"><div class="tag">SETUP</div><h3>Clone — nothing to install (Python 3.8+ stdlib only)</h3><pre class="cmd">git clone https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026.git
 cd GraySentinel-DSOU-45Day-2026/graysentinel-day1</pre><p class="exp">All data is synthetic and sanitised (RFC-5737 ranges). Safe to run anywhere.</p></div></section><section class="step" id="s1"><div class="num">1</div><div class="body"><div class="tag">P01</div><h3>Generate the synthetic lab log</h3>
 <div class="lbl">Command</div><pre class="cmd">cd project-01 &amp;&amp; python3 data/make_lab_data.py</pre><div class="lbl">Expected result</div><p class="exp">wrote auth.log with 135 lines</p>
@@ -664,10 +664,255 @@ test_12_dfir_sources (test_pipeline_chain_analyzer.TestChain.test_12_dfir_source
 ----------------------------------------------------------------------
 Ran 16 tests in 0.013s
 
-OK</pre></details><h3>Files</h3><div class="grid"><div class="card"><b>broken-pipeline/</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/broken-pipeline">folder</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/GraySentinel_SSOU_BrokenPipeline_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/pipeline_chain_analyzer.py">pipeline_chain_analyzer.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/test_pipeline_chain_analyzer.py">tests (16)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/broken_pipeline_detections.yml">Sigma + Falco rules</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/MENTOR_MESSAGE.md">Mentor message</a></div></div></div><div class="pane" id="pane-files"><h2>All files</h2><div class="grid">
+OK</pre></details><h3>Files</h3><div class="grid"><div class="card"><b>broken-pipeline/</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/broken-pipeline">folder</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/GraySentinel_SSOU_BrokenPipeline_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/pipeline_chain_analyzer.py">pipeline_chain_analyzer.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/test_pipeline_chain_analyzer.py">tests (16)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/broken_pipeline_detections.yml">Sigma + Falco rules</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/MENTOR_MESSAGE.md">Mentor message</a></div></div></div><div class="pane" id="pane-silentcred"><h2>🟢 SOC War Room · Silent Credential Theft (FIN-WS-117) · 08 Oct 2026</h2><p class="exp">Verdict: H1 SUPPORTED · H2 REJECTED · H3 SUPPORTED · correlation 4/4 CRITICAL · 20/20 tests · synthetic data</p><div class="grid"><div class="card"><b>Triage</b>WINWORD.EXE → unsigned %TEMP%\dbgsvc.exe opens lsass.exe with GrantedAccess 0x1010; 27 of 28 LSASS accesses in 30 days are Defender/EDR (expected)</div><div class="card"><b>Authentication</b>6 failed logons → f.rao Type 3 (NTLM) → 4648 explicit credentials for adm.kiran → Type 3 + 4672 on FILE-SRV-03, 4.5 min after the access</div><div class="card"><b>Lateral</b>4 RC4 service tickets, 14 reads on Finance$\Payroll, adm.kiran on FIN-WS-121 10 min after the access</div><div class="card"><b>H2 control</b>Real admin logon from PAW-ADMIN-01 with CHG-4471 is scored LEGITIMATE — same account, same server, different source + ticket</div><div class="card"><b>Detection</b>Suspicious LSASS Process Access: memory-read mask + source not on a signed-path allow-list → HIGH; + auth from same host ≤15 min → CRITICAL</div><div class="card"><b>Senior answer</b>The chain beats the single alert: sequence, identity hand-off, process lineage and host relationships exist only in correlation</div></div><h3>Run it</h3><pre class="cmd">cd silent-credential-theft
+python3 make_lsass_lab_data.py
+python3 lsass_credential_hunter.py lsass_events_SYNTHETIC.csv lsass_context_SYNTHETIC.json
+python3 -m unittest test_lsass_credential_hunter -v</pre><details open><summary>Captured analyzer output</summary><pre class="out">==============================================================================
+GraySentinel DSOU · Silent Credential Theft hunt · 1 case(s)
+==============================================================================
+LSASS access events: 28 total · 27 expected (edr-agent.exe, msmpeng.exe) · 1 suspicious
+
+[CRITICAL] FIN-WS-117 (10.20.31.117) session=f.rao  correlation=4/4
+  -- Mission 01 triage --
+   process                     C:\Users\f.rao\AppData\Local\Temp\dbgsvc.exe
+   parent                      C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE
+   cmdline                     dbgsvc.exe &lt;redacted-synthetic-arguments&gt;
+   signed                      false
+   hash                        SYNTH-SHA256-0000BADC0FFEE117
+   granted_access              0x1010
+   lsass_access_ts             2026-10-08T04:10:20Z
+   hash_seen_on                ['FIN-WS-117']
+   accounts_involved           ['adm.kiran', 'f.rao']
+   privileged_accounts         ['adm.kiran']
+   failed_logons               6
+   successful_type3            3
+   explicit_credential_events  1
+   edr_alerts                  1
+  -- Mission 02 hypotheses --
+   H1 SUPPORTED     source image not on the approved LSASS-reader list | binary is unsigned | runs from a user-writable path | GrantedAccess 0x1010 includes PROCESS_VM_READ | unusual parent winword.exe | EDR credential-access alert on the same process | hash first-seen, present on this host only
+   H2 REJECTED      no change/incident ticket for the destinations | FIN-WS-117 is not an approved admin source for adm.kiran | admin tools are not spawned by an Office application
+   H3 SUPPORTED     explicit credentials (4648) for privileged adm.kiran | new destinations (0 prior logons): FILE-SRV-03, FIN-WS-121 | 14 reads on sensitive share \\FILE-SRV-03\Finance$ | same account on another workstation: FIN-WS-121 | 4 unusual service tickets (RC4 / first-seen SPN) | 6 failed network logons from FIN-WS-117 first
+  -- Mission 03 timeline --
+   2026-10-08 04:02:10Z  4624/2    f.rao logs on to FIN-WS-117
+   2026-10-08 04:10:05Z  4688      winword.exe → dbgsvc.exe (signed=false)
+   2026-10-08 04:10:20Z  Sysmon10  dbgsvc.exe accesses lsass.exe GrantedAccess=0x1010
+   2026-10-08 04:10:22Z  EDR       EDR: suspicious credential-access behaviour (alert only, not blocked)
+   2026-10-08 04:12:30Z  4625      first of 6 failed network logons from FIN-WS-117 (adm.kiran, administrator, svc.finbackup)
+   2026-10-08 04:14:50Z  4624/3    f.rao → FILE-SRV-03 (NTLM)
+   2026-10-08 04:15:20Z  4648      f.rao uses explicit credentials for adm.kiran@FILE-SRV-03
+   2026-10-08 04:15:25Z  4624/3    adm.kiran → FILE-SRV-03 (NTLM)
+   2026-10-08 04:15:26Z  4672      adm.kiran on FILE-SRV-03: SeBackupPrivilege;SeDebugPrivilege;SeTakeOwnershipPrivilege
+   2026-10-08 04:15:40Z  4769      4 service tickets: cifs/FILE-SRV-03, MSSQLSvc/SQL-FIN-01:1433, cifs/FILE-SRV-02, HOST/FIN-WS-121
+   2026-10-08 04:17:05Z  5145      14 file reads on \\FILE-SRV-03\Finance$ by adm.kiran
+   2026-10-08 04:20:25Z  4624/3    adm.kiran → FIN-WS-121 (NTLM)
+   2026-10-08 04:20:26Z  4672      adm.kiran on FIN-WS-121: SeDebugPrivilege;SeBackupPrivilege
+  -- Mission 05 scope: investigate next --
+   1. FIN-WS-117 (source — isolate, preserve memory + Sysmon/EDR)
+   2. DC-01 (Domain Controller — 4768/4769/4776 for adm.kiran, f.rao)
+   3. FILE-SRV-03 (File Server — logons by adm.kiran, f.rao)
+   4. FIN-WS-121 (Workstation — logons by adm.kiran)
+   5. FILE-SRV-02 (service ticket requested — check for a later logon)
+   6. SQL-FIN-01 (service ticket requested — check for a later logon)
+  -- Mission 07 correlation --
+   A_lsass_access=YES  B_type3_to_server=YES  C_other_workstation=YES  D_sensitive_share=YES
+   gaps: A→B 4.5 min · A→C 10.1 min
+
+  -- H2 control: privileged logons NOT from a flagged host --
+   2026-10-05T06:10:00Z  adm.kiran → FIN-WS-117 from PAW-ADMIN-01  ticket=None  LEGITIMATE
+   2026-10-06T05:00:00Z  adm.kiran → FILE-SRV-03 from PAW-ADMIN-01  ticket=CHG-4471  LEGITIMATE
+</pre></details><details><summary>Captured test run</summary><pre class="out">test_18_baseline_only_is_clean (test_lsass_credential_hunter.TestBaselineAndRobustness.test_18_baseline_only_is_clean) ... ok
+test_19_malformed_rows_skipped (test_lsass_credential_hunter.TestBaselineAndRobustness.test_19_malformed_rows_skipped) ... ok
+test_20_cli_exit_codes (test_lsass_credential_hunter.TestBaselineAndRobustness.test_20_cli_exit_codes) ... ok
+test_08_h1_supported (test_lsass_credential_hunter.TestHypotheses.test_08_h1_supported) ... ok
+test_09_h2_rejected_no_ticket_non_paw (test_lsass_credential_hunter.TestHypotheses.test_09_h2_rejected_no_ticket_non_paw) ... ok
+test_10_h3_supported_with_explicit_creds (test_lsass_credential_hunter.TestHypotheses.test_10_h3_supported_with_explicit_creds) ... ok
+test_11_privileged_account_involved (test_lsass_credential_hunter.TestHypotheses.test_11_privileged_account_involved) ... ok
+test_12_legit_admin_from_paw_is_legitimate (test_lsass_credential_hunter.TestHypotheses.test_12_legit_admin_from_paw_is_legitimate) ... ok
+test_13_new_destinations (test_lsass_credential_hunter.TestLateralAndCorrelation.test_13_new_destinations) ... ok
+test_14_sensitive_share_and_kerberos (test_lsass_credential_hunter.TestLateralAndCorrelation.test_14_sensitive_share_and_kerberos) ... ok
+test_15_full_correlation_is_critical (test_lsass_credential_hunter.TestLateralAndCorrelation.test_15_full_correlation_is_critical) ... ok
+test_16_lsass_alone_is_only_medium (test_lsass_credential_hunter.TestLateralAndCorrelation.test_16_lsass_alone_is_only_medium) ... ok
+test_17_scope_order_source_dc_server_workstation (test_lsass_credential_hunter.TestLateralAndCorrelation.test_17_scope_order_source_dc_server_workstation) ... ok
+test_01_exactly_one_case (test_lsass_credential_hunter.TestTriageAndDetection.test_01_exactly_one_case) ... ok
+test_02_process_and_parent_identified (test_lsass_credential_hunter.TestTriageAndDetection.test_02_process_and_parent_identified) ... ok
+test_03_signature_hash_mask (test_lsass_credential_hunter.TestTriageAndDetection.test_03_signature_hash_mask) ... ok
+test_04_defender_and_edr_not_flagged (test_lsass_credential_hunter.TestTriageAndDetection.test_04_defender_and_edr_not_flagged) ... ok
+test_05_lsass_existing_alone_never_alerts (test_lsass_credential_hunter.TestTriageAndDetection.test_05_lsass_existing_alone_never_alerts) ... ok
+test_06_approved_path_but_unsigned_is_not_expected (test_lsass_credential_hunter.TestTriageAndDetection.test_06_approved_path_but_unsigned_is_not_expected) ... ok
+test_07_query_only_mask_by_unknown_signed_tool_is_review (test_lsass_credential_hunter.TestTriageAndDetection.test_07_query_only_mask_by_unknown_signed_tool_is_review) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.030s
+
+OK</pre></details><h3>Files</h3><div class="grid"><div class="card"><b>silent-credential-theft/</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/silent-credential-theft">folder</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/GraySentinel_DSOU_SilentCredentialTheft_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/lsass_credential_hunter.py">lsass_credential_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/test_lsass_credential_hunter.py">tests (20)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/suspicious_lsass_access.sigma.yml">Sigma rules</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/wazuh_local_rules_lsass.xml">Wazuh rules</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/MENTOR_MESSAGE.md">Mentor message</a></div></div></div><div class="pane" id="pane-consenttrap"><h2>🟡 Intel War Room · Consent Trap (OAuth consent abuse) · 08 Oct 2026</h2><p class="exp">Assessment: identity-based intrusion via OAuth consent · confidence HIGH · attribution NONE · 20/20 tests · synthetic data</p><div class="grid"><div class="card"><b>Answer</b>Not a legitimate SaaS: first-seen app, unverified publisher, Mail + Files + offline_access by user consent, then foreign API activity and a second victim</div><div class="card"><b>Hunt table</b>08:42 consent SUSPICIOUS · 08:49 API SUSPICIOUS · 09:03 mailbox from DE HIGH · 09:07 files HIGH · 09:21 second user HIGH · 09:31 multi-user HIGH</div><div class="card"><b>Exposure</b>340 mail items + 23 treasury/board files for finance.user; consent → first data access in 21 minutes</div><div class="card"><b>IoCs</b>Application ID (hunt the ID, not the name), unverified publisher, redirect domain, calling IP, scope set, lure clicks tied by client_id</div><div class="card"><b>Strongest control</b>At consent: restrict user consent + admin-consent workflow stops every lure and every future app name</div><div class="card"><b>Senior answer</b>OAuth abuse is harder to detect, malware is harder to prevent — endpoint detection for A, consent governance + identity hunting for B</div></div><h3>Run it</h3><pre class="cmd">cd consent-trap
+python3 make_consent_lab_data.py
+python3 oauth_consent_hunter.py cloud_audit_SYNTHETIC.csv consent_context_SYNTHETIC.json
+python3 -m unittest test_oauth_consent_hunter -v</pre><details open><summary>Captured analyzer output</summary><pre class="out">==============================================================================
+GraySentinel RIU · Consent Trap — OAuth consent abuse hunt
+==============================================================================
+Assessment: IDENTITY-BASED INTRUSION VIA OAUTH CONSENT (campaign: multiple users)
+Confidence: HIGH · Attribution: none — no evidence ties this to a named actor
+Affected users: finance.user, hr.user
+
+CLOUD APPLICATION COMPROMISE HUNT TABLE (activity after each app's first consent; times IST)
+  01 Jun 11:30:00  NORMAL         it.admin      Example Expense Cloud         Consent to application     — approved application
+  07 Oct 11:30:00  NORMAL         it.admin      TeamBoard Planner             Consent to application     — approved application
+  08 Oct 08:15:00  NORMAL         sales.user    Example PDF Reader            Consent to application     — verified publisher, low-risk scope only (User.Read)
+  08 Oct 08:42:11  SUSPICIOUS     finance.user  Secure Document Verification  Consent to application     — not on the approved-application list; first-seen application in the tenant; publisher not verified; high-risk data scopes: Files.Read.All, Mail.ReadBasic
+  08 Oct 08:49:32  SUSPICIOUS     finance.user  Secure Document Verification  API request ×12            — 7 min after consent; source 203.0.113.45 in DE — user baseline IN
+  08 Oct 09:03:18  HIGH PRIORITY  finance.user  Secure Document Verification  MailItemsAccessed ×340     — 21 min after consent; source 203.0.113.45 in DE — user baseline IN; 340 mail items via app token (non-interactive)
+  08 Oct 09:07:42  HIGH PRIORITY  finance.user  Secure Document Verification  FileAccessed ×15           — 26 min after consent; source 203.0.113.45 in DE — user baseline IN; 15 files on 'Finance-Treasury' — site outside the user's 30-day baseline
+  08 Oct 09:07:58  HIGH PRIORITY  finance.user  Secure Document Verification  FileDownloaded ×8          — 26 min after consent; source 203.0.113.45 in DE — user baseline IN; 8 files on 'Board-Packs' — site outside the user's 30-day baseline
+  08 Oct 09:21:11  HIGH PRIORITY  hr.user       Secure Document Verification  Consent to application     — second user consenting to the same app (after finance.user); not on the approved-application list; first-seen application in the tenant; publisher not verified; high-risk data scopes: Files.Read.All, Mail.ReadBasic
+  08 Oct 09:31:52  HIGH PRIORITY  finance.user  Secure Document Verification  API request ×55            — 50 min after consent; source 203.0.113.45 in DE — user baseline IN; same app active for 2 users
+  08 Oct 09:31:52  HIGH PRIORITY  hr.user       Secure Document Verification  API request ×31            — 11 min after consent; source 203.0.113.45 in DE — user baseline IN; same app active for 2 users
+  (+ 23 NORMAL activity rows of approved applications not listed)
+
+APPLICATION RISK PROFILE
+  Example Expense Cloud [0e0e0000-0000-4000-8000-00000000e1e1] publisher=Example Expense Inc verified=True risk_attributes=0 users=['it.admin']
+  TeamBoard Planner [7b7b0000-0000-4000-8000-00000000b0a2] publisher=TeamBoard Software GmbH verified=True risk_attributes=0 users=['it.admin']
+  Example PDF Reader [9d9d0000-0000-4000-8000-00000000d0f3] publisher=Example PDF Corp verified=True risk_attributes=2 users=['sales.user']
+     - not on the approved-application list
+     - first-seen application in the tenant
+  Secure Document Verification [5d0c0000-0000-4000-8000-00000000c7a9] publisher=SecureDocs Verification Ltd verified=False risk_attributes=7 users=['finance.user', 'hr.user']
+     - not on the approved-application list
+     - first-seen application in the tenant
+     - publisher not verified
+     - high-risk data scopes: Files.Read.All, Mail.ReadBasic
+     - offline_access = access survives the session (refresh token)
+     - granted by end-user consent, not admin review
+     - generic trust-bait name (secure, verification, document)
+
+DETECTION HYPOTHESIS — new OAuth consent followed by unusual cloud activity
+  fired=True  finance.user → Secure Document Verification  consent 2026-10-08T03:12:11Z  first API +7.3 min  first data +21.1 min  countries=['DE']  api=67 mail=340 files=23 new_sites=['Board-Packs', 'Finance-Treasury']
+  fired=True  hr.user → Secure Document Verification  consent 2026-10-08T03:51:11Z  first API +10.7 min  first data +None min  countries=['DE']  api=31 mail=0 files=0 new_sites=[]
+
+INDICATORS
+  application_name       Secure Document Verification
+  application_id         5d0c0000-0000-4000-8000-00000000c7a9
+  publisher              SecureDocs Verification Ltd
+  redirect_uri_domains   ['secure-docverify.example.net']
+  domains                ['secure-docverify.example.net']
+  related_domains_osint  ['hr-docverify.example.org', 'secure-docsign.example.net']
+  source_ips             ['203.0.113.45']
+  countries              ['DE']
+  permissions            ['Files.Read.All', 'Mail.ReadBasic', 'User.Read', 'offline_access']
+  consenting_users       ['finance.user', 'hr.user']
+
+DELIVERY (lure clicks carrying the same client_id)
+  2026-10-08T03:11:30Z  finance.user  https://secure-docverify.example.net/share/Q3-audit-confirmation
+  2026-10-08T03:49:40Z  hr.user       https://secure-docverify.example.net/share/policy-acknowledgement
+
+REVOKE FIRST
+  - delegated grant + refresh tokens: finance.user → Secure Document Verification
+  - delegated grant + refresh tokens: hr.user → Secure Document Verification
+  - disable service principal 5d0c0000-0000-4000-8000-00000000c7a9 tenant-wide
+</pre></details><details><summary>Captured test run</summary><pre class="out">test_15_single_user_is_medium (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_15_single_user_is_medium) ... ok
+test_16_consent_without_activity_is_low_and_not_fired (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_16_consent_without_activity_is_low_and_not_fired) ... ok
+test_17_admin_approved_app_never_fires_even_if_listed_scopes_grow (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_17_admin_approved_app_never_fires_even_if_listed_scopes_grow) ... ok
+test_18_baseline_only_is_clean (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_18_baseline_only_is_clean) ... ok
+test_19_malformed_rows_skipped (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_19_malformed_rows_skipped) ... ok
+test_20_cli_exit_codes (test_oauth_consent_hunter.TestConfidenceLadderAndRobustness.test_20_cli_exit_codes) ... ok
+test_01_first_consent_is_suspicious_not_high (test_oauth_consent_hunter.TestHuntTable.test_01_first_consent_is_suspicious_not_high) ... ok
+test_02_first_api_call_is_suspicious (test_oauth_consent_hunter.TestHuntTable.test_02_first_api_call_is_suspicious) ... ok
+test_03_mailbox_from_germany_is_high (test_oauth_consent_hunter.TestHuntTable.test_03_mailbox_from_germany_is_high) ... ok
+test_04_out_of_baseline_file_access_is_high (test_oauth_consent_hunter.TestHuntTable.test_04_out_of_baseline_file_access_is_high) ... ok
+test_05_second_user_consent_is_high (test_oauth_consent_hunter.TestHuntTable.test_05_second_user_consent_is_high) ... ok
+test_06_multi_user_api_is_high (test_oauth_consent_hunter.TestHuntTable.test_06_multi_user_api_is_high) ... ok
+test_07_approved_and_low_risk_apps_are_normal (test_oauth_consent_hunter.TestHuntTable.test_07_approved_and_low_risk_apps_are_normal) ... ok
+test_08_risk_profile_flags (test_oauth_consent_hunter.TestProfileAndDetection.test_08_risk_profile_flags) ... ok
+test_09_detection_fires_for_both_users (test_oauth_consent_hunter.TestProfileAndDetection.test_09_detection_fires_for_both_users) ... ok
+test_10_time_deltas (test_oauth_consent_hunter.TestProfileAndDetection.test_10_time_deltas) ... ok
+test_11_exposure_counts (test_oauth_consent_hunter.TestProfileAndDetection.test_11_exposure_counts) ... ok
+test_12_iocs (test_oauth_consent_hunter.TestProfileAndDetection.test_12_iocs) ... ok
+test_13_delivery_clicks_linked_by_client_id (test_oauth_consent_hunter.TestProfileAndDetection.test_13_delivery_clicks_linked_by_client_id) ... ok
+test_14_assessment_high_but_no_attribution (test_oauth_consent_hunter.TestProfileAndDetection.test_14_assessment_high_but_no_attribution) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.033s
+
+OK</pre></details><h3>Files</h3><div class="grid"><div class="card"><b>consent-trap/</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/consent-trap">folder</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/GraySentinel_RIU_ConsentTrap_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/oauth_consent_hunter.py">oauth_consent_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/test_oauth_consent_hunter.py">tests (20)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/oauth_consent_abuse.sigma.yml">Sigma rules</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/consent_hunt.kql">KQL hunts</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/MENTOR_MESSAGE.md">Mentor message</a></div></div></div><div class="pane" id="pane-ghostsession"><h2>🔴 Red-Team War Room · Ghost Session (valid-session abuse) · 08 Oct 2026 · LAB ONLY</h2><p class="exp">Decision: CONTAIN · 5/5 trust dimensions failed · pivot 10:39 · blue-team analyzer 20/20 tests · no offensive code · synthetic data</p><div class="grid"><div class="card"><b>Thesis</b>Nobody broke in — the session was used as the user: no password event, no MFA prompt, no malware, EDR clean</div><div class="card"><b>Session trust</b>Device + Location + Time + Behaviour + Resource: owner session fails 0/5, second session fails 5/5</div><div class="card"><b>Pivot</b>10:39 — one session token in IN and NL 18 minutes apart while the owner's laptop is still active; everything earlier is owner-explainable</div><div class="card"><b>Impact</b>Unseen tenant console, first-seen FS-FIN-02 over NTLM, 412 Treasury files, Mail.Read + offline_access app grant</div><div class="card"><b>Key detection</b>Cloud says yes, endpoint says no — cloud audit shows the access, the laptop's proxy/DNS shows no request</div><div class="card"><b>Senior answer</b>Malware buys control of a machine at the price of noise; a borrowed session buys the user's reach quietly but collapses on revocation</div></div><h3>Run it</h3><pre class="cmd">cd ghost-session
+python3 make_session_lab_data.py
+python3 session_trust_analyzer.py session_telemetry_SYNTHETIC.csv session_context_SYNTHETIC.json
+python3 -m unittest test_session_trust_analyzer -v</pre><details open><summary>Captured analyzer output</summary><pre class="out">==============================================================================
+GraySentinel SSOU · Ghost Session — session-trust analysis (blue-team view) · 2026-10-08
+==============================================================================
+Decision: CONTAIN   ·   dimensions failed: Behaviour + Device + Location + Resource + Time   ·   EDR verdict on the endpoint: clean
+
+SESSIONS
+  S-1001  TRUSTED        devices=['FIN-LT-22'] ips=['198.51.100.22'] countries=['IN'] mfa=satisfied failed=[]
+  S-1002  NOT THE OWNER  devices=['UNREGISTERED-DEV'] ips=['198.51.100.50', '203.0.113.88'] countries=['IN', 'NL'] mfa=inherited failed=['Behaviour', 'Device', 'Location', 'Resource', 'Time']
+
+IDENTITY ATTACK TIMELINE (IST)
+  10:02  INFO     FIN-LT-22        198.51.100.22  → IDP                    signin               conf=High   interactive sign-in; compliant managed device
+  10:07  MEDIUM   UNREGISTERED-DEV 198.51.100.50  → IDP                    session_created      conf=Medium session on an unregistered device; new session without a fresh MFA challenge; identity active in two environments at once
+  10:07  INFO     UNREGISTERED-DEV 198.51.100.50  → RA-GW-01               tunnel_up            conf=High   remote-access tunnel; pool address 10.50.99.14; posture check skipped (legacy profile)
+  10:13  INFO     FIN-LT-22        198.51.100.22  → FinLedger              app_access           conf=High   normal finance application
+  10:13  INFO     FIN-LT-22        10.50.22.22    → finledger.corp-cloud.lab http_connect         conf=High   matches baseline
+  10:21  HIGH     UNREGISTERED-DEV 198.51.100.50  → Cloud Console          app_access           conf=High   previously unseen application; cloud says yes, endpoint says no
+  10:26  HIGH     UNREGISTERED-DEV 10.50.99.14    → FS-FIN-02              auth                 conf=Medium first-seen internal resource
+  10:31  HIGH     UNREGISTERED-DEV 10.50.99.14    → \\FS-FIN-02\Treasury   file_access          conf=High   mass file access
+  10:35  INFO     FIN-LT-22        10.50.22.22    → EDR                    scan                 conf=High   FIN-LT-22: no malware, no suspicious process; browser + office apps only
+  10:39  CRITICAL UNREGISTERED-DEV 203.0.113.88   → IDP                    token_use            conf=High   one session token in two geographies
+  10:40  INFO     FIN-LT-22        198.51.100.22  → FinLedger              app_access           conf=High   owner still working normally
+  10:40  INFO     FIN-LT-22        10.50.22.22    → finledger.corp-cloud.lab http_connect         conf=High   matches baseline
+  10:44  HIGH     UNREGISTERED-DEV 203.0.113.88   → MailSync Helper        app_permission_grant conf=High   activity from a country outside the identity baseline; application permission granted from the suspect session
+  10:51  INFO     FIN-LT-22        helpdesk       → HELPDESK               user_statement       conf=High   user: 'I was working normally. I didn't install anything or share my password.'
+  18:20  INFO     FIN-LT-22        198.51.100.22  → IDP                    signout              conf=High   matches baseline
+  19:40  HIGH     UNREGISTERED-DEV 203.0.113.88   → IDP                    token_refresh        conf=Medium activity from a country outside the identity baseline; session active outside working hours
+
+PIVOT EVENT (unusual login → potential identity compromise)
+  2026-10-08T05:09:00Z  one session token in two geographies — token T-B7 used from IN and then NL (203.0.113.88) 18 min apart — a session does not travel; the owner's laptop session is still active
+
+FINDINGS BY DIMENSION
+  [MEDIUM  ] Device    10:07  session on an unregistered device — UNREGISTERED-DEV is not a managed/compliant device (new cloud session)
+  [MEDIUM  ] Device    10:07  new session without a fresh MFA challenge — MFA status 'satisfied' was inherited from existing session context, not re-proved
+  [MEDIUM  ] Location  10:07  identity active in two environments at once — S-1002 on UNREGISTERED-DEV via 198.51.100.50 while S-1001 is live on FIN-LT-22
+  [MEDIUM  ] Behaviour 10:21  previously unseen application — 'Cloud Console' never used by this identity in the 30-day baseline
+  [HIGH    ] Behaviour 10:21  cloud says yes, endpoint says no — no proxy/DNS record from the owner's managed device for 'Cloud Console' at this time
+  [HIGH    ] Resource  10:26  first-seen internal resource — FS-FIN-02 from UNREGISTERED-DEV (10.50.99.14); NTLM; baseline servers ['FS-FIN-01']
+  [HIGH    ] Behaviour 10:31  mass file access — 412 files on \\FS-FIN-02\Treasury; daily baseline ≤ 25
+  [CRITICAL] Location  10:39  one session token in two geographies — token T-B7 used from IN and then NL (203.0.113.88) 18 min apart — a session does not travel; the owner's laptop session is still active
+  [HIGH    ] Location  10:44  activity from a country outside the identity baseline — NL (203.0.113.88); baseline IN
+  [HIGH    ] Behaviour 10:44  application permission granted from the suspect session — 'MailSync Helper': delegated permissions granted: Mail.Read offline_access — a persistence opportunity that outlives the session
+  [HIGH    ] Location  19:40  activity from a country outside the identity baseline — NL (203.0.113.88); baseline IN
+  [MEDIUM  ] Time      19:40  session active outside working hours — 19:40 IST; normal hours 09:00–19:00 — owner signed out at 18:20
+
+BLUE-TEAM SUCCESS CRITERIA
+  WHO     finance.manager — the identity; session S-1002 is assessed as NOT THE OWNER
+  WHERE   UNREGISTERED-DEV via 198.51.100.50, 203.0.113.88 (IN/NL); owner on FIN-LT-22
+  WHEN    10:07–19:40 IST on 2026-10-08
+  WHAT    Cloud Console, FS-FIN-02, MailSync Helper, RA-GW-01, \\FS-FIN-02\Treasury
+  HOW     valid session context — MFA 'inherited', no new password or MFA event, no malware on the endpoint
+  IMPACT  412 files read; sensitive resources reached: Cloud Console, FS-FIN-02, \\FS-FIN-02\Treasury; application grants: MailSync Helper
+</pre></details><details><summary>Captured test run</summary><pre class="out">test_09_pivot_is_the_token_in_two_geographies (test_session_trust_analyzer.TestPivotAndDecision.test_09_pivot_is_the_token_in_two_geographies) ... ok
+test_10_everything_before_the_pivot_is_owner_explainable (test_session_trust_analyzer.TestPivotAndDecision.test_10_everything_before_the_pivot_is_owner_explainable) ... ok
+test_11_decision_is_contain (test_session_trust_analyzer.TestPivotAndDecision.test_11_decision_is_contain) ... ok
+test_12_without_geo_proof_decision_is_investigate (test_session_trust_analyzer.TestPivotAndDecision.test_12_without_geo_proof_decision_is_investigate) ... ok
+test_13_owner_only_day_is_monitor (test_session_trust_analyzer.TestPivotAndDecision.test_13_owner_only_day_is_monitor) ... ok
+test_14_baseline_day_is_clean (test_session_trust_analyzer.TestPivotAndDecision.test_14_baseline_day_is_clean) ... ok
+test_19_malformed_rows_skipped (test_session_trust_analyzer.TestRobustness.test_19_malformed_rows_skipped) ... ok
+test_20_cli_exit_codes (test_session_trust_analyzer.TestRobustness.test_20_cli_exit_codes) ... ok
+test_01_owner_session_is_trusted (test_session_trust_analyzer.TestSessionTrust.test_01_owner_session_is_trusted) ... ok
+test_02_ghost_session_is_not_the_owner (test_session_trust_analyzer.TestSessionTrust.test_02_ghost_session_is_not_the_owner) ... ok
+test_03_all_five_dimensions_fail (test_session_trust_analyzer.TestSessionTrust.test_03_all_five_dimensions_fail) ... ok
+test_04_unregistered_device_and_inherited_mfa (test_session_trust_analyzer.TestSessionTrust.test_04_unregistered_device_and_inherited_mfa) ... ok
+test_05_two_environments_at_once (test_session_trust_analyzer.TestSessionTrust.test_05_two_environments_at_once) ... ok
+test_06_unseen_app_and_endpoint_mismatch (test_session_trust_analyzer.TestSessionTrust.test_06_unseen_app_and_endpoint_mismatch) ... ok
+test_07_first_seen_internal_resource_and_mass_access (test_session_trust_analyzer.TestSessionTrust.test_07_first_seen_internal_resource_and_mass_access) ... ok
+test_08_permission_grant_and_after_hours (test_session_trust_analyzer.TestSessionTrust.test_08_permission_grant_and_after_hours) ... ok
+test_15_timeline_has_all_required_fields (test_session_trust_analyzer.TestTimelineAndAnswers.test_15_timeline_has_all_required_fields) ... ok
+test_16_timeline_risk_peaks_at_pivot (test_session_trust_analyzer.TestTimelineAndAnswers.test_16_timeline_risk_peaks_at_pivot) ... ok
+test_17_success_criteria_answered (test_session_trust_analyzer.TestTimelineAndAnswers.test_17_success_criteria_answered) ... ok
+test_18_exposure_and_edr_clean (test_session_trust_analyzer.TestTimelineAndAnswers.test_18_exposure_and_edr_clean) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.034s
+
+OK</pre></details><h3>Files</h3><div class="grid"><div class="card"><b>ghost-session/</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/ghost-session">folder</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-session/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-session/GraySentinel_SSOU_GhostSession_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-session/session_trust_analyzer.py">session_trust_analyzer.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-session/test_session_trust_analyzer.py">tests (20)</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-session/ghost_session_detections.yml">Detection rules</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-session/MENTOR_MESSAGE.md">Mentor message</a></div></div></div><div class="pane" id="pane-files"><h2>All files</h2><div class="grid">
 <div class="card"><b>Project 01</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">report.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/auth_investigator.py">src/auth_investigator.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/make_lab_data.py">data/make_lab_data.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/auth.log">data/auth.log</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/test_auth_investigator.py">tests/test_auth_investigator.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/terminal_output.txt">evidence/terminal_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.json">evidence/findings.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.md">evidence/findings.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">screenshots/</a></div>
 <div class="card"><b>Project 02</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/report.md">report.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.py">src/incident_summary.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/findings.json">data/findings.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/alerts_sample.csv">data/alerts_sample.csv</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/test_incident_summary.py">tests/test_incident_summary.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/terminal_output.txt">evidence/terminal_output.txt</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.md">evidence/incident_summary.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.html">evidence/incident_summary.html</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/incident_summary.json">evidence/incident_summary.json</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">screenshots/</a></div>
-<div class="card"><b>06 Oct · Ghost Admin</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/ghost-admin">ghost-admin/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/GraySentinel_DSOU_GhostAdmin_Report.pdf">Report PDF</a></div><div class="card"><b>06 Oct · Cloud Token</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/cloud-token-blackout">cloud-token-blackout/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/GraySentinel_RIU_CloudTokenBlackout_Report.pdf">Report PDF</a></div><div class="card"><b>06 Oct · Broken Pipeline</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/broken-pipeline">broken-pipeline/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/GraySentinel_SSOU_BrokenPipeline_Report.pdf">Report PDF</a></div><div class="card"><b>RDP war room · 05 Oct</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/rdp-silent-login">rdp-silent-login/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/GraySentinel_DSOU_RDP_SilentLogin_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_chain_hunter.py">rdp_chain_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_powershell_chain.sigma.yml">Sigma rule</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/wazuh_local_rules_rdp.xml">Wazuh rules</a></div><div class="card"><b>Root</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">STEP_BY_STEP.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/PUSH_TO_GITHUB.md">PUSH_TO_GITHUB.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/render_screens.py">docs/render_screens.py</a></div></div></div>
+<div class="card"><b>06 Oct · Ghost Admin</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/ghost-admin">ghost-admin/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-admin/GraySentinel_DSOU_GhostAdmin_Report.pdf">Report PDF</a></div><div class="card"><b>06 Oct · Cloud Token</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/cloud-token-blackout">cloud-token-blackout/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/cloud-token-blackout/GraySentinel_RIU_CloudTokenBlackout_Report.pdf">Report PDF</a></div><div class="card"><b>06 Oct · Broken Pipeline</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/broken-pipeline">broken-pipeline/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/broken-pipeline/GraySentinel_SSOU_BrokenPipeline_Report.pdf">Report PDF</a></div><div class="card"><b>08 Oct · Silent Cred Theft</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/silent-credential-theft">silent-credential-theft/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/silent-credential-theft/GraySentinel_DSOU_SilentCredentialTheft_Report.pdf">Report PDF</a></div><div class="card"><b>08 Oct · Consent Trap</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/consent-trap">consent-trap/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/consent-trap/GraySentinel_RIU_ConsentTrap_Report.pdf">Report PDF</a></div><div class="card"><b>08 Oct · Ghost Session</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/ghost-session">ghost-session/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-session/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/ghost-session/GraySentinel_SSOU_GhostSession_Report.pdf">Report PDF</a></div><div class="card"><b>RDP war room · 05 Oct</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/tree/main/rdp-silent-login">rdp-silent-login/</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/SUBMISSION.md">SUBMISSION.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/GraySentinel_DSOU_RDP_SilentLogin_Report.pdf">Report PDF</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_chain_hunter.py">rdp_chain_hunter.py</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/rdp_powershell_chain.sigma.yml">Sigma rule</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/rdp-silent-login/wazuh_local_rules_rdp.xml">Wazuh rules</a></div><div class="card"><b>Root</b><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026">README.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/STEP_BY_STEP.md">STEP_BY_STEP.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/PUSH_TO_GITHUB.md">PUSH_TO_GITHUB.md</a><a href="https://github.com/Eswar5313/GraySentinel-DSOU-45Day-2026/blob/main/render_screens.py">docs/render_screens.py</a></div></div></div>
 </main><footer>Eswar Mahalingam · Blue Team Operator &amp; Trainee · GS-STU-DSOU-2026-039A · Assigned → Built → Tested → Documented → Published → Proven</footer>
 <script>const N=9,boxes=[...document.querySelectorAll('.chk input')];function load(){let s={};try{s=JSON.parse(localStorage.getItem('gs_day1')||'{}')}catch(e){}boxes.forEach(b=>{b.checked=!!s[b.dataset.k];b.closest('.step').classList.toggle('done',b.checked)});upd()}
 function upd(){const n=boxes.filter(b=>b.checked).length;document.getElementById('pct').textContent=n+' / '+N+' verified'+(n===N?' — all proven ✅':'');document.getElementById('fill').style.width=(100*n/N)+'%'}
