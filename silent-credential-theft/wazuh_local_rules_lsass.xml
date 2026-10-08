@@ -1,0 +1,87 @@
+<!--
+  GraySentinel DSOU · "Silent Credential Theft" · Wazuh custom rules (local_rules.xml)
+  Author: Eswar Mahalingam · 2026-10-08 · detection only
+  Chain: unapproved LSASS access -> failed burst -> explicit creds -> Type 3 to file server -> RC4 tickets
+  IDs 100840-100848 (adjust to a free range; parent SIDs follow the stock Windows/Sysmon ruleset —
+  verify them against your Wazuh version). Requires Sysmon (EID 1, 10) + Security channel.
+-->
+<group name="windows,sysmon,credential_access,graysentinel,">
+
+  <!-- Baseline visibility: any LSASS process access (level 3 = logged, not alerted) -->
+  <rule id="100840" level="3">
+    <if_sid>61612</if_sid>
+    <field name="win.eventdata.targetImage" type="pcre2">(?i)\\lsass\.exe$</field>
+    <description>LSASS process access by $(win.eventdata.sourceImage) mask $(win.eventdata.grantedAccess)</description>
+    <mitre><id>T1003.001</id></mitre>
+  </rule>
+
+  <!-- Approved readers are silenced by signed PATH, not by file name -->
+  <rule id="100841" level="0">
+    <if_sid>100840</if_sid>
+    <field name="win.eventdata.sourceImage" type="pcre2">(?i)^C:\\(ProgramData\\Microsoft\\Windows Defender\\Platform\\[^\\]+\\MsMpEng\.exe|Program Files\\LabEDR\\edr-agent\.exe|Windows\\System32\\(wininit|csrss|wmiprvse)\.exe)$</field>
+    <description>Approved LSASS reader (allow-list)</description>
+  </rule>
+
+  <!-- Memory-read access from a user-writable path = HIGH -->
+  <rule id="100842" level="13">
+    <if_sid>100840</if_sid>
+    <field name="win.eventdata.grantedAccess" type="pcre2">(?i)^0x(1010|1410|1438|143a|1fffff|40)$</field>
+    <field name="win.eventdata.sourceImage" type="pcre2">(?i)\\(Users|Temp|AppData|Downloads|Public)\\</field>
+    <description>HIGH: Suspicious LSASS access on $(win.system.computer) by $(win.eventdata.sourceImage) ($(win.eventdata.grantedAccess))</description>
+    <mitre><id>T1003.001</id></mitre>
+  </rule>
+
+  <!-- Unsigned child of Office/browser from a user-writable path -->
+  <rule id="100843" level="9">
+    <if_sid>61603</if_sid>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\(WINWORD|EXCEL|OUTLOOK|POWERPNT|chrome|msedge)\.exe$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(AppData|Temp|Users\\Public)\\</field>
+    <description>Office/browser spawned $(win.eventdata.image) from a user-writable path</description>
+    <mitre><id>T1204.002</id></mitre>
+  </rule>
+
+  <!-- Failed network logons from one source -->
+  <rule id="100844" level="10" frequency="5" timeframe="180">
+    <if_matched_sid>60122</if_matched_sid>
+    <same_field>win.eventdata.ipAddress</same_field>
+    <description>5+ failed network logons in 3 min from $(win.eventdata.ipAddress)</description>
+    <mitre><id>T1110</id></mitre>
+  </rule>
+
+  <!-- Explicit credentials for an admin/service account -->
+  <rule id="100845" level="8">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4648$</field>
+    <field name="win.eventdata.targetUserName" type="pcre2">(?i)^(adm\.|svc\.|administrator)</field>
+    <description>Explicit credentials for $(win.eventdata.targetUserName) used on $(win.system.computer)</description>
+    <mitre><id>T1078.002</id></mitre>
+  </rule>
+
+  <!-- Network logon to a finance file server from outside the PAW range -->
+  <rule id="100846" level="7">
+    <if_sid>60106</if_sid>
+    <field name="win.system.computer" type="pcre2">(?i)FILE-SRV-\d+</field>
+    <field name="win.eventdata.logonType">^3$</field>
+    <field name="win.eventdata.ipAddress" negate="yes" type="pcre2">^10\.20\.9\.</field>
+    <description>Type 3 logon to $(win.system.computer) by $(win.eventdata.targetUserName) from non-PAW $(win.eventdata.ipAddress)</description>
+    <mitre><id>T1021.002</id></mitre>
+  </rule>
+
+  <!-- RC4 service ticket (downgrade vs AES baseline) -->
+  <rule id="100847" level="8">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4769$</field>
+    <field name="win.eventdata.ticketEncryptionType">^0x17$</field>
+    <description>Kerberos service ticket with RC4 for $(win.eventdata.serviceName) requested by $(win.eventdata.targetUserName)</description>
+    <mitre><id>T1558.003</id></mitre>
+  </rule>
+
+  <!-- CHAIN: suspicious LSASS access, then explicit creds / file-server logon within 15 min -->
+  <rule id="100848" level="15" timeframe="900">
+    <if_sid>100845, 100846</if_sid>
+    <if_matched_sid>100842</if_matched_sid>
+    <description>CRITICAL: Credential access followed by authentication — LSASS access then $(win.eventdata.targetUserName) logon activity within 15 min</description>
+    <mitre><id>T1003.001</id><id>T1078</id><id>T1021</id></mitre>
+  </rule>
+
+</group>

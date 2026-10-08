@@ -1,0 +1,155 @@
+ts,host,channel,event_id,user,logon_type,src_ip,src_host,process,parent,cmdline,target,granted_access,signed,hash,auth_pkg,service,share,detail
+2026-09-08T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-08T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-08T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-08T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-08T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-09T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-09T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-09T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-09T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-09T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-10T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-10T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-10T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-10T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-10T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-11T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-11T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-11T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-11T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-11T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-14T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-14T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-14T03:40:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\Program Files\LabEDR\edr-agent.exe,,,C:\Windows\System32\lsass.exe,0x1410,true,SYNTH-SHA256-LABEDR,,,,EDR credential-guard inspection
+2026-09-14T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-14T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-14T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-15T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-15T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-15T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-15T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-15T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-16T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-16T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-16T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-16T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-16T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-17T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-17T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-17T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-17T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-17T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-18T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-18T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-18T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-18T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-18T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-21T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-21T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-21T03:40:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\Program Files\LabEDR\edr-agent.exe,,,C:\Windows\System32\lsass.exe,0x1410,true,SYNTH-SHA256-LABEDR,,,,EDR credential-guard inspection
+2026-09-21T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-21T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-21T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-22T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-22T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-22T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-22T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-22T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-23T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-23T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-23T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-23T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-23T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-24T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-24T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-24T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-24T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-24T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-25T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-25T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-25T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-25T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-25T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-28T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-28T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-28T03:40:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\Program Files\LabEDR\edr-agent.exe,,,C:\Windows\System32\lsass.exe,0x1410,true,SYNTH-SHA256-LABEDR,,,,EDR credential-guard inspection
+2026-09-28T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-28T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-28T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-29T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-29T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-29T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-29T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-29T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-09-30T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-09-30T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-09-30T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-09-30T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-09-30T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-10-01T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-10-01T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-10-01T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-10-01T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-10-01T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-10-02T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-10-02T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-10-02T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-10-02T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-10-02T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-10-05T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-10-05T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-10-05T03:40:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\Program Files\LabEDR\edr-agent.exe,,,C:\Windows\System32\lsass.exe,0x1410,true,SYNTH-SHA256-LABEDR,,,,EDR credential-guard inspection
+2026-10-05T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-10-05T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-10-05T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-10-05T06:10:00Z,FIN-WS-117,Security,4624,adm.kiran,10,10.20.9.10,PAW-ADMIN-01,,,,,,,,Kerberos,,,RDP remote support session; ticket INC-20931 (printer driver)
+2026-10-05T06:10:02Z,FIN-WS-117,Security,4672,adm.kiran,,,,,,,,,,,,,,SeDebugPrivilege;SeBackupPrivilege;SeTakeOwnershipPrivilege
+2026-10-06T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-10-06T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-10-06T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-10-06T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-10-06T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-10-06T05:00:00Z,FILE-SRV-03,Security,4624,adm.kiran,3,10.20.9.10,PAW-ADMIN-01,,,,,,,,Kerberos,,,approved maintenance CHG-4471
+2026-10-06T05:00:01Z,FILE-SRV-03,Security,4672,adm.kiran,,,,,,,,,,,,,,SeBackupPrivilege;SeRestorePrivilege
+2026-10-07T03:35:00Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-10-07T03:38:00Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-10-07T03:55:00Z,DC-01,Security,4769,f.rao,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-01,,TicketEncryptionType=0x12 (AES256)
+2026-10-07T03:55:04Z,FILE-SRV-01,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,Kerberos,,,
+2026-10-07T03:56:00Z,FILE-SRV-01,Security,5145,f.rao,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-01\Finance-Reports,Reports\monthly_close.xlsx (ReadData)
+2026-10-08T04:02:10Z,FIN-WS-117,Security,4624,f.rao,2,127.0.0.1,FIN-WS-117,,,,,,,,Kerberos,,,interactive console logon
+2026-10-08T04:05:10Z,FIN-WS-117,Sysmon,10,NT AUTHORITY\SYSTEM,,,,C:\ProgramData\Microsoft\Windows Defender\Platform\MsMpEng.exe,,,C:\Windows\System32\lsass.exe,0x1000,true,SYNTH-SHA256-DEFENDER,,,,AV engine routine scan
+2026-10-08T04:10:05Z,FIN-WS-117,Security,4688,f.rao,,,,C:\Users\f.rao\AppData\Local\Temp\dbgsvc.exe,C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE,dbgsvc.exe <redacted-synthetic-arguments>,,,false,SYNTH-SHA256-0000BADC0FFEE117,,,,unsigned binary in user-writable path; first seen in environment
+2026-10-08T04:10:05Z,FIN-WS-117,Sysmon,1,f.rao,,,,C:\Users\f.rao\AppData\Local\Temp\dbgsvc.exe,C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE,dbgsvc.exe <redacted-synthetic-arguments>,,,false,SYNTH-SHA256-0000BADC0FFEE117,,,,unsigned binary in user-writable path; first seen in environment
+2026-10-08T04:10:20Z,FIN-WS-117,Sysmon,10,f.rao,,,,C:\Users\f.rao\AppData\Local\Temp\dbgsvc.exe,,,C:\Windows\System32\lsass.exe,0x1010,false,SYNTH-SHA256-0000BADC0FFEE117,,,,PROCESS_VM_READ|PROCESS_QUERY_LIMITED_INFORMATION; call trace has unbacked memory region
+2026-10-08T04:10:22Z,FIN-WS-117,EDR,9001,f.rao,,,,C:\Users\f.rao\AppData\Local\Temp\dbgsvc.exe,,,C:\Windows\System32\lsass.exe,,,SYNTH-SHA256-0000BADC0FFEE117,,,,"EDR: suspicious credential-access behaviour (alert only, not blocked)"
+2026-10-08T04:12:30Z,FILE-SRV-03,Security,4625,svc.finbackup,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,Status=0xC000006D bad username or password
+2026-10-08T04:12:44Z,FILE-SRV-03,Security,4625,svc.finbackup,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,Status=0xC000006D bad username or password
+2026-10-08T04:12:58Z,FILE-SRV-03,Security,4625,adm.kiran,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,Status=0xC000006D bad username or password
+2026-10-08T04:13:12Z,FILE-SRV-03,Security,4625,administrator,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,Status=0xC000006D bad username or password
+2026-10-08T04:13:26Z,FIN-WS-121,Security,4625,administrator,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,Status=0xC000006D bad username or password
+2026-10-08T04:13:40Z,FIN-WS-121,Security,4625,svc.finbackup,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,Status=0xC000006D bad username or password
+2026-10-08T04:14:50Z,FILE-SRV-03,Security,4624,f.rao,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,network logon; no Kerberos ticket requested first
+2026-10-08T04:15:20Z,FIN-WS-117,Security,4648,f.rao,,,,C:\Users\f.rao\AppData\Local\Temp\dbgsvc.exe,,,adm.kiran@FILE-SRV-03,,,,,,,logon attempted using explicit credentials
+2026-10-08T04:15:25Z,FILE-SRV-03,Security,4624,adm.kiran,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,network logon with explicit credentials
+2026-10-08T04:15:26Z,FILE-SRV-03,Security,4672,adm.kiran,,,,,,,,,,,,,,SeBackupPrivilege;SeDebugPrivilege;SeTakeOwnershipPrivilege
+2026-10-08T04:15:40Z,DC-01,Security,4769,adm.kiran,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-03,,TicketEncryptionType=0x17 (RC4) — downgrade vs AES baseline
+2026-10-08T04:15:46Z,DC-01,Security,4769,adm.kiran,,10.20.31.117,FIN-WS-117,,,,,,,,,MSSQLSvc/SQL-FIN-01:1433,,TicketEncryptionType=0x17 (RC4) — downgrade vs AES baseline
+2026-10-08T04:15:52Z,DC-01,Security,4769,adm.kiran,,10.20.31.117,FIN-WS-117,,,,,,,,,cifs/FILE-SRV-02,,TicketEncryptionType=0x17 (RC4) — downgrade vs AES baseline
+2026-10-08T04:15:58Z,DC-01,Security,4769,adm.kiran,,10.20.31.117,FIN-WS-117,,,,,,,,,HOST/FIN-WS-121,,TicketEncryptionType=0x17 (RC4) — downgrade vs AES baseline
+2026-10-08T04:17:05Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\payroll_2026_Q3.xlsx (ReadData)
+2026-10-08T04:17:09Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\bank_mandates.pdf (ReadData)
+2026-10-08T04:17:13Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\vendor_master.xlsx (ReadData)
+2026-10-08T04:17:17Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\salary_revision.docx (ReadData)
+2026-10-08T04:17:21Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\bonus_pool.xlsx (ReadData)
+2026-10-08T04:17:25Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\audit_adjustments.xlsx (ReadData)
+2026-10-08T04:17:29Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\treasury_signatories.pdf (ReadData)
+2026-10-08T04:17:33Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\tax_filing_FY26.xlsx (ReadData)
+2026-10-08T04:17:37Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\cfo_board_pack.pptx (ReadData)
+2026-10-08T04:17:41Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\loan_covenants.pdf (ReadData)
+2026-10-08T04:17:45Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\ap_aging.xlsx (ReadData)
+2026-10-08T04:17:49Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\ar_aging.xlsx (ReadData)
+2026-10-08T04:17:53Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\payroll_bank_file.csv (ReadData)
+2026-10-08T04:17:57Z,FILE-SRV-03,Security,5145,adm.kiran,,10.20.31.117,,,,,,,,,,,\\FILE-SRV-03\Finance$,Payroll\forecast_FY27.xlsx (ReadData)
+2026-10-08T04:20:25Z,FIN-WS-121,Security,4624,adm.kiran,3,10.20.31.117,FIN-WS-117,,,,,,,,NTLM,,,network logon from a peer workstation
+2026-10-08T04:20:26Z,FIN-WS-121,Security,4672,adm.kiran,,,,,,,,,,,,,,SeDebugPrivilege;SeBackupPrivilege

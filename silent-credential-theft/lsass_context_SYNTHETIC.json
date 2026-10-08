@@ -1,0 +1,84 @@
+{
+  "_note": "SYNTHETIC context for the Silent Credential Theft lab. RFC-1918 IPs, fake hashes. LAB ONLY.",
+  "assets": {
+    "FIN-WS-117": {
+      "ip": "10.20.31.117",
+      "role": "Workstation",
+      "owner": "f.rao",
+      "dept": "Finance"
+    },
+    "FIN-WS-121": {
+      "ip": "10.20.31.121",
+      "role": "Workstation",
+      "owner": "p.iyer",
+      "dept": "Finance"
+    },
+    "FILE-SRV-03": {
+      "ip": "10.20.5.33",
+      "role": "File Server",
+      "data": "Finance$ (payroll, treasury)"
+    },
+    "FILE-SRV-01": {
+      "ip": "10.20.5.31",
+      "role": "File Server",
+      "data": "Finance-Reports"
+    },
+    "DC-01": {
+      "ip": "10.20.0.11",
+      "role": "Domain Controller"
+    },
+    "PAW-ADMIN-01": {
+      "ip": "10.20.9.10",
+      "role": "Privileged Access Workstation"
+    }
+  },
+  "users": {
+    "f.rao": {
+      "privileged": false,
+      "dept": "Finance",
+      "normal_hosts": [
+        "FIN-WS-117"
+      ],
+      "normal_servers": [
+        "FILE-SRV-01"
+      ]
+    },
+    "adm.kiran": {
+      "privileged": true,
+      "role": "Server admin (Tier 1)",
+      "approved_sources": [
+        "10.20.9.10"
+      ]
+    },
+    "svc.finbackup": {
+      "privileged": true,
+      "role": "Backup service account",
+      "approved_sources": [
+        "10.20.5.40"
+      ]
+    },
+    "administrator": {
+      "privileged": true,
+      "role": "Built-in admin (should be disabled)"
+    }
+  },
+  "approved_lsass_readers": [
+    "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\MsMpEng.exe",
+    "C:\\Program Files\\LabEDR\\edr-agent.exe",
+    "C:\\Windows\\System32\\wininit.exe",
+    "C:\\Windows\\System32\\csrss.exe"
+  ],
+  "sensitive_shares": [
+    "\\\\FILE-SRV-03\\Finance$"
+  ],
+  "change_tickets": [
+    {
+      "id": "CHG-4471",
+      "host": "FILE-SRV-03",
+      "user": "adm.kiran",
+      "date": "2026-10-06",
+      "source": "10.20.9.10"
+    }
+  ],
+  "exposure_note": "adm.kiran opened an RDP support session on FIN-WS-117 on 05 Oct (INC-20931) \u2014 a privileged credential was present in the workstation's LSASS afterwards."
+}

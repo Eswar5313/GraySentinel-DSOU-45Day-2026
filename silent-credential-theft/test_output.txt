@@ -1,0 +1,25 @@
+test_18_baseline_only_is_clean (test_lsass_credential_hunter.TestBaselineAndRobustness.test_18_baseline_only_is_clean) ... ok
+test_19_malformed_rows_skipped (test_lsass_credential_hunter.TestBaselineAndRobustness.test_19_malformed_rows_skipped) ... ok
+test_20_cli_exit_codes (test_lsass_credential_hunter.TestBaselineAndRobustness.test_20_cli_exit_codes) ... ok
+test_08_h1_supported (test_lsass_credential_hunter.TestHypotheses.test_08_h1_supported) ... ok
+test_09_h2_rejected_no_ticket_non_paw (test_lsass_credential_hunter.TestHypotheses.test_09_h2_rejected_no_ticket_non_paw) ... ok
+test_10_h3_supported_with_explicit_creds (test_lsass_credential_hunter.TestHypotheses.test_10_h3_supported_with_explicit_creds) ... ok
+test_11_privileged_account_involved (test_lsass_credential_hunter.TestHypotheses.test_11_privileged_account_involved) ... ok
+test_12_legit_admin_from_paw_is_legitimate (test_lsass_credential_hunter.TestHypotheses.test_12_legit_admin_from_paw_is_legitimate) ... ok
+test_13_new_destinations (test_lsass_credential_hunter.TestLateralAndCorrelation.test_13_new_destinations) ... ok
+test_14_sensitive_share_and_kerberos (test_lsass_credential_hunter.TestLateralAndCorrelation.test_14_sensitive_share_and_kerberos) ... ok
+test_15_full_correlation_is_critical (test_lsass_credential_hunter.TestLateralAndCorrelation.test_15_full_correlation_is_critical) ... ok
+test_16_lsass_alone_is_only_medium (test_lsass_credential_hunter.TestLateralAndCorrelation.test_16_lsass_alone_is_only_medium) ... ok
+test_17_scope_order_source_dc_server_workstation (test_lsass_credential_hunter.TestLateralAndCorrelation.test_17_scope_order_source_dc_server_workstation) ... ok
+test_01_exactly_one_case (test_lsass_credential_hunter.TestTriageAndDetection.test_01_exactly_one_case) ... ok
+test_02_process_and_parent_identified (test_lsass_credential_hunter.TestTriageAndDetection.test_02_process_and_parent_identified) ... ok
+test_03_signature_hash_mask (test_lsass_credential_hunter.TestTriageAndDetection.test_03_signature_hash_mask) ... ok
+test_04_defender_and_edr_not_flagged (test_lsass_credential_hunter.TestTriageAndDetection.test_04_defender_and_edr_not_flagged) ... ok
+test_05_lsass_existing_alone_never_alerts (test_lsass_credential_hunter.TestTriageAndDetection.test_05_lsass_existing_alone_never_alerts) ... ok
+test_06_approved_path_but_unsigned_is_not_expected (test_lsass_credential_hunter.TestTriageAndDetection.test_06_approved_path_but_unsigned_is_not_expected) ... ok
+test_07_query_only_mask_by_unknown_signed_tool_is_review (test_lsass_credential_hunter.TestTriageAndDetection.test_07_query_only_mask_by_unknown_signed_tool_is_review) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.030s
+
+OK

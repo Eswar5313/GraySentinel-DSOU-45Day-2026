@@ -1,0 +1,238 @@
+{
+  "cases": [
+    {
+      "triage": {
+        "host": "FIN-WS-117",
+        "ip": "10.20.31.117",
+        "session_user": "f.rao",
+        "process": "C:\\Users\\f.rao\\AppData\\Local\\Temp\\dbgsvc.exe",
+        "parent": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+        "cmdline": "dbgsvc.exe <redacted-synthetic-arguments>",
+        "signed": "false",
+        "hash": "SYNTH-SHA256-0000BADC0FFEE117",
+        "granted_access": "0x1010",
+        "lsass_access_ts": "2026-10-08T04:10:20Z",
+        "hash_seen_on": [
+          "FIN-WS-117"
+        ],
+        "accounts_involved": [
+          "adm.kiran",
+          "f.rao"
+        ],
+        "privileged_accounts": [
+          "adm.kiran"
+        ],
+        "failed_logons": 6,
+        "successful_type3": 3,
+        "explicit_credential_events": 1,
+        "edr_alerts": 1
+      },
+      "hypotheses": {
+        "H1": {
+          "verdict": "SUPPORTED",
+          "evidence": [
+            "source image not on the approved LSASS-reader list",
+            "binary is unsigned",
+            "runs from a user-writable path",
+            "GrantedAccess 0x1010 includes PROCESS_VM_READ",
+            "unusual parent winword.exe",
+            "EDR credential-access alert on the same process",
+            "hash first-seen, present on this host only"
+          ]
+        },
+        "H2": {
+          "verdict": "REJECTED",
+          "evidence": [
+            "no change/incident ticket for the destinations",
+            "FIN-WS-117 is not an approved admin source for adm.kiran",
+            "admin tools are not spawned by an Office application"
+          ]
+        },
+        "H3": {
+          "verdict": "SUPPORTED",
+          "evidence": [
+            "explicit credentials (4648) for privileged adm.kiran",
+            "new destinations (0 prior logons): FILE-SRV-03, FIN-WS-121",
+            "14 reads on sensitive share \\\\FILE-SRV-03\\Finance$",
+            "same account on another workstation: FIN-WS-121",
+            "4 unusual service tickets (RC4 / first-seen SPN)",
+            "6 failed network logons from FIN-WS-117 first"
+          ]
+        }
+      },
+      "detection": {
+        "name": "Suspicious LSASS Process Access",
+        "fired": true,
+        "severity": "CRITICAL",
+        "reasons": [
+          "source image not on the approved LSASS-reader list",
+          "binary is unsigned",
+          "runs from a user-writable path",
+          "GrantedAccess 0x1010 includes PROCESS_VM_READ"
+        ]
+      },
+      "correlation": {
+        "signals": {
+          "A_lsass_access": true,
+          "B_type3_to_server": true,
+          "C_other_workstation": true,
+          "D_sensitive_share": true
+        },
+        "score": "4/4",
+        "gaps": {
+          "A_to_B_min": 4.5,
+          "A_to_C_min": 10.1
+        }
+      },
+      "destinations": {
+        "FILE-SRV-03": {
+          "role": "File Server",
+          "accounts": [
+            "adm.kiran",
+            "f.rao"
+          ],
+          "prior_30d": 0,
+          "auth": [
+            "NTLM"
+          ]
+        },
+        "FIN-WS-121": {
+          "role": "Workstation",
+          "accounts": [
+            "adm.kiran"
+          ],
+          "prior_30d": 0,
+          "auth": [
+            "NTLM"
+          ]
+        }
+      },
+      "kerberos_unusual": [
+        "cifs/FILE-SRV-03",
+        "MSSQLSvc/SQL-FIN-01:1433",
+        "cifs/FILE-SRV-02",
+        "HOST/FIN-WS-121"
+      ],
+      "sensitive_files": [
+        "Payroll\\payroll_2026_Q3.xlsx (ReadData)",
+        "Payroll\\bank_mandates.pdf (ReadData)",
+        "Payroll\\vendor_master.xlsx (ReadData)",
+        "Payroll\\salary_revision.docx (ReadData)",
+        "Payroll\\bonus_pool.xlsx (ReadData)",
+        "Payroll\\audit_adjustments.xlsx (ReadData)",
+        "Payroll\\treasury_signatories.pdf (ReadData)",
+        "Payroll\\tax_filing_FY26.xlsx (ReadData)",
+        "Payroll\\cfo_board_pack.pptx (ReadData)",
+        "Payroll\\loan_covenants.pdf (ReadData)",
+        "Payroll\\ap_aging.xlsx (ReadData)",
+        "Payroll\\ar_aging.xlsx (ReadData)",
+        "Payroll\\payroll_bank_file.csv (ReadData)",
+        "Payroll\\forecast_FY27.xlsx (ReadData)"
+      ],
+      "investigate_next": [
+        "FIN-WS-117 (source \u2014 isolate, preserve memory + Sysmon/EDR)",
+        "DC-01 (Domain Controller \u2014 4768/4769/4776 for adm.kiran, f.rao)",
+        "FILE-SRV-03 (File Server \u2014 logons by adm.kiran, f.rao)",
+        "FIN-WS-121 (Workstation \u2014 logons by adm.kiran)",
+        "FILE-SRV-02 (service ticket requested \u2014 check for a later logon)",
+        "SQL-FIN-01 (service ticket requested \u2014 check for a later logon)"
+      ],
+      "timeline": [
+        [
+          "2026-10-08 04:02:10Z",
+          "4624/2",
+          "f.rao logs on to FIN-WS-117"
+        ],
+        [
+          "2026-10-08 04:10:05Z",
+          "4688",
+          "winword.exe \u2192 dbgsvc.exe (signed=false)"
+        ],
+        [
+          "2026-10-08 04:10:20Z",
+          "Sysmon10",
+          "dbgsvc.exe accesses lsass.exe GrantedAccess=0x1010"
+        ],
+        [
+          "2026-10-08 04:10:22Z",
+          "EDR",
+          "EDR: suspicious credential-access behaviour (alert only, not blocked)"
+        ],
+        [
+          "2026-10-08 04:12:30Z",
+          "4625",
+          "first of 6 failed network logons from FIN-WS-117 (adm.kiran, administrator, svc.finbackup)"
+        ],
+        [
+          "2026-10-08 04:14:50Z",
+          "4624/3",
+          "f.rao \u2192 FILE-SRV-03 (NTLM)"
+        ],
+        [
+          "2026-10-08 04:15:20Z",
+          "4648",
+          "f.rao uses explicit credentials for adm.kiran@FILE-SRV-03"
+        ],
+        [
+          "2026-10-08 04:15:25Z",
+          "4624/3",
+          "adm.kiran \u2192 FILE-SRV-03 (NTLM)"
+        ],
+        [
+          "2026-10-08 04:15:26Z",
+          "4672",
+          "adm.kiran on FILE-SRV-03: SeBackupPrivilege;SeDebugPrivilege;SeTakeOwnershipPrivilege"
+        ],
+        [
+          "2026-10-08 04:15:40Z",
+          "4769",
+          "4 service tickets: cifs/FILE-SRV-03, MSSQLSvc/SQL-FIN-01:1433, cifs/FILE-SRV-02, HOST/FIN-WS-121"
+        ],
+        [
+          "2026-10-08 04:17:05Z",
+          "5145",
+          "14 file reads on \\\\FILE-SRV-03\\Finance$ by adm.kiran"
+        ],
+        [
+          "2026-10-08 04:20:25Z",
+          "4624/3",
+          "adm.kiran \u2192 FIN-WS-121 (NTLM)"
+        ],
+        [
+          "2026-10-08 04:20:26Z",
+          "4672",
+          "adm.kiran on FIN-WS-121: SeDebugPrivilege;SeBackupPrivilege"
+        ]
+      ]
+    }
+  ],
+  "lsass_access_summary": {
+    "total": 28,
+    "expected": 27,
+    "suspicious": 1,
+    "expected_images": [
+      "edr-agent.exe",
+      "msmpeng.exe"
+    ]
+  },
+  "admin_controls": [
+    {
+      "ts": "2026-10-05T06:10:00Z",
+      "user": "adm.kiran",
+      "host": "FIN-WS-117",
+      "src": "PAW-ADMIN-01",
+      "ticket": null,
+      "approved_source": true,
+      "verdict": "LEGITIMATE"
+    },
+    {
+      "ts": "2026-10-06T05:00:00Z",
+      "user": "adm.kiran",
+      "host": "FILE-SRV-03",
+      "src": "PAW-ADMIN-01",
+      "ticket": "CHG-4471",
+      "approved_source": true,
+      "verdict": "LEGITIMATE"
+    }
+  ]
+}

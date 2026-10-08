@@ -1,0 +1,87 @@
+title: Suspicious LSASS Process Access (Silent Credential Theft)
+id: 5d1e8a42-7c90-4f3b-b6a1-117c0ffee001
+status: experimental
+description: |
+  GraySentinel DSOU war-room "Silent Credential Theft". Detects a process that is NOT an approved
+  security/Windows component opening lsass.exe with memory-read rights, and — as a correlation —
+  the authentication activity that follows from the same host. The rule never alerts because
+  lsass.exe exists; it alerts on WHICH process accessed it and in WHAT context.
+author: Eswar Mahalingam (GraySentinel DSOU, Blue Team)
+date: 2026/10/08
+references:
+  - https://attack.mitre.org/techniques/T1003/001/
+  - https://attack.mitre.org/techniques/T1078/
+  - https://attack.mitre.org/techniques/T1021/
+tags: [attack.credential_access, attack.t1003.001, attack.lateral_movement, attack.t1021.002, attack.t1078.002]
+---
+# Rule A — unapproved process opens LSASS with VM_READ
+title: LSASS Opened With Memory-Read Rights By Unapproved Process
+name: lsass_access_unapproved
+logsource: {product: windows, category: process_access}     # Sysmon Event ID 10
+detection:
+  selection:
+    TargetImage|endswith: '\lsass.exe'
+    GrantedAccess|contains: ['0x1010', '0x1410', '0x1438', '0x143a', '0x1fffff', '0x40']
+  approved_readers:
+    SourceImage|endswith:
+      - '\MsMpEng.exe'
+      - '\LabEDR\edr-agent.exe'
+      - '\wininit.exe'
+      - '\csrss.exe'
+      - '\wmiprvse.exe'
+  approved_path:
+    SourceImage|startswith: ['C:\Windows\System32\', 'C:\Program Files\', 'C:\ProgramData\Microsoft\Windows Defender\']
+  user_writable:
+    SourceImage|contains: ['\Users\', '\Temp\', '\AppData\', '\Downloads\', '\Public\']
+  condition: selection and (user_writable or not (approved_readers and approved_path))
+fields: [SourceImage, TargetImage, GrantedAccess, SourceProcessId, User, CallTrace]
+falsepositives:
+  - EDR/AV agents not yet on the allow-list (add by signed path, never by file name alone)
+  - Windows diagnostic components (WerFault on a real LSASS crash), approved admin tooling
+level: high
+---
+# Rule B — unsigned child of an Office/browser process (the process lineage behind Rule A)
+title: Unsigned Binary Spawned By Office Or Browser From User-Writable Path
+name: office_spawns_unsigned
+logsource: {product: windows, category: process_creation}   # Sysmon 1 / Security 4688
+detection:
+  parent:
+    ParentImage|endswith: ['\WINWORD.EXE', '\EXCEL.EXE', '\OUTLOOK.EXE', '\POWERPNT.EXE', '\chrome.exe', '\msedge.exe']
+  child:
+    Image|contains: ['\AppData\', '\Temp\', '\Users\Public\']
+  condition: parent and child
+level: medium
+---
+# Rule C — explicit credentials used from a workstation for a privileged account
+title: Explicit Credential Logon For Admin Account From Workstation
+name: explicit_creds_admin_from_ws
+logsource: {product: windows, service: security}
+detection:
+  selection: {EventID: 4648}
+  admin_target: {TargetUserName|startswith: ['adm.', 'svc.', 'administrator']}
+  from_ws: {Computer|contains: '-WS-'}
+  condition: selection and admin_target and from_ws
+level: medium
+---
+# Rule D — network logon to a file server from a workstation that is not the account's approved source
+title: Network Logon To File Server From Non-Admin Source
+name: type3_fileserver_from_ws
+logsource: {product: windows, service: security}
+detection:
+  selection: {EventID: 4624, LogonType: 3, Computer|contains: 'FILE-SRV-'}
+  paw: {IpAddress|cidr: '10.20.9.0/24'}
+  condition: selection and not paw
+level: low
+---
+# Correlation — LSASS access, then authentication from the SAME host within 15 minutes
+title: Credential Access Followed By Authentication From Same Host
+correlation:
+  type: temporal_ordered
+  rules: [lsass_access_unapproved, explicit_creds_admin_from_ws, type3_fileserver_from_ws]
+  group-by: [Computer]        # for Rule D map IpAddress/WorkstationName back to the source host
+  timespan: 15m
+  condition: {gte: 2}
+falsepositives:
+  - Approved admin work from a PAW with a change ticket (excluded by source range)
+  - Backup/scan service accounts on their scheduled window
+level: critical
