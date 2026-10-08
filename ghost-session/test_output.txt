@@ -1,0 +1,25 @@
+test_09_pivot_is_the_token_in_two_geographies (test_session_trust_analyzer.TestPivotAndDecision.test_09_pivot_is_the_token_in_two_geographies) ... ok
+test_10_everything_before_the_pivot_is_owner_explainable (test_session_trust_analyzer.TestPivotAndDecision.test_10_everything_before_the_pivot_is_owner_explainable) ... ok
+test_11_decision_is_contain (test_session_trust_analyzer.TestPivotAndDecision.test_11_decision_is_contain) ... ok
+test_12_without_geo_proof_decision_is_investigate (test_session_trust_analyzer.TestPivotAndDecision.test_12_without_geo_proof_decision_is_investigate) ... ok
+test_13_owner_only_day_is_monitor (test_session_trust_analyzer.TestPivotAndDecision.test_13_owner_only_day_is_monitor) ... ok
+test_14_baseline_day_is_clean (test_session_trust_analyzer.TestPivotAndDecision.test_14_baseline_day_is_clean) ... ok
+test_19_malformed_rows_skipped (test_session_trust_analyzer.TestRobustness.test_19_malformed_rows_skipped) ... ok
+test_20_cli_exit_codes (test_session_trust_analyzer.TestRobustness.test_20_cli_exit_codes) ... ok
+test_01_owner_session_is_trusted (test_session_trust_analyzer.TestSessionTrust.test_01_owner_session_is_trusted) ... ok
+test_02_ghost_session_is_not_the_owner (test_session_trust_analyzer.TestSessionTrust.test_02_ghost_session_is_not_the_owner) ... ok
+test_03_all_five_dimensions_fail (test_session_trust_analyzer.TestSessionTrust.test_03_all_five_dimensions_fail) ... ok
+test_04_unregistered_device_and_inherited_mfa (test_session_trust_analyzer.TestSessionTrust.test_04_unregistered_device_and_inherited_mfa) ... ok
+test_05_two_environments_at_once (test_session_trust_analyzer.TestSessionTrust.test_05_two_environments_at_once) ... ok
+test_06_unseen_app_and_endpoint_mismatch (test_session_trust_analyzer.TestSessionTrust.test_06_unseen_app_and_endpoint_mismatch) ... ok
+test_07_first_seen_internal_resource_and_mass_access (test_session_trust_analyzer.TestSessionTrust.test_07_first_seen_internal_resource_and_mass_access) ... ok
+test_08_permission_grant_and_after_hours (test_session_trust_analyzer.TestSessionTrust.test_08_permission_grant_and_after_hours) ... ok
+test_15_timeline_has_all_required_fields (test_session_trust_analyzer.TestTimelineAndAnswers.test_15_timeline_has_all_required_fields) ... ok
+test_16_timeline_risk_peaks_at_pivot (test_session_trust_analyzer.TestTimelineAndAnswers.test_16_timeline_risk_peaks_at_pivot) ... ok
+test_17_success_criteria_answered (test_session_trust_analyzer.TestTimelineAndAnswers.test_17_success_criteria_answered) ... ok
+test_18_exposure_and_edr_clean (test_session_trust_analyzer.TestTimelineAndAnswers.test_18_exposure_and_edr_clean) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.034s
+
+OK

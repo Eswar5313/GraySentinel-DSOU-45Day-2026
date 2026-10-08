@@ -1,0 +1,50 @@
+{
+  "_note": "SYNTHETIC context for the Ghost Session lab (corp.lab.internal). All identities are synthetic, disposable and lab-only. RFC-5737 / RFC-1918 addresses.",
+  "managed_devices": {
+    "FIN-LT-22": {
+      "owner": "finance.manager",
+      "ip": "10.50.22.22",
+      "compliant": true,
+      "edr": true
+    }
+  },
+  "users": {
+    "finance.manager": {
+      "dept": "Finance",
+      "countries": [
+        "IN"
+      ],
+      "apps": [
+        "FinLedger"
+      ],
+      "file_servers": [
+        "FS-FIN-01"
+      ],
+      "work_hours_ist": [
+        9,
+        19
+      ],
+      "max_daily_files": 25,
+      "privileged": false
+    }
+  },
+  "sensitive_resources": [
+    "FS-FIN-02",
+    "\\\\FS-FIN-02\\Treasury",
+    "Cloud Console"
+  ],
+  "assets": {
+    "IDP-01": "Identity Provider",
+    "RA-GW-01": "Remote Access Gateway",
+    "FS-FIN-02": "Finance file server (Treasury)",
+    "FS-FIN-01": "Finance file server (Reports)",
+    "SIEM-01": "SIEM",
+    "corp-cloud.lab": "Cloud tenant"
+  },
+  "session_policy": {
+    "lifetime_hours": 24,
+    "mfa_reprompt_on_new_device": false,
+    "token_binding": false
+  },
+  "lab_safety": "Synthetic + disposable + lab-only identity. No real credential, session or token is used."
+}

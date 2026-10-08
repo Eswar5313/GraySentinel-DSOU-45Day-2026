@@ -1,0 +1,149 @@
+ts,source,action,user,device,src_ip,country,session_id,token_id,app,resource,count,mfa,result,detail
+2026-09-08T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B00,T-B00,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-08T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B00,T-B00,FinLedger,,,,success,
+2026-09-08T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-08T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-08T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,18,,success,
+2026-09-08T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B00,T-B00,,,,,success,
+2026-09-09T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B01,T-B01,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-09T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B01,T-B01,FinLedger,,,,success,
+2026-09-09T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-09T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-09T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,19,,success,
+2026-09-09T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B01,T-B01,,,,,success,
+2026-09-10T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B02,T-B02,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-10T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B02,T-B02,FinLedger,,,,success,
+2026-09-10T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-10T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-10T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,20,,success,
+2026-09-10T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B02,T-B02,,,,,success,
+2026-09-11T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B03,T-B03,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-11T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B03,T-B03,FinLedger,,,,success,
+2026-09-11T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-11T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-11T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,21,,success,
+2026-09-11T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B03,T-B03,,,,,success,
+2026-09-14T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B06,T-B06,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-14T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B06,T-B06,FinLedger,,,,success,
+2026-09-14T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-14T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-14T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,24,,success,
+2026-09-14T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B06,T-B06,,,,,success,
+2026-09-15T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B07,T-B07,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-15T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B07,T-B07,FinLedger,,,,success,
+2026-09-15T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-15T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-15T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,18,,success,
+2026-09-15T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B07,T-B07,,,,,success,
+2026-09-16T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B08,T-B08,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-16T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B08,T-B08,FinLedger,,,,success,
+2026-09-16T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-16T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-16T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,19,,success,
+2026-09-16T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B08,T-B08,,,,,success,
+2026-09-17T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B09,T-B09,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-17T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B09,T-B09,FinLedger,,,,success,
+2026-09-17T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-17T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-17T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,20,,success,
+2026-09-17T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B09,T-B09,,,,,success,
+2026-09-18T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B10,T-B10,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-18T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B10,T-B10,FinLedger,,,,success,
+2026-09-18T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-18T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-18T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,21,,success,
+2026-09-18T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B10,T-B10,,,,,success,
+2026-09-21T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B13,T-B13,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-21T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B13,T-B13,FinLedger,,,,success,
+2026-09-21T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-21T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-21T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,24,,success,
+2026-09-21T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B13,T-B13,,,,,success,
+2026-09-22T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B14,T-B14,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-22T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B14,T-B14,FinLedger,,,,success,
+2026-09-22T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-22T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-22T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,18,,success,
+2026-09-22T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B14,T-B14,,,,,success,
+2026-09-23T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B15,T-B15,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-23T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B15,T-B15,FinLedger,,,,success,
+2026-09-23T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-23T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-23T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,19,,success,
+2026-09-23T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B15,T-B15,,,,,success,
+2026-09-24T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B16,T-B16,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-24T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B16,T-B16,FinLedger,,,,success,
+2026-09-24T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-24T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-24T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,20,,success,
+2026-09-24T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B16,T-B16,,,,,success,
+2026-09-25T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B17,T-B17,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-25T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B17,T-B17,FinLedger,,,,success,
+2026-09-25T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-25T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-25T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,21,,success,
+2026-09-25T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B17,T-B17,,,,,success,
+2026-09-28T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B20,T-B20,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-28T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B20,T-B20,FinLedger,,,,success,
+2026-09-28T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-28T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-28T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,24,,success,
+2026-09-28T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B20,T-B20,,,,,success,
+2026-09-29T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B21,T-B21,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-29T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B21,T-B21,FinLedger,,,,success,
+2026-09-29T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-29T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-29T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,18,,success,
+2026-09-29T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B21,T-B21,,,,,success,
+2026-09-30T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B22,T-B22,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-09-30T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B22,T-B22,FinLedger,,,,success,
+2026-09-30T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-09-30T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-09-30T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,19,,success,
+2026-09-30T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B22,T-B22,,,,,success,
+2026-10-01T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B23,T-B23,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-10-01T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B23,T-B23,FinLedger,,,,success,
+2026-10-01T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-10-01T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-10-01T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,20,,success,
+2026-10-01T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B23,T-B23,,,,,success,
+2026-10-02T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B24,T-B24,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-10-02T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B24,T-B24,FinLedger,,,,success,
+2026-10-02T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-10-02T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-10-02T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,21,,success,
+2026-10-02T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B24,T-B24,,,,,success,
+2026-10-05T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B27,T-B27,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-10-05T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B27,T-B27,FinLedger,,,,success,
+2026-10-05T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-10-05T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-10-05T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,24,,success,
+2026-10-05T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B27,T-B27,,,,,success,
+2026-10-06T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B28,T-B28,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-10-06T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B28,T-B28,FinLedger,,,,success,
+2026-10-06T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-10-06T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-10-06T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,18,,success,
+2026-10-06T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B28,T-B28,,,,,success,
+2026-10-07T04:30:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B29,T-B29,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-10-07T04:40:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B29,T-B29,FinLedger,,,,success,
+2026-10-07T04:40:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-10-07T05:10:00Z,fileserver,auth,finance.manager,FIN-LT-22,10.50.22.22,,,,,FS-FIN-01,,,success,Kerberos; Logon Type 3
+2026-10-07T05:11:00Z,fileserver,file_access,finance.manager,FIN-LT-22,10.50.22.22,,,,,\\FS-FIN-01\Reports,19,,success,
+2026-10-07T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-B29,T-B29,,,,,success,
+2026-10-08T04:32:00Z,idp,signin,finance.manager,FIN-LT-22,198.51.100.22,IN,S-1001,T-A1,,,,satisfied,success,interactive sign-in; compliant managed device
+2026-10-08T04:37:00Z,idp,session_created,finance.manager,UNREGISTERED-DEV,198.51.100.50,IN,S-1002,T-B7,,,,inherited,success,new cloud session; no MFA prompt (claim carried by existing session context); device not registered; via RA-GW-01
+2026-10-08T04:37:05Z,ragw,tunnel_up,finance.manager,UNREGISTERED-DEV,198.51.100.50,IN,,,,RA-GW-01,,,success,remote-access tunnel; pool address 10.50.99.14; posture check skipped (legacy profile)
+2026-10-08T04:43:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-1001,T-A1,FinLedger,,,,success,normal finance application
+2026-10-08T04:43:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-10-08T04:51:00Z,cloud,app_access,finance.manager,UNREGISTERED-DEV,198.51.100.50,IN,S-1002,T-B7,Cloud Console,,,,success,"tenant dashboard: users, groups, app registrations viewed; app never used by this identity"
+2026-10-08T04:56:00Z,fileserver,auth,finance.manager,UNREGISTERED-DEV,10.50.99.14,,,,,FS-FIN-02,,,success,NTLM; Logon Type 3; server never accessed by this identity
+2026-10-08T05:01:00Z,fileserver,file_access,finance.manager,UNREGISTERED-DEV,10.50.99.14,,,,,\\FS-FIN-02\Treasury,412,,success,412 files read in 4 minutes
+2026-10-08T05:05:00Z,edr,scan,finance.manager,FIN-LT-22,10.50.22.22,,,,,,,,clean,"FIN-LT-22: no malware, no suspicious process; browser + office apps only"
+2026-10-08T05:09:00Z,idp,token_use,finance.manager,UNREGISTERED-DEV,203.0.113.88,NL,S-1002,T-B7,,,,inherited,success,same session + token now presented from a second geography; laptop session S-1001 still active in IN
+2026-10-08T05:10:00Z,cloud,app_access,finance.manager,FIN-LT-22,198.51.100.22,IN,S-1001,T-A1,FinLedger,,,,success,owner still working normally
+2026-10-08T05:10:02Z,proxy,http_connect,finance.manager,FIN-LT-22,10.50.22.22,,,,FinLedger,finledger.corp-cloud.lab,,,allowed,
+2026-10-08T05:14:00Z,cloud,app_permission_grant,finance.manager,UNREGISTERED-DEV,203.0.113.88,NL,S-1002,T-B7,MailSync Helper,,,,success,delegated permissions granted: Mail.Read offline_access; disposable lab application
+2026-10-08T05:21:00Z,helpdesk,user_statement,finance.manager,FIN-LT-22,,,,,,,,,recorded,user: 'I was working normally. I didn't install anything or share my password.'
+2026-10-08T12:50:00Z,idp,signout,finance.manager,FIN-LT-22,198.51.100.22,IN,S-1001,T-A1,,,,,success,
+2026-10-08T14:10:00Z,idp,token_refresh,finance.manager,UNREGISTERED-DEV,203.0.113.88,NL,S-1002,T-B7,,,,inherited,success,browser session still active after the user's working hours; owner signed out at 18:20

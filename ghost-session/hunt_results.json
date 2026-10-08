@@ -1,0 +1,408 @@
+{
+  "day": "2026-10-08",
+  "decision": "CONTAIN",
+  "dimensions_failed": [
+    "Behaviour",
+    "Device",
+    "Location",
+    "Resource",
+    "Time"
+  ],
+  "sessions": [
+    {
+      "session": "S-1001",
+      "first": "2026-10-08T04:32:00Z",
+      "devices": [
+        "FIN-LT-22"
+      ],
+      "ips": [
+        "198.51.100.22"
+      ],
+      "countries": [
+        "IN"
+      ],
+      "apps": [
+        "FinLedger"
+      ],
+      "mfa": "satisfied",
+      "last": "2026-10-08T12:50:00Z",
+      "dimensions_failed": [],
+      "trust": "TRUSTED"
+    },
+    {
+      "session": "S-1002",
+      "first": "2026-10-08T04:37:00Z",
+      "devices": [
+        "UNREGISTERED-DEV"
+      ],
+      "ips": [
+        "198.51.100.50",
+        "203.0.113.88"
+      ],
+      "countries": [
+        "IN",
+        "NL"
+      ],
+      "apps": [
+        "Cloud Console",
+        "MailSync Helper"
+      ],
+      "mfa": "inherited",
+      "last": "2026-10-08T14:10:00Z",
+      "dimensions_failed": [
+        "Behaviour",
+        "Device",
+        "Location",
+        "Resource",
+        "Time"
+      ],
+      "trust": "NOT THE OWNER"
+    }
+  ],
+  "pivot_event": {
+    "ts": "2026-10-08T05:09:00Z",
+    "dimension": "Location",
+    "kind": "one session token in two geographies",
+    "risk": "CRITICAL",
+    "confidence": "High",
+    "evidence": "token T-B7 used from IN and then NL (203.0.113.88) 18 min apart \u2014 a session does not travel; the owner's laptop session is still active",
+    "owner_explainable": false,
+    "session": "S-1002"
+  },
+  "findings": [
+    {
+      "ts": "2026-10-08T04:37:00Z",
+      "dimension": "Device",
+      "kind": "session on an unregistered device",
+      "risk": "MEDIUM",
+      "confidence": "Medium",
+      "evidence": "UNREGISTERED-DEV is not a managed/compliant device (new cloud session)",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T04:37:00Z",
+      "dimension": "Device",
+      "kind": "new session without a fresh MFA challenge",
+      "risk": "MEDIUM",
+      "confidence": "Medium",
+      "evidence": "MFA status 'satisfied' was inherited from existing session context, not re-proved",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T04:37:00Z",
+      "dimension": "Location",
+      "kind": "identity active in two environments at once",
+      "risk": "MEDIUM",
+      "confidence": "Medium",
+      "evidence": "S-1002 on UNREGISTERED-DEV via 198.51.100.50 while S-1001 is live on FIN-LT-22",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T04:51:00Z",
+      "dimension": "Behaviour",
+      "kind": "previously unseen application",
+      "risk": "MEDIUM",
+      "confidence": "Medium",
+      "evidence": "'Cloud Console' never used by this identity in the 30-day baseline",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T04:51:00Z",
+      "dimension": "Behaviour",
+      "kind": "cloud says yes, endpoint says no",
+      "risk": "HIGH",
+      "confidence": "High",
+      "evidence": "no proxy/DNS record from the owner's managed device for 'Cloud Console' at this time",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T04:56:00Z",
+      "dimension": "Resource",
+      "kind": "first-seen internal resource",
+      "risk": "HIGH",
+      "confidence": "Medium",
+      "evidence": "FS-FIN-02 from UNREGISTERED-DEV (10.50.99.14); NTLM; baseline servers ['FS-FIN-01']",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T05:01:00Z",
+      "dimension": "Behaviour",
+      "kind": "mass file access",
+      "risk": "HIGH",
+      "confidence": "High",
+      "evidence": "412 files on \\\\FS-FIN-02\\Treasury; daily baseline \u2264 25",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T05:09:00Z",
+      "dimension": "Location",
+      "kind": "one session token in two geographies",
+      "risk": "CRITICAL",
+      "confidence": "High",
+      "evidence": "token T-B7 used from IN and then NL (203.0.113.88) 18 min apart \u2014 a session does not travel; the owner's laptop session is still active",
+      "owner_explainable": false,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T05:14:00Z",
+      "dimension": "Location",
+      "kind": "activity from a country outside the identity baseline",
+      "risk": "HIGH",
+      "confidence": "Medium",
+      "evidence": "NL (203.0.113.88); baseline IN",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T05:14:00Z",
+      "dimension": "Behaviour",
+      "kind": "application permission granted from the suspect session",
+      "risk": "HIGH",
+      "confidence": "High",
+      "evidence": "'MailSync Helper': delegated permissions granted: Mail.Read offline_access \u2014 a persistence opportunity that outlives the session",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T14:10:00Z",
+      "dimension": "Location",
+      "kind": "activity from a country outside the identity baseline",
+      "risk": "HIGH",
+      "confidence": "Medium",
+      "evidence": "NL (203.0.113.88); baseline IN",
+      "owner_explainable": true,
+      "session": "S-1002"
+    },
+    {
+      "ts": "2026-10-08T14:10:00Z",
+      "dimension": "Time",
+      "kind": "session active outside working hours",
+      "risk": "MEDIUM",
+      "confidence": "Medium",
+      "evidence": "19:40 IST; normal hours 09:00\u201319:00 \u2014 owner signed out at 18:20",
+      "owner_explainable": true,
+      "session": "S-1002"
+    }
+  ],
+  "timeline": [
+    {
+      "ts": "2026-10-08T04:32:00Z",
+      "ist": "10:02",
+      "identity": "finance.manager",
+      "device": "FIN-LT-22",
+      "source": "198.51.100.22",
+      "destination": "IDP",
+      "action": "signin",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "interactive sign-in; compliant managed device"
+    },
+    {
+      "ts": "2026-10-08T04:37:00Z",
+      "ist": "10:07",
+      "identity": "finance.manager",
+      "device": "UNREGISTERED-DEV",
+      "source": "198.51.100.50",
+      "destination": "IDP",
+      "action": "session_created",
+      "risk": "MEDIUM",
+      "confidence": "Medium",
+      "evidence": "session on an unregistered device; new session without a fresh MFA challenge; identity active in two environments at once"
+    },
+    {
+      "ts": "2026-10-08T04:37:05Z",
+      "ist": "10:07",
+      "identity": "finance.manager",
+      "device": "UNREGISTERED-DEV",
+      "source": "198.51.100.50",
+      "destination": "RA-GW-01",
+      "action": "tunnel_up",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "remote-access tunnel; pool address 10.50.99.14; posture check skipped (legacy profile)"
+    },
+    {
+      "ts": "2026-10-08T04:43:00Z",
+      "ist": "10:13",
+      "identity": "finance.manager",
+      "device": "FIN-LT-22",
+      "source": "198.51.100.22",
+      "destination": "FinLedger",
+      "action": "app_access",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "normal finance application"
+    },
+    {
+      "ts": "2026-10-08T04:43:02Z",
+      "ist": "10:13",
+      "identity": "finance.manager",
+      "device": "FIN-LT-22",
+      "source": "10.50.22.22",
+      "destination": "finledger.corp-cloud.lab",
+      "action": "http_connect",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "matches baseline"
+    },
+    {
+      "ts": "2026-10-08T04:51:00Z",
+      "ist": "10:21",
+      "identity": "finance.manager",
+      "device": "UNREGISTERED-DEV",
+      "source": "198.51.100.50",
+      "destination": "Cloud Console",
+      "action": "app_access",
+      "risk": "HIGH",
+      "confidence": "High",
+      "evidence": "previously unseen application; cloud says yes, endpoint says no"
+    },
+    {
+      "ts": "2026-10-08T04:56:00Z",
+      "ist": "10:26",
+      "identity": "finance.manager",
+      "device": "UNREGISTERED-DEV",
+      "source": "10.50.99.14",
+      "destination": "FS-FIN-02",
+      "action": "auth",
+      "risk": "HIGH",
+      "confidence": "Medium",
+      "evidence": "first-seen internal resource"
+    },
+    {
+      "ts": "2026-10-08T05:01:00Z",
+      "ist": "10:31",
+      "identity": "finance.manager",
+      "device": "UNREGISTERED-DEV",
+      "source": "10.50.99.14",
+      "destination": "\\\\FS-FIN-02\\Treasury",
+      "action": "file_access",
+      "risk": "HIGH",
+      "confidence": "High",
+      "evidence": "mass file access"
+    },
+    {
+      "ts": "2026-10-08T05:05:00Z",
+      "ist": "10:35",
+      "identity": "finance.manager",
+      "device": "FIN-LT-22",
+      "source": "10.50.22.22",
+      "destination": "EDR",
+      "action": "scan",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "FIN-LT-22: no malware, no suspicious process; browser + office apps only"
+    },
+    {
+      "ts": "2026-10-08T05:09:00Z",
+      "ist": "10:39",
+      "identity": "finance.manager",
+      "device": "UNREGISTERED-DEV",
+      "source": "203.0.113.88",
+      "destination": "IDP",
+      "action": "token_use",
+      "risk": "CRITICAL",
+      "confidence": "High",
+      "evidence": "one session token in two geographies"
+    },
+    {
+      "ts": "2026-10-08T05:10:00Z",
+      "ist": "10:40",
+      "identity": "finance.manager",
+      "device": "FIN-LT-22",
+      "source": "198.51.100.22",
+      "destination": "FinLedger",
+      "action": "app_access",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "owner still working normally"
+    },
+    {
+      "ts": "2026-10-08T05:10:02Z",
+      "ist": "10:40",
+      "identity": "finance.manager",
+      "device": "FIN-LT-22",
+      "source": "10.50.22.22",
+      "destination": "finledger.corp-cloud.lab",
+      "action": "http_connect",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "matches baseline"
+    },
+    {
+      "ts": "2026-10-08T05:14:00Z",
+      "ist": "10:44",
+      "identity": "finance.manager",
+      "device": "UNREGISTERED-DEV",
+      "source": "203.0.113.88",
+      "destination": "MailSync Helper",
+      "action": "app_permission_grant",
+      "risk": "HIGH",
+      "confidence": "High",
+      "evidence": "activity from a country outside the identity baseline; application permission granted from the suspect session"
+    },
+    {
+      "ts": "2026-10-08T05:21:00Z",
+      "ist": "10:51",
+      "identity": "finance.manager",
+      "device": "FIN-LT-22",
+      "source": "helpdesk",
+      "destination": "HELPDESK",
+      "action": "user_statement",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "user: 'I was working normally. I didn't install anything or share my password.'"
+    },
+    {
+      "ts": "2026-10-08T12:50:00Z",
+      "ist": "18:20",
+      "identity": "finance.manager",
+      "device": "FIN-LT-22",
+      "source": "198.51.100.22",
+      "destination": "IDP",
+      "action": "signout",
+      "risk": "INFO",
+      "confidence": "High",
+      "evidence": "matches baseline"
+    },
+    {
+      "ts": "2026-10-08T14:10:00Z",
+      "ist": "19:40",
+      "identity": "finance.manager",
+      "device": "UNREGISTERED-DEV",
+      "source": "203.0.113.88",
+      "destination": "IDP",
+      "action": "token_refresh",
+      "risk": "HIGH",
+      "confidence": "Medium",
+      "evidence": "activity from a country outside the identity baseline; session active outside working hours"
+    }
+  ],
+  "answers": {
+    "WHO": "finance.manager \u2014 the identity; session S-1002 is assessed as NOT THE OWNER",
+    "WHERE": "UNREGISTERED-DEV via 198.51.100.50, 203.0.113.88 (IN/NL); owner on FIN-LT-22",
+    "WHEN": "10:07\u201319:40 IST on 2026-10-08",
+    "WHAT": "Cloud Console, FS-FIN-02, MailSync Helper, RA-GW-01, \\\\FS-FIN-02\\Treasury",
+    "HOW": "valid session context \u2014 MFA 'inherited', no new password or MFA event, no malware on the endpoint",
+    "IMPACT": "412 files read; sensitive resources reached: Cloud Console, FS-FIN-02, \\\\FS-FIN-02\\Treasury; application grants: MailSync Helper"
+  },
+  "exposure": {
+    "files": 412,
+    "sensitive_resources": [
+      "Cloud Console",
+      "FS-FIN-02",
+      "\\\\FS-FIN-02\\Treasury"
+    ],
+    "app_grants": [
+      "MailSync Helper"
+    ]
+  },
+  "edr_verdict": "clean"
+}

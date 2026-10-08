@@ -1,0 +1,51 @@
+==============================================================================
+GraySentinel SSOU · Ghost Session — session-trust analysis (blue-team view) · 2026-10-08
+==============================================================================
+Decision: CONTAIN   ·   dimensions failed: Behaviour + Device + Location + Resource + Time   ·   EDR verdict on the endpoint: clean
+
+SESSIONS
+  S-1001  TRUSTED        devices=['FIN-LT-22'] ips=['198.51.100.22'] countries=['IN'] mfa=satisfied failed=[]
+  S-1002  NOT THE OWNER  devices=['UNREGISTERED-DEV'] ips=['198.51.100.50', '203.0.113.88'] countries=['IN', 'NL'] mfa=inherited failed=['Behaviour', 'Device', 'Location', 'Resource', 'Time']
+
+IDENTITY ATTACK TIMELINE (IST)
+  10:02  INFO     FIN-LT-22        198.51.100.22  → IDP                    signin               conf=High   interactive sign-in; compliant managed device
+  10:07  MEDIUM   UNREGISTERED-DEV 198.51.100.50  → IDP                    session_created      conf=Medium session on an unregistered device; new session without a fresh MFA challenge; identity active in two environments at once
+  10:07  INFO     UNREGISTERED-DEV 198.51.100.50  → RA-GW-01               tunnel_up            conf=High   remote-access tunnel; pool address 10.50.99.14; posture check skipped (legacy profile)
+  10:13  INFO     FIN-LT-22        198.51.100.22  → FinLedger              app_access           conf=High   normal finance application
+  10:13  INFO     FIN-LT-22        10.50.22.22    → finledger.corp-cloud.lab http_connect         conf=High   matches baseline
+  10:21  HIGH     UNREGISTERED-DEV 198.51.100.50  → Cloud Console          app_access           conf=High   previously unseen application; cloud says yes, endpoint says no
+  10:26  HIGH     UNREGISTERED-DEV 10.50.99.14    → FS-FIN-02              auth                 conf=Medium first-seen internal resource
+  10:31  HIGH     UNREGISTERED-DEV 10.50.99.14    → \\FS-FIN-02\Treasury   file_access          conf=High   mass file access
+  10:35  INFO     FIN-LT-22        10.50.22.22    → EDR                    scan                 conf=High   FIN-LT-22: no malware, no suspicious process; browser + office apps only
+  10:39  CRITICAL UNREGISTERED-DEV 203.0.113.88   → IDP                    token_use            conf=High   one session token in two geographies
+  10:40  INFO     FIN-LT-22        198.51.100.22  → FinLedger              app_access           conf=High   owner still working normally
+  10:40  INFO     FIN-LT-22        10.50.22.22    → finledger.corp-cloud.lab http_connect         conf=High   matches baseline
+  10:44  HIGH     UNREGISTERED-DEV 203.0.113.88   → MailSync Helper        app_permission_grant conf=High   activity from a country outside the identity baseline; application permission granted from the suspect session
+  10:51  INFO     FIN-LT-22        helpdesk       → HELPDESK               user_statement       conf=High   user: 'I was working normally. I didn't install anything or share my password.'
+  18:20  INFO     FIN-LT-22        198.51.100.22  → IDP                    signout              conf=High   matches baseline
+  19:40  HIGH     UNREGISTERED-DEV 203.0.113.88   → IDP                    token_refresh        conf=Medium activity from a country outside the identity baseline; session active outside working hours
+
+PIVOT EVENT (unusual login → potential identity compromise)
+  2026-10-08T05:09:00Z  one session token in two geographies — token T-B7 used from IN and then NL (203.0.113.88) 18 min apart — a session does not travel; the owner's laptop session is still active
+
+FINDINGS BY DIMENSION
+  [MEDIUM  ] Device    10:07  session on an unregistered device — UNREGISTERED-DEV is not a managed/compliant device (new cloud session)
+  [MEDIUM  ] Device    10:07  new session without a fresh MFA challenge — MFA status 'satisfied' was inherited from existing session context, not re-proved
+  [MEDIUM  ] Location  10:07  identity active in two environments at once — S-1002 on UNREGISTERED-DEV via 198.51.100.50 while S-1001 is live on FIN-LT-22
+  [MEDIUM  ] Behaviour 10:21  previously unseen application — 'Cloud Console' never used by this identity in the 30-day baseline
+  [HIGH    ] Behaviour 10:21  cloud says yes, endpoint says no — no proxy/DNS record from the owner's managed device for 'Cloud Console' at this time
+  [HIGH    ] Resource  10:26  first-seen internal resource — FS-FIN-02 from UNREGISTERED-DEV (10.50.99.14); NTLM; baseline servers ['FS-FIN-01']
+  [HIGH    ] Behaviour 10:31  mass file access — 412 files on \\FS-FIN-02\Treasury; daily baseline ≤ 25
+  [CRITICAL] Location  10:39  one session token in two geographies — token T-B7 used from IN and then NL (203.0.113.88) 18 min apart — a session does not travel; the owner's laptop session is still active
+  [HIGH    ] Location  10:44  activity from a country outside the identity baseline — NL (203.0.113.88); baseline IN
+  [HIGH    ] Behaviour 10:44  application permission granted from the suspect session — 'MailSync Helper': delegated permissions granted: Mail.Read offline_access — a persistence opportunity that outlives the session
+  [HIGH    ] Location  19:40  activity from a country outside the identity baseline — NL (203.0.113.88); baseline IN
+  [MEDIUM  ] Time      19:40  session active outside working hours — 19:40 IST; normal hours 09:00–19:00 — owner signed out at 18:20
+
+BLUE-TEAM SUCCESS CRITERIA
+  WHO     finance.manager — the identity; session S-1002 is assessed as NOT THE OWNER
+  WHERE   UNREGISTERED-DEV via 198.51.100.50, 203.0.113.88 (IN/NL); owner on FIN-LT-22
+  WHEN    10:07–19:40 IST on 2026-10-08
+  WHAT    Cloud Console, FS-FIN-02, MailSync Helper, RA-GW-01, \\FS-FIN-02\Treasury
+  HOW     valid session context — MFA 'inherited', no new password or MFA event, no malware on the endpoint
+  IMPACT  412 files read; sensitive resources reached: Cloud Console, FS-FIN-02, \\FS-FIN-02\Treasury; application grants: MailSync Helper

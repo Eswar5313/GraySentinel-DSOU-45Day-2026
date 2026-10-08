@@ -1,0 +1,101 @@
+# GraySentinel SSOU "Ghost Session" — BLUE-TEAM detection hypotheses (detection only).
+# Author: Eswar Mahalingam · 2026-10-08 · LAB ONLY · no offensive content.
+# Covers the chain: valid session -> unregistered device / inherited MFA -> unseen app ->
+# internal file server -> mass access -> second geography -> application permission grant.
+# Field names follow the lab CSV; map them to your IdP / cloud / file-server schema before use.
+---
+title: New Session For Existing Identity On Unregistered Device Without Fresh MFA
+id: 6805e551-0001-4c22-8b10-9057e55100a1
+name: session_unregistered_no_mfa
+status: experimental
+references: ['https://attack.mitre.org/techniques/T1078/', 'https://attack.mitre.org/techniques/T1550/004/']
+tags: [attack.defense_evasion, attack.t1550.004, attack.t1078]
+logsource: {product: idp, service: signin}
+detection:
+  selection: {action: 'session_created', mfa: 'inherited'}
+  managed: {device|startswith: ['FIN-LT-', 'CORP-LT-', 'CORP-WS-']}     # replace with a compliant-device lookup
+  condition: selection and not managed
+falsepositives: [new phone/tablet enrolment, browser profile reset — confirm with device registration]
+level: medium
+---
+title: One Session Token Presented From Two Countries
+id: 6805e551-0002-4c22-8b10-9057e55100a2
+name: token_two_countries
+logsource: {product: idp, service: signin}
+detection:
+  selection: {action: ['token_use', 'token_refresh', 'app_access', 'session_created']}
+  condition: selection
+correlation:
+  type: value_count
+  group-by: [token_id]
+  timespan: 60m
+  condition: {field: country, gte: 2}
+falsepositives: [corporate VPN egress change, mobile roaming at a border — check ASN + device ID continuity]
+level: critical
+---
+title: Application Never Used By Identity Accessed From Non-Managed Device
+id: 6805e551-0003-4c22-8b10-9057e55100a3
+name: unseen_app_unmanaged
+tags: [attack.discovery, attack.t1538]
+logsource: {product: cloud, service: audit}
+detection:
+  selection: {action: 'app_access', app: ['Cloud Console', 'Admin Portal', 'Directory']}
+  managed: {device|startswith: ['FIN-LT-', 'CORP-LT-', 'CORP-WS-']}
+  condition: selection and not managed
+level: medium
+---
+title: First-Seen File Server Logon From Remote-Access Pool
+id: 6805e551-0004-4c22-8b10-9057e55100a4
+name: fileserver_from_vpn_pool
+tags: [attack.lateral_movement, attack.t1021.002]
+logsource: {product: windows, service: security}
+detection:
+  selection: {EventID: 4624, LogonType: 3, Computer|startswith: 'FS-FIN-'}
+  vpn_pool: {IpAddress|cidr: '10.50.99.0/24'}
+  condition: selection and vpn_pool           # enrich: (user, server) pair absent from 30-day baseline
+level: medium
+---
+title: Mass File Read On Finance Share By Single Account
+id: 6805e551-0005-4c22-8b10-9057e55100a5
+name: mass_file_read
+tags: [attack.collection, attack.t1039]
+logsource: {product: windows, service: security}
+detection:
+  selection: {EventID: 5145, ShareName|contains: ['Treasury', 'Finance', 'Payroll']}
+  condition: selection
+correlation:
+  type: event_count
+  group-by: [SubjectUserName, ShareName]
+  timespan: 5m
+  condition: {gte: 100}
+falsepositives: [backup, indexing, DLP scan service accounts — exclude by account, not by share]
+level: high
+---
+title: Application Permission Grant From Session Outside Identity Baseline
+id: 6805e551-0006-4c22-8b10-9057e55100a6
+name: app_grant_foreign_session
+tags: [attack.persistence, attack.t1098]
+logsource: {product: cloud, service: audit}
+detection:
+  selection: {action: 'app_permission_grant'}
+  home: {country: 'IN'}                          # replace with per-user baseline
+  condition: selection and not home
+level: high
+---
+# Correlation — the Ghost Session chain for one identity inside 60 minutes
+title: Valid Session Abuse Chain (Ghost Session)
+id: 6805e551-0007-4c22-8b10-9057e55100a7
+correlation:
+  type: temporal
+  rules: [session_unregistered_no_mfa, unseen_app_unmanaged, fileserver_from_vpn_pool, mass_file_read,
+          token_two_countries, app_grant_foreign_session]
+  group-by: [user]
+  timespan: 60m
+  condition: {gte: 3}
+level: critical
+
+# ─────────────── Zeek / network notes (hunting, not alerting) ───────────────
+# conn.log   : SMB (445) from the VPN pool 10.50.99.0/24 to FS-FIN-02 — first-seen pair, bytes out >> baseline
+# ntlm.log   : NTLM to a finance server where the same user normally negotiates Kerberos
+# smb_files  : count of distinct files per uid in 5 min (mass read)
+# dns/http   : the owner's laptop shows NO request for the cloud console at the time the cloud audit log records it
